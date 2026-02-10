@@ -29,14 +29,14 @@
             color: var(--text-color);
         }
 
-        .page {
-            width: 100%;
-            max-width: 1440px;
-            padding: 40px 24px 72px;
-            display: flex;
-            flex-direction: column;
-            gap: 72px;
-        }
+	        .page {
+	            width: 100%;
+	            max-width: 1440px;
+	            padding: 40px 24px 72px;
+	            display: flex;
+	            flex-direction: column;
+	            gap: clamp(92px, 8vw, 132px);
+	        }
 
         .diagram-container {
             display: flex;
@@ -313,16 +313,26 @@
             fill: currentColor;
         }
 
-        /* --- "Softprobe AI in action" section --- */
+        /* --- Primary cases --- */
+        .primay-case-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .primay-case-container > .section + .section {
+            margin-top: clamp(92px, 8vw, 132px);
+        }
+
         .section {
             width: 100%;
         }
 
-        .section-head {
-            text-align: center;
-            margin: 0 auto 28px;
-            max-width: 880px;
-        }
+	        .section-head {
+	            text-align: center;
+	            margin: 0 auto 28px;
+	            max-width: 880px;
+	        }
 
         .section-kicker {
             font-size: 0.8rem;
@@ -349,17 +359,21 @@
             max-width: 64ch;
         }
 
-        .action-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: clamp(28px, 4vw, 64px);
-            align-items: start;
-        }
+	        .action-grid {
+	            display: grid;
+	            grid-template-columns: 2fr 1fr;
+	            gap: clamp(28px, 4vw, 64px);
+	            align-items: start;
+	        }
 
-        /* Alternate row: description left, window right (window still 2/3) */
-        .action-grid.alt {
-            grid-template-columns: 1fr 2fr;
-        }
+	        .action-grid + .action-grid {
+	            margin-top: clamp(40px, 5vw, 80px);
+	        }
+
+	        /* Alternate row: description left, window right (window still 2/3) */
+	        .action-grid.alt {
+	            grid-template-columns: 1fr 2fr;
+	        }
 
         .action-grid.alt .action-copy {
             grid-column: 1;
@@ -952,11 +966,15 @@
             gap: 10px;
         }
 
-        @media (max-width: 900px) {
-            .page {
-                padding: 28px 16px 56px;
-                gap: 56px;
-            }
+		        @media (max-width: 900px) {
+		            .page {
+		                padding: 28px 16px 56px;
+		                gap: clamp(72px, 7vw, 108px);
+		            }
+
+		            .primay-case-container > .section + .section {
+		                margin-top: clamp(72px, 7vw, 108px);
+		            }
 
             .roles-row {
                 width: 100%;
@@ -1064,11 +1082,15 @@
             }
         }
 
-        @media (max-width: 560px) {
-            .page {
-                padding: 22px 14px 44px;
-                gap: 44px;
-            }
+	        @media (max-width: 560px) {
+	            .page {
+	                padding: 22px 14px 44px;
+	                gap: 64px;
+	            }
+
+	            .primay-case-container > .section + .section {
+	                margin-top: 64px;
+	            }
 
             .action-grid {
                 gap: 18px;
@@ -1162,6 +1184,7 @@
         <div class="tool-group group-knowledge" id="group-2">
             <div class="group-title">Knowledge</div>
             <div class="icons-wrapper">
+                <img class="tool-icon" src="public/slack.png" alt="Slack">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/jira/0052CC" alt="Jira">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/notion/000000" alt="Notion">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/confluence/172B4D" alt="Confluence">
@@ -1183,21 +1206,20 @@
             <div class="group-title">Testing</div>
             <div class="icons-wrapper">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/cypress/17202C" alt="Cypress">
-                <img class="tool-icon" src="https://cdn.simpleicons.org/saucelabs/3DDC91" alt="saucelabs">
-                <img class="tool-icon" src="https://cdn.simpleicons.org/postman/FF6C37" alt="Postman">
+                <img class="tool-icon" src="https://cdn.simpleicons.org/saucelabs/3DDC91" alt="Saucelabs">
+                <img class="tool-icon" src="https://cdn.simpleicons.org/curl/073551" alt="Curl">
             </div>
         </div>
 
         <div class="tool-group group-devops" id="group-5">
             <div class="group-title">DevOps & CI/CD</div>
             <div class="icons-wrapper">
-                <img class="tool-icon" src="https://cdn.simpleicons.org/amazonwebservices/232F3E" alt="AWS">
-                <img class="tool-icon" src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="GCP">
+                <img class="tool-icon" src="public/aws.svg" alt="AWS">
+                <img class="tool-icon" src="public/gcp.svg" alt="GCP">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="K8s">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/helm/0F1689" alt="Helm">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/argo/EF7B4D" alt="Argo">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/githubactions/2088FF" alt="Actions">
-                <img class="tool-icon" src="https://cdn.simpleicons.org/circleci/343434" alt="CircleCI">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/travisci/3EAAAF" alt="TravisCI">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/jenkins/D24939" alt="Jenkins">
                 <img class="tool-icon" src="https://cdn.simpleicons.org/circleci/343434" alt="CircleCI">
@@ -1206,20 +1228,98 @@
     </div>
 </div>
 
-<section class="section" id="softprobe-ai-in-action">
+<div class="primay-case-container">
   <header class="section-head">
     <p class="section-kicker">Softprobe AI</p>
     <h2 class="section-title">Softprobe AI in action</h2>
     <p class="section-subtitle">
       Helps you resolve incidents, optimize costs, and build on existing systems — directly inside your on-call workflow.
-    </p>
-  </header>
+	    </p>
+	  </header>
 
-  <div class="action-grid">
-    <div class="action-visual" aria-label="Slack thread example">
-      <div class="action-visual-inner">
-        <!-- Softprobe Slack-style message (single post) -->
-        <div class="slack-post">
+  <section class="section" id="safe-canary">
+	  <div class="action-grid">
+	    <div class="action-visual" aria-label="Safe Canary alert example">
+	      <div class="action-visual-inner">
+	        <div class="slack-post">
+	          <div style="display:flex;gap:12px;align-items:flex-start;">
+	            <div style="flex:0 0 auto;">
+	              <img
+	                src="public/sp-logo-trans.png"
+	                alt="Softprobe"
+	                width="36"
+	                height="36"
+	                style="border-radius:8px;display:block;"
+	              />
+	            </div>
+
+	            <div style="flex:1;min-width:0;">
+	              <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
+	                <div style="font-weight:800;font-size:15px;line-height:1;">Softprobe</div>
+	                <span style="font-size:12px;color:#6b7280;">APP</span>
+	                <span style="font-size:12px;color:#6b7280;">•</span>
+	                <span style="font-size:12px;color:#6b7280;">Today at 10:42 PM</span>
+	              </div>
+
+		              <div style="margin-top:6px;font-size:15px;line-height:1.45;">
+		                🚦 <strong>Safe Canary Alert</strong> | <strong>Release v2.3.1</strong> (Paused)
+		              </div>
+
+	              <div style="margin-top:12px;border:1px solid #e5e7eb;border-radius:14px;background:#ffffff;box-shadow:0 10px 28px rgba(0,0,0,0.06);overflow:hidden;">
+	                <div style="padding:14px 16px;border-bottom:1px solid #e5e7eb;background:#fbfbfb;">
+	                  <div style="font-weight:800;font-size:14px;">Softprobe Safe Canary</div>
+		                  <div style="margin-top:4px;font-size:13px;line-height:1.5;color:#374151;">
+		                    Softprobe Safe Canary replayed live production traffic against the new release in an isolated environment.<br />
+		                    <strong>No customers were impacted.</strong>
+		                  </div>
+		                </div>
+
+	                <div style="padding:14px 16px;">
+	                  <div style="font-weight:800;font-size:13px;margin-bottom:8px;">What we found</div>
+		                  <ul style="margin:0 0 12px;padding-left:18px;font-size:13px;line-height:1.6;color:#111827;">
+		                    <li>Error rate and latency unchanged</li>
+		                    <li>Behavioral difference detected in checkout results</li>
+		                    <li><strong>2.1%</strong> of replayed requests returned different pricing</li>
+		                    <li>Affects high-volume SKU <strong>SKU-847</strong></li>
+		                  </ul>
+
+		                  <div style="font-weight:800;font-size:13px;margin:10px 0 8px;">Status</div>
+		                  <div style="font-size:13px;line-height:1.6;color:#111827;">
+		                    🚫 <strong>Release paused automatically</strong>
+		                  </div>
+
+		                  <div style="font-weight:800;font-size:13px;margin:12px 0 8px;">Next steps</div>
+		                  <ol style="margin:0;padding-left:18px;font-size:13px;line-height:1.6;color:#111827;">
+		                    <li>1️⃣ Generate fix PR</li>
+		                    <li>2️⃣ Approve release with exception</li>
+		                    <li>3️⃣ Expand replay window for confirmation</li>
+		                  </ol>
+                    
+
+	                  <div style="margin-top:10px;font-size:12px;color:#6b7280;">
+	                    👉 Reply with the option number or ask for details.
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
+		    <div class="action-copy">
+		      <h3>Replaces risky live canaries with deterministic replay.</h3>
+		    </div>
+	  </div>
+
+  </section>
+
+  <section class="section" id="understands-alert">
+	  <div class="action-grid alt">
+	    <div class="action-visual" aria-label="Slack thread example">
+	      <div class="action-visual-inner">
+	        <!-- Softprobe Slack-style message (single post) -->
+	        <div class="slack-post">
     <!-- Thread header -->
     <div style="display:flex;gap:12px;align-items:flex-start;">
       <!-- Softprobe icon -->
@@ -1244,14 +1344,14 @@
   
         <!-- Alert title -->
         <div style="margin-top:6px;font-size:15px;line-height:1.45;">
-          🚨 <strong>Grafana Alert</strong> | <strong>Order Service</strong> createOrder success rate &lt; 90%
+          <img src="https://cdn.simpleicons.org/grafana/F46800" alt="Grafana" width="16" height="16" style="vertical-align:middle;margin-right:4px;"> Grafana Alert | Order Service createOrder success rate &lt; 90%
         </div>
   
         <!-- Alert details line -->
         <div style="margin-top:6px;font-size:13px;line-height:1.5;color:#374151;">
-          <span style="display:inline-block;margin-right:10px;"><strong>Observed:</strong> 95% → 50%</span>
-          <span style="display:inline-block;margin-right:10px;"><strong>Start:</strong> 20:15</span>
-          <span style="display:inline-block;"><strong>Window:</strong> last 5m</span>
+          <span style="display:inline-block;margin-right:10px;">Observed: 95% → 50%</span>
+          <span style="display:inline-block;margin-right:10px;">Start: 20:15</span>
+          <span style="display:inline-block;">Window: last 5m</span>
         </div>
   
         <!-- Card -->
@@ -1283,18 +1383,18 @@
             <div style="font-weight:800;font-size:13px;margin-bottom:8px;">Findings</div>
             <ol style="margin:0 0 12px;padding-left:18px;font-size:13px;line-height:1.6;color:#111827;">
               <li>
-                <strong>Metric inflection:</strong> Prometheus confirms a sudden success-rate drop at <strong>20:15</strong>,
-                isolated to <strong>POST /createOrder</strong>.
+                Metric inflection: Prometheus confirms a sudden success-rate drop at 20:15,
+                isolated to POST /createOrder.
               </li>
               <li>
-                <strong>Dominant error signature:</strong> Loki shows a spike of
+                Dominant error signature: Loki shows a spike of
                 <span style="display:inline-block;padding:2px 6px;border-radius:8px;background:#fee2e2;color:#991b1b;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;">
                   product 002 out of stock
                 </span>
-                accounting for <strong>~80%</strong> of createOrder failures during the incident window.
+                accounting for ~80% of createOrder failures during the incident window.
               </li>
               <li>
-                <strong>Noise filtered:</strong>
+                Noise filtered:
                 <span style="display:inline-block;padding:2px 6px;border-radius:8px;background:#f3f4f6;color:#374151;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;">
                   cache is disabled
                 </span>
@@ -1305,16 +1405,16 @@
             <!-- Root cause callout -->
             <div style="font-weight:800;font-size:13px;margin:10px 0 8px;">Root Cause</div>
             <div style="border:1px solid #e5e7eb;background:#f9fafb;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.55;">
-              <strong>Product 002 inventory depletion</strong> caused validation failures and a surge of createOrder errors,
-              reducing success rate from <strong>95% → 50%</strong>.
+              Product 002 inventory depletion caused validation failures and a surge of createOrder errors,
+              reducing success rate from 95% → 50%.
             </div>
   
             <!-- Theories / Recommendations -->
             <div style="font-weight:800;font-size:13px;margin:12px 0 8px;">Recommended Actions</div>
             <ul style="margin:0;padding-left:18px;font-size:13px;line-height:1.6;color:#111827;">
-              <li><strong>Immediate (low risk):</strong> Temporarily disable product <strong>002</strong> from checkout.</li>
-              <li><strong>Graceful degradation:</strong> Return “item unavailable” outcome instead of hard failure.</li>
-              <li><strong>Continuity:</strong> Enable backorder / fallback SKU if allowed by policy.</li>
+              <li>Immediate (low risk): Temporarily disable product 002 from checkout.</li>
+              <li>Graceful degradation: Return “item unavailable” outcome instead of hard failure.</li>
+              <li>Continuity: Enable backorder / fallback SKU if allowed by policy.</li>
             </ul>
   
             <!-- Footer buttons -->
@@ -1334,7 +1434,7 @@
   
         <!-- Slack-like “reply” hint (optional) -->
         <div style="margin-top:8px;font-size:12px;color:#6b7280;">
-          Reply with <strong>“approve option 1”</strong>, <strong>“show evidence”</strong>, or <strong>“check deploy diff”</strong>.
+          Reply with “approve option 1”, “show evidence”, or “check deploy diff”.
         </div>
       </div>
     </div>
@@ -1343,30 +1443,20 @@
     </div>
 
     <div class="action-copy">
-      <h3>Understands the alert and proposes next steps</h3>
+      <h3>Softprobe agent responds to your alert</h3>
       <p>
-        Softprobe reads the alert, pulls the right evidence (metrics, logs, traces), and summarizes the likely root cause
-        with safe, actionable recommendations.
+        Softprobe agent pulls the right evidence (metrics, logs, traces), code, knowledge and history, identifies the root cause and proposes actionable recommendations.
       </p>
-      <ul>
-        <li><strong>Investigates first:</strong> correlates signals and filters noise.</li>
-        <li><strong>Explains clearly:</strong> highlights the dominant failure pattern and impact.</li>
-        <li><strong>Acts safely:</strong> suggests reversible mitigations and asks for confirmation.</li>
-      </ul>
     </div>
   </div>
-</section>
+	</section>
 
-<section class="section" id="gets-to-root-cause">
-  <div class="action-grid alt">
-    <div class="action-visual" aria-label="RCA conversation example">
-      <div class="action-visual-inner">
-        <div class="mock-window">
-          <div class="mock-body">
-            <div class="slack-thread-head">
-              <div class="slack-thread-title">Thread</div>
-              <div class="slack-thread-sub">RCA exploration</div>
-            </div>
+	<section class="section" id="gets-to-root-cause">
+	  <div class="action-grid">
+	    <div class="action-visual" aria-label="RCA conversation example">
+	      <div class="action-visual-inner">
+	        <div class="mock-window">
+	          <div class="mock-body">
             <div class="slack-thread-body">
               <div class="slack-msg user">
                 <img class="slack-avatar user" src="https://i.pravatar.cc/56?img=12" alt="User avatar" width="28" height="28" />
@@ -1410,8 +1500,8 @@
                     <span class="slack-ts">Today 21:07</span>
                   </div>
                   <div class="slack-bubble sp">
-                    <strong>Finding:</strong> Feature flag <span class="pill" style="padding:2px 8px;">pricing_v2</span> is enabled
-                    only in <strong>eu-west-1</strong>. It added a sync call to a <strong>US-only pricing</strong> dependency
+                    Finding: Feature flag <span class="pill" style="padding:2px 8px;">pricing_v2</span> is enabled
+                    only in eu-west-1. It added a sync call to a US-only pricing dependency
                     (+400–600ms RTT). The inflection timestamp matches the rollout.
 
                     <div class="mini-title">Hypotheses Tested</div>
@@ -1439,21 +1529,17 @@
 
     <div class="action-copy">
       <h3>Gets you to the real root cause</h3>
-      <p>Explores competing hypotheses with you — not just dashboards — and converges on the real root cause with evidence.</p>
+      <p>Softprobe agent learns, knows how to user your tools, explore competing hypotheses with you and converges on the real root cause with evidence.</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="fix-and-pr">
-  <div class="action-grid">
-    <div class="action-visual" aria-label="Code fix and PR example">
-      <div class="action-visual-inner">
-        <div class="mock-window">
-          <div class="mock-body">
-            <div class="slack-thread-head">
-              <div class="slack-thread-title">Thread</div>
-              <div class="slack-thread-sub">RCA → Fix → PR</div>
-            </div>
+	<section class="section" id="fix-and-pr">
+	  <div class="action-grid alt">
+	    <div class="action-visual" aria-label="Code fix and PR example">
+	      <div class="action-visual-inner">
+	        <div class="mock-window">
+	          <div class="mock-body">
             <div class="slack-thread-body">
               <div class="slack-msg user">
                 <img class="slack-avatar user" src="https://i.pravatar.cc/56?img=12" alt="User avatar" width="28" height="28" />
@@ -1483,7 +1569,7 @@
                       <span class="pill">Dedupe at DB layer</span>
                       <span class="pill">Retry w/ backoff</span>
                     </div>
-                    Recommendation: <strong>idempotency + DB uniqueness</strong> to stop duplicate charges. Approve to open a PR?
+                    Recommendation: idempotency + DB uniqueness to stop duplicate charges. Approve to open a PR?
                   </div>
                 </div>
               </div>
@@ -1510,12 +1596,12 @@
                     <span class="slack-ts">Today 21:16</span>
                   </div>
 	                  <div class="slack-bubble sp">
-	                    Done — here’s the minimal diff and the PR summary.
+	                    Done — here’s the idempotency fix and the PR summary.
 	
 	                    <div class="code gh">
 	                      <div class="code-head">
-	                        <span><strong>payments/charge.ts</strong> · minimal change</span>
-	                        <span>adds idempotency</span>
+	                        <span>payments/charge.ts</span>
+	                        <span>Adds idempotency</span>
 	                      </div>
 	                      <div class="gh-diff" role="table" aria-label="GitHub style diff">
 	                        <div class="gh-row del" role="row">
@@ -1565,9 +1651,9 @@
                     <a href="https://github.com/acme/shop/pull/1842" class="pr" target="_blank" rel="noopener noreferrer">
                       <p class="pr-title">PR: Prevent duplicate charges on retries with idempotency</p>
                       <div class="pr-meta">
-                        <span><strong>Summary:</strong> retries could re-charge when network times out</span>
-                        <span><strong>Metrics:</strong> duplicates → 0</span>
-                        <span><strong>Rollback:</strong> feature flag off</span>
+                        <span>Summary: retries could re-charge when network times out</span>
+                        <span>Metrics: duplicates → 0</span>
+                        <span>Rollback: feature flag off</span>
                       </div>
                     </a>
                   </div>
@@ -1585,10 +1671,9 @@
     </div>
   </div>
 
-  <p class="takeaway">
-    <strong>Softprobe doesn’t just explain incidents</strong> — it collaborates with you to fix them and make sure they don’t come back.
-  </p>
-</section>
+	</section>
+
+</div>
 
 </main>
   
