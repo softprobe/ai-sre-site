@@ -1,0 +1,23 @@
+---
+import { codeToHtml } from 'shiki';
+
+interface Props {
+  code: string;
+  filename?: string;
+  class?: string;
+}
+
+const { code, filename = 'config.yaml', class: className = '' } = Astro.props;
+const highlighted = await codeToHtml(code, {
+  lang: 'yaml',
+  theme: 'github-dark'
+});
+---
+
+<div class={`code yaml-code-block ${className}`.trim()}>
+  <div class="code-head">
+    <span>{filename}</span>
+    <span>YAML</span>
+  </div>
+  <div class="code-lines" set:html={highlighted}></div>
+</div>

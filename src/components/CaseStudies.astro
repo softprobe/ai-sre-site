@@ -1,0 +1,450 @@
+---
+// Case Studies component
+---
+
+<div class="primay-case-container">
+  <header class="section-head">
+    <p class="section-kicker">Softprobe AI</p>
+    <h2 class="section-title">Softprobe AI in action</h2>
+    <p class="section-subtitle">
+      Helps you resolve incidents, optimize costs, and build on existing systems — directly inside your on-call workflow.
+	    </p>
+	  </header>
+
+  <section class="section" id="safe-canary">
+	  <div class="action-grid">
+	    <div class="action-visual" aria-label="Safe Canary alert example">
+	      <div class="action-visual-inner">
+	        <div class="slack-post">
+	          <div style="display:flex;gap:12px;align-items:flex-start;">
+	            <div style="flex:0 0 auto;">
+	              <img
+	                src="/sp-logo-trans.png"
+	                alt="Softprobe"
+	                width="36"
+	                height="36"
+	                style="border-radius:8px;display:block;"
+	              />
+	            </div>
+
+	            <div style="flex:1;min-width:0;">
+	              <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
+	                <div style="font-weight:800;font-size:15px;line-height:1;">Softprobe</div>
+	                <span style="font-size:12px;color:#6b7280;">APP</span>
+	                <span style="font-size:12px;color:#6b7280;">•</span>
+	                <span style="font-size:12px;color:#6b7280;">Today at 10:42 PM</span>
+	              </div>
+
+		              <div style="margin-top:6px;font-size:15px;line-height:1.45;">
+		                🚦 Safe Canary Alert | Release v2.3.1 (Paused)
+		              </div>
+
+	              <div style="margin-top:12px;border:1px solid #e5e7eb;border-radius:14px;background:#ffffff;box-shadow:0 10px 28px rgba(0,0,0,0.06);overflow:hidden;">
+	                <div style="padding:14px 16px;border-bottom:1px solid #e5e7eb;background:#fbfbfb;">
+	                  <div style="font-weight:800;font-size:14px;">Softprobe Safe Canary</div>
+		                  <div style="margin-top:4px;font-size:13px;line-height:1.5;color:#374151;">
+		                    Softprobe Safe Canary replayed live production traffic against the new release in an isolated environment.<br />
+		                    No customers were impacted.
+		                  </div>
+		                </div>
+
+	                <div style="padding:14px 16px;">
+	                  <div style="font-weight:800;font-size:13px;margin-bottom:8px;">Behavioral difference detected in checkout results</div>
+		                  <ul style="margin:0 0 12px;padding-left:18px;font-size:13px;line-height:1.6;color:#111827;">
+		                    <li style="color:red">21% of replayed requests returned different pricing because of tax calucation</li>
+		                    <li style="color:red">Affects customers in EU</li>
+		                    <li style="color:green">Error rate and latency unchanged</li>
+		                  </ul>
+
+		                  <div style="font-weight:800;font-size:13px;margin:10px 0 8px;">Status</div>
+		                  <div style="font-size:13px;line-height:1.6;color:#111827;">
+		                    Release paused automatically
+		                  </div>
+
+		                  <div style="font-weight:800;font-size:13px;margin:12px 0 8px;">Next steps</div>
+		                  <ol style="margin:0;padding-left:18px;font-size:13px;line-height:1.6;color:#111827;">
+		                    <li>Ask Softprobe AI to generate a fix PR</li>
+		                    <li>Approve release with exception</li>
+		                    <li>Expand replay window for confirmation</li>
+		                  </ol>
+                    
+
+	                  <div style="margin-top:10px;font-size:12px;color:#6b7280;">
+	                    Reply with the option number or ask for details.
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
+		    <div class="action-copy">
+		      <h3>Prevent issues before customers see them with Softprobe Safe Canary Testing™</h3>
+              <p>works for both read and write operations</p>
+		    </div>
+	  </div>
+
+  </section>
+
+  <section class="section" id="understands-alert">
+	  <div class="action-grid alt">
+	    <div class="action-visual" aria-label="Slack thread example">
+	      <div class="action-visual-inner">
+	        <!-- Softprobe Slack-style message (single post) -->
+	        <div class="slack-post">
+    <!-- Thread header -->
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <!-- Softprobe icon -->
+      <div style="flex:0 0 auto;">
+        <!-- Replace src with your hosted Softprobe icon (PNG/SVG/ICO converted to PNG for best rendering) -->
+        <img
+          src="/sp-logo-trans.png"
+          alt="Softprobe"
+          width="36"
+          height="36"
+          style="border-radius:8px;display:block;"
+        />
+      </div>
+  
+      <div style="flex:1;min-width:0;">
+        <!-- Slack-like name + timestamp -->
+        <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
+          <div style="font-weight:800;font-size:15px;line-height:1;">Softprobe</div>
+          <span style="font-size:12px;color:#6b7280;">APP</span>
+          <span style="font-size:12px;color:#6b7280;">Today at 8:17 PM</span>
+        </div>
+  
+        <!-- Alert title -->
+        <div style="margin-top:6px;font-size:15px;line-height:1.45;">
+          <img src="https://cdn.simpleicons.org/grafana/F46800" alt="Grafana" width="16" height="16" style="vertical-align:middle;margin-right:4px;" /> Grafana Alert | Order Service createOrder success rate &lt; 90%
+        </div>
+  
+        <!-- Alert details line -->
+        <div style="margin-top:6px;font-size:13px;line-height:1.5;color:#374151;">
+          <span style="display:inline-block;margin-right:10px;">Observed: 95% → 50%</span>
+          <span style="display:inline-block;margin-right:10px;">Start: 20:15</span>
+          <span style="display:inline-block;">Window: last 5m</span>
+        </div>
+  
+        <!-- Card -->
+        <div style="margin-top:12px;border:1px solid #e5e7eb;border-radius:14px;background:#ffffff;box-shadow:0 10px 28px rgba(0,0,0,0.06);overflow:hidden;">
+          <!-- Card header -->
+          <div style="padding:14px 16px;border-bottom:1px solid #e5e7eb;background:#fbfbfb;">
+            <div style="font-weight:800;font-size:14px;">Softprobe Agentic RCA</div>
+            <div style="margin-top:4px;font-size:13px;line-height:1.5;color:#374151;">
+              The incident is driven by a dominant business-level failure pattern. Known noisy errors were filtered out.
+            </div>
+  
+            <!-- Slack-style action pills -->
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+              <a href="#" style="text-decoration:none;font-size:12px;padding:7px 10px;border:1px solid #e5e7eb;border-radius:999px;color:#111827;background:#ffffff;">
+                View dashboard
+              </a>
+              <a href="#" style="text-decoration:none;font-size:12px;padding:7px 10px;border:1px solid #e5e7eb;border-radius:999px;color:#111827;background:#ffffff;">
+                Query logs
+              </a>
+              <a href="#" style="text-decoration:none;font-size:12px;padding:7px 10px;border:1px solid #e5e7eb;border-radius:999px;color:#111827;background:#ffffff;">
+                PromQL used
+              </a>
+            </div>
+          </div>
+  
+          <!-- Card body -->
+          <div style="padding:14px 16px;">
+            <!-- Findings -->
+            <div style="font-weight:800;font-size:13px;margin-bottom:8px;">Findings</div>
+            <ol style="margin:0 0 12px;padding-left:18px;font-size:13px;line-height:1.6;color:#111827;">
+              <li>
+                Metric inflection: Prometheus confirms a sudden success-rate drop at 20:15,
+                isolated to POST /createOrder.
+              </li>
+              <li>
+                Dominant error signature: Loki shows a spike of
+                <span style="display:inline-block;padding:2px 6px;border-radius:8px;background:#fee2e2;color:#991b1b;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;">
+                  product 002 out of stock
+                </span>
+                accounting for ~80% of createOrder failures during the incident window.
+              </li>
+              <li>
+                Noise filtered:
+                <span style="display:inline-block;padding:2px 6px;border-radius:8px;background:#f3f4f6;color:#374151;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;">
+                  cache is disabled
+                </span>
+                errors existed before 20:15 and do not correlate with the drop.
+              </li>
+            </ol>
+  
+            <!-- Root cause callout -->
+            <div style="font-weight:800;font-size:13px;margin:10px 0 8px;">Root Cause</div>
+            <div style="border:1px solid #e5e7eb;background:#f9fafb;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.55;">
+              Product 002 inventory depletion caused validation failures and a surge of createOrder errors,
+              reducing success rate from 95% → 50%.
+            </div>
+  
+            <!-- Theories / Recommendations -->
+            <div style="font-weight:800;font-size:13px;margin:12px 0 8px;">Recommended Actions</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;line-height:1.6;color:#111827;">
+              <li>Immediate (low risk): Temporarily disable product 002 from checkout.</li>
+              <li>Graceful degradation: Return "item unavailable" outcome instead of hard failure.</li>
+              <li>Continuity: Enable backorder / fallback SKU if allowed by policy.</li>
+            </ul>
+  
+            <!-- Footer buttons -->
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+              <a href="#" style="text-decoration:none;font-size:13px;padding:9px 12px;border-radius:10px;background:#16a34a;color:#ffffff;font-weight:800;">
+                View details in Softprobe
+              </a>
+              <a href="#" style="text-decoration:none;font-size:13px;padding:9px 12px;border-radius:10px;background:#ffffff;color:#111827;border:1px solid #e5e7eb;">
+                Open Jira ticket
+              </a>
+              <span style="margin-left:auto;font-size:12px;color:#6b7280;">
+                Will ask confirmation before production actions
+              </span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Slack-like "reply" hint (optional) -->
+        <div style="margin-top:8px;font-size:12px;color:#6b7280;">
+          Reply with "approve option 1", "show evidence", or "check deploy diff".
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+
+    <div class="action-copy">
+      <h3>Softprobe agent responds to your alert</h3>
+      <p>
+        Softprobe agent pulls the right evidence (metrics, logs, traces), code, knowledge and history, identifies the root cause and proposes actionable recommendations.
+      </p>
+    </div>
+  </div>
+	</section>
+
+	<section class="section" id="gets-to-root-cause">
+	  <div class="action-grid">
+	    <div class="action-visual" aria-label="RCA conversation example">
+	      <div class="action-visual-inner">
+	        <div class="mock-window">
+	          <div class="mock-body">
+            <div class="slack-thread-body">
+              <div class="slack-msg user">
+                <img class="slack-avatar user" src="https://i.pravatar.cc/56?img=12" alt="User avatar" width="28" height="28" />
+                <div class="slack-content">
+                  <div class="slack-meta">
+                    <span class="slack-name">Andrew</span>
+                    <span class="slack-ts">Today 21:05</span>
+                  </div>
+                  <div class="slack-bubble">
+                    Why is checkout latency spiking only for EU users?
+                  </div>
+                </div>
+              </div>
+
+              <div class="slack-msg">
+                <img class="slack-avatar sp" src="/sp-logo-trans.png" alt="Softprobe" width="28" height="28" />
+                <div class="slack-content">
+                  <div class="slack-meta">
+                    <span class="slack-name">Softprobe</span>
+                    <span class="slack-badge">APP</span>
+                    <span class="slack-ts">Today 21:06</span>
+                  </div>
+                  <div class="slack-bubble sp">
+                    I won't assume a single cause — validating competing hypotheses in parallel:
+                    <div class="pill-row">
+                      <span class="pill">CDN edge vs origin</span>
+                      <span class="pill">Flag divergence</span>
+                      <span class="pill">DB query plans</span>
+                      <span class="pill">Cross-region fan-out</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slack-msg">
+                <img class="slack-avatar sp" src="/sp-logo-trans.png" alt="Softprobe" width="28" height="28" />
+                <div class="slack-content">
+                  <div class="slack-meta">
+                    <span class="slack-name">Softprobe</span>
+                    <span class="slack-badge">APP</span>
+                    <span class="slack-ts">Today 21:07</span>
+                  </div>
+                  <div class="slack-bubble sp">
+                    Finding: Feature flag <span class="pill" style="padding:2px 8px;">pricing_v2</span> is enabled
+                    only in eu-west-1. It added a sync call to a US-only pricing dependency
+                    (+400–600ms RTT). The inflection timestamp matches the rollout.
+
+                    <div class="mini-title">Hypotheses Tested</div>
+                    <ul class="mini-list">
+                      <li>CDN edge latency vs origin latency</li>
+                      <li>EU-only feature-flag divergence</li>
+                      <li>DB query plan regression</li>
+                      <li>Cross-region dependency fan-out</li>
+                    </ul>
+
+                    <div class="mini-title">Evidence</div>
+                    <ul class="mini-list">
+                      <li>Only EU traces show the sync pricing hop</li>
+                      <li>Cross-region RTT adds ~400–600ms</li>
+                      <li>Inflection timestamp matches rollout</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-copy">
+      <h3>Gets you to the real root cause</h3>
+      <p>Softprobe agent learns, knows how to user your tools, explore competing hypotheses with you and converges on the real root cause with evidence.</p>
+    </div>
+  </div>
+</section>
+
+	<section class="section" id="fix-and-pr">
+	  <div class="action-grid alt">
+	    <div class="action-visual" aria-label="Code fix and PR example">
+	      <div class="action-visual-inner">
+	        <div class="mock-window">
+	          <div class="mock-body">
+            <div class="slack-thread-body">
+              <div class="slack-msg user">
+                <img class="slack-avatar user" src="https://i.pravatar.cc/56?img=12" alt="User avatar" width="28" height="28" />
+                <div class="slack-content">
+                  <div class="slack-meta">
+                    <span class="slack-name">Andrew</span>
+                    <span class="slack-ts">Today 21:12</span>
+                  </div>
+                  <div class="slack-bubble">
+                    Can you propose a fix and make it safe?
+                  </div>
+                </div>
+              </div>
+
+              <div class="slack-msg">
+                <img class="slack-avatar sp" src="/sp-logo-trans.png" alt="Softprobe" width="28" height="28" />
+                <div class="slack-content">
+                  <div class="slack-meta">
+                    <span class="slack-name">Softprobe</span>
+                    <span class="slack-badge">APP</span>
+                    <span class="slack-ts">Today 21:13</span>
+                  </div>
+                  <div class="slack-bubble sp">
+                    Options:
+                    <div class="pill-row">
+                      <span class="pill">Add idempotency key</span>
+                      <span class="pill">Dedupe at DB layer</span>
+                      <span class="pill">Retry w/ backoff</span>
+                    </div>
+                    Recommendation: idempotency + DB uniqueness to stop duplicate charges. Approve to open a PR?
+                  </div>
+                </div>
+              </div>
+
+              <div class="slack-msg user">
+                <img class="slack-avatar user" src="https://i.pravatar.cc/56?img=12" alt="User avatar" width="28" height="28" />
+                <div class="slack-content">
+                  <div class="slack-meta">
+                    <span class="slack-name">Andrew</span>
+                    <span class="slack-ts">Today 21:14</span>
+                  </div>
+                  <div class="slack-bubble">
+                    Apply the idempotency fix and open a PR.
+                  </div>
+                </div>
+              </div>
+
+              <div class="slack-msg">
+                <img class="slack-avatar sp" src="/sp-logo-trans.png" alt="Softprobe" width="28" height="28" />
+                <div class="slack-content">
+                  <div class="slack-meta">
+                    <span class="slack-name">Softprobe</span>
+                    <span class="slack-badge">APP</span>
+                    <span class="slack-ts">Today 21:16</span>
+                  </div>
+	                  <div class="slack-bubble sp">
+	                    Done — here's the idempotency fix and the PR summary.
+	
+	                    <div class="code gh">
+	                      <div class="code-head">
+	                        <span>payments/charge.ts</span>
+	                        <span>Adds idempotency</span>
+	                      </div>
+	                      <div class="gh-diff" role="table" aria-label="GitHub style diff">
+	                        <div class="gh-row del" role="row">
+	                          <div class="gh-ln" role="cell">42</div>
+	                          <div class="gh-ln" role="cell"></div>
+	                          <div class="gh-code" role="cell"><span class="gh-sign">-</span><span class="tok-kw">const</span> charge = <span class="tok-kw">await</span> stripe.charge(params)</div>
+	                        </div>
+	                        <div class="gh-row del" role="row">
+	                          <div class="gh-ln" role="cell">43</div>
+	                          <div class="gh-ln" role="cell"></div>
+	                          <div class="gh-code" role="cell"><span class="gh-sign">-</span><span class="tok-kw">return</span> charge</div>
+	                        </div>
+	
+	                        <div class="gh-row add" role="row">
+	                          <div class="gh-ln" role="cell"></div>
+	                          <div class="gh-ln" role="cell">42</div>
+	                          <div class="gh-code" role="cell"><span class="gh-sign">+</span><span class="tok-kw">const</span> key = req.headers[<span class="tok-str">"Idempotency-Key"</span>]</div>
+	                        </div>
+	                        <div class="gh-row add" role="row">
+	                          <div class="gh-ln" role="cell"></div>
+	                          <div class="gh-ln" role="cell">43</div>
+	                          <div class="gh-code" role="cell"><span class="gh-sign">+</span><span class="tok-kw">const</span> existing = <span class="tok-kw">await</span> charges.findByKey(key)</div>
+	                        </div>
+	                        <div class="gh-row add" role="row">
+	                          <div class="gh-ln" role="cell"></div>
+	                          <div class="gh-ln" role="cell">44</div>
+	                          <div class="gh-code" role="cell"><span class="gh-sign">+</span><span class="tok-kw">if</span> (existing) <span class="tok-kw">return</span> existing</div>
+	                        </div>
+	                        <div class="gh-row add" role="row">
+	                          <div class="gh-ln" role="cell"></div>
+	                          <div class="gh-ln" role="cell">45</div>
+	                          <div class="gh-code" role="cell"><span class="gh-sign">+</span><span class="tok-kw">const</span> charge = <span class="tok-kw">await</span> stripe.charge(&lbrace; ...params, <span class="tok-prop">idempotencyKey</span>&colon; key &rbrace;)</div>
+	                        </div>
+	                        <div class="gh-row add" role="row">
+	                          <div class="gh-ln" role="cell"></div>
+	                          <div class="gh-ln" role="cell">46</div>
+	                          <div class="gh-code" role="cell"><span class="gh-sign">+</span><span class="tok-kw">await</span> charges.save(&lbrace; key, <span class="tok-prop">chargeId</span>&colon; charge.id &rbrace;)</div>
+	                        </div>
+	                        <div class="gh-row add" role="row">
+	                          <div class="gh-ln" role="cell"></div>
+	                          <div class="gh-ln" role="cell">47</div>
+	                          <div class="gh-code" role="cell"><span class="gh-sign">+</span><span class="tok-kw">return</span> charge</div>
+	                        </div>
+	                      </div>
+	                    </div>
+
+                    <a href="https://github.com/acme/shop/pull/1842" class="pr" target="_blank" rel="noopener noreferrer">
+                      <p class="pr-title">PR: Prevent duplicate charges on retries with idempotency</p>
+                      <div class="pr-meta">
+                        <span>Summary: retries could re-charge when network times out</span>
+                        <span>Metrics: duplicates → 0</span>
+                        <span>Rollback: feature flag off</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-copy">
+      <h3>Fixes it with you (and opens the PR)</h3>
+      <p>Softprobe moves from analysis to action — with explicit confirmation, reviewable changes and a PR.</p>
+    </div>
+  </div>
+
+	</section>
+
+</div>

@@ -1,0 +1,579 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import YamlCodeBlock from '../components/YamlCodeBlock.astro';
+---
+
+<BaseLayout 
+  title="Softprobe Debug"
+  description="Debug prod across your infrastructure and your business logic. The only AI that understands both infrastructure signals and business-level behavior in real runtime context."
+>
+  <main class="debug-page">
+    <section class="debug-hero">
+        <div class="debug-copy">
+            <p class="debug-kicker">Softprobe Debug</p>
+            <h1>Debug across your infrastructure and your business logic.</h1>
+
+            <p>
+                The only AI that understands both infrastructure signals and business-level behavior in real runtime context.
+            </p>
+
+            <div class="debug-hero-actions">
+                <a href="#" class="debug-btn debug-btn-primary">Book a demo</a>
+                <a href="#" class="debug-btn debug-btn-secondary">See architecture</a>
+            </div>
+
+            <p class="debug-supporting">
+                Moves from reacting to alerts to understanding what your software actually did.
+            </p>
+        </div>
+
+        <div class="debug-visual-wrap">
+            <div class="debug-visual">
+                <svg class="debug-flow-lines" aria-hidden="true">
+                    <defs>
+                    </defs>
+                    <path data-path="top"></path>
+                    <path data-path="leftTop"></path>
+                    <path data-path="leftBottom"></path>
+                    <path data-path="rightTop"></path>
+                    <path data-path="rightBottom"></path>
+                    <circle class="debug-flow-particle" r="3.2">
+                        <animateMotion data-motion="top" dur="2.8s" repeatCount="indefinite"></animateMotion>
+                    </circle>
+                    <circle class="debug-flow-particle" r="3.2">
+                        <animateMotion data-motion="leftTop" dur="2.4s" repeatCount="indefinite"></animateMotion>
+                    </circle>
+                    <circle class="debug-flow-particle" r="3.2">
+                        <animateMotion data-motion="leftBottom" dur="2.7s" repeatCount="indefinite"></animateMotion>
+                    </circle>
+                    <circle class="debug-flow-particle" r="3.2">
+                        <animateMotion data-motion="rightTop" dur="2.5s" repeatCount="indefinite"></animateMotion>
+                    </circle>
+                    <circle class="debug-flow-particle" r="3.2">
+                        <animateMotion data-motion="rightBottom" dur="2.9s" repeatCount="indefinite"></animateMotion>
+                    </circle>
+                </svg>
+
+                <div class="debug-node debug-node-bottom" id="debug-node-top">
+                    <svg class="debug-node-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <strong>Infrastructure</strong>
+                </div>
+                <div class="debug-node debug-node-left-top" id="debug-node-left-top">
+                    <svg class="debug-node-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 1v6m0 6v6M23 12h-6m-6 0H1M20.66 3.34l-4.24 4.24m0 4.24l4.24 4.24M3.34 20.66l4.24-4.24m0-4.24L3.34 7.94" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <strong>Session Context Graph</strong>
+                </div>
+                <div class="debug-node debug-node-left-bottom" id="debug-node-left-bottom">
+                    <svg class="debug-node-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <strong>Logs & metrics</strong>
+                </div>
+                <div class="debug-node debug-node-right-top" id="debug-node-right-top">
+                    <svg class="debug-node-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <strong>Code</strong>
+                </div>
+                <div class="debug-node debug-node-right-bottom" id="debug-node-right-bottom">
+                    <svg class="debug-node-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <strong>Knowledge</strong>
+                </div>
+
+                <div class="debug-engine" id="debug-engine">
+                    <strong>Softprobe Context Engine</strong>
+                    <span>Runtime graph context from full message body tracing</span>
+                    <div class="debug-json-stream" aria-label="Runtime message flow with full body context">
+                        <div class="debug-json-rail" aria-hidden="true"></div>
+                        <div class="debug-sequence" aria-label="UML sequence diagram">
+                            <pre class="mermaid debug-mermaid" id="debug-mermaid">{`sequenceDiagram
+    participant Checkout
+    participant Discount
+    participant Tax
+    participant OrderDB
+    participant Response
+    Checkout->>Discount: POST /discounts/apply
+    Discount->>Tax: subtotal + discount
+    Tax->>OrderDB: INSERT order_id=88421
+    OrderDB-->>Response: EUR 118.47`}</pre>
+                        </div>
+                        <article class="debug-json-stage" id="debug-json-stage">
+                            <p class="debug-json-service" id="debug-json-service">checkout.api</p>
+                            <pre id="debug-json-body">{`{
+  "trace_id": "tr_7af21e",
+  "user_id": 118204,
+  "request": {
+    "sku": "SKU-847",
+    "currency": "EUR",
+    "region": "DE"
+  }
+}`}</pre>
+                        </article>
+                        <div class="debug-observability">
+                            <p class="debug-log-line" id="debug-log-line">[INFO] checkout.api accepted request for user 118204</p>
+                            <div class="debug-metric-pills">
+                                <span class="debug-pill">p95 <strong id="debug-metric-p95">62ms</strong></span>
+                                <span class="debug-pill">error <strong id="debug-metric-error">0.03%</strong></span>
+                                <span class="debug-pill">cpu <strong id="debug-metric-cpu">41%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  <header class="section-head">
+    <p class="section-kicker">Softprobe AI</p>
+    <h2 class="section-title">AI for product operations</h2>
+    <p class="section-subtitle">
+      The AI knows your production at runtime, not just code & docs. 
+	    </p>
+	  </header>
+
+
+    <section class="debug-confidence">
+        <div class="debug-confidence-media">
+            <div class="debug-confidence-media-inner">
+                <video
+                    id="debug-confidence-video"
+                    src="/contex-view.mp4"
+                    autoplay
+                    muted
+                    loop
+                    preload="auto"
+                    playsinline
+                    webkit-playsinline="true"
+                    aria-label="Runtime session recording showing system behavior"
+                ></video>
+            </div>
+        </div>
+
+        <div class="debug-confidence-copy debug-description-panel debug-description-panel--right">
+            <p class="debug-panel-kicker">Example is better than precept</p>
+            <h2>AI agent that understands your production context</h2>
+            <p>
+                with both runtime session recordings and static source code.
+            </p>
+        </div>
+    </section>
+
+    <section class="section debug-artifact-section" aria-label="Architecture recommendation artifact">
+        <div class="action-grid debug-artifact-grid">
+            <div class="action-copy debug-artifact-copy-wrap">
+                <div class="debug-artifact-sticky">
+                    <div class="debug-artifact-copy debug-description-panel debug-description-panel--left">
+                        <p class="debug-panel-kicker">Grounded context</p>
+                        <h2>AI agent that operates at full production runtime picture</h2>
+                        <p>making decisions from production behavior, not just static docs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-visual debug-artifact-visual">
+                <div class="action-visual-inner">
+                    <article class="slack-post debug-artifact-card">
+                        <h3>Caching final price is unsafe in production</h3>
+
+                        <p><strong>Problem:</strong> "Add Redis cache to speed up pricing" sounds safe, until you see real request context.</p>
+
+                        <p><strong>Evidence:</strong></p>
+                        <ul>
+                            <li>Same SKU produces different prices across <code>coupon_set</code> / <code>loyalty_tier</code> / <code>region</code></li>
+                            <li>Pricing path branches into tax -> discount -> rounding decisions</li>
+                            <li>2.4% of real checkout traffic would receive an incorrect cached price</li>
+                        </ul>
+
+                        <p><strong>Conclusion:</strong> Cache final price for 5 minutes TTL won't work.</p>
+
+                        <p><strong>Recommendation:</strong> Cache only stable components. Recompute contextual modifiers.</p>
+
+                        <YamlCodeBlock
+                            class="debug-artifact-code"
+                            filename="safe_cache_policy.yaml"
+                            code={`# safe_cache_policy.yaml
+cache_targets:
+  - name: base_sku_price
+    key: "sku:{sku_id}"
+    ttl: 300s
+
+do_not_cache:
+  - final_price  # depends on context
+  - tax_amount   # depends on region + address
+  - discount     # depends on loyalty_tier + coupon_set
+
+required_cache_dimensions:
+  - region
+  - loyalty_tier
+  - coupon_set_hash`}
+                        />
+
+                        <div class="debug-artifact-proof">
+                            <p class="debug-artifact-proof-title">Runtime workflow proof</p>
+                            <p class="debug-artifact-proof-label">Observed runtime paths:</p>
+                            <p class="debug-artifact-proof-path">Checkout -> Pricing -> DiscountEngine -> Tax -> Rounding -> Response</p>
+                            <p class="debug-artifact-proof-label">Branching drivers:</p>
+                            <ul>
+                                <li><code>coupon_set</code> present? (Y/N)</li>
+                                <li><code>loyalty_tier</code> (0/1/2/3)</li>
+                                <li><code>region</code> (US/EU/UK/JP)</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section debug-incident-section" aria-label="Checkout incident artifact">
+        <div class="action-grid">
+            <div class="action-visual debug-incident-visual">
+                <div class="action-visual-inner">
+                    <article class="slack-post debug-incident-card">
+                        <p class="debug-incident-time">2:03 AM — Checkout degradation detected</p>
+
+                        <ul class="debug-incident-metrics">
+                            <li>CPU: 95%</li>
+                            <li>Checkout error rate: ↑ 18%</li>
+                            <li>Payment p95 latency: 3.2s</li>
+                            <li>No new deployment</li>
+                            <li>Traffic normal</li>
+                        </ul>
+
+                        <h3>Root Cause Identified</h3>
+                        <p>Retry amplification triggered by upstream latency spike.</p>
+                        <pre class="debug-incident-path">{`Checkout -> Payment (retry x5)
+         -> Fraud (retry x4)
+              -> Bank API slowdown`}</pre>
+
+                        <p class="debug-incident-highlight">1 request -> 20 downstream calls</p>
+                        <p>CPU saturation in 2 minutes.</p>
+
+                        <h3>Unsafe Configuration</h3>
+                        <ul>
+                            <li>Independent retry policies</li>
+                            <li>No global retry budget</li>
+                            <li>Timeout &lt; upstream p95</li>
+                        </ul>
+
+                        <h3>Patch Generated</h3>
+                        <YamlCodeBlock
+                            class="debug-incident-code"
+                            filename="destination-rule.yaml"
+                            code={`# destination-rule.yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+spec:
+  trafficPolicy:
+    connectionPool:
+      http:
+        maxRetries: 3
+    outlierDetection:
+      consecutive5xxErrors: 5
+      interval: 10s
+      baseEjectionTime: 30s
+`}
+                        />
+
+                        <h3>Safe Validation</h3>
+                        <ul>
+                            <li>Replay last 2 hours traffic</li>
+                            <li>Confirm retry amplification eliminated</li>
+                            <li>Gradual rollout</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+
+            <div class="action-copy debug-incident-copy debug-description-panel debug-description-panel--right">
+                <p class="debug-panel-kicker">Fast remediation</p>
+                <h2>Debug production like an SRE with x-ray vision</h2>
+                <p>From alert to safe resolution, with validation gates before rollout.</p>
+                <ul>
+                    <li>Investigate root cause of prod failures instantly</li>
+                    <li>Generate safe remediation and step by step guide</li>
+                    <li>Validate before full rollout</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    const debugFrames = [
+        {
+            service: "checkout.api",
+            nodes: ["checkout.api"],
+            links: [],
+            log: "[INFO] checkout.api accepted request for user 118204",
+            metrics: { p95: "62ms", error: "0.03%", cpu: "41%" },
+            body: `{
+  "trace_id": "tr_7af21e",
+  "user_id": 118204,
+  "request": {
+    "sku": "SKU-847",
+    "currency": "EUR",
+    "region": "DE"
+  }
+}`
+        },
+        {
+            service: "discount.engine",
+            nodes: ["checkout.api", "discount.engine"],
+            links: ["checkout.api:discount.engine"],
+            log: "[DEBUG] discount.engine applied loyalty_eu_v3 (gold, -12%)",
+            metrics: { p95: "78ms", error: "0.01%", cpu: "56%" },
+            body: `{
+  "trace_id": "tr_7af21e",
+  "rule": "loyalty_eu_v3",
+  "matched_tier": "gold",
+  "discount_pct": 12,
+  "body_hash": "d4f01a6",
+  "expiration": "2026/12/31"
+}`
+        },
+        {
+            service: "tax.calc + order.db",
+            nodes: ["checkout.api", "discount.engine", "tax.calc", "order.db", "response"],
+            links: [
+                "checkout.api:discount.engine",
+                "discount.engine:tax.calc",
+                "tax.calc:order.db",
+                "order.db:response"
+            ],
+            log: "[INFO] order.db committed order_id=88421 and returned EUR 118.47",
+            metrics: { p95: "143ms", error: "0.00%", cpu: "64%" },
+            body: `{
+  "trace_id": "tr_7af21e",
+  "order_id": 88421,
+  "tax": 8.48,
+  "db_write": "ok",
+  "response_total": 118.47,
+  "currency": "EUR"
+}`
+        }
+    ];
+
+    const stage = document.getElementById("debug-json-stage");
+    const service = document.getElementById("debug-json-service");
+    const body = document.getElementById("debug-json-body");
+    const logLine = document.getElementById("debug-log-line");
+    const metricP95 = document.getElementById("debug-metric-p95");
+    const metricError = document.getElementById("debug-metric-error");
+    const metricCpu = document.getElementById("debug-metric-cpu");
+    let frameIndex = 0;
+
+    const mermaidHost = document.getElementById("debug-mermaid");
+    const debugVisual = document.querySelector(".debug-visual");
+    const debugFlowSvg = document.querySelector(".debug-flow-lines");
+    const confidenceVideo = document.getElementById("debug-confidence-video");
+
+    const drawDebugFlowLines = () => {
+        if (!debugVisual || !debugFlowSvg) {
+            return;
+        }
+
+        const nodeTop = document.getElementById("debug-node-top");
+        const nodeLeftTop = document.getElementById("debug-node-left-top");
+        const nodeLeftBottom = document.getElementById("debug-node-left-bottom");
+        const nodeRightTop = document.getElementById("debug-node-right-top");
+        const nodeRightBottom = document.getElementById("debug-node-right-bottom");
+        const engine = document.getElementById("debug-engine");
+
+        if (!nodeTop || !nodeLeftTop || !nodeLeftBottom || !nodeRightTop || !nodeRightBottom || !engine) {
+            return;
+        }
+
+        const paths = {
+            top: debugFlowSvg.querySelector('[data-path="top"]'),
+            leftTop: debugFlowSvg.querySelector('[data-path="leftTop"]'),
+            leftBottom: debugFlowSvg.querySelector('[data-path="leftBottom"]'),
+            rightTop: debugFlowSvg.querySelector('[data-path="rightTop"]'),
+            rightBottom: debugFlowSvg.querySelector('[data-path="rightBottom"]')
+        };
+        const motions = {
+            top: debugFlowSvg.querySelector('[data-motion="top"]'),
+            leftTop: debugFlowSvg.querySelector('[data-motion="leftTop"]'),
+            leftBottom: debugFlowSvg.querySelector('[data-motion="leftBottom"]'),
+            rightTop: debugFlowSvg.querySelector('[data-motion="rightTop"]'),
+            rightBottom: debugFlowSvg.querySelector('[data-motion="rightBottom"]')
+        };
+
+        const containerRect = debugVisual.getBoundingClientRect();
+        const topRect = nodeTop.getBoundingClientRect();
+        const leftTopRect = nodeLeftTop.getBoundingClientRect();
+        const leftBottomRect = nodeLeftBottom.getBoundingClientRect();
+        const rightTopRect = nodeRightTop.getBoundingClientRect();
+        const rightBottomRect = nodeRightBottom.getBoundingClientRect();
+        const engineRect = engine.getBoundingClientRect();
+
+        const toContainerX = (x) => x - containerRect.left;
+        const toContainerY = (y) => y - containerRect.top;
+
+        const topStart = {
+            x: toContainerX(topRect.left + (topRect.width / 2)),
+            y: toContainerY(topRect.top)
+        };
+        const topEnd = {
+            x: toContainerX(engineRect.left + (engineRect.width / 2)),
+            y: toContainerY(engineRect.bottom)
+        };
+
+        const leftTopStart = {
+            x: toContainerX(leftTopRect.right),
+            y: toContainerY(leftTopRect.top + (leftTopRect.height / 2))
+        };
+        const leftTopEnd = {
+            x: toContainerX(engineRect.left + (engineRect.width * 0.24)),
+            y: toContainerY(engineRect.top + (engineRect.height * 0.26))
+        };
+
+        const leftBottomStart = {
+            x: toContainerX(leftBottomRect.right),
+            y: toContainerY(leftBottomRect.top + (leftBottomRect.height / 2))
+        };
+        const leftBottomEnd = {
+            x: toContainerX(engineRect.left + (engineRect.width * 0.24)),
+            y: toContainerY(engineRect.top + (engineRect.height * 0.74))
+        };
+
+        const rightTopStart = {
+            x: toContainerX(rightTopRect.left),
+            y: toContainerY(rightTopRect.top + (rightTopRect.height / 2))
+        };
+        const rightTopEnd = {
+            x: toContainerX(engineRect.right - (engineRect.width * 0.24)),
+            y: toContainerY(engineRect.top + (engineRect.height * 0.26))
+        };
+
+        const rightBottomStart = {
+            x: toContainerX(rightBottomRect.left),
+            y: toContainerY(rightBottomRect.top + (rightBottomRect.height / 2))
+        };
+        const rightBottomEnd = {
+            x: toContainerX(engineRect.right - (engineRect.width * 0.24)),
+            y: toContainerY(engineRect.top + (engineRect.height * 0.74))
+        };
+
+        const setPath = (path, motion, start, end, bendX, bendY) => {
+            if (!path) {
+                return;
+            }
+            const controlX = ((start.x + end.x) / 2) + bendX;
+            const controlY = ((start.y + end.y) / 2) + bendY;
+            const d = `M ${Math.round(start.x)} ${Math.round(start.y)} Q ${Math.round(controlX)} ${Math.round(controlY)} ${Math.round(end.x)} ${Math.round(end.y)}`;
+            path.setAttribute("d", d);
+            if (motion) {
+                motion.setAttribute("path", d);
+            }
+        };
+
+        setPath(paths.top, motions.top, topStart, topEnd, 0, 24);
+        setPath(paths.leftTop, motions.leftTop, leftTopStart, leftTopEnd, 14, -8);
+        setPath(paths.leftBottom, motions.leftBottom, leftBottomStart, leftBottomEnd, 14, 8);
+        setPath(paths.rightTop, motions.rightTop, rightTopStart, rightTopEnd, -14, -8);
+        setPath(paths.rightBottom, motions.rightBottom, rightBottomStart, rightBottomEnd, -14, 8);
+    };
+
+    const renderFrame = (frame) => {
+        service.textContent = frame.service;
+        body.textContent = frame.body;
+        logLine.textContent = frame.log;
+        metricP95.textContent = frame.metrics.p95;
+        metricError.textContent = frame.metrics.error;
+        metricCpu.textContent = frame.metrics.cpu;
+    };
+
+    if (mermaidHost) {
+        import("https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs")
+            .then((module) => {
+                const mermaid = module.default;
+                mermaid.initialize({
+                    startOnLoad: false,
+                    securityLevel: "loose",
+                    theme: "base",
+                    themeVariables: {
+                        background: "#0f172a",
+                        primaryColor: "#082f49",
+                        primaryBorderColor: "#67e8f9",
+                        primaryTextColor: "#e2e8f0",
+                        lineColor: "#67e8f9",
+                        textColor: "#cbd5e1",
+                        actorBkg: "#0f172a",
+                        actorBorder: "#67e8f9",
+                        actorTextColor: "#e2e8f0",
+                        signalColor: "#67e8f9",
+                        signalTextColor: "#e2e8f0",
+                        labelBoxBkgColor: "#082f49",
+                        labelBoxBorderColor: "#67e8f9",
+                        labelTextColor: "#e2e8f0",
+                        noteBkgColor: "#082f49",
+                        noteBorderColor: "#67e8f9",
+                        noteTextColor: "#e2e8f0",
+                        activationBkgColor: "#164e63",
+                        activationBorderColor: "#67e8f9",
+                        sequenceNumberColor: "#0f172a"
+                    }
+                });
+                return mermaid.run({ nodes: [mermaidHost] });
+            })
+            .catch(() => {
+                mermaidHost.classList.add("is-mermaid-fallback");
+            });
+    }
+
+    drawDebugFlowLines();
+    window.addEventListener("resize", drawDebugFlowLines);
+
+    if (confidenceVideo instanceof HTMLVideoElement) {
+        confidenceVideo.muted = true;
+        confidenceVideo.defaultMuted = true;
+        confidenceVideo.loop = true;
+
+        const playConfidenceVideo = () => {
+            confidenceVideo.play().catch(() => {
+                // Retry on next user interaction if autoplay is deferred.
+            });
+        };
+
+        if (confidenceVideo.readyState >= 2) {
+            playConfidenceVideo();
+        } else {
+            confidenceVideo.addEventListener("canplay", playConfidenceVideo, { once: true });
+            confidenceVideo.load();
+        }
+
+        document.addEventListener("visibilitychange", () => {
+            if (!document.hidden) {
+                playConfidenceVideo();
+            }
+        });
+
+        window.addEventListener("pointerdown", playConfidenceVideo, { once: true });
+    }
+
+    if (stage && service && body && logLine && metricP95 && metricError && metricCpu) {
+        renderFrame(debugFrames[0]);
+
+        window.setInterval(() => {
+            frameIndex = (frameIndex + 1) % debugFrames.length;
+            stage.classList.add("is-transitioning");
+
+            window.setTimeout(() => {
+                renderFrame(debugFrames[frameIndex]);
+                stage.classList.remove("is-transitioning");
+            }, 260);
+        }, 2600);
+    }
+</script>
+</BaseLayout>
