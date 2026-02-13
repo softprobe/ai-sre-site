@@ -2802,7 +2802,7 @@ body {
 
 .customer-logos {
     text-align: center;
-    padding: 24px 0 12px;
+    padding: 48px 0 48px;
 }
 
 .customer-logos-heading {
@@ -2811,7 +2811,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #94a3b8;
+    color: #182f50;
 }
 
 .customer-logos-track-wrap {
