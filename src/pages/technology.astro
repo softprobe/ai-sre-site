@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { icons } from '../lib/icons';
+---
+
+<BaseLayout title="Technology - Softprobe">
+    {/* Hero Section */}
+    <section class="bg-gradient-to-b from-emerald-50/40 to-[#F8FAFC] pt-32 pb-16 md:pt-40 md:pb-20 w-full">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight">
+          Move Beyond Text Logs.{" "}
+          <span class="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
+            See the Full Context.
+          </span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-slate-500 leading-relaxed max-w-3xl mx-auto">
+          Traditional logging gives you fragmented text. Softprobe gives you the full story.
+        </p>
+      </div>
+    </section>
+
+    {/* The Problem */}
+    <section id="the-problem" class="py-24 w-full">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
+            <span class="text-xl font-bold text-red-600">1</span>
+          </div>
+          <span class="text-sm font-semibold text-red-600 uppercase tracking-wide">
+            The Problem
+          </span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          Text-Based Logging
+        </h2>
+        <p class="text-lg text-slate-600 mb-8 max-w-3xl">
+          Legacy tools treat your system data as unstructured text. This creates isolated snippets of errors (like Error 500) that take hours to root cause.
+        </p>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-start">
+          <div class="space-y-6">
+            <div class="bg-white border border-red-200 rounded-2xl p-6">
+              <div class="text-red-500 mb-3">
+                <Fragment set:html={icons.AlertCircle} />
+              </div>
+              <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                Fragmented Data
+              </h3>
+              <p class="text-slate-600">
+                Isolated log lines with no connection to the original request or user session.
+              </p>
+            </div>
+
+            <div class="bg-white border border-red-200 rounded-2xl p-6">
+              <div class="text-red-500 mb-3">
+                <Fragment set:html={icons.AlertCircle} />
+              </div>
+              <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                Hours of Investigation
+              </h3>
+              <p class="text-slate-600">
+                Manually correlating errors across services to find root causes.
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-900 p-8">
+            <div class="space-y-2 font-mono text-xs">
+              <div class="text-slate-400">[svc-a] 10:00:01.234 INFO req_id=? user=?</div>
+              <div class="text-slate-400">[svc-b] 10:00:01.456 DEBUG db_query took 234ms</div>
+              <div class="text-yellow-400">[svc-c] 10:00:01.789 WARN connection pool low</div>
+              <div class="text-slate-400">[svc-a] 10:00:02.001 DEBUG processing...</div>
+              <div class="text-red-400">[svc-b] 10:00:02.345 ERROR NullPointerException</div>
+              <div class="text-slate-400">[svc-d] 10:00:02.567 INFO cache miss key=xyz</div>
+              <div class="text-slate-400">[svc-a] 10:00:02.890 DEBUG response sent</div>
+              <div class="text-slate-400">[svc-c] 10:00:03.012 INFO cleanup started</div>
+              <div class="text-center mt-4 text-slate-500 text-2xl">?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* The Solution */}
+    <section class="bg-emerald-50/30 py-24 w-full" id="the-solution">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+            <span class="text-xl font-bold text-emerald-600">2</span>
+          </div>
+          <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wide">
+            The Solution
+          </span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          Context-Based Logging
+        </h2>
+        <p class="text-lg text-slate-600 mb-8 max-w-3xl">
+          Softprobe introduces Context-Based Logging. We capture the entire execution context as an AI-ready structured data object.
+        </p>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-start">
+          <div class="space-y-6">
+            <div class="bg-white border border-emerald-200 rounded-2xl p-6">
+              <div class="text-emerald-500 mb-3">
+                <Fragment set:html={icons.CheckCircle2} />
+              </div>
+              <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                Full Causality
+              </h3>
+              <p class="text-slate-600">
+                We link the Input (Request) directly to the Output (Response) and every database query or API call in between.
+              </p>
+            </div>
+
+            <div class="bg-white border border-emerald-200 rounded-2xl p-6">
+              <div class="text-emerald-500 mb-3">
+                <Fragment set:html={icons.CheckCircle2} />
+              </div>
+              <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                Instant Clarity
+              </h3>
+              <p class="text-slate-600">
+                See exact inputs, database state, and which line broke.
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden border border-emerald-200 shadow-lg">
+            <img
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/696c0cf221c12e687f8d5785/d4de1e598_Screenshot2026-01-17at60355PM.png"
+              alt="Context-Based Logging - Full request/response with causality links"
+              class="w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* The Technology */}
+    <section id="the-technology" class="py-24 w-full">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center">
+            <span class="text-xl font-bold text-cyan-600">3</span>
+          </div>
+          <span class="text-sm font-semibold text-cyan-600 uppercase tracking-wide">
+            The Technology
+          </span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          Powered by the Session Graph
+        </h2>
+        <p class="text-lg text-slate-600 mb-8 max-w-3xl">
+          Visualize context using our proprietary Session Graph technology.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white border border-cyan-200 rounded-2xl p-6">
+            <div class="text-cyan-500 mb-3">
+              <Fragment set:html={icons.Network} />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">
+              Cost-Effective
+            </h3>
+            <p class="text-slate-600">
+              Organize data as graphs instead of indexed text, reducing costs.
+            </p>
+          </div>
+
+          <div class="bg-white border border-cyan-200 rounded-2xl p-6">
+            <div class="text-cyan-500 mb-3">
+              <Fragment set:html={icons.Network} />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">
+              AI-Ready
+            </h3>
+            <p class="text-slate-600">
+              Structured format allows AI Agents to pinpoint root causes automatically.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CTA Section */}
+    <section class="bg-slate-900 py-24 w-full">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Ready to get started?
+        </h2>
+        <p class="text-slate-400 text-lg mb-8">
+          See the technology in action today.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://dashboard.softprobe.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 rounded-full font-semibold hover:bg-slate-100 transition-all"
+          >
+            Get Started
+            <Fragment set:html={icons.ArrowRight} />
+          </a>
+          <a
+            href="mailto:contact@softprobe.ai"
+            class="inline-flex items-center gap-2 px-8 py-4 text-white/80 rounded-full font-medium border border-white/20 hover:bg-white/10 transition-all"
+          >
+            Contact Sales
+          </a>
+        </div>
+      </div>
+    </section>
+</BaseLayout>

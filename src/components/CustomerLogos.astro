@@ -1,0 +1,29 @@
+---
+// Customer logos marquee – infinite horizontal scroll
+const logos = [
+  { src: '/logos/g7.png', alt: 'G7' },
+  { src: '/logos/lexin.png', alt: 'Lexin' },
+  { src: '/logos/linkedcare.png', alt: 'LinkedCare' },
+  { src: '/logos/pingan.png', alt: 'Ping An' },
+  { src: '/logos/trip.png', alt: 'Trip' },
+  { src: '/logos/unitedImaging.png', alt: 'United Imaging' },
+  { src: '/logos/xingyun.png', alt: 'Xingyun' },
+  { src: '/logos/xyd.png', alt: 'XYD' },
+  { src: '/logos/yeahka.png', alt: 'Yeahka' },
+];
+---
+
+<section class="customer-logos" aria-label="Trusted by leading enterprises">
+  <p class="customer-logos-heading">Trusted by leading enterprises</p>
+  <div class="customer-logos-track-wrap">
+    <!-- Two identical tracks for seamless loop -->
+    <div class="customer-logos-track">
+      {logos.map((logo) => (
+        <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+      ))}
+      {logos.map((logo) => (
+        <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" aria-hidden="true" />
+      ))}
+    </div>
+  </div>
+</section>

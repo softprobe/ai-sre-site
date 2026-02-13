@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -9,7 +11,7 @@ interface Props {
 const { 
   title, 
   description = "Softprobe AI SRE Architecture",
-  ogImage = "/sp-logo-trans.png",
+  ogImage = "/logos/4.svg",
   ogType = "website"
 } = Astro.props;
 
@@ -22,7 +24,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/sp-logo-trans.png" />
+    <link rel="icon" type="image/svg+xml" href="/logos/4.svg" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Primary Meta Tags -->
@@ -53,12 +55,18 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
     <header class="site-nav" aria-label="Primary">
       <div class="site-nav-inner">
         <a class="site-nav-logo" href="/" aria-label="Softprobe Home">
-          <img src="/sp-logo-trans.png" alt="Softprobe" width="28" height="28" />
+          <img src="/logos/4.svg" alt="Softprobe" width="28" height="28" />
           <span>Softprobe</span>
         </a>
 
         <nav class="site-nav-menu">
-          <a href="#">Product</a>
+          <div class="site-nav-item site-nav-item-has-menu">
+            <a href="#" aria-haspopup="true">Product</a>
+            <div class="site-submenu" role="menu" aria-label="Product submenu">
+              <a href="/compare" role="menuitem">Compare</a>
+              <a href="/pricing" role="menuitem">Pricing</a>
+            </div>
+          </div>
           <div class="site-nav-item site-nav-item-has-menu">
             <a href="#" aria-haspopup="true">Use cases</a>
             <div class="site-submenu" role="menu" aria-label="Use cases submenu">
@@ -66,12 +74,19 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
             </div>
           </div>
           <a href="#">Customers</a>
-          <a href="#">Resources</a>
-          <a href="#">Blog</a>
+          <div class="site-nav-item site-nav-item-has-menu">
+            <a href="#" aria-haspopup="true">Resources</a>
+            <div class="site-submenu" role="menu" aria-label="Resources submenu">
+              <a href="/integrations" role="menuitem">Integrations</a>
+              <a href="/technology" role="menuitem">Technology</a>
+              <a href="/blog" role="menuitem">Blog</a>
+            </div>
+          </div>
           <a href="#">About</a>
         </nav>
       </div>
     </header>
     <slot />
+    <Footer />
   </body>
 </html>

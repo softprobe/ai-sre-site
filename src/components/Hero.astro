@@ -21,15 +21,67 @@
     </div>
 
     <div class="core-container" id="core-box">
+        <div class="core-chat-history" aria-label="Softprobe incident workflow chat history">
+            <div class="core-trace-header">
+                <span class="core-trace-live-dot" aria-hidden="true"></span>
+                <span>Investigating ...</span>
+            </div>
+            <div class="core-chat-track">
+                <div class="core-trace-item kind-thinking">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Thinking</span>
+                        <span class="core-trace-time">T+04s</span>
+                    </div>
+                    <p>Correlating checkout 5xx spike with deploy <code>checkout-api@2026.02.11.4</code>.</p>
+                    <span class="core-trace-dots" aria-hidden="true"></span>
+                </div>
+                <div class="core-trace-item kind-tool">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Tool Call</span>
+                        <span class="core-trace-time">T+08s</span>
+                    </div>
+                    <p>Fetching evidence from Grafana, Sentry <code>CHK-991</code>, and Argo rollout events.</p>
+                    <pre class="core-trace-command">grafana.query(service="checkout", metric="http_5xx_rate", window="15m")</pre>
+                </div>
+                <div class="core-trace-item kind-observe">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Observation</span>
+                        <span class="core-trace-time">T+13s</span>
+                    </div>
+                    <p>p95 latency jumped <strong>480ms -> 2.1s</strong> only on revision tied to commit <code>a18f2c9</code>.</p>
+                </div>
+                <div class="core-trace-item kind-tool">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Tool Call</span>
+                        <span class="core-trace-time">T+18s</span>
+                    </div>
+                    <pre class="core-trace-command">kubectl logs deploy/checkout-api -n prod --since=15m | rg "timeout|pool exhausted"</pre>
+                </div>
+                <div class="core-trace-item kind-action">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Action</span>
+                        <span class="core-trace-time">T+24s</span>
+                    </div>
+                    <p>Executing rollback to <code>checkout-api@2026.02.11.3</code> and opening <code>INC-214</code>.</p>
+                </div>
+                <div class="core-trace-item kind-verify">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Verify</span>
+                        <span class="core-trace-time">T+31s</span>
+                    </div>
+                    <p>5xx recovered from 8.2% to 0.3%. Posted incident summary to <code>#prod-incidents</code>.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="logo-center">
             <div class="logo-icon">
-                <img class="robot-logo" src="/sp-logo-trans.png" alt="Softprobe" width="72" height="72" decoding="async" />
+                <img class="robot-logo" src="/logos/4.svg" alt="Softprobe" width="72" height="72" decoding="async" />
             </div>
         </div>
 
         <div class="core-modules">
-            <div class="module-box">Planning</div>
-            <div class="module-box">Session Context Graph</div>
+            <div class="module-box">Softprobe Context Engine</div>
         </div>
     </div>
 
@@ -213,10 +265,51 @@
         window.addEventListener('resize', draw);
     }
 
+    function initTraceStepper() {
+        const history = document.querySelector('.core-chat-history');
+        const track = history?.querySelector('.core-chat-track');
+        if (!history || !track) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const items = Array.from(track.querySelectorAll('.core-trace-item'));
+        if (!items.length) return;
+
+        const holdMs = 1500;
+        const loopPauseMs = 1200;
+        let currentIndex = -1;
+
+        items.forEach((item) => item.classList.remove('is-visible'));
+
+        function showNext(delay = holdMs) {
+            window.setTimeout(() => {
+                const isLastStep = currentIndex >= items.length - 1;
+
+                if (isLastStep) {
+                    items.forEach((item) => item.classList.remove('is-visible'));
+                    currentIndex = 0;
+                    items[currentIndex].classList.add('is-visible');
+                    showNext(loopPauseMs);
+                    return;
+                }
+
+                currentIndex += 1;
+                items[currentIndex].classList.add('is-visible');
+                const nextDelay = currentIndex === items.length - 1 ? loopPauseMs : holdMs;
+                showNext(nextDelay);
+            }, delay);
+        }
+
+        showNext(400);
+    }
+
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initHeroDiagram);
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeroDiagram();
+            initTraceStepper();
+        });
     } else {
         initHeroDiagram();
+        initTraceStepper();
     }
 </script>
