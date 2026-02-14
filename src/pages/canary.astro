@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BookDemoButton from '../components/BookDemoButton.astro';
 
 const seo = {
   title: "Safe Canary Test - Deterministic Replay with 0% Customer Risk | Softprobe",
@@ -60,6 +61,9 @@ const jsonld = {
         <p class="debug-kicker">Softprobe Canary</p>
         <h1>Roll out safely with Softprobe Canary, with zero customer impact</h1>
         <p>Catch critical errors safely in an isolated environment that matches production 100%.</p>
+        <div class="debug-hero-actions">
+          <BookDemoButton />
+        </div>  
       </div>
 
       <div class="debug-visual-wrap">

@@ -92,6 +92,10 @@ body {
     color: #0f172a;
 }
 
+.debug-btn-primary:hover {
+    color: #ffffff !important;
+}
+
 .site-submenu {
     position: absolute;
     left: 0;
@@ -1847,9 +1851,10 @@ body {
     transform: translateY(-1px);
 }
 
-.debug-btn-primary {
+.debug-btn-primary,
+.debug-btn-primary:visited {
     background: #0f172a;
-    color: #ffffff;
+    color: #ffffff !important;
     box-shadow: 0 10px 20px rgba(15, 23, 42, 0.18);
 }
 
