@@ -86,7 +86,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <div class="canary-replay-arrow"><span>replay captured traffic</span></div>
+          <div class="canary-replay-flow" aria-label="Production data extraction and sandbox replay">
+            <div class="canary-flow-arrow canary-flow-arrow-prod">
+              <svg viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M390 16H610V104H760L500 186L240 104H390Z"></path>
+              </svg>
+              <span>Extract production data</span>
+            </div>
+            <div class="canary-replay-arrow"><span>Softprobe Canary</span></div>
+            <div class="canary-flow-arrow canary-flow-arrow-sandbox">
+              <svg viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M390 16H610V104H760L500 186L240 104H390Z"></path>
+              </svg>
+              <span>Replay in sandbox</span>
+            </div>
+          </div>
 
           <div class="canary-env canary-env-sandbox">
             <p class="canary-env-title">Sandbox Environment</p>
@@ -374,7 +388,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background: rgba(255, 255, 255, 0.14);
   }
 
-  .canary-replay-arrow { margin-top: 10px; border: 1px solid #bbf7d0; border-radius: 12px; background: #ecfdf5; padding: 8px 10px; text-align: center; color: #166534; font-size: .8rem; font-weight: 800; }
+  .canary-replay-flow { margin-top: 10px; display: grid; gap: 10px; width: 100%; }
+  .canary-flow-arrow {
+    --arrow-fill: #dbeafe;
+    --arrow-border: #93c5fd;
+    --arrow-text: #1e3a8a;
+    position: relative;
+    width: 100%;
+    height: 58px;
+    text-align: center;
+    color: var(--arrow-text);
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    display: grid;
+    place-items: center;
+  }
+  .canary-flow-arrow svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .canary-flow-arrow path {
+    fill: var(--arrow-fill);
+    stroke: var(--arrow-border);
+    stroke-width: 12;
+  }
+  .canary-flow-arrow span {
+    position: relative;
+    z-index: 1;
+    line-height: 1;
+  }
+  .canary-flow-arrow-prod { --arrow-fill: #dbeafe; --arrow-border: #93c5fd; --arrow-text: #1e3a8a; }
+  .canary-flow-arrow-sandbox { --arrow-fill: #dcfce7; --arrow-border: #86efac; --arrow-text: #166534; }
+  .canary-replay-arrow {
+    width: 100%;
+    border: 1px solid #86efac;
+    border-radius: 12px;
+    background: #16a34a;
+    padding: 12px 14px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+  }
   .canary-inject-note { margin: 10px 0 0; color: #3f6212; font-size: .82rem; font-weight: 700; }
 
   .canary-replay-card { padding: 22px; }
