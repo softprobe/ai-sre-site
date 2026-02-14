@@ -846,7 +846,7 @@ body {
 }
 
 /* Helper for FontAwesome-like robot icon */
-.fa-robot {
+.icon-tools {
     width: 30px;
     height: 30px;
     fill: currentColor;
