@@ -4,12 +4,55 @@ import HomeHero from '../components/HomeHero.astro';
 import Hero from '../components/Hero.astro';
 import CaseStudies from '../components/CaseStudies.astro';
 import CustomerLogos from '../components/CustomerLogos.astro';
+
+const seo = {
+  title: "AI SRE Agent for Infra + Business Logic | Preventive, Not Reactive | Softprobe",
+  description:
+    "Softprobe AI SRE agent understands both infrastructure signals and business logic, with a preventive approach that stops customer impact before release instead of only reacting after incidents.",
+  canonical: "https://softprobe.ai/",
+  image: "https://softprobe.ai/logos/4.svg",
+  type: "website"
+};
+
+const jsonld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://softprobe.ai/#webpage",
+      url: "https://softprobe.ai/",
+      name: seo.title,
+      description: seo.description
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://softprobe.ai/#organization",
+      name: "Softprobe",
+      url: "https://softprobe.ai"
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "Softprobe AI SRE",
+      applicationCategory: "DeveloperApplication",
+      description:
+        "AI SRE agent that understands infrastructure and business logic, prevents customer impact with deterministic replay, and responds with runtime-grounded analysis.",
+      url: "https://softprobe.ai",
+      featureList: [
+        "Safe Canary deterministic replay before rollout",
+        "Runtime context graph for full-journey debugging",
+        "Release pause on silent behavior mismatch",
+        "Incident investigation grounded in production evidence"
+      ]
+    }
+  ]
+};
 ---
 
-<BaseLayout 
-  title="Softprobe AI SRE"
-  description="Softprobe AI helps you resolve incidents, optimize costs, and build on existing systems — directly inside your on-call workflow."
->
+<BaseLayout {...seo}>
+  <Fragment slot="jsonld">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)}></script>
+  </Fragment>
+
   <div class="page">
     <HomeHero />
     <CustomerLogos />

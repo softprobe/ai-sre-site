@@ -4,6 +4,30 @@ import { icons } from '../lib/icons';
 
 const features = [
   {
+    feature: "Works with imperfect logging environments",
+    softprobe: true,
+    others: false,
+    highlight: true,
+  },
+  {
+    feature: "Captures end-to-end request/response message bodies",
+    softprobe: true,
+    others: false,
+    highlight: true,
+  },
+  {
+    feature: "Reconstructs session-level runtime traces automatically",
+    softprobe: true,
+    others: false,
+    highlight: true,
+  },
+  {
+    feature: "Applies structured logging best practices by default",
+    softprobe: true,
+    others: "partial",
+    highlight: false,
+  },
+  {
     feature: "Pre-production release testing",
     softprobe: true,
     others: false,
@@ -66,7 +90,10 @@ const features = [
 ];
 ---
 
-<BaseLayout title="Compare - Softprobe">
+<BaseLayout
+  title="Compare AI SRE Platforms - Softprobe"
+  description="Compare AI SRE platforms and see why Softprobe avoids garbage-in, garbage-out by capturing message bodies and reconstructing session traces, while staying preventive instead of reactive."
+>
     <section id="compare" class="py-24 w-full">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-14">
@@ -77,7 +104,7 @@ const features = [
             Softprobe vs. other AI SREs
           </h2>
           <p class="mt-4 text-slate-500 text-lg max-w-xl mx-auto">
-            Most AI SREs only help after something breaks. We prevent breakage — and debug with complete data when issues arise.
+            Most AI SRE tools are garbage in, garbage out because they depend on perfect logs. Softprobe captures message bodies and session traces, then applies preventive validation before rollout.
           </p>
         </div>
 

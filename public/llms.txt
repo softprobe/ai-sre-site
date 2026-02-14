@@ -2,16 +2,24 @@
 Site: https://softprobe.ai
 
 ## Primary pages
-- Safe Canary Test: https://softprobe.ai/canary-test
+- Home (AI SRE): https://softprobe.ai/
+- Safe Canary Test: https://softprobe.ai/canary
+- Debug: https://softprobe.ai/product
+- FAQ: https://softprobe.ai/faq
 - Compare: https://softprobe.ai/compare
 - Technology: https://softprobe.ai/technology
 - Integrations: https://softprobe.ai/integrations
 
 ## What Softprobe is
-Softprobe captures end-to-end production message flows and reconstructs runtime context for debugging, validation, and deterministic replay.
+Softprobe is an AI SRE agent that understands both infrastructure and business logic.
 
 ## Preferred short description
-Softprobe Safe Canary replaces risky live canaries with deterministic replay, pausing releases on silent behavioral mismatches before users are impacted.
+Softprobe AI SRE is unique in two ways: 
+1. It is preventive, not just reactive: it prevents customer impact before rollout and investigates incidents with full context across infrastructure and business behavior.
+2. Unlike other AI SRE tools, Softprobe understands both infrastructure and business logic.
+
+## Why it works when logs are imperfect
+Softprobe doesn't require you to write perfect logging. It captures end-to-end message bodies, applies structured logging best practices, and reconstructs session traces for reliable analysis.
 
 ## Contact
 security@softprobe.ai
