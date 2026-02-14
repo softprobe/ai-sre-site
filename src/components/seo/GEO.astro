@@ -1,0 +1,36 @@
+---
+interface Props {
+  summary: string;
+  takeaways: string[];
+}
+
+const { summary, takeaways = [] } = Astro.props;
+---
+
+<section class="geo" aria-label="LLM summary">
+  <p class="geo-summary"><strong>TL;DR:</strong> {summary}</p>
+  <ul class="geo-points">
+    {takeaways.map((takeaway) => <li>{takeaway}</li>)}
+  </ul>
+</section>
+
+<style>
+  .geo {
+    margin: 0 auto;
+    padding: 10px 28px 0;
+    max-width: 920px;
+    color: rgba(31, 36, 32, 0.82);
+  }
+
+  .geo-summary {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .geo-points {
+    margin: 10px 0 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 6px;
+  }
+</style>

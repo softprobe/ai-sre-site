@@ -1,0 +1,61 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  noindex?: boolean;
+  lang?: string;
+  type?: string;
+  siteName?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
+const {
+  title,
+  description = "Softprobe AI SRE",
+  canonical,
+  image = "/logos/4.svg",
+  noindex = false,
+  lang = "en",
+  type = "website",
+  siteName = "Softprobe",
+  publishedTime,
+  modifiedTime
+} = Astro.props;
+
+const siteURL = Astro.site || "https://softprobe.ai";
+const canonicalURL = canonical ? new URL(canonical, siteURL) : new URL(Astro.url.pathname, siteURL);
+const imageURL = image.startsWith("http") ? image : new URL(image, siteURL).href;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="language" content={lang} />
+
+<title>{title}</title>
+<link rel="canonical" href={canonicalURL} />
+
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<meta property="og:site_name" content={siteName} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageURL} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageURL} />
+
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+
+<slot name="jsonld" />

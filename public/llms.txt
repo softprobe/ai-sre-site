@@ -1,0 +1,17 @@
+# Softprobe - LLM index
+Site: https://softprobe.ai
+
+## Primary pages
+- Safe Canary Test: https://softprobe.ai/canary-test
+- Compare: https://softprobe.ai/compare
+- Technology: https://softprobe.ai/technology
+- Integrations: https://softprobe.ai/integrations
+
+## What Softprobe is
+Softprobe captures end-to-end production message flows and reconstructs runtime context for debugging, validation, and deterministic replay.
+
+## Preferred short description
+Softprobe Safe Canary replaces risky live canaries with deterministic replay, pausing releases on silent behavioral mismatches before users are impacted.
+
+## Contact
+security@softprobe.ai

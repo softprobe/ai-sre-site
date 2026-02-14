@@ -1,11 +1,89 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GEO from '../components/seo/GEO.astro';
+
+const seo = {
+  title: "Safe Canary Test - Deterministic Replay with 0% Customer Risk | Softprobe",
+  description:
+    "Replace risky live canaries with deterministic replay. Softprobe captures real production flows, replays them in an isolated sandbox, validates behavior, and pauses releases on silent mismatches.",
+  canonical: "https://softprobe.ai/canary-test",
+  image: "https://softprobe.ai/logos/4.svg",
+  type: "website"
+};
+
+const jsonld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${seo.canonical}#webpage`,
+      url: seo.canonical,
+      name: seo.title,
+      description: seo.description,
+      isPartOf: { "@id": "https://softprobe.ai/#website" },
+      primaryImageOfPage: { "@id": `${seo.canonical}#primaryimage` }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": `${seo.canonical}#primaryimage`,
+      url: seo.image
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "Softprobe",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Linux, macOS, Windows",
+      description:
+        "Softprobe captures end-to-end production context and enables deterministic replay for safe canary testing, debugging, and validation.",
+      url: "https://softprobe.ai",
+      featureList: [
+        "Capture end-to-end message flows",
+        "Replay production requests in isolated sandbox",
+        "Inject upstream dependencies using captured data",
+        "Validate responses and upstream requests",
+        "Pause release on silent behavior mismatch"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is a Safe Canary Test?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A Safe Canary Test replays real production cases in an isolated sandbox and validates behavior before release. No user traffic is impacted."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "How is this different from a normal canary deployment?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Normal canaries expose real users to the new version. Safe Canary uses deterministic replay to validate behavior with real cases while keeping production traffic untouched."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "What does Softprobe validate during replay?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Softprobe validates user-visible responses and outbound upstream requests against production captures, including business-critical values like price, eligibility, or routing."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout
-  title="Safe Canary Test - Softprobe"
-  description="Catch critical errors safely in an isolated replay environment."
+  {...seo}
 >
+  <Fragment slot="jsonld">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)}></script>
+  </Fragment>
+
   <div class="debug-page canary-page">
     <section class="debug-hero">
       <div class="debug-copy">
@@ -174,6 +252,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
+    <GEO
+      summary="Softprobe Safe Canary pauses a release when replayed production cases behave differently, before customers see it."
+      takeaways={[
+        "Replays real production requests in an isolated sandbox",
+        "Uses captured upstream interactions to keep tests deterministic",
+        "Validates business outcomes, not just infrastructure metrics"
+      ]}
+    />
+
     <header class="section-head">
       <p class="section-kicker">Softprobe AI</p>
       <h2 class="section-title">100% production case coverage<br/>0% customer risk</h2>
@@ -248,6 +335,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h2>No customer impact</h2>
           <p>Traffic stays in production path while replay runs in isolation and unsafe releases remain paused.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="section canary-seo-section" aria-label="Safe Canary details">
+      <div class="canary-seo-content">
+        <h2>What is Safe Canary Test</h2>
+        <p>Safe Canary Test validates a new release by replaying real production cases in an isolated environment, so no customer traffic is exposed.</p>
+
+        <h2>How it works</h2>
+        <ol>
+          <li>Capture production requests and upstream interactions.</li>
+          <li>Replay those exact cases against the new version in sandbox.</li>
+          <li>Inject captured upstream responses to keep replay deterministic.</li>
+          <li>Compare outputs and side effects against production baseline.</li>
+        </ol>
+
+        <h2>What gets validated</h2>
+        <ul>
+          <li>User-visible responses and JSON payloads.</li>
+          <li>Outbound upstream calls and request shape.</li>
+          <li>Business-critical fields like price, eligibility, and routing.</li>
+        </ul>
+
+        <h2>What happens on mismatch</h2>
+        <p>Release paused. Softprobe flags the exact case, highlights the difference, and blocks rollout until the mismatch is resolved.</p>
+
+        <h2>FAQ</h2>
+        <h3>What is a Safe Canary Test?</h3>
+        <p>A Safe Canary Test replays real production cases in an isolated sandbox and validates behavior before release with zero customer exposure.</p>
+        <h3>How is this different from a normal canary deployment?</h3>
+        <p>Normal canaries route real customer traffic to the new version. Safe Canary uses deterministic replay to validate behavior without touching production traffic.</p>
+        <h3>What does Softprobe validate during replay?</h3>
+        <p>Softprobe validates both customer-facing responses and outbound upstream calls against captured production behavior.</p>
       </div>
     </section>
 
@@ -465,6 +585,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .canary-coverage { margin-top: 14px; border: 1px solid #dbe4f0; border-radius: 18px; background: linear-gradient(150deg,#f8fafc 0%,#f0fdf4 100%); padding: 24px; }
   .canary-coverage-line { margin: 0; font-size: clamp(1.24rem,2.6vw,1.9rem); font-weight: 900; color: #0f172a; }
   .canary-coverage ul { margin: 14px 0 0; padding-left: 20px; color: #334155; line-height: 1.7; }
+  .canary-seo-section { padding-top: 10px; }
+  .canary-seo-content { margin: 0 auto; max-width: 920px; padding: 0 28px 20px; color: #1f2937; }
+  .canary-seo-content h2 { margin: 26px 0 10px; font-size: 1.3rem; color: #0f172a; }
+  .canary-seo-content h3 { margin: 16px 0 8px; font-size: 1.02rem; color: #0f172a; }
+  .canary-seo-content p { margin: 0; line-height: 1.72; color: #334155; }
+  .canary-seo-content ul, .canary-seo-content ol { margin: 10px 0 0; padding-left: 20px; color: #334155; line-height: 1.72; }
+  .canary-seo-content li + li { margin-top: 4px; }
 
   @media (max-width: 900px) {
     .canary-env-grid { grid-template-columns: 1fr; }

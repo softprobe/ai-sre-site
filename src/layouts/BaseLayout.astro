@@ -1,54 +1,52 @@
 ---
 import Footer from '../components/Footer.astro';
+import SEO from '../components/seo/SEO.astro';
 
 interface Props {
   title: string;
   description?: string;
-  ogImage?: string;
-  ogType?: string;
+  canonical?: string;
+  image?: string;
+  noindex?: boolean;
+  type?: string;
+  lang?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const { 
   title, 
-  description = "Softprobe AI SRE Architecture",
-  ogImage = "/logos/4.svg",
-  ogType = "website"
+  description = "Softprobe AI SRE",
+  canonical,
+  image = "/logos/4.svg",
+  noindex = false,
+  type = "website",
+  lang = "en",
+  publishedTime,
+  modifiedTime
 } = Astro.props;
-
-const siteURL = Astro.site || 'https://softprobe.ai';
-const canonicalURL = new URL(Astro.url.pathname, siteURL);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/logos/4.svg" />
-    <meta name="generator" content={Astro.generator} />
-    
-    <!-- Primary Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content={ogType} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage} />
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href={canonicalURL} />
-    
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      image={image}
+      noindex={noindex}
+      type={type}
+      lang={lang}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+    >
+      <Fragment slot="jsonld">
+        <slot name="jsonld" />
+      </Fragment>
+    </SEO>
+    <slot name="head" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -71,10 +69,9 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
             <a href="#" aria-haspopup="true">Use cases</a>
             <div class="site-submenu" role="menu" aria-label="Use cases submenu">
               <a href="/debug" role="menuitem">Debug production</a>
-              <a href="/canary-test" role="menuitem">Canary test</a>
+              <a href="/canary-test" role="menuitem">Softprobe Canary</a>
             </div>
           </div>
-          <a href="#">Customers</a>
           <div class="site-nav-item site-nav-item-has-menu">
             <a href="#" aria-haspopup="true">Resources</a>
             <div class="site-submenu" role="menu" aria-label="Resources submenu">
