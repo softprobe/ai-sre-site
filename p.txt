@@ -1,0 +1,573 @@
+/**
+ * PSEUDO-CODE (Astro) — Dedicated “Safe Canary Test” page
+ * Target: recreate the infographic-style layout you shared:
+ *
+ *  - Centered page card on a light beige background
+ *  - Big title + subtitle
+ *  - Main diagram block (Production → Capture → Replay Sandbox) with arrows + icons + badge
+ *  - 3-column “steps” row (2 / 3 / 4) with small icons and short bullets
+ *  - Bottom “coverage bar” + tagline (100% prod case coverage, 0% customer risk)
+ *  - Short bullet list
+ *  - Softprobe logo row + bottom footer bar repeating tagline
+ *
+ * Implementation guidance:
+ *  - Use 1 Astro page + a few components
+ *  - Use inline SVG for diagram (easy to keep crisp, scalable, themeable)
+ *  - No external chart libs needed
+ */
+
+/* =========================================
+   /src/pages/safe-canary.astro
+========================================= */
+---
+import LayoutMinimal from "../layouts/LayoutMinimal.astro";
+import SafeCanaryHero from "../components/safe-canary/SafeCanaryHero.astro";
+import SafeCanaryDiagram from "../components/safe-canary/SafeCanaryDiagram.astro";
+import SafeCanarySteps from "../components/safe-canary/SafeCanarySteps.astro";
+import SafeCanaryCoverageBar from "../components/safe-canary/SafeCanaryCoverageBar.astro";
+import SoftprobeWordmark from "../components/brand/SoftprobeWordmark.astro";
+
+const content = {
+  title: "Safe Canary Test",
+  subtitle: "Catch critical errors safely in an isolated replay environment",
+
+  // Step labels shown on the left: 1,2,3,4
+  step1: { n: 1, label: "Capture real message flows" },
+
+  diagram: {
+    // top labels inside diagram
+    leftTitle: "Production",
+    rightTitle: "Replay Sandbox",
+    // small labels on arrows
+    labels: {
+      incoming: "Incoming Request",
+      upstream: "Upstream",
+      upstreamResp: "Upstream Response",
+      capture: "Capture",
+    },
+    badge: "Release paused on any silent mismatch",
+  },
+
+  stepRow: [
+    {
+      n: 2,
+      title: "Replay with 100% prod data",
+      items: [
+        { icon: "replay", text: "Replay upstream" },
+        { icon: "replay", text: "Replay upstream" }, // (you might change one label later)
+        { icon: "passthrough", text: "Live upstream pass-through" },
+      ],
+    },
+    {
+      n: 3,
+      title: "Validate all responses",
+      items: [
+        { icon: "check", text: "Replay response vs prod response" },
+        { icon: "check", text: "Replay upstream vs prod upstream" },
+        { icon: "check", text: "Key values: price, eligibility, etc." },
+      ],
+    },
+    {
+      n: 4,
+      title: "No customer impact",
+      items: [], // keep empty; this column can be mostly the title + icon
+    },
+  ],
+
+  coverageTagline: "100% production case coverage. 0% customer risk.",
+
+  bullets: [
+    "Captures end-to-end message bodies",
+    "Replays real cases against test sandbox",
+    "Injects captured upstream mocks safely",
+    "Validates production-level accuracy",
+  ],
+};
+---
+
+<LayoutMinimal title={content.title}>
+  <main class="sc-page">
+    <section class="sc-card" aria-label="Safe Canary Test">
+      <SafeCanaryHero title={content.title} subtitle={content.subtitle} />
+
+      <div class="sc-section">
+        <div class="sc-stepTitle">
+          <span class="sc-stepPill">1</span>
+          <h2 class="sc-stepH2">{content.step1.label}</h2>
+        </div>
+
+        <SafeCanaryDiagram diagram={content.diagram} />
+      </div>
+
+      <SafeCanarySteps stepRow={content.stepRow} />
+
+      <SafeCanaryCoverageBar tagline={content.coverageTagline} />
+
+      <ul class="sc-bullets">
+        {content.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+
+      <div class="sc-brand">
+        <SoftprobeWordmark />
+      </div>
+
+      <footer class="sc-footer">
+        <div class="sc-footerText">{content.coverageTagline}</div>
+      </footer>
+    </section>
+  </main>
+</LayoutMinimal>
+
+/* =========================================
+   /src/layouts/LayoutMinimal.astro
+   (minimal shell with background color)
+========================================= */
+// PSEUDO:
+---
+const { title } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="sc-body">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root{
+    --bg: #f3f0ea;        /* warm beige */
+    --card: #ffffff;      /* main card */
+    --muted: #6b6f6a;     /* subtitle text */
+    --ink: #1f2420;       /* primary text */
+    --line: rgba(31,36,32,.10);
+
+    --accent: #7aa78c;    /* soft green */
+    --accent2: #b7d3c2;   /* lighter green */
+    --chip: #24423a;      /* dark green for step pill */
+    --footer: #3f4f49;    /* bottom bar */
+  }
+  .sc-body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    background: var(--bg);
+    color: var(--ink);
+  }
+</style>
+
+/* =========================================
+   /src/components/safe-canary/SafeCanaryHero.astro
+========================================= */
+---
+const { title, subtitle } = Astro.props;
+---
+<header class="sc-hero">
+  <h1 class="sc-h1">{title}</h1>
+  <p class="sc-sub">{subtitle}</p>
+</header>
+
+<style>
+  .sc-hero{
+    text-align:center;
+    padding: 44px 28px 12px;
+  }
+  .sc-h1{
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: 44px;
+    margin: 0;
+  }
+  .sc-sub{
+    margin: 12px auto 0;
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.4;
+  }
+</style>
+
+/* =========================================
+   /src/components/safe-canary/SafeCanaryDiagram.astro
+   Use inline SVG for the entire diagram area.
+========================================= */
+---
+const { diagram } = Astro.props;
+/**
+ * Dev notes:
+ * - Keep everything vector.
+ * - Use rounded rectangles with soft shadows.
+ * - Use labeled arrows for:
+ *   - Incoming Request (to Replay Sandbox)
+ *   - Upstream calls & responses (within Production)
+ * - Add “Capture” oval in Production
+ * - Add badge on right: “Release paused on any silent mismatch”
+ */
+---
+<div class="sc-diagramWrap">
+  <div class="sc-diagramCard">
+    <div class="sc-diagramGrid">
+      <!-- Left: Production -->
+      <div class="sc-diagramPane sc-prod">
+        <div class="sc-paneTitle">{diagram.leftTitle}</div>
+
+        <!-- A single SVG that contains both panes + arrows is easiest for alignment -->
+        <svg class="sc-svg" viewBox="0 0 920 360" role="img" aria-label="Safe Canary diagram">
+          <!-- BACKGROUND PANE SHAPES -->
+          <defs>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="6" stdDeviation="10" flood-opacity="0.10" />
+            </filter>
+          </defs>
+
+          <!-- Production pane -->
+          <rect x="40" y="40" rx="22" ry="22" width="390" height="250"
+                fill="rgba(122,167,140,.12)" stroke="rgba(31,36,32,.08)"/>
+
+          <!-- Replay pane -->
+          <rect x="490" y="70" rx="22" ry="22" width="390" height="220"
+                fill="rgba(183,211,194,.22)" stroke="rgba(31,36,32,.08)"/>
+
+          <!-- Small inner cards -->
+          <rect x="85" y="95" rx="18" ry="18" width="250" height="130" fill="#fff" filter="url(#shadow)"/>
+          <rect x="560" y="135" rx="18" ry="18" width="210" height="110" fill="#fff" filter="url(#shadow)"/>
+
+          <!-- Titles inside panes -->
+          <text x="70" y="78" font-size="20" font-weight="700" fill="#1f2420">Production</text>
+          <text x="520" y="108" font-size="20" font-weight="700" fill="#1f2420">Replay Sandbox</text>
+
+          <!-- Nodes: Your Service + Upstream (production) -->
+          <text x="115" y="135" font-size="16" font-weight="700" fill="#1f2420">Your Service</text>
+          <rect x="115" y="150" rx="12" ry="12" width="120" height="52" fill="rgba(122,167,140,.22)" stroke="rgba(31,36,32,.10)"/>
+          <circle cx="130" cy="168" r="4" fill="rgba(31,36,32,.35)"/>
+          <circle cx="146" cy="168" r="4" fill="rgba(31,36,32,.35)"/>
+
+          <rect x="260" y="160" rx="14" ry="14" width="115" height="42" fill="#fff" stroke="rgba(31,36,32,.10)"/>
+          <text x="287" y="188" font-size="14" font-weight="700" fill="#1f2420">Upstream</text>
+
+          <!-- Capture oval -->
+          <ellipse cx="240" cy="260" rx="85" ry="30" fill="rgba(122,167,140,.12)" stroke="rgba(31,36,32,.10)"/>
+          <text x="210" y="265" font-size="14" font-weight="700" fill="#1f2420">Capture</text>
+
+          <!-- Replay "Your Service" -->
+          <text x="585" y="170" font-size="14" font-weight="700" fill="#1f2420">Your Service</text>
+          <rect x="585" y="182" rx="12" ry="12" width="120" height="50" fill="rgba(122,167,140,.22)" stroke="rgba(31,36,32,.10)"/>
+
+          <!-- Replay storage + validator icon -->
+          <rect x="770" y="148" rx="12" ry="12" width="75" height="58" fill="rgba(31,36,32,.05)" stroke="rgba(31,36,32,.10)"/>
+          <rect x="780" y="158" rx="10" ry="10" width="55" height="18" fill="rgba(122,167,140,.28)"/>
+          <rect x="780" y="182" rx="10" ry="10" width="55" height="16" fill="rgba(122,167,140,.18)"/>
+
+          <circle cx="805" cy="235" r="18" fill="rgba(122,167,140,.25)" stroke="rgba(31,36,32,.10)"/>
+          <path d="M797 235 l6 6 l12 -14" fill="none" stroke="rgba(31,36,32,.55)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- ARROWS + LABELS -->
+          <!-- Incoming request arrow -->
+          <path d="M335 120 C 430 120, 455 120, 520 160" fill="none" stroke="rgba(122,167,140,.75)" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="520,160 505,156 510,172" fill="rgba(122,167,140,.75)"/>
+          <text x="410" y="118" font-size="14" fill="#1f2420">{diagram.labels.incoming}</text>
+
+          <!-- Upstream request/response loop (production) -->
+          <path d="M235 178 C 245 178, 250 178, 260 178" fill="none" stroke="rgba(122,167,140,.75)" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="260,178 246,172 246,184" fill="rgba(122,167,140,.75)"/>
+
+          <path d="M318 206 C 305 220, 285 236, 250 248" fill="none" stroke="rgba(122,167,140,.55)" stroke-width="4" stroke-linecap="round"/>
+          <text x="210" y="214" font-size="13" fill="#1f2420">{diagram.labels.upstreamResp}</text>
+
+          <!-- Capture to replay arrow -->
+          <path d="M310 260 C 420 280, 470 280, 575 240" fill="none" stroke="rgba(122,167,140,.45)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 10"/>
+          <polygon points="575,240 560,236 565,252" fill="rgba(122,167,140,.45)"/>
+
+          <!-- Badge “Release paused…” -->
+          <g>
+            <rect x="640" y="280" rx="14" ry="14" width="260" height="46" fill="#fff" stroke="rgba(31,36,32,.10)" filter="url(#shadow)"/>
+            <rect x="654" y="294" rx="10" ry="10" width="26" height="26" fill="rgba(183,211,194,.35)" stroke="rgba(31,36,32,.10)"/>
+            <path d="M663 308 h8" stroke="rgba(31,36,32,.55)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M665 304 c0-6 10-6 10 0 v4" stroke="rgba(31,36,32,.55)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <text x="690" y="312" font-size="14" font-weight="700" fill="#1f2420">{diagram.badge}</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sc-diagramWrap{ padding: 10px 28px 0; }
+  .sc-diagramCard{
+    background: transparent;
+    border-radius: 22px;
+    padding: 8px 0 0;
+  }
+  .sc-diagramGrid{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .sc-svg{
+    width: 100%;
+    height: auto;
+    display:block;
+  }
+</style>
+
+/* =========================================
+   /src/components/safe-canary/SafeCanarySteps.astro
+   Row with 3 columns: Step 2, Step 3, Step 4
+========================================= */
+---
+const { stepRow } = Astro.props;
+---
+<section class="sc-steps">
+  <div class="sc-stepsGrid">
+    {stepRow.map((col) => (
+      <div class="sc-stepCol">
+        <div class="sc-stepHeader">
+          <span class="sc-stepDot">{col.n}</span>
+          <h3 class="sc-stepH3">{col.title}</h3>
+        </div>
+
+        {col.items?.length ? (
+          <ul class="sc-stepList">
+            {col.items.map((it) => (
+              <li class="sc-stepItem">
+                <span class={`sc-ico sc-ico--${it.icon}`} aria-hidden="true"></span>
+                <span>{it.text}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="sc-stepEmpty" aria-hidden="true">
+            {/* keep whitespace similar to infographic */}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .sc-steps{ padding: 18px 28px 0; }
+  .sc-stepsGrid{
+    display:grid;
+    grid-template-columns: 1.1fr 1.1fr .8fr;
+    gap: 18px;
+    align-items:start;
+  }
+  .sc-stepHeader{ display:flex; gap:10px; align-items:center; margin-bottom:10px; }
+  .sc-stepDot{
+    width: 28px; height: 28px; border-radius: 999px;
+    display:grid; place-items:center;
+    background: rgba(122,167,140,.22);
+    border: 1px solid rgba(31,36,32,.10);
+    font-weight: 800;
+  }
+  .sc-stepH3{
+    margin:0;
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .sc-stepList{ list-style:none; padding:0; margin:0; display:grid; gap:8px; color: var(--ink); }
+  .sc-stepItem{ display:flex; gap:10px; align-items:center; font-size: 14.5px; color: rgba(31,36,32,.82); }
+
+  /* Tiny icon pills (simple CSS shapes; can be swapped to SVG later) */
+  .sc-ico{
+    width: 26px; height: 18px; border-radius: 8px;
+    border: 1px solid rgba(31,36,32,.10);
+    background: rgba(183,211,194,.25);
+    position: relative;
+    flex: 0 0 auto;
+  }
+  .sc-ico--check::after{
+    content:"";
+    position:absolute; left:8px; top:3px;
+    width:8px; height:6px;
+    border-left: 2px solid rgba(31,36,32,.55);
+    border-bottom: 2px solid rgba(31,36,32,.55);
+    transform: rotate(-45deg);
+  }
+  .sc-ico--replay::after{
+    content:"";
+    position:absolute; left:8px; top:4px;
+    width:10px; height:10px; border:2px solid rgba(31,36,32,.45);
+    border-right-color: transparent;
+    border-radius: 999px;
+  }
+  .sc-ico--passthrough::after{
+    content:"";
+    position:absolute; left:7px; top:6px;
+    width:12px; height:6px; border-radius: 999px;
+    background: rgba(31,36,32,.18);
+  }
+  .sc-stepEmpty{ height: 48px; }
+</style>
+
+/* =========================================
+   /src/components/safe-canary/SafeCanaryCoverageBar.astro
+   Thin bar + lock + shield icons + tagline text
+========================================= */
+---
+const { tagline } = Astro.props;
+---
+<section class="sc-cover">
+  <div class="sc-coverRow">
+    <span class="sc-lock" aria-hidden="true"></span>
+    <div class="sc-coverLine" aria-hidden="true">
+      <span class="sc-coverFill"></span>
+    </div>
+    <span class="sc-shield" aria-hidden="true"></span>
+  </div>
+  <div class="sc-coverText">{tagline}</div>
+</section>
+
+<style>
+  .sc-cover{ padding: 16px 28px 10px; }
+  .sc-coverRow{ display:flex; align-items:center; gap:12px; }
+  .sc-coverLine{
+    position:relative;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(31,36,32,.10);
+    flex: 1;
+    overflow:hidden;
+  }
+  .sc-coverFill{
+    position:absolute; left:0; top:0; bottom:0;
+    width: 70%;
+    background: rgba(122,167,140,.55);
+    border-radius: 999px;
+  }
+  .sc-lock, .sc-shield{
+    width: 28px; height: 28px; border-radius: 10px;
+    background: rgba(183,211,194,.25);
+    border: 1px solid rgba(31,36,32,.10);
+    position:relative;
+  }
+  .sc-lock::after{
+    content:"";
+    position:absolute; left:9px; top:12px;
+    width:10px; height:8px; border-radius: 2px;
+    background: rgba(31,36,32,.25);
+  }
+  .sc-shield::after{
+    content:"";
+    position:absolute; left:9px; top:7px;
+    width:10px; height:14px;
+    border-radius: 0 0 6px 6px;
+    background: rgba(31,36,32,.22);
+  }
+  .sc-coverText{
+    margin-top: 10px;
+    font-weight: 800;
+    color: rgba(31,36,32,.80);
+  }
+</style>
+
+/* =========================================
+   /src/components/brand/SoftprobeWordmark.astro
+========================================= */
+// PSEUDO:
+// - either inline SVG wordmark
+// - or <img src="/brand/softprobe-wordmark.svg" ...>
+// For now:
+<div class="sp-wordmark" aria-label="softprobe">
+  <span class="sp-mark" aria-hidden="true"></span>
+  <span class="sp-text">softprobe</span>
+</div>
+
+<style>
+  .sp-wordmark{ display:flex; align-items:center; justify-content:center; gap:10px; padding: 12px 0 18px; }
+  .sp-mark{
+    width: 26px; height: 26px; border-radius: 999px;
+    border: 2px solid rgba(122,167,140,.75);
+    position: relative;
+  }
+  .sp-mark::after{
+    content:"";
+    position:absolute; inset:7px;
+    border-radius: 6px;
+    background: rgba(122,167,140,.35);
+  }
+  .sp-text{
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    font-size: 20px;
+  }
+</style>
+
+/* =========================================
+   GLOBAL PAGE STYLES used by /safe-canary.astro
+========================================= */
+<style is:global>
+  .sc-page{
+    min-height: 100vh;
+    display:grid;
+    place-items:center;
+    padding: 40px 16px 60px;
+  }
+
+  .sc-card{
+    width: min(920px, 100%);
+    background: rgba(255,255,255,.70);
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    overflow:hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,.06);
+    backdrop-filter: blur(6px);
+  }
+
+  .sc-section{ padding: 8px 0 0; }
+
+  .sc-stepTitle{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    padding: 8px 28px 0;
+  }
+  .sc-stepPill{
+    width: 28px; height: 28px;
+    border-radius: 999px;
+    background: var(--chip);
+    color: #fff;
+    display:grid;
+    place-items:center;
+    font-weight: 900;
+    font-size: 14px;
+  }
+  .sc-stepH2{
+    margin:0;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+  }
+
+  .sc-bullets{
+    margin: 0;
+    padding: 6px 54px 8px;
+    color: rgba(31,36,32,.70);
+    display:grid;
+    gap: 10px;
+  }
+  .sc-bullets li{ line-height: 1.35; }
+
+  .sc-brand{ padding: 4px 0 0; }
+
+  .sc-footer{
+    background: var(--footer);
+    padding: 18px 20px;
+    text-align:center;
+  }
+  .sc-footerText{
+    color: rgba(255,255,255,.92);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    font-size: 18px;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 760px){
+    .sc-stepsGrid{ grid-template-columns: 1fr; }
+    .sc-h1{ font-size: 36px; }
+  }
+</style>
