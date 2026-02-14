@@ -10,8 +10,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="debug-hero">
       <div class="debug-copy">
         <p class="debug-kicker">Softprobe Canary</p>
-        <h1>Safe Canary Test</h1>
-        <p>Catch critical errors safely in an isolated replay environment.</p>
+        <h1>Roll out safely with Softprobe Canary, with zero customer impact</h1>
+        <p>Catch critical errors safely in an isolated environment that matches production 100%.</p>
       </div>
 
       <div class="debug-visual-wrap">
@@ -21,7 +21,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="canary-env-grid">
               <div class="canary-traffic-source" aria-label="Incoming traffic">⇢</div>
 
-              <div class="canary-node canary-node-booking">
+              <div class="canary-node canary-node-order">
                 <span class="canary-node-icon">running</span>
                 <div class="canary-node-head canary-node-head-primary">
                   <span class="canary-glyph canary-glyph-lg" aria-hidden="true">
@@ -33,7 +33,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     </svg>
                   </span>
                 </div>
-                <p class="canary-node-label">Booking Service</p>
+                <p class="canary-node-label">Order</p>
               </div>
 
               <div class="canary-stack">
@@ -58,8 +58,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </svg>
 
               <div class="canary-flow-labels" aria-hidden="true">
-                <div class="canary-flow-chip canary-flow-chip-booking-req">card=4238... order_id=88421</div>
-                <div class="canary-flow-chip canary-flow-chip-booking-res">paid=$120</div>
+                <div class="canary-flow-chip canary-flow-chip-order-req canary-flow-chip-doc">
+                  <span class="canary-flow-doc-head">
+                    <span class="canary-flow-doc-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7 3h7l5 5v13H7z" />
+                        <path d="M14 3v5h5" />
+                      </svg>
+                    </span>
+                    <span class="canary-flow-doc-title">Input</span>
+                  </span>
+                  <span class="canary-flow-doc-body">card=4238... order_id=88421</span>
+                </div>
+                <div class="canary-flow-chip canary-flow-chip-order-res canary-flow-chip-doc">
+                  <span class="canary-flow-doc-head">
+                    <span class="canary-flow-doc-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7 3h7l5 5v13H7z" />
+                        <path d="M14 3v5h5" />
+                      </svg>
+                    </span>
+                    <span class="canary-flow-doc-title">Output</span>
+                  </span>
+                  <span class="canary-flow-doc-body">paid=$132</span>
+                </div>
               </div>
             </div>
           </div>
@@ -69,7 +91,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="canary-env canary-env-sandbox">
             <p class="canary-env-title">Sandbox Environment</p>
             <div class="canary-env-grid canary-env-grid-sandbox">
-              <div class="canary-node canary-node-booking canary-node-booking-new">
+              <div class="canary-node canary-node-order canary-node-order-new">
                 <span class="canary-node-icon canary-node-icon-blue">vNext</span>
                 <div class="canary-node-head canary-node-head-primary">
                   <span class="canary-glyph canary-glyph-lg" aria-hidden="true">
@@ -81,7 +103,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     </svg>
                   </span>
                 </div>
-                <p class="canary-node-label">Booking Service (new)</p>
+                <p class="canary-node-label">Order</p>
               </div>
 
               <div class="canary-stack canary-injected">
@@ -106,8 +128,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </svg>
 
               <div class="canary-flow-labels" aria-hidden="true">
-                <div class="canary-flow-chip canary-flow-chip-booking-req">card=4238... order_id=88421</div>
-                <div class="canary-flow-chip canary-flow-chip-booking-res" style="color: red;">paid=$150</div>
+                <div class="canary-flow-chip canary-flow-chip-order-req canary-flow-chip-doc">
+                  <span class="canary-flow-doc-head">
+                    <span class="canary-flow-doc-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7 3h7l5 5v13H7z" />
+                        <path d="M14 3v5h5" />
+                      </svg>
+                    </span>
+                    <span class="canary-flow-doc-title">Input</span>
+                  </span>
+                  <span class="canary-flow-doc-body">card=4238... order_id=88421</span>
+                </div>
+                <div class="canary-flow-chip canary-flow-chip-order-res canary-flow-chip-doc canary-flow-chip-mismatch">
+                  <span class="canary-flow-doc-head">
+                    <span class="canary-flow-doc-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7 3h7l5 5v13H7z" />
+                        <path d="M14 3v5h5" />
+                      </svg>
+                    </span>
+                    <span class="canary-flow-doc-title">Output</span>
+                  </span>
+                  <span class="canary-flow-doc-body">paid=$140.8</span>
+                </div>
               </div>
             </div>
             <p class="canary-inject-note">Dependencies are injected from captured traffic. No real upstream calls.</p>
@@ -160,8 +204,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <p>response.diff</p>
                 <pre class="canary-json-diff"><code><span class="diff-line diff-line-ctx">&#123;</span>
 <span class="diff-line diff-line-ctx">  "subtotal": 120.00,</span>
-<span class="diff-line diff-line-del">- "tax": 10.80,</span>
-<span class="diff-line diff-line-del">- "total": 130.80,</span>
+<span class="diff-line diff-line-del">- "tax": 20.80,</span>
+<span class="diff-line diff-line-del">- "total": 140.80,</span>
 <span class="diff-line diff-line-add">+ "tax": 12.00,</span>
 <span class="diff-line diff-line-add">+ "total": 132.00,</span>
 <span class="diff-line diff-line-ctx">  "currency": "USD"</span>
@@ -217,7 +261,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .canary-traffic-source { position: absolute; left: 8px; top: 62px; width: 36px; height: 36px; border: 1px solid #bfdbfe; border-radius: 999px; background: #eff6ff; display: flex; align-items: center; justify-content: center; color: #1d4ed8; font-weight: 900; }
   .canary-stack { display: grid; gap: 10px; align-content: start; }
   .canary-node { position: relative; border: 1px solid #cfdae7; border-radius: 12px; padding: 10px; background: #fff; display: grid; justify-items: center; align-content: center; gap: 7px; text-align: center; }
-  .canary-node-booking { min-height: 126px; }
+  .canary-node-order { min-height: 126px; }
   .canary-node-label { margin: 0; font-size: .74rem; color: #1e293b; font-weight: 800; }
 
   .canary-node-head-primary { width: 74px; height: 74px; border-radius: 999px; border: 1px solid #c8d6ea; background: #fff; box-shadow: 0 8px 20px rgba(15,23,42,.08); display: flex; align-items: center; justify-content: center; }
@@ -236,6 +280,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .canary-node-payment { border-color: #c7d2fe; background: linear-gradient(145deg,#f5f3ff 0%,#eef2ff 100%); }
   .canary-node-db { border-color: #bfdbfe; background: linear-gradient(145deg,#eff6ff 0%,#f0f9ff 100%); }
   .canary-node-captured { border-style: dashed; border-color: #c4d7c6; background: #fbfff7; }
+  .canary-env-sandbox .canary-node-captured {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+  }
+  .canary-env-sandbox .canary-node-captured p {
+    color: #475569;
+  }
+  .canary-env-sandbox .canary-node-captured .canary-node-head-primary {
+    border-color: #d1d5db;
+    background: #f3f4f6;
+    box-shadow: none;
+  }
+  .canary-env-sandbox .canary-node-captured .canary-brand-img {
+    filter: grayscale(1) saturate(0) brightness(0.78);
+    opacity: 0.95;
+  }
 
   .canary-arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
   .canary-arrows path { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.8; }
@@ -243,15 +303,85 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .canary-arrows-sandbox path { stroke: #16a34a; stroke-dasharray: 6 6; }
 
   .canary-flow-labels { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
-  .canary-flow-chip { position: absolute; border: 1px solid; border-radius: 6px; width: 108px; padding: 3px 7px; font-size: .64rem; line-height: 1.2; box-shadow: 0 8px 18px rgba(15,23,42,.12); }
-  .canary-flow-chip-booking-req { left: 1%; top: 31%; background: #eef2ff; border-color: #c7d2fe; color: #312e81; }
-  .canary-flow-chip-booking-res { left: 4%; top: 52%; background: #eef2ff; border-color: #c7d2fe; color: #312e81; }
+  .canary-flow-chip { position: absolute; border: 10px solid; border-radius: 6px; padding: 3px 7px; font-size: .64rem; line-height: 1.2; box-shadow: 0 8px 18px rgba(15,23,42,.12); }
+  .canary-flow-chip-order-req { left: 1%; top: 21%; background: #eef2ff; border-color: #c7d2fe; color: #312e81; }
+  .canary-flow-chip-order-res { left: 4%; top: 52%; background: #eef2ff; border-color: #c7d2fe; color: #312e81; }
   .canary-flow-chip-payment-req { left: 44%; top: 20%; background: #eef2ff; border-color: #c7d2fe; color: #312e81; }
   .canary-flow-chip-payment-res { left: 66%; top: 17%; background: #eef2ff; border-color: #c7d2fe; color: #312e81; }
   .canary-flow-chip-sql-req { left: 44%; top: 60%; background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a; }
   .canary-flow-chip-sql-res { left: 6%; top: 74%; background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a; }
   .canary-flow-chip-warn { background: #ef4444; border-color: #dc2626; color: #ffffff; }
   .canary-flow-chip-attn { background: #f59e0b; border-color: #d97706; color: #ffffff; }
+
+  .canary-flow-chip-doc {
+    width: 100px;
+    min-height: 46px;
+    padding: 7px 9px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.12);
+    display: grid;
+    align-content: start;
+    gap: 4px;
+  }
+
+  .canary-flow-doc-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .canary-flow-doc-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background: #f8fafc;
+  }
+
+  .canary-flow-doc-icon svg {
+    width: 11px;
+    height: 11px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .canary-flow-doc-title {
+    display: inline-flex;
+    font-size: 0.58rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 900;
+    opacity: 0.95;
+  }
+
+  .canary-flow-doc-body {
+    display: block;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  .canary-flow-chip-doc.canary-flow-chip-mismatch {
+    background: rgba(239, 68, 68, 0.8);
+    border-color: #dc2626;
+    color: #ffffff;
+  }
+
+  .canary-flow-chip-doc.canary-flow-chip-mismatch .canary-flow-doc-icon {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.48);
+    background: rgba(255, 255, 255, 0.14);
+  }
 
   .canary-replay-arrow { margin-top: 10px; border: 1px solid #bbf7d0; border-radius: 12px; background: #ecfdf5; padding: 8px 10px; text-align: center; color: #166534; font-size: .8rem; font-weight: 800; }
   .canary-inject-note { margin: 10px 0 0; color: #3f6212; font-size: .82rem; font-weight: 700; }
@@ -288,6 +418,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 900px) {
     .canary-env-grid { grid-template-columns: 1fr; }
-    .canary-flow-chip { width: 92px; font-size: .58rem; }
+    .canary-flow-chip { width: 106px; font-size: .58rem; }
+    .canary-flow-chip-doc { width: 124px; }
   }
 </style>
