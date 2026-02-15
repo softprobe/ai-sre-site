@@ -202,14 +202,14 @@ const jsonld = {
 
   .canary-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-    border-color: #0ea5e950;
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
+    border-color: #8b5cf650;
   }
 
   .canary-card-header {
     font-size: 1.25rem;
     font-weight: 800;
-    color: #0F766E;
+    color: var(--primary-color);
     line-height: 1.2;
   }
 
@@ -224,7 +224,7 @@ const jsonld = {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0ea5e9;
+    color: var(--accent-color);
     width: 32px;
     flex-shrink: 0;
   }
@@ -255,7 +255,7 @@ const jsonld = {
   .canary-replay-card { padding: 22px; }
   .canary-replay-icon-item { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
   .canary-replay-icon-item:first-child { margin-top: 0; }
-  .canary-icon-tile { width: 34px; height: 34px; border: 1px solid #dbe4f0; border-radius: 8px; background: #fff; display: inline-flex; align-items: center; justify-content: center; color: #2563eb; font-size: .72rem; font-weight: 900; }
+  .canary-icon-tile { width: 34px; height: 34px; border: 1px solid #ede9fe; border-radius: 8px; background: #fff; display: inline-flex; align-items: center; justify-content: center; color: var(--primary-color); font-size: .72rem; font-weight: 900; }
   .canary-replay-icon-item p { margin: 0; font-weight: 900; color: #0f172a; }
 
   .canary-json-title { margin: 0; font-size: .92rem; color: #0f172a; font-weight: 900; }
@@ -273,8 +273,8 @@ const jsonld = {
   .canary-lane span { font-size: .72rem; font-weight: 900; border-radius: 999px; padding: 5px 10px; }
   .canary-lane-prod { background: #f0fdf4; border-color: #bbf7d0; }
   .canary-lane-prod span { background: #dcfce7; color: #166534; }
-  .canary-lane-replay { background: #eff6ff; border-color: #bfdbfe; }
-  .canary-lane-replay span { background: #dbeafe; color: #1e3a8a; }
+  .canary-lane-replay { background: #f5f3ff; border-color: #ddd6fe; }
+  .canary-lane-replay span { background: #ede9fe; color: var(--primary-color); }
   .canary-lane-gate { background: #fef2f2; border-color: #fecaca; }
   .canary-lane-gate span { background: #fee2e2; color: #991b1b; }
 

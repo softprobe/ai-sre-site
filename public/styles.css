@@ -2,11 +2,11 @@
 
 :root {
     --primary-bg: #F8FAFC;
-    --box-bg: #f3f5ff;
-    --box-border: #dbeafe;
-    --primary-color: #4f46e5;
-    --text-color: #4f46e5;
-    --accent-color: #8b5cf6;
+    --box-bg: #f5f3ff;
+    --box-border: #ede9fe;
+    --primary-color: #8b5cf6;
+    --text-color: #0f172a;
+    --accent-color: #22c55e;
     --line-color: #cbd5e1;
     --anim-speed: 2s;
     --site-page-max-width: 1380px;
@@ -144,7 +144,8 @@ body {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.36fr);
     gap: clamp(8px, 1.5vw, 20px);
     align-items: center;
-    margin: 80px 0 0; /* Removed bottom margin */
+    margin: 80px 0 0;
+    /* Removed bottom margin */
 }
 
 .home-hero-copy h1 {
@@ -304,7 +305,7 @@ body {
     font-size: 3.5rem;
     margin-bottom: 10px;
     display: inline-block;
-    background: -webkit-linear-gradient(45deg, #8b5cf6, #3b82f6);
+    background: -webkit-linear-gradient(45deg, var(--primary-color), #a855f7);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -320,7 +321,7 @@ body {
     transform: translate(-50%, -50%);
     width: 90px;
     height: 90px;
-    border: 3px solid #8b5cf6;
+    border: 3px solid var(--primary-color);
     border-radius: 50%;
     animation: circle-flash 2s ease-in-out infinite;
     pointer-events: none;
@@ -350,8 +351,8 @@ body {
 
     50% {
         opacity: 1;
-        border-color: #3b82f6;
-        box-shadow: 0 0 25px rgba(59, 130, 246, 0.8);
+        border-color: var(--accent-color);
+        box-shadow: 0 0 25px rgba(34, 197, 94, 0.8);
         transform: translate(-50%, -50%) scale(1.05);
     }
 }
@@ -390,7 +391,7 @@ body {
 .logo-text {
     font-size: 2rem;
     font-weight: 800;
-    background: -webkit-linear-gradient(45deg, #8b5cf6, #3b82f6);
+    background: -webkit-linear-gradient(45deg, var(--primary-color), #a855f7);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -705,8 +706,8 @@ body {
     justify-content: center;
     font-size: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 2px solid #bfdbfe;
-    color: #3b82f6;
+    border: 2px solid var(--box-border);
+    color: var(--primary-color);
     position: relative;
     transition: transform 0.3s ease;
 }
@@ -763,8 +764,8 @@ body {
 }
 
 .group-devops {
-    background-color: #eff6ff;
-    border-color: #93c5fd;
+    background-color: #fdfcff;
+    border-color: var(--box-border);
 }
 
 .group-title {
@@ -811,7 +812,7 @@ body {
 }
 
 .flow-particle {
-    fill: #3b82f6;
+    fill: var(--accent-color);
     animation: flowAnimation 2s linear infinite;
     opacity: 0;
 }
@@ -2816,9 +2817,12 @@ body {
 
 .customer-logos {
     text-align: center;
-    padding: 0; /* Removed large paddings */
-    margin-top: -20px; /* Pull closer to hero */
-    margin-bottom: -40px; /* Pull next section closer */
+    padding: 0;
+    /* Removed large paddings */
+    margin-top: -20px;
+    /* Pull closer to hero */
+    margin-bottom: -40px;
+    /* Pull next section closer */
 }
 
 .customer-logos-heading {
