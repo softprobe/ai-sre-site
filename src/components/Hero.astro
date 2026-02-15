@@ -8,44 +8,22 @@
     </header>
 
     <div class="outcomes-grid">
-        <article id="outcome-1" class="step-card">
-            <div class="card-top">
-                <div class="step-num">PROD QUALITY</div>
-                <div class="metric-visual">
-                    <div class="metric-bar" style="--percent: 75%;"></div>
-                    <span class="metric-value">75%</span>
-                </div>
-            </div>
-            <h3 class="step-label">Less bugs leaking to production</h3>
-            <p class="step-reason">Because we canary test before deploy.</p>
+        <article class="outcome-card">
+            <div class="outcome-value">80%</div>
+            <p class="outcome-label">Fewer bugs leaking to production</p>
         </article>
 
-        <article id="outcome-2" class="step-card">
-            <div class="card-top">
-                <div class="step-num">INVESTIGATION</div>
-                <div class="metric-visual">
-                    <div class="metric-bar" style="--percent: 90%;"></div>
-                    <span class="metric-value">90%</span>
-                </div>
-            </div>
-            <h3 class="step-label">Faster investigation</h3>
-            <p class="step-reason">Because AI SRE agents investigate automatically.</p>
+        <article class="outcome-card">
+            <div class="outcome-value">90%</div>
+            <p class="outcome-label">Faster debugging via AI SRE agent</p>
         </article>
 
-        <article id="outcome-3" class="step-card">
-            <div class="card-top">
-                <div class="step-num">SUPPORT</div>
-                <div class="metric-visual">
-                    <div class="metric-bar" style="--percent: 67%;"></div>
-                    <span class="metric-value">67%</span>
-                </div>
-            </div>
-            <h3 class="step-label">Less support escalations</h3>
-            <p class="step-reason">Because CS teams use AI agents to resolve issues themselves.</p>
+        <article class="outcome-card">
+            <div class="outcome-value">60%</div>
+            <p class="outcome-label">Fewer support escalations</p>
         </article>
     </div>
 </section>
-
 
 
 <style>
@@ -55,7 +33,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 48px;
+        gap: 64px;
     }
 
     .section-head {
@@ -66,117 +44,76 @@
 
     .section-title {
         margin: 0;
-        font-size: clamp(1.9rem, 4.2vw, 3.2rem);
-        line-height: 1.05;
+        font-size: clamp(2rem, 4.5vw, 3.5rem);
+        line-height: 1.1;
         font-weight: 900;
         color: #111827;
+        letter-spacing: -0.02em;
     }
 
     .outcomes-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+        gap: 32px;
         width: 100%;
         max-width: var(--site-max-width);
     }
 
-    .step-card {
+    .outcome-card {
+        text-align: center;
+        padding: clamp(24px, 4vw, 42px);
         background: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
-        padding: clamp(24px, 4vw, 42px);
+        border-radius: 24px;
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        align-items: center;
+        gap: 12px;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
         box-shadow: 
             0 4px 6px -1px rgba(0, 0, 0, 0.05),
-            0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            0 10px 15px -3px rgba(0, 0, 0, 0.08);
     }
 
-    .step-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--primary-color);
+    .outcome-card:hover {
+        transform: translateY(-8px);
         box-shadow: 
-            0 10px 15px -1px rgba(0, 0, 0, 0.05),
-            0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            0 20px 25px -5px rgba(0, 0, 0, 0.1),
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: var(--primary-color);
     }
 
-    .card-top {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-bottom: 8px;
-    }
-
-    .step-num {
-        font-size: 0.75rem;
-        font-weight: 800;
-        color: var(--primary-color);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        opacity: 0.8;
-    }
-
-    .metric-visual {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        width: 100%;
-    }
-
-    .metric-bar {
-        flex: 1;
-        height: 12px;
-        background: rgba(79, 70, 229, 0.1);
-        border-radius: 99px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .metric-bar::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        width: var(--percent);
-        background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-        border-radius: 99px;
-    }
-
-    .metric-value {
-        font-size: 1.75rem;
+    .outcome-value {
+        font-size: clamp(3rem, 6vw, 4.5rem);
         font-weight: 900;
-        color: #111827;
-        min-width: 4ch;
-        text-align: right;
+        line-height: 1;
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.03em;
     }
 
-    .step-label {
+    .outcome-label {
         margin: 0;
-        font-size: 1.4rem;
-        font-weight: 850;
-        line-height: 1.2;
-        color: #111827;
-    }
-
-    .step-reason {
-        margin: 0;
-        font-size: 1.05rem;
-        line-height: 1.5;
-        color: #4b5563;
+        font-size: clamp(1rem, 1.4vw, 1.25rem);
+        font-weight: 700;
+        line-height: 1.4;
+        color: #374151;
+        max-width: 240px;
     }
 
     @media (max-width: 1024px) {
         .outcomes-grid {
-            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         .outcomes-grid {
             grid-template-columns: 1fr;
+            max-width: 480px;
         }
         
         .section {
