@@ -1,5 +1,6 @@
 ---
 import BookDemoButton from './BookDemoButton.astro';
+import InteractiveDiagram from './InteractiveDiagram.astro';
 ---
 <section class="home-hero" aria-labelledby="home-hero-title">
   <div class="home-hero-copy">
@@ -20,22 +21,9 @@ import BookDemoButton from './BookDemoButton.astro';
     </div>
   </div>
 
-  <div class="home-hero-visual-wrap" aria-label="Softprobe runtime and safe canary preview">
+  <div class="home-hero-visual-wrap" aria-label="Softprobe interactive system diagram">
     <div class="home-hero-visual-frame">
-      <video
-        src="/contex-view.mp4"
-        autoplay
-        muted
-        loop
-        preload="auto"
-        playsinline
-        webkit-playsinline="true"
-        aria-label="Runtime context playback"
-      ></video>
-
-      <div class="home-hero-floating-chip home-hero-floating-chip-top">Runtime behavior drift detected</div>
-      <div class="home-hero-floating-chip home-hero-floating-chip-center">Safe Canary replay active</div>
-      <div class="home-hero-floating-chip home-hero-floating-chip-bottom">Customers protected</div>
+      <InteractiveDiagram />
     </div>
   </div>
 </section>
