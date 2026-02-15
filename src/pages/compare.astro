@@ -4,6 +4,35 @@ import { icons } from '../lib/icons';
 
 const featureGroups = [
   {
+    title: "AI SRE",
+    features: [
+      {
+        feature: "Deterministic root cause analysis",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "AI-powered incident investigation",
+        softprobe: true,
+        others: true,
+        highlight: false,
+      },
+      {
+        feature: "Automated remediation suggestions",
+        softprobe: true,
+        others: true,
+        highlight: false,
+      },
+      {
+        feature: "Observability cost reduction (up to 90%)",
+        softprobe: true,
+        others: false,
+        highlight: false,
+      },
+    ]
+  },
+  {
     title: "Event Logging",
     features: [
       {
@@ -27,7 +56,7 @@ const featureGroups = [
       {
         feature: "Automatic event instrumentation",
         softprobe: true,
-        others: "partial",
+        others: false,
         highlight: false,
       },
     ]
@@ -49,35 +78,6 @@ const featureGroups = [
       },
       {
         feature: "Zero code changes required",
-        softprobe: true,
-        others: "partial",
-        highlight: false,
-      },
-    ]
-  },
-  {
-    title: "AI SRE",
-    features: [
-      {
-        feature: "Deterministic root cause analysis",
-        softprobe: true,
-        others: false,
-        highlight: true,
-      },
-      {
-        feature: "AI-powered incident investigation",
-        softprobe: true,
-        others: true,
-        highlight: false,
-      },
-      {
-        feature: "Automated remediation suggestions",
-        softprobe: true,
-        others: true,
-        highlight: false,
-      },
-      {
-        feature: "Observability cost reduction (up to 90%)",
         softprobe: true,
         others: false,
         highlight: false,
