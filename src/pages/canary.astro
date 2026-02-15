@@ -70,12 +70,9 @@ const jsonld = {
         <div class="canary-process-visual">
           <div class="canary-step-item">
             <div class="canary-step-card">
-              <div class="canary-step-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                <div class="canary-step-number">1</div>
+              <div class="canary-step-node">
+                <span class="canary-step-number">1</span>
+                <div class="canary-node-glow"></div>
               </div>
               <div class="canary-step-content">
                 <h3>Capture Real User Sessions</h3>
@@ -86,7 +83,7 @@ const jsonld = {
           
           <div class="canary-step-connector">
             <div class="canary-step-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 5v14M19 12l-7 7-7-7" />
               </svg>
             </div>
@@ -94,15 +91,9 @@ const jsonld = {
 
           <div class="canary-step-item">
             <div class="canary-step-card">
-              <div class="canary-step-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="18" cy="5" r="3" />
-                  <circle cx="6" cy="12" r="3" />
-                  <circle cx="18" cy="19" r="3" />
-                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-                </svg>
-                <div class="canary-step-number">2</div>
+              <div class="canary-step-node">
+                <span class="canary-step-number">2</span>
+                <div class="canary-node-glow"></div>
               </div>
               <div class="canary-step-content">
                 <h3>Store the Full Context</h3>
@@ -113,7 +104,7 @@ const jsonld = {
 
           <div class="canary-step-connector">
             <div class="canary-step-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 5v14M19 12l-7 7-7-7" />
               </svg>
             </div>
@@ -121,12 +112,9 @@ const jsonld = {
 
           <div class="canary-step-item">
             <div class="canary-step-card">
-              <div class="canary-step-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <path d="M9 12l2 2 4-4" />
-                </svg>
-                <div class="canary-step-number">3</div>
+              <div class="canary-step-node">
+                <span class="canary-step-number">3</span>
+                <div class="canary-node-glow"></div>
               </div>
               <div class="canary-step-content">
                 <h3>Pre-release Testing</h3>
@@ -251,50 +239,52 @@ const jsonld = {
   .canary-step-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-    border-color: #0ea5e980;
+    border-color: #0ea5e960;
   }
 
-  .canary-step-icon {
-    width: 54px;
-    height: 54px;
-    background: linear-gradient(135deg, #0f766e 0%, #0ea5e9 100%);
-    color: white;
-    border-radius: 16px;
+  .canary-step-node {
+    width: 64px;
+    height: 64px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 8px 16px rgba(15, 118, 110, 0.2);
-    position: relative;
-  }
-  
-  .canary-step-icon svg {
-    width: 28px;
-    height: 28px;
-    stroke-width: 2.2;
   }
 
   .canary-step-number {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    width: 22px;
-    height: 22px;
-    background: #0ea5e9;
-    border: 2px solid #ffffff;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #0f766e 0%, #0ea5e9 100%);
+    color: white;
     border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-weight: 900;
+    font-size: 1.4rem;
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.25);
+    border: 3px solid #ffffff;
+  }
+
+  .canary-node-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, #0ea5e940 0%, transparent 70%);
+    opacity: 0.6;
+    z-index: 1;
+    animation: pulse-glow 3s infinite ease-in-out;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 0.3; }
   }
 
   .canary-step-content h3 {
     margin: 0 0 6px;
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 800;
     color: #0F766E;
     letter-spacing: -0.02em;
@@ -309,35 +299,36 @@ const jsonld = {
   }
 
   .canary-step-connector {
-    height: 60px;
-    width: 3px;
-    background: linear-gradient(to bottom, #0ea5e9, #0f766e);
+    height: 70px;
+    width: 4px;
+    background: linear-gradient(to bottom, #0ea5e9 0%, #0f766e 100%);
     position: relative;
-    margin: -2px 0;
+    margin: -4px 0;
     z-index: 1;
-    opacity: 0.6;
+    opacity: 0.8;
   }
 
   .canary-step-arrow {
     position: absolute;
-    bottom: -16px;
+    bottom: -18px;
     left: 50%;
     transform: translateX(-50%);
-    color: #0f766e;
-    width: 32px;
-    height: 32px;
-    background: white;
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    background: #0f766e;
     border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #0f766e20;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.35);
+    z-index: 3;
   }
 
   .canary-step-arrow svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .canary-replay-card { 
