@@ -2,461 +2,166 @@
 // Hero component with SVG diagram
 ---
 
-<div class="hero-layout-wrapper">
-    <div class="hero-steps-column">
-        <header class="section-head">
-            <h2 class="section-title">How Softprobe AI SRE Works</h2>
-        </header>
+<div class="diagram-container">
+      <header class="section-head">
+    <h2 class="section-title">How Softprobe AI SRE Works</h2>
+    <p class="section-subtitle">
+      Learns from everything you have. Code, docs, tools and most importantly - Runtime Truth - with proprietary Softprobe Context Engine™. 
+	    </p>
+	  </header>
+      
+    <svg class="connections-layer" id="connections">
+        </svg>
 
-        <div class="step-cards-container">
-            <article class="step-card">
-                <div class="step-label">STEP 01</div>
-                <h3 class="step-title">Capture & Replay</h3>
-                <p class="step-text">Softprobe silently captures real production traffic and user sessions. Before your next release, our AI replays them in your test environment to validate everything works.</p>
-            </article>
+    <div class="roles-row">
+        <div class="role-card" id="role-1">Dev</div>
+        <div class="role-card" id="role-2">SRE Engineer</div>
+        <div class="role-card" id="role-3">QA Engineer</div>
+        <div class="role-card" id="role-4">IT Ops</div>
+    </div>
 
-            <article class="step-card">
-                <div class="step-label">STEP 02</div>
-                <h3 class="step-title">Softprobe Builds the Session Graph</h3>
-                <p class="step-text">Every request, response, and execution path is stored as a structured session graph — 100% of data, zero sampling. This gives AI a complete map of your system behavior.</p>
-            </article>
+    <div class="core-container" id="core-box">
+        <div class="core-chat-history" aria-label="Softprobe incident workflow chat history">
+            <div class="core-trace-header">
+                <span class="core-trace-live-dot" aria-hidden="true"></span>
+                <span>Investigating ...</span>
+            </div>
+            <div class="core-chat-track">
+                <div class="core-trace-item kind-thinking">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Thinking</span>
+                        <span class="core-trace-time">T+04s</span>
+                    </div>
+                    <p>Correlating checkout 5xx spike with deploy <code>checkout-api@2026.02.11.4</code>.</p>
+                    <span class="core-trace-dots" aria-hidden="true"></span>
+                </div>
+                <div class="core-trace-item kind-tool">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Tool Call</span>
+                        <span class="core-trace-time">T+08s</span>
+                    </div>
+                    <p>Fetching evidence from Grafana, Sentry <code>CHK-991</code>, and Argo rollout events.</p>
+                    <pre class="core-trace-command">grafana.query(service="checkout", metric="http_5xx_rate", window="15m")</pre>
+                </div>
+                <div class="core-trace-item kind-observe">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Observation</span>
+                        <span class="core-trace-time">T+13s</span>
+                    </div>
+                    <p>p95 latency jumped <strong>480ms -> 2.1s</strong> only on revision tied to commit <code>a18f2c9</code>.</p>
+                </div>
+                <div class="core-trace-item kind-tool">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Tool Call</span>
+                        <span class="core-trace-time">T+18s</span>
+                    </div>
+                    <pre class="core-trace-command">kubectl logs deploy/checkout-api -n prod --since=15m | rg "timeout|pool exhausted"</pre>
+                </div>
+                <div class="core-trace-item kind-action">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Action</span>
+                        <span class="core-trace-time">T+24s</span>
+                    </div>
+                    <p>Executing rollback to <code>checkout-api@2026.02.11.3</code> and opening <code>INC-214</code>.</p>
+                </div>
+                <div class="core-trace-item kind-verify">
+                    <div class="core-trace-meta">
+                        <span class="core-trace-kind">Verify</span>
+                        <span class="core-trace-time">T+31s</span>
+                    </div>
+                    <p>5xx recovered from 8.2% to 0.3%. Posted incident summary to <code>#prod-incidents</code>.</p>
+                </div>
+            </div>
+        </div>
 
-            <article class="step-card">
-                <div class="step-label">STEP 03</div>
-                <h3 class="step-title">AI SRE handles testing, production monitoring and debugging</h3>
-                <p class="step-text">Structured session graph architecture enables agentic review of execution path to find exact error causes; fully deterministic (no probabilistic guessing)</p>
-            </article>
+        <div class="logo-center">
+            <div class="logo-icon">
+                <img class="robot-logo" src="/logos/4.svg" alt="Softprobe" width="72" height="72" decoding="async" />
+            </div>
+        </div>
+
+        <div class="core-modules">
+            <div class="module-box">Softprobe Context Engine</div>
         </div>
     </div>
 
-    <div class="hero-diagram-column">
-        <div class="diagram-container">
-            <svg class="connections-layer" id="connections"></svg>
+    <div class="agents-row">
+        <div class="agent-node" id="agent-1">
+            <svg class="icon-tools" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75ZM4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd"/><path d="m10.076 8.64-2.201-2.2V4.874a.75.75 0 0 0-.364-.643l-3.75-2.25a.75.75 0 0 0-.916.113l-.75.75a.75.75 0 0 0-.113.916l2.25 3.75a.75.75 0 0 0 .643.364h1.564l2.062 2.062 1.575-1.297Z"/><path fill-rule="evenodd" d="m12.556 17.329 4.183 4.182a3.375 3.375 0 0 0 4.773-4.773l-3.306-3.305a6.803 6.803 0 0 1-1.53.043c-.394-.034-.682-.006-.867.042a.589.589 0 0 0-.167.063l-3.086 3.748Zm3.414-1.36a.75.75 0 0 1 1.06 0l1.875 1.876a.75.75 0 1 1-1.06 1.06L15.97 17.03a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="agent-node" id="agent-2">
+            <svg class="icon-tools" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75ZM4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd"/><path d="m10.076 8.64-2.201-2.2V4.874a.75.75 0 0 0-.364-.643l-3.75-2.25a.75.75 0 0 0-.916.113l-.75.75a.75.75 0 0 0-.113.916l2.25 3.75a.75.75 0 0 0 .643.364h1.564l2.062 2.062 1.575-1.297Z"/><path fill-rule="evenodd" d="m12.556 17.329 4.183 4.182a3.375 3.375 0 0 0 4.773-4.773l-3.306-3.305a6.803 6.803 0 0 1-1.53.043c-.394-.034-.682-.006-.867.042a.589.589 0 0 0-.167.063l-3.086 3.748Zm3.414-1.36a.75.75 0 0 1 1.06 0l1.875 1.876a.75.75 0 1 1-1.06 1.06L15.97 17.03a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="agent-node" id="agent-3">
+            <svg class="icon-tools" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75ZM4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd"/><path d="m10.076 8.64-2.201-2.2V4.874a.75.75 0 0 0-.364-.643l-3.75-2.25a.75.75 0 0 0-.916.113l-.75.75a.75.75 0 0 0-.113.916l2.25 3.75a.75.75 0 0 0 .643.364h1.564l2.062 2.062 1.575-1.297Z"/><path fill-rule="evenodd" d="m12.556 17.329 4.183 4.182a3.375 3.375 0 0 0 4.773-4.773l-3.306-3.305a6.803 6.803 0 0 1-1.53.043c-.394-.034-.682-.006-.867.042a.589.589 0 0 0-.167.063l-3.086 3.748Zm3.414-1.36a.75.75 0 0 1 1.06 0l1.875 1.876a.75.75 0 1 1-1.06 1.06L15.97 17.03a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="agent-node" id="agent-4">
+            <svg class="icon-tools" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75ZM4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd"/><path d="m10.076 8.64-2.201-2.2V4.874a.75.75 0 0 0-.364-.643l-3.75-2.25a.75.75 0 0 0-.916.113l-.75.75a.75.75 0 0 0-.113.916l2.25 3.75a.75.75 0 0 0 .643.364h1.564l2.062 2.062 1.575-1.297Z"/><path fill-rule="evenodd" d="m12.556 17.329 4.183 4.182a3.375 3.375 0 0 0 4.773-4.773l-3.306-3.305a6.803 6.803 0 0 1-1.53.043c-.394-.034-.682-.006-.867.042a.589.589 0 0 0-.167.063l-3.086 3.748Zm3.414-1.36a.75.75 0 0 1 1.06 0l1.875 1.876a.75.75 0 1 1-1.06 1.06L15.97 17.03a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="agent-node" id="agent-5">
+            <svg class="icon-tools" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75ZM4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd"/><path d="m10.076 8.64-2.201-2.2V4.874a.75.75 0 0 0-.364-.643l-3.75-2.25a.75.75 0 0 0-.916.113l-.75.75a.75.75 0 0 0-.113.916l2.25 3.75a.75.75 0 0 0 .643.364h1.564l2.062 2.062 1.575-1.297Z"/><path fill-rule="evenodd" d="m12.556 17.329 4.183 4.182a3.375 3.375 0 0 0 4.773-4.773l-3.306-3.305a6.803 6.803 0 0 1-1.53.043c-.394-.034-.682-.006-.867.042a.589.589 0 0 0-.167.063l-3.086 3.748Zm3.414-1.36a.75.75 0 0 1 1.06 0l1.875 1.876a.75.75 0 1 1-1.06 1.06L15.97 17.03a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+        </div>
+    </div>
 
-            <div class="roles-row">
-                <div class="role-card" id="role-1">Dev</div>
-                <div class="role-card" id="role-2">SRE</div>
-                <div class="role-card" id="role-3">QA</div>
-                <div class="role-card" id="role-4">IT Ops</div>
+    <div class="tools-row">
+        <div class="tool-group group-observability" id="group-1">
+            <div class="group-title">Observability</div>
+            <div class="icons-wrapper">
+                <img class="tool-icon" src="https://cdn.simpleicons.org/prometheus/E6522C" alt="Prometheus" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/grafana/F46800" alt="Grafana" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/datadog/632CA6" alt="Datadog" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/sentry/362D59" alt="Sentry" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/newrelic/1CE783" alt="New Relic" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/opentelemetry/000000" alt="opentelemetry" />
             </div>
-            
-            <div class="core-container" id="core-box">
-                <div class="core-chat-history" aria-label="Softprobe incident workflow chat history">
-                    <div class="core-trace-header">
-                        <span class="core-trace-live-dot" aria-hidden="true"></span>
-                        <span>Investigating ...</span>
-                    </div>
-                    <div class="core-chat-track">
-                        <div class="core-trace-item kind-thinking">
-                            <div class="core-trace-meta">
-                                <span class="core-trace-kind">Thinking</span>
-                                <span class="core-trace-time">T+04s</span>
-                            </div>
-                            <p>Correlating checkout 5xx spike with deploy.</p>
-                        </div>
-                        <div class="core-trace-item kind-tool">
-                            <div class="core-trace-meta">
-                                <span class="core-trace-kind">Tool Call</span>
-                                <span class="core-trace-time">T+08s</span>
-                            </div>
-                            <pre class="core-trace-command">grafana.query(service="checkout")</pre>
-                        </div>
-                        <div class="core-trace-item kind-action">
-                            <div class="core-trace-meta">
-                                <span class="core-trace-kind">Action</span>
-                                <span class="core-trace-time">T+24s</span>
-                            </div>
-                            <p>Executing rollback and opening INC-214.</p>
-                        </div>
-                    </div>
-                </div>
+        </div>
 
-                <div class="logo-center">
-                    <div class="logo-icon">
-                        <img class="robot-logo" src="/logos/4.svg" alt="Softprobe" width="56" height="56" decoding="async" />
-                    </div>
-                </div>
-
-                <div class="core-modules">
-                    <div class="module-box">Context Engine</div>
-                </div>
+        <div class="tool-group group-knowledge" id="group-2">
+            <div class="group-title">Knowledge</div>
+            <div class="icons-wrapper">
+                <img class="tool-icon" src="/slack.png" alt="Slack" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/jira/0052CC" alt="Jira" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/notion/000000" alt="Notion" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/confluence/172B4D" alt="Confluence" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/linear/5E6AD2" alt="Linear" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/googledrive/0F9D58" alt="Drive" />
             </div>
+        </div>
 
-            <div class="agents-row">
-                <div class="agent-node" id="agent-1"></div>
-                <div class="agent-node" id="agent-2"></div>
-                <div class="agent-node" id="agent-3"></div>
-                <div class="agent-node" id="agent-4"></div>
+        <div class="tool-group group-code" id="group-3">
+            <div class="group-title">Code</div>
+            <div class="icons-wrapper">
+                <img class="tool-icon" src="https://cdn.simpleicons.org/gitlab/FC6D26" alt="GitLab" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/github/181717" alt="GitHub" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/bitbucket/0052CC" alt="Bitbucket" />
             </div>
+        </div>
 
-            <div class="tools-row">
-                <div class="tool-group" id="group-1">
-                    <div class="icons-wrapper">
-                        <img class="tool-icon" src="https://cdn.simpleicons.org/prometheus/E6522C" alt="Prometheus" />
-                        <img class="tool-icon" src="https://cdn.simpleicons.org/datadog/632CA6" alt="Datadog" />
-                    </div>
-                </div>
-                <div class="tool-group" id="group-2">
-                    <div class="icons-wrapper">
-                        <img class="tool-icon" src="/slack.png" alt="Slack" />
-                    </div>
-                </div>
-                <div class="tool-group" id="group-3">
-                    <div class="icons-wrapper">
-                        <img class="tool-icon" src="https://cdn.simpleicons.org/github/181717" alt="GitHub" />
-                    </div>
-                </div>
+        <div class="tool-group group-testing" id="group-4">
+            <div class="group-title">Testing</div>
+            <div class="icons-wrapper">
+                <img class="tool-icon" src="https://cdn.simpleicons.org/cypress/17202C" alt="Cypress" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/saucelabs/3DDC91" alt="Saucelabs" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/curl/073551" alt="Curl" />
+            </div>
+        </div>
+
+        <div class="tool-group group-devops" id="group-5">
+            <div class="group-title">DevOps & CI/CD</div>
+            <div class="icons-wrapper">
+                <img class="tool-icon" src="/aws.svg" alt="AWS" />
+                <img class="tool-icon" src="/gcp.svg" alt="GCP" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="K8s" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/helm/0F1689" alt="Helm" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/argo/EF7B4D" alt="Argo" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/githubactions/2088FF" alt="Actions" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/travisci/3EAAAF" alt="TravisCI" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/jenkins/D24939" alt="Jenkins" />
+                <img class="tool-icon" src="https://cdn.simpleicons.org/circleci/343434" alt="CircleCI" />
             </div>
         </div>
     </div>
 </div>
-
-<style>
-    .hero-layout-wrapper {
-        display: grid;
-        grid-template-columns: minmax(400px, 1.25fr) 1fr;
-        gap: clamp(40px, 8vw, 100px);
-        align-items: center;
-        width: min(var(--site-page-max-width), 100%);
-        margin: 100px auto;
-        padding: 0 40px;
-    }
-
-    .hero-steps-column {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .hero-steps-column .section-head {
-        text-align: left;
-        margin: 0;
-        padding: 0;
-    }
-
-    .hero-steps-column .section-title {
-        font-size: clamp(2.4rem, 5vw, 3.6rem);
-        line-height: 1.05;
-        margin-bottom: 12px;
-        color: #0f172a;
-        font-weight: 850;
-    }
-
-    .step-cards-container {
-        display: grid;
-        gap: 24px;
-    }
-
-    .step-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 24px;
-        padding: 32px;
-        box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .step-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.12);
-        border-color: #7c3aed20;
-    }
-
-    .step-label {
-        font-size: 0.8rem;
-        font-weight: 950;
-        color: #7c3aed;
-        letter-spacing: 0.15em;
-        margin-bottom: 12px;
-        display: inline-block;
-        background: #f5f3ff;
-        padding: 4px 12px;
-        border-radius: 8px;
-    }
-
-    .step-title {
-        font-size: 1.45rem;
-        font-weight: 850;
-        color: #0f172a;
-        margin: 0 0 14px 0;
-        line-height: 1.25;
-        letter-spacing: -0.01em;
-    }
-
-    .step-text {
-        font-size: 1.05rem;
-        color: #475569;
-        line-height: 1.6;
-        margin: 0;
-        font-weight: 500;
-    }
-
-    /* Diagram Styling */
-    .hero-diagram-column {
-        position: relative;
-        background: radial-gradient(circle at top right, #f8fafc 0%, #f1f5f9 100%);
-        border-radius: 48px;
-        border: 1px solid #e2e8f0;
-        padding: 60px 20px;
-        overflow: hidden;
-        box-shadow: inset 0 0 40px rgba(15, 23, 42, 0.02);
-    }
-
-    .diagram-container {
-        position: relative;
-        width: 100%;
-        height: 600px; 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        transform: scale(0.95);
-    }
-
-    .connections-layer {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .connection-line {
-        fill: none;
-        stroke: #6366f1;
-        stroke-width: 1.2;
-        opacity: 0.25;
-    }
-
-    .flow-particle {
-        fill: #7c3aed;
-        filter: drop-shadow(0 0 4px #7c3aed);
-    }
-
-    .roles-row, .agents-row, .tools-row {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        width: 100%;
-        position: relative;
-        z-index: 5;
-    }
-
-    .role-card {
-        padding: 8px 16px;
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 999px;
-        font-size: 0.7rem;
-        font-weight: 900;
-        color: #64748b;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-    }
-
-    .agent-node {
-        width: 44px;
-        height: 44px;
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.04);
-    }
-    
-    .agent-node::before {
-        content: '';
-        width: 20px;
-        height: 20px;
-        background: #7c3aed;
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75Zm4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat center;
-        mask-size: contain;
-    }
-
-    .core-container {
-        position: relative;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 40px 0;
-    }
-
-    .logo-center {
-        position: relative;
-        z-index: 10;
-        background: white;
-        padding: 16px;
-        border-radius: 24px;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-    }
-
-    .robot-logo {
-        width: 52px;
-        height: 52px;
-        display: block;
-    }
-
-    .core-modules {
-        margin-top: -12px;
-        z-index: 11;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .module-box {
-        background: #7c3aed;
-        color: white;
-        font-size: 0.65rem;
-        font-weight: 900;
-        padding: 5px 14px;
-        border-radius: 999px;
-        white-space: nowrap;
-        box-shadow: 0 8px 16px -4px rgba(124, 58, 237, 0.4);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .core-chat-history {
-        position: absolute;
-        top: -90px;
-        left: 74%; /* Even further right to clear the purple bar entirely */
-        width: 180px;
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 12px;
-        font-size: 0.65rem;
-        box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
-        z-index: 20;
-    }
-
-    .core-trace-header {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 10px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid #f1f5f9;
-        color: #64748b;
-        font-weight: 850;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-    }
-
-    .core-trace-live-dot {
-        width: 8px;
-        height: 8px;
-        background: #22c55e;
-        border-radius: 999px;
-        box-shadow: 0 0 6px #22c55e;
-        animation: pulse 2s infinite;
-    }
-
-    .core-chat-track {
-        min-height: 70px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .core-trace-item {
-        display: none;
-    }
-
-    .core-trace-item.is-visible {
-        display: block;
-        animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .core-trace-meta {
-        font-size: 0.55rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-weight: 900;
-        margin-bottom: 4px;
-    }
-
-    .kind-thinking .core-trace-meta { color: #8b5cf6; }
-    .kind-tool .core-trace-meta { color: #0ea5e9; }
-    .kind-action .core-trace-meta { color: #f59e0b; }
-
-    .core-trace-item p {
-        margin: 0;
-        color: #1e293b;
-        font-weight: 700;
-        line-height: 1.4;
-    }
-
-    .core-trace-command {
-        background: #f8fafc;
-        border: 1px solid #e1e7ef;
-        padding: 6px 8px;
-        border-radius: 6px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: #64748b;
-        margin-top: 4px;
-    }
-
-    .tool-group {
-        padding: 8px 12px;
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    }
-
-    .icons-wrapper {
-        display: flex;
-        gap: 10px;
-    }
-
-    .tool-icon {
-        width: 18px;
-        height: 18px;
-        opacity: 0.8;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(0.9); opacity: 0.6; }
-        50% { transform: scale(1.1); opacity: 1; }
-        100% { transform: scale(0.9); opacity: 0.6; }
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(8px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 1024px) {
-        .hero-layout-wrapper {
-            grid-template-columns: 1fr;
-            gap: 60px;
-            margin: 60px auto;
-            padding: 0 24px;
-        }
-
-        .hero-steps-column .section-head {
-            text-align: center;
-        }
-
-        .hero-diagram-column {
-            padding: 40px 20px;
-        }
-    }
-</style>
 
 <script>
     // Logic to draw lines and animate particles
@@ -470,7 +175,9 @@
         const groups = [
             document.getElementById('group-1'),
             document.getElementById('group-2'),
-            document.getElementById('group-3')
+            document.getElementById('group-3'),
+            document.getElementById('group-4'),
+            document.getElementById('group-5')
         ];
         
         const agents = [
@@ -482,7 +189,6 @@
         ];
 
         function getCenter(element) {
-            if (!element) return { x: 0, y: 0, top: 0, bottom: 0 };
             const rect = element.getBoundingClientRect();
             const containerRect = document.querySelector('.diagram-container').getBoundingClientRect();
             return {
@@ -495,16 +201,19 @@
 
         function createLine(x1, y1, x2, y2) {
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            // Create a slight curve (bezier)
             const d = `M ${x1} ${y1} C ${x1} ${(y1+y2)/2}, ${x2} ${(y1+y2)/2}, ${x2} ${y2}`;
             path.setAttribute('d', d);
             path.setAttribute('class', 'connection-line');
             
+            // Add particle for animation
             const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('r', '2.5');
+            circle.setAttribute('r', '4');
             circle.setAttribute('class', 'flow-particle');
             
+            // Animate along path
             const animateMotion = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
-            animateMotion.setAttribute('dur', (Math.random() * 1 + 2) + 's');
+            animateMotion.setAttribute('dur', (Math.random() * 1 + 2) + 's'); // Random speed
             animateMotion.setAttribute('repeatCount', 'indefinite');
             animateMotion.setAttribute('path', d);
             
@@ -514,57 +223,45 @@
         }
 
         function draw() {
+            // Clear existing
             svg.innerHTML = '';
             
-            const roles = [
-                document.getElementById('role-1'),
-                document.getElementById('role-2'),
-                document.getElementById('role-3'),
-                document.getElementById('role-4')
-            ];
+            const coreCenter = getCenter(coreBox);
 
-            const logoIcon = coreBox.querySelector('.logo-icon');
-            const coreCenter = getCenter(logoIcon || coreBox);
-
-            roles.forEach(role => {
-                if(role) {
-                    const roleCenter = getCenter(role);
-                    const { path, circle } = createLine(roleCenter.x, roleCenter.bottom, coreCenter.x, coreCenter.top);
-                    svg.appendChild(path);
-                    svg.appendChild(circle);
-                }
-            });
-
+            // Draw Lines: Agent -> Core
             agents.forEach((agent) => {
                 if (agent) {
                     const agentCenter = getCenter(agent);
+                    // Draw from top of agent to bottom of core
                     const { path, circle } = createLine(agentCenter.x, agentCenter.top, coreCenter.x, coreCenter.bottom);
                     svg.appendChild(path);
                     svg.appendChild(circle);
                 }
             });
 
+            // Draw Lines: Tool Group -> Agent
             groups.forEach((group, index) => {
                 if(group && agents[index]) {
                     const groupCenter = getCenter(group);
                     const agentCenter = getCenter(agents[index]);
                     const { path, circle } = createLine(groupCenter.x, groupCenter.top, agentCenter.x, agentCenter.bottom);
                     svg.appendChild(path);
+                    // Reverse animation for variety (Tools -> Agent)
                     const anim = circle.querySelector('animateMotion');
-                    if (anim) {
-                        anim.setAttribute('keyPoints', "1;0");
-                        anim.setAttribute('keyTimes', "0;1");
-                    }
+                    anim.setAttribute('keyPoints', "1;0");
+                    anim.setAttribute('keyTimes', "0;1");
                     svg.appendChild(circle);
                 }
             });
         }
 
+        // Initial draw
         if (document.readyState === 'loading') {
             window.addEventListener('load', draw);
         } else {
-            setTimeout(draw, 500); 
+            draw();
         }
+        // Redraw on resize
         window.addEventListener('resize', draw);
     }
 
@@ -577,8 +274,8 @@
         const items = Array.from(track.querySelectorAll('.core-trace-item'));
         if (!items.length) return;
 
-        const holdMs = 2000;
-        const loopPauseMs = 3000;
+        const holdMs = 1500;
+        const loopPauseMs = 1200;
         let currentIndex = -1;
 
         items.forEach((item) => item.classList.remove('is-visible'));
@@ -588,31 +285,24 @@
                 const isLastStep = currentIndex >= items.length - 1;
 
                 if (isLastStep) {
-                    items.forEach((item) => {
-                        item.classList.remove('is-visible');
-                        item.style.opacity = "1";
-                    });
+                    items.forEach((item) => item.classList.remove('is-visible'));
                     currentIndex = 0;
                     items[currentIndex].classList.add('is-visible');
-                    showNext(holdMs);
+                    showNext(loopPauseMs);
                     return;
                 }
 
                 currentIndex += 1;
-                items.forEach((item, idx) => {
-                    if (idx < currentIndex) item.style.opacity = "0.4";
-                    else if (idx === currentIndex) item.style.opacity = "1";
-                });
-                
                 items[currentIndex].classList.add('is-visible');
                 const nextDelay = currentIndex === items.length - 1 ? loopPauseMs : holdMs;
                 showNext(nextDelay);
             }, delay);
         }
 
-        showNext(600);
+        showNext(400);
     }
 
+    // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             initHeroDiagram();
