@@ -5,19 +5,37 @@ import { Image } from 'astro:assets';
 import sessionGraphImage from '../assets/session-graph.png';
 ---
 
-<BaseLayout title="Technology - Softprobe">
+<BaseLayout title="AI-Native Event Logging - Softprobe">
     {/* Hero Section */}
     <section class="bg-gradient-to-b from-emerald-50/40 to-[#F8FAFC] pt-32 pb-16 md:pt-40 md:pb-20 w-full">
       <div class="max-w-7xl mx-auto px-6 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight">
-          Move Beyond Text Logs.{" "}
-          <span class="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
-            See the Full Context.
-          </span>
+        <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">
+          AI-Native event logging
         </h1>
-        <p class="mt-6 text-lg md:text-xl text-slate-500 leading-relaxed max-w-3xl mx-auto">
-          Traditional logging gives you fragmented text. Softprobe gives you the full story.
+        <p class="text-lg md:text-xl text-slate-500 leading-relaxed max-w-3xl mx-auto mb-12">
+          Log events as structured session graphs— the language of AI agents
         </p>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="flex items-start gap-3 text-left">
+            <div class="text-emerald-500 mt-1 flex-shrink-0">
+              <Fragment set:html={icons.CheckCircle2} />
+            </div>
+            <p class="text-slate-600 font-medium">Reduce observability costs by up to 90%</p>
+          </div>
+          <div class="flex items-start gap-3 text-left">
+            <div class="text-emerald-500 mt-1 flex-shrink-0">
+              <Fragment set:html={icons.CheckCircle2} />
+            </div>
+            <p class="text-slate-600 font-medium">Preserve 100% of user sessions (no sampling!) including all API message bodies</p>
+          </div>
+          <div class="flex items-start gap-3 text-left">
+            <div class="text-emerald-500 mt-1 flex-shrink-0">
+              <Fragment set:html={icons.CheckCircle2} />
+            </div>
+            <p class="text-slate-600 font-medium">Catch production issues instantly</p>
+          </div>
+        </div>
       </div>
     </section>
 
