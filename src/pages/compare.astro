@@ -2,91 +2,88 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { icons } from '../lib/icons';
 
-const features = [
+const featureGroups = [
   {
-    feature: "Works with imperfect logging environments",
-    softprobe: true,
-    others: false,
-    highlight: true,
+    title: "Event Logging",
+    features: [
+      {
+        feature: "Captures 100% of user sessions (no sampling)",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "Captures end-to-end request/response message bodies",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "Reconstructs session-level runtime traces automatically",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "Applies structured logging best practices by default",
+        softprobe: true,
+        others: "partial",
+        highlight: false,
+      },
+    ]
   },
   {
-    feature: "Captures end-to-end request/response message bodies",
-    softprobe: true,
-    others: false,
-    highlight: true,
+    title: "Pre-Release Testing",
+    features: [
+      {
+        feature: "Pre-production release testing",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "Replays real production traffic in test env",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "Zero code changes required",
+        softprobe: true,
+        others: "partial",
+        highlight: false,
+      },
+    ]
   },
   {
-    feature: "Reconstructs session-level runtime traces automatically",
-    softprobe: true,
-    others: false,
-    highlight: true,
-  },
-  {
-    feature: "Applies structured logging best practices by default",
-    softprobe: true,
-    others: "partial",
-    highlight: false,
-  },
-  {
-    feature: "Pre-production release testing",
-    softprobe: true,
-    others: false,
-    highlight: true,
-  },
-  {
-    feature: "Replays real production traffic in test env",
-    softprobe: true,
-    others: false,
-    highlight: true,
-  },
-  {
-    feature: "100% session capture (zero sampling)",
-    softprobe: true,
-    others: false,
-    highlight: true,
-  },
-  {
-    feature: "All API message bodies retained",
-    softprobe: true,
-    others: false,
-    highlight: true,
-  },
-  {
-    feature: "Deterministic root cause analysis",
-    softprobe: true,
-    others: false,
-    highlight: true,
-  },
-  {
-    feature: "Structured session graph architecture",
-    softprobe: true,
-    others: false,
-    highlight: false,
-  },
-  {
-    feature: "AI-powered incident investigation",
-    softprobe: true,
-    others: true,
-    highlight: false,
-  },
-  {
-    feature: "Automated remediation suggestions",
-    softprobe: true,
-    others: true,
-    highlight: false,
-  },
-  {
-    feature: "Zero code changes required",
-    softprobe: true,
-    others: "partial",
-    highlight: false,
-  },
-  {
-    feature: "60%+ observability cost reduction",
-    softprobe: true,
-    others: false,
-    highlight: false,
-  },
+    title: "AI SRE",
+    features: [
+      {
+        feature: "Deterministic root cause analysis",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "AI-powered incident investigation",
+        softprobe: true,
+        others: true,
+        highlight: false,
+      },
+      {
+        feature: "Automated remediation suggestions",
+        softprobe: true,
+        others: true,
+        highlight: false,
+      },
+      {
+        feature: "60%+ observability cost reduction",
+        softprobe: true,
+        others: false,
+        highlight: false,
+      },
+    ]
+  }
 ];
 ---
 
@@ -104,7 +101,7 @@ const features = [
             Softprobe vs. other AI SREs
           </h2>
           <p class="mt-4 text-slate-500 text-lg max-w-xl mx-auto">
-            Most AI SRE tools are garbage in, garbage out because they depend on perfect logs. Softprobe captures message bodies and session traces, then applies preventive validation before rollout.
+            Your AI is only as good as your data. Softprobe isn’t just an AI SRE. It’s an AI-native event logging platform that saves user sessions as structured data graphs that AI can read
           </p>
         </div>
 
@@ -112,7 +109,7 @@ const features = [
           {/* Header */}
           <div class="grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_160px_160px] bg-slate-50 border-b border-slate-100">
             <div class="p-4 md:p-5 text-sm font-semibold text-slate-500">
-              Capability
+              
             </div>
             <div class="p-4 md:p-5 text-center">
               <span class="text-sm font-bold text-slate-900">Softprobe</span>
@@ -123,33 +120,40 @@ const features = [
           </div>
 
           {/* Rows */}
-          {features.map((row) => (
-            <div
-              class={`grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_160px_160px] border-b border-slate-50 last:border-0 ${
-                row.highlight ? "bg-emerald-50/30" : ""
-              } hover:bg-slate-50/50 transition-colors`}
-            >
-              <div class="p-4 md:p-5 flex items-center gap-2">
-                <span class={`text-sm ${row.highlight ? "font-semibold text-slate-800" : "text-slate-600"}`}>
-                  {row.feature}
-                </span>
-                {row.highlight && (
-                  <span class="hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-700 uppercase">
-                    Unique
-                  </span>
-                )}
+          {featureGroups.map((group) => (
+            <>
+              <div class="bg-slate-50/80 px-4 py-3 border-b border-slate-100">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">{group.title}</h3>
               </div>
-              <div class="p-4 md:p-5 flex justify-center items-center">
-                {row.softprobe === true && <div class="text-emerald-500"><Fragment set:html={icons.Check} /></div>}
-                {row.softprobe === "partial" && <div class="text-amber-400"><Fragment set:html={icons.Minus} /></div>}
-                {row.softprobe === false && <div class="text-slate-300"><Fragment set:html={icons.X} /></div>}
-              </div>
-              <div class="p-4 md:p-5 flex justify-center items-center">
-                {row.others === true && <div class="text-emerald-500"><Fragment set:html={icons.Check} /></div>}
-                {row.others === "partial" && <div class="text-amber-400"><Fragment set:html={icons.Minus} /></div>}
-                {row.others === false && <div class="text-slate-300"><Fragment set:html={icons.X} /></div>}
-              </div>
-            </div>
+              {group.features.map((row) => (
+                <div
+                  class={`grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_160px_160px] border-b border-slate-50 last:border-0 ${
+                    row.highlight ? "bg-emerald-50/30" : ""
+                  } hover:bg-slate-50/50 transition-colors`}
+                >
+                  <div class="p-4 md:p-5 flex items-center gap-2">
+                    <span class={`text-sm ${row.highlight ? "font-semibold text-slate-800" : "text-slate-600"}`}>
+                      {row.feature}
+                    </span>
+                    {row.highlight && (
+                      <span class="hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-700 uppercase">
+                        Unique
+                      </span>
+                    )}
+                  </div>
+                  <div class="p-4 md:p-5 flex justify-center items-center">
+                    {row.softprobe === true && <div class="text-emerald-500"><Fragment set:html={icons.Check} /></div>}
+                    {row.softprobe === "partial" && <div class="text-amber-400"><Fragment set:html={icons.Minus} /></div>}
+                    {row.softprobe === false && <div class="text-slate-300"><Fragment set:html={icons.X} /></div>}
+                  </div>
+                  <div class="p-4 md:p-5 flex justify-center items-center">
+                    {row.others === true && <div class="text-emerald-500"><Fragment set:html={icons.Check} /></div>}
+                    {row.others === "partial" && <div class="text-amber-400"><Fragment set:html={icons.Minus} /></div>}
+                    {row.others === false && <div class="text-slate-300"><Fragment set:html={icons.X} /></div>}
+                  </div>
+                </div>
+              ))}
+            </>
           ))}
         </div>
       </div>

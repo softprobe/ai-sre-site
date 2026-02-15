@@ -2,6 +2,7 @@
 import Footer from '../components/Footer.astro';
 import BookDemoButton from '../components/BookDemoButton.astro';
 import SEO from '../components/seo/SEO.astro';
+import { icons } from '../lib/icons';
 
 interface Props {
   title: string;
@@ -61,18 +62,22 @@ const {
         <nav class="site-nav-menu">
           <a href="/product" role="menuitem">Product</a>
           <a href="/canary" role="menuitem">Canary</a>
+          <a href="/compare" role="menuitem">Compare</a>
           <div class="site-nav-item site-nav-item-has-menu">
-            <a href="#" aria-haspopup="true">Resources</a>
+            <a href="#" aria-haspopup="true" class="flex items-center gap-1">
+              Resources
+              <div class="w-4 h-4 text-slate-400">
+                <Fragment set:html={icons.ChevronDown} />
+              </div>
+            </a>
             <div class="site-submenu" role="menu" aria-label="Resources submenu">
               <a href="/integrations" role="menuitem">Integrations</a>
-              <a href="/technology" role="menuitem">Technology</a>
+              <a href="/technology" role="menuitem">How it Works</a>
               <a href="/blog" role="menuitem">Blog</a>
+              <a href="/faq" role="menuitem">FAQ</a>
             </div>
           </div>
-          <a href="/compare" role="menuitem">Compare</a>
-          <a href="/faq">FAQ</a>
           <a href="/contact">Contact</a>
-          <a href="/about">About</a>
           <BookDemoButton />
         </nav>
       </div>
