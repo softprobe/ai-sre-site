@@ -7,19 +7,13 @@
         <h2 class="section-title">Why Customers Choose Softprobe?</h2>
     </header>
 
-    <div class="carousel-nav" aria-label="Outcome slides">
-        <a href="#outcome-1" class="carousel-dot" aria-label="Go to outcome 1"></a>
-        <a href="#outcome-2" class="carousel-dot" aria-label="Go to outcome 2"></a>
-        <a href="#outcome-3" class="carousel-dot" aria-label="Go to outcome 3"></a>
-        <a href="#outcome-4" class="carousel-dot" aria-label="Go to outcome 4"></a>
-    </div>
-
-    <div class="carousel-track">
+    <div class="outcomes-grid">
         <article id="outcome-1" class="step-card">
             <div class="card-top">
                 <div class="step-num">PROD QUALITY</div>
-                <div class="metric-ring" style="--fill: 75%;">
-                    <span>75%</span>
+                <div class="metric-visual">
+                    <div class="metric-bar" style="--percent: 75%;"></div>
+                    <span class="metric-value">75%</span>
                 </div>
             </div>
             <h3 class="step-label">Less bugs leaking to production</h3>
@@ -29,8 +23,9 @@
         <article id="outcome-2" class="step-card">
             <div class="card-top">
                 <div class="step-num">INVESTIGATION</div>
-                <div class="metric-ring" style="--fill: 90%;">
-                    <span>90%</span>
+                <div class="metric-visual">
+                    <div class="metric-bar" style="--percent: 90%;"></div>
+                    <span class="metric-value">90%</span>
                 </div>
             </div>
             <h3 class="step-label">Faster investigation</h3>
@@ -40,75 +35,18 @@
         <article id="outcome-3" class="step-card">
             <div class="card-top">
                 <div class="step-num">SUPPORT</div>
-                <div class="metric-ring" style="--fill: 67%;">
-                    <span>67%</span>
+                <div class="metric-visual">
+                    <div class="metric-bar" style="--percent: 67%;"></div>
+                    <span class="metric-value">67%</span>
                 </div>
             </div>
             <h3 class="step-label">Less support escalations</h3>
             <p class="step-reason">Because CS teams use AI agents to resolve issues themselves.</p>
         </article>
-
-        <article id="outcome-4" class="step-card">
-            <div class="card-top">
-                <div class="step-num">PRODUCT FOCUS</div>
-                <div class="metric-ring" style="--fill: 30%;">
-                    <span>30%</span>
-                </div>
-            </div>
-            <h3 class="step-label">Useless features deleted</h3>
-            <p class="step-reason">Because our platform shows which features are used and which are not.</p>
-        </article>
     </div>
 </section>
 
-<script is:inline>
-    (() => {
-        const track = document.querySelector('.carousel-track');
-        if (!track) return;
 
-        const cards = Array.from(track.querySelectorAll('.step-card'));
-        if (cards.length <= 1) return;
-
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-        let index = 0;
-        let timer;
-        const intervalMs = 4500;
-
-        const goTo = (nextIndex) => {
-            const card = cards[nextIndex];
-            if (!card) return;
-            track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
-            index = nextIndex;
-        };
-
-        const tick = () => {
-            const next = (index + 1) % cards.length;
-            goTo(next);
-        };
-
-        const start = () => {
-            stop();
-            timer = window.setInterval(tick, intervalMs);
-        };
-
-        const stop = () => {
-            if (timer) window.clearInterval(timer);
-        };
-
-        track.addEventListener('mouseenter', stop);
-        track.addEventListener('mouseleave', start);
-        track.addEventListener('focusin', stop);
-        track.addEventListener('focusout', start);
-
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) stop();
-            else start();
-        });
-
-        start();
-    })();
-</script>
 
 <style>
     .section {
@@ -117,7 +55,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 24px;
+        gap: 48px;
     }
 
     .section-head {
@@ -134,72 +72,33 @@
         color: #111827;
     }
 
-    .carousel-nav {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .carousel-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: rgba(59, 130, 246, 0.3);
-        transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-
-    .carousel-dot:hover {
-        transform: scale(1.2);
-        background: rgba(37, 99, 235, 0.8);
-    }
-
-    .carousel-track {
-        display: flex;
+    .outcomes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 24px;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
         width: 100%;
         max-width: var(--site-max-width);
-        padding-bottom: 8px;
-    }
-
-    .carousel-track::-webkit-scrollbar {
-        height: 8px;
-    }
-
-    .carousel-track::-webkit-scrollbar-track {
-        background: rgba(148, 163, 184, 0.2);
-        border-radius: 999px;
-    }
-
-    .carousel-track::-webkit-scrollbar-thumb {
-        background: rgba(37, 99, 235, 0.45);
-        border-radius: 999px;
     }
 
     .step-card {
-        scroll-snap-align: center;
-        min-width: min(860px, 86vw);
         background: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: 20px;
-        padding: 32px;
+        padding: clamp(24px, 4vw, 42px);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         box-shadow: 
             0 4px 6px -1px rgba(0, 0, 0, 0.05),
             0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        padding: clamp(24px, 4vw, 42px);
-        gap: 16px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .step-card:hover {
         transform: translateY(-4px);
+        border-color: var(--primary-color);
         box-shadow: 
             0 10px 15px -1px rgba(0, 0, 0, 0.05),
             0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -207,72 +106,81 @@
 
     .card-top {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 8px;
     }
 
     .step-num {
         font-size: 0.75rem;
         font-weight: 800;
-        color: #3b82f6;
+        color: var(--primary-color);
         letter-spacing: 0.12em;
         text-transform: uppercase;
+        opacity: 0.8;
     }
 
-    .metric-ring {
-        width: clamp(110px, 12vw, 140px);
-        aspect-ratio: 1 / 1;
-        border-radius: 999px;
-        display: grid;
-        place-items: center;
-        background:
-            radial-gradient(closest-side, #ffffff 72%, transparent 73% 100%),
-            conic-gradient(#2563eb var(--fill), rgba(37, 99, 235, 0.18) 0);
+    .metric-visual {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
     }
 
-    .metric-ring span {
-        font-size: clamp(1.4rem, 2.8vw, 2rem);
+    .metric-bar {
+        flex: 1;
+        height: 12px;
+        background: rgba(79, 70, 229, 0.1);
+        border-radius: 99px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .metric-bar::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: var(--percent);
+        background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        border-radius: 99px;
+    }
+
+    .metric-value {
+        font-size: 1.75rem;
         font-weight: 900;
         color: #111827;
+        min-width: 4ch;
+        text-align: right;
     }
 
     .step-label {
         margin: 0;
-        font-size: clamp(1.3rem, 2.2vw, 2rem);
+        font-size: 1.4rem;
         font-weight: 850;
-        line-height: 1.15;
+        line-height: 1.2;
         color: #111827;
     }
 
     .step-reason {
         margin: 0;
-        font-size: clamp(1rem, 1.5vw, 1.15rem);
-        line-height: 1.45;
-        color: #1f2937;
+        font-size: 1.05rem;
+        line-height: 1.5;
+        color: #4b5563;
     }
 
-    @media (max-width: 960px) {
-        .section {
-            gap: 20px;
-        }
-
-        .step-card {
-            min-width: 90vw;
+    @media (max-width: 1024px) {
+        .outcomes-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+        .outcomes-grid {
+            grid-template-columns: 1fr;
+        }
+        
         .section {
-            padding-inline: clamp(16px, 5vw, 24px);
-        }
-
-        .card-top {
-            align-items: flex-start;
-        }
-
-        .step-card {
-            min-width: 92vw;
+            padding-inline: 20px;
         }
     }
 </style>
