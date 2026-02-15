@@ -70,7 +70,13 @@ const jsonld = {
         <div class="canary-process-visual">
           <div class="canary-step-item">
             <div class="canary-step-card">
-              <div class="canary-step-number">1</div>
+              <div class="canary-step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                <div class="canary-step-number">1</div>
+              </div>
               <div class="canary-step-content">
                 <h3>Capture Real User Sessions</h3>
                 <p>100% of sessions (no sampling)</p>
@@ -88,7 +94,16 @@ const jsonld = {
 
           <div class="canary-step-item">
             <div class="canary-step-card">
-              <div class="canary-step-number">2</div>
+              <div class="canary-step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>
+                <div class="canary-step-number">2</div>
+              </div>
               <div class="canary-step-content">
                 <h3>Store the Full Context</h3>
                 <p>Every request, response, and execution path is stored as a structured session graph</p>
@@ -106,7 +121,13 @@ const jsonld = {
 
           <div class="canary-step-item">
             <div class="canary-step-card">
-              <div class="canary-step-number">3</div>
+              <div class="canary-step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+                <div class="canary-step-number">3</div>
+              </div>
               <div class="canary-step-content">
                 <h3>Pre-release Testing</h3>
                 <p>Replay past sessions in a test environment to ensure 100% coverage of real user scenarios</p>
@@ -230,80 +251,128 @@ const jsonld = {
   .canary-step-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-    border-color: rgba(16, 185, 129, 0.3);
+    border-color: #0ea5e980;
   }
 
-  .canary-step-number {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #10b981 0%, #064e3b 100%);
+  .canary-step-icon {
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(135deg, #0f766e 0%, #0ea5e9 100%);
     color: white;
-    border-radius: 12px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    font-size: 1.2rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 8px 16px rgba(15, 118, 110, 0.2);
+    position: relative;
+  }
+  
+  .canary-step-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 2.2;
+  }
+
+  .canary-step-number {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+    background: #0ea5e9;
+    border: 2px solid #ffffff;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
   .canary-step-content h3 {
     margin: 0 0 6px;
     font-size: 1.25rem;
     font-weight: 800;
-    color: #0f172a;
+    color: #0F766E;
     letter-spacing: -0.02em;
   }
 
   .canary-step-content p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.5;
     color: #475569;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .canary-step-connector {
     height: 60px;
-    width: 2px;
-    background: linear-gradient(to bottom, #10b981, #cbd5e1);
+    width: 3px;
+    background: linear-gradient(to bottom, #0ea5e9, #0f766e);
     position: relative;
-    margin: -5px 0;
+    margin: -2px 0;
     z-index: 1;
+    opacity: 0.6;
   }
 
   .canary-step-arrow {
     position: absolute;
-    bottom: -12px;
+    bottom: -16px;
     left: 50%;
     transform: translateX(-50%);
-    color: #94a3b8;
-    width: 24px;
-    height: 24px;
+    color: #0f766e;
+    width: 32px;
+    height: 32px;
     background: white;
     border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #e2e8f0;
+    border: 2px solid #0f766e20;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   }
 
   .canary-step-arrow svg {
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
   }
 
-  @media (max-width: 640px) {
-    .canary-step-card {
-      padding: 16px;
-      gap: 14px;
-    }
-    .canary-step-content h3 {
-      font-size: 1.1rem;
-    }
-    .canary-step-content p {
-      font-size: 0.9rem;
-    }
+  .canary-replay-card { padding: 22px; }
+  .canary-replay-icon-item { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+  .canary-replay-icon-item:first-child { margin-top: 0; }
+  .canary-icon-tile { width: 34px; height: 34px; border: 1px solid #dbe4f0; border-radius: 8px; background: #fff; display: inline-flex; align-items: center; justify-content: center; color: #2563eb; font-size: .72rem; font-weight: 900; }
+  .canary-replay-icon-item p { margin: 0; font-weight: 900; color: #0f172a; }
+
+  .canary-json-title { margin: 0; font-size: .92rem; color: #0f172a; font-weight: 900; }
+  .canary-json-col { margin-top: 12px; border: 1px solid #e5e7eb; border-radius: 12px; background: #f8fafc; padding: 10px; }
+  .canary-json-col p { margin: 0; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: #475569; font-weight: 900; }
+  .canary-json-col pre { margin: 8px 0 0; font-size: 12px; line-height: 1.55; color: #0f172a; white-space: pre; overflow-x: auto; font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
+  .diff-line { display: block; padding: 1px 8px; border-radius: 6px; }
+  .diff-line-ctx { color: #0f172a; }
+  .diff-line-del { color: #991b1b; background: #fef2f2; border: 1px solid #fecaca; }
+  .diff-line-add { color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; }
+
+  .canary-safety-visual { width: min(760px,100%); display: grid; gap: 10px; }
+  .canary-lane { border-radius: 12px; border: 1px solid #e5e7eb; padding: 12px; display: flex; justify-content: space-between; gap: 10px; }
+  .canary-lane p { margin: 0; font-size: .86rem; font-weight: 800; color: #0f172a; }
+  .canary-lane span { font-size: .72rem; font-weight: 900; border-radius: 999px; padding: 5px 10px; }
+  .canary-lane-prod { background: #f0fdf4; border-color: #bbf7d0; }
+  .canary-lane-prod span { background: #dcfce7; color: #166534; }
+  .canary-lane-replay { background: #eff6ff; border-color: #bfdbfe; }
+  .canary-lane-replay span { background: #dbeafe; color: #1e3a8a; }
+  .canary-lane-gate { background: #fef2f2; border-color: #fecaca; }
+  .canary-lane-gate span { background: #fee2e2; color: #991b1b; }
+
+  .canary-coverage { margin-top: 14px; border: 1px solid #dbe4f0; border-radius: 18px; background: linear-gradient(150deg,#f8fafc 0%,#f0fdf4 100%); padding: 24px; }
+  .canary-coverage-line { margin: 0; font-size: clamp(1.24rem,2.6vw,1.9rem); font-weight: 900; color: #0f172a; }
+  .canary-coverage ul { margin: 14px 0 0; padding-left: 20px; color: #334155; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .canary-env-grid { grid-template-columns: 1fr; }
+    .canary-flow-chip { width: 106px; font-size: .58rem; }
+    .canary-flow-chip-doc { width: 124px; }
   }
 </style>
