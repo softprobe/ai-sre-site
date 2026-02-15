@@ -124,7 +124,7 @@
     .hero-steps-column {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 32px;
     }
 
     .hero-steps-column .section-head {
@@ -142,62 +142,62 @@
 
     .step-cards-container {
         display: grid;
-        gap: 24px;
+        gap: 20px;
     }
 
     .step-card {
         background: #ffffff;
         border: 1px solid #e2e8f0;
-        border-radius: 24px;
-        padding: 30px;
+        border-radius: 20px;
+        padding: 24px;
         box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .step-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.1);
-        border-color: #7c3aed30;
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08);
+        border-color: #7c3aed40;
     }
 
     .step-label {
         font-size: 0.75rem;
         font-weight: 900;
         color: #7c3aed;
-        letter-spacing: 0.15em;
-        margin-bottom: 12px;
+        letter-spacing: 0.12em;
+        margin-bottom: 8px;
         display: inline-block;
     }
 
     .step-title {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
         font-weight: 800;
         color: #0f172a;
-        margin: 0 0 12px 0;
+        margin: 0 0 10px 0;
         line-height: 1.25;
     }
 
     .step-text {
-        font-size: 1rem;
+        font-size: 0.95rem;
         color: #475569;
         line-height: 1.6;
         margin: 0;
     }
 
-    /* Diagram Styling - Minimized & Fixed */
+    /* Diagram Styling - Decisively Fixed */
     .hero-diagram-column {
         position: relative;
         background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
         border-radius: 40px;
         border: 1px solid #e2e8f0;
-        padding: 60px 30px;
-        overflow: visible; /* Changed to allow floating history */
+        padding: 50px 20px;
+        overflow: hidden; /* Back to hidden for clean contain */
     }
 
     .diagram-container {
         position: relative;
         width: 100%;
-        height: 520px; /* Increased height to avoid overlap */
+        height: 560px; /* Balanced height */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -216,56 +216,54 @@
     .connection-line {
         fill: none;
         stroke: #6366f1;
-        stroke-width: 1.5;
-        opacity: 0.2;
+        stroke-width: 1.2;
+        opacity: 0.25;
     }
 
     .flow-particle {
         fill: #7c3aed;
-        filter: drop-shadow(0 0 4px #7c3aed);
+        filter: drop-shadow(0 0 3px #7c3aed);
     }
 
     /* Rows Management */
     .roles-row, .agents-row, .tools-row {
         display: flex;
         justify-content: center;
-        gap: 16px;
+        gap: 12px;
         width: 100%;
         position: relative;
         z-index: 5;
     }
 
     .role-card {
-        padding: 8px 18px;
+        padding: 6px 12px;
         background: white;
         border: 1px solid #e2e8f0;
         border-radius: 999px;
-        font-size: 0.72rem;
+        font-size: 0.65rem;
         font-weight: 900;
         color: #64748b;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        letter-spacing: 0.02em;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
     }
 
     .agent-node {
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
         background: white;
         border: 1px solid #e2e8f0;
-        border-radius: 14px;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.04);
-        transition: transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.03);
     }
     
-    .agent-node:hover { transform: scale(1.05); }
-
     .agent-node::before {
         content: '';
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         background: #7c3aed;
         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75Zm4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat center;
         mask-size: contain;
@@ -273,27 +271,31 @@
 
     .core-container {
         position: relative;
-        width: 240px;
-        height: 180px;
+        width: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        margin: 20px 0;
+        margin: 30px 0;
     }
 
     .logo-center {
         position: relative;
         z-index: 10;
         background: white;
-        padding: 16px;
-        border-radius: 28px;
+        padding: 12px;
+        border-radius: 20px;
         border: 1px solid #e2e8f0;
-        box-shadow: 0 25px 30px -10px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.08);
+    }
+
+    .robot-logo {
+        width: 48px;
+        height: 48px;
+        display: block;
     }
 
     .core-modules {
-        position: absolute;
-        bottom: -12px;
+        margin-top: -10px;
         z-index: 11;
         width: 100%;
         display: flex;
@@ -303,56 +305,56 @@
     .module-box {
         background: #7c3aed;
         color: white;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         font-weight: 900;
-        padding: 6px 16px;
+        padding: 4px 12px;
         border-radius: 999px;
         white-space: nowrap;
-        box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
+        box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.4);
     }
 
-    /* Chat History - Cleaned & Improved Padding */
+    /* Chat History - Scaled and Positioned Carefully */
     .core-chat-history {
         position: absolute;
-        top: -60px;
-        right: -80px;
-        width: 210px;
+        top: -70px;
+        left: 62%; /* Pushed further right to avoid logo overlap */
+        width: 170px;
         background: white;
         border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 12px;
-        font-size: 0.65rem;
-        box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
-        z-index: 15;
+        border-radius: 12px;
+        padding: 10px;
+        font-size: 0.6rem;
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+        z-index: 20;
     }
 
     .core-trace-header {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 10px;
-        padding-bottom: 8px;
+        gap: 6px;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
         border-bottom: 1px solid #f1f5f9;
-        color: #475569;
+        color: #64748b;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }
 
     .core-trace-live-dot {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         background: #22c55e;
         border-radius: 999px;
-        box-shadow: 0 0 8px #22c55e;
+        box-shadow: 0 0 4px #22c55e;
         animation: pulse 2s infinite;
     }
 
     .core-chat-track {
-        min-height: 80px;
+        min-height: 60px;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
     }
 
     .core-trace-item {
@@ -361,15 +363,15 @@
 
     .core-trace-item.is-visible {
         display: block;
-        animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        animation: fadeIn 0.3s ease;
     }
 
     .core-trace-meta {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.05em;
         font-weight: 900;
-        margin-bottom: 4px;
+        margin-bottom: 2px;
     }
 
     .kind-thinking .core-trace-meta { color: #8b5cf6; }
@@ -380,60 +382,65 @@
         margin: 0;
         color: #1e293b;
         font-weight: 700;
-        line-height: 1.4;
+        line-height: 1.3;
     }
 
     .core-trace-command {
         background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        padding: 6px 8px;
-        border-radius: 6px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        border: 1px solid #e1e7ef;
+        padding: 4px 6px;
+        border-radius: 4px;
+        font-family: monospace;
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: #475569;
-        margin-top: 4px;
+        color: #64748b;
+        margin-top: 2px;
+    }
+
+    .tool-groups-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        margin-top: 20px;
     }
 
     .tool-group {
-        padding: 10px 14px;
+        padding: 6px 10px;
         background: white;
         border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
     .icons-wrapper {
         display: flex;
-        gap: 10px;
+        gap: 8px;
     }
 
     .tool-icon {
-        width: 20px;
-        height: 20px;
-        opacity: 0.85;
-        transition: opacity 0.2s;
+        width: 16px;
+        height: 16px;
+        opacity: 0.8;
     }
-    
-    .tool-icon:hover { opacity: 1; }
 
     @keyframes pulse {
-        0% { transform: scale(0.95); opacity: 0.5; }
+        0% { transform: scale(0.9); opacity: 0.6; }
         50% { transform: scale(1.1); opacity: 1; }
-        100% { transform: scale(0.95); opacity: 0.5; }
+        100% { transform: scale(0.9); opacity: 0.6; }
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
+        from { opacity: 0; transform: translateY(6px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 1024px) {
         .hero-layout-wrapper {
             grid-template-columns: 1fr;
-            gap: 60px;
+            gap: 40px;
             margin: 40px auto;
         }
 
@@ -490,7 +497,7 @@
             
             // Add particle for animation
             const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('r', '3');
+            circle.setAttribute('r', '2.5');
             circle.setAttribute('class', 'flow-particle');
             
             // Animate along path
@@ -508,13 +515,15 @@
             // Clear existing
             svg.innerHTML = '';
             
-            const coreCenter = getCenter(coreBox);
+            // Find center of logo icon specifically for better connection points
+            const logoIcon = coreBox.querySelector('.logo-icon');
+            const coreCenter = getCenter(logoIcon || coreBox);
 
-            // Draw Lines: Agent -> Core
+            // Draw Lines: Agent -> Core (Center Logo)
             agents.forEach((agent) => {
                 if (agent) {
                     const agentCenter = getCenter(agent);
-                    const { path, circle } = createLine(agentCenter.x, agentCenter.top, coreCenter.x, coreCenter.bottom + 10);
+                    const { path, circle } = createLine(agentCenter.x, agentCenter.top, coreCenter.x, coreCenter.bottom);
                     svg.appendChild(path);
                     svg.appendChild(circle);
                 }
@@ -542,8 +551,8 @@
         if (document.readyState === 'loading') {
             window.addEventListener('load', draw);
         } else {
-            // Small timeout to ensure layout is settled
-            setTimeout(draw, 100);
+            // Wait for styles and layout to stabilize
+            setTimeout(draw, 300);
         }
         // Redraw on resize
         window.addEventListener('resize', draw);
@@ -569,7 +578,10 @@
                 const isLastStep = currentIndex >= items.length - 1;
 
                 if (isLastStep) {
-                    items.forEach((item) => item.classList.remove('is-visible'));
+                    items.forEach((item) => {
+                        item.classList.remove('is-visible');
+                        item.style.opacity = "1";
+                    });
                     currentIndex = 0;
                     items[currentIndex].classList.add('is-visible');
                     showNext(holdMs);
@@ -578,7 +590,7 @@
 
                 currentIndex += 1;
                 items.forEach((item, idx) => {
-                    if (idx < currentIndex) item.style.opacity = "0.5";
+                    if (idx < currentIndex) item.style.opacity = "0.4";
                     else if (idx === currentIndex) item.style.opacity = "1";
                 });
                 
