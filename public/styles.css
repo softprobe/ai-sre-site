@@ -141,8 +141,8 @@ body {
 
 .home-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    gap: clamp(24px, 3vw, 56px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.36fr);
+    gap: clamp(8px, 1.5vw, 20px);
     align-items: center;
     margin: 100px 0;
 }
@@ -178,6 +178,8 @@ body {
 .home-hero-visual-wrap {
     position: relative;
     isolation: isolate;
+    width: 100%;
+    justify-self: stretch;
 }
 
 .home-hero-visual-wrap::before {
@@ -1577,6 +1579,11 @@ body {
 
     .home-hero-copy h1 {
         max-width: 14ch;
+    }
+
+    .home-hero-visual-wrap {
+        width: 100%;
+        justify-self: stretch;
     }
 
     .home-hero-visual-frame {
