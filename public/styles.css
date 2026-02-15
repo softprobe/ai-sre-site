@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap');
 
 :root {
-    /* --primary-bg: #F8FAFC; */
+    --primary-bg: #F8FAFC;
     --box-bg: #f3f5ff;
     --box-border: #dbeafe;
     --primary-color: #4f46e5;
@@ -10,7 +10,7 @@
     --line-color: #cbd5e1;
     --anim-speed: 2s;
     --site-page-max-width: 1380px;
-    --site-page-padding-desktop: 40px 24px 72px;
+    --site-page-padding-desktop: 40px 0px 72px;
     --site-page-gap-desktop: clamp(92px, 8vw, 132px);
     --site-page-padding-tablet: 28px 16px 56px;
     --site-page-gap-tablet: clamp(72px, 7vw, 108px);
