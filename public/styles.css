@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap');
 
 :root {
-    --primary-bg: #F8FAFC;
+    /* --primary-bg: #F8FAFC; */
     --box-bg: #f3f5ff;
     --box-border: #dbeafe;
+    --primary-color: #4f46e5;
     --text-color: #4f46e5;
     --accent-color: #8b5cf6;
     --line-color: #cbd5e1;
@@ -197,9 +198,9 @@ body {
     z-index: 1;
     border-radius: 22px;
     overflow: hidden;
-    border: 1px solid #dbe4f0;
-    background: #f8fafc;
-    box-shadow: 0 26px 54px rgba(15, 23, 42, 0.16);
+    border: 0;
+    background: transparent;
+    box-shadow: none;
 }
 
 .home-hero-visual-frame video {
@@ -1853,7 +1854,7 @@ body {
 
 .debug-btn-primary,
 .debug-btn-primary:visited {
-    background: #0f172a;
+    background: var(--primary-color);
     color: #ffffff !important;
     box-shadow: 0 10px 20px rgba(15, 23, 42, 0.18);
 }

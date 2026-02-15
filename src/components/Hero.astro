@@ -4,35 +4,111 @@
 
 <section class="section">
     <header class="section-head">
-        <h2 class="section-title">How Softprobe AI SRE Works</h2>
+        <h2 class="section-title">Softprobe AI SRE Outcomes</h2>
     </header>
 
-    <div class="steps-grid">
-        <div class="step-card">
-            <div class="step-num">STEP 01</div>
-            <h3 class="step-label">Capture & Replay</h3>
-            <p class="step-desc">
-                Softprobe silently captures real production traffic and user sessions. Before your next release, our AI replays them in your test environment to validate everything works.
-            </p>
-        </div>
+    <div class="carousel-nav" aria-label="Outcome slides">
+        <a href="#outcome-1" class="carousel-dot" aria-label="Go to outcome 1"></a>
+        <a href="#outcome-2" class="carousel-dot" aria-label="Go to outcome 2"></a>
+        <a href="#outcome-3" class="carousel-dot" aria-label="Go to outcome 3"></a>
+        <a href="#outcome-4" class="carousel-dot" aria-label="Go to outcome 4"></a>
+    </div>
 
-        <div class="step-card">
-            <div class="step-num">STEP 02</div>
-            <h3 class="step-label">Softprobe Builds the Session Graph</h3>
-            <p class="step-desc">
-                Every request, response, and execution path is stored as a structured session graph — 100% of data, zero sampling. This gives AI a complete map of your system behavior.
-            </p>
-        </div>
+    <div class="carousel-track">
+        <article id="outcome-1" class="step-card">
+            <div class="card-top">
+                <div class="step-num">PROD QUALITY</div>
+                <div class="metric-ring" style="--fill: 75%;">
+                    <span>75%</span>
+                </div>
+            </div>
+            <h3 class="step-label">Less bugs leaking to production</h3>
+            <p class="step-reason">Because we canary test before deploy.</p>
+        </article>
 
-        <div class="step-card">
-            <div class="step-num">STEP 03</div>
-            <h3 class="step-label">AI SRE handles testing, production monitoring and debugging</h3>
-            <p class="step-desc">
-                Structured session graph architecture enables agentic review of execution path to find exact error causes; fully deterministic (no probabilistic guessing).
-            </p>
-        </div>
+        <article id="outcome-2" class="step-card">
+            <div class="card-top">
+                <div class="step-num">INVESTIGATION</div>
+                <div class="metric-ring" style="--fill: 90%;">
+                    <span>90%</span>
+                </div>
+            </div>
+            <h3 class="step-label">Faster investigation</h3>
+            <p class="step-reason">Because AI SRE agents investigate automatically.</p>
+        </article>
+
+        <article id="outcome-3" class="step-card">
+            <div class="card-top">
+                <div class="step-num">SUPPORT</div>
+                <div class="metric-ring" style="--fill: 67%;">
+                    <span>67%</span>
+                </div>
+            </div>
+            <h3 class="step-label">Less support escalations</h3>
+            <p class="step-reason">Because CS teams use AI agents to resolve issues themselves.</p>
+        </article>
+
+        <article id="outcome-4" class="step-card">
+            <div class="card-top">
+                <div class="step-num">PRODUCT FOCUS</div>
+                <div class="metric-ring" style="--fill: 30%;">
+                    <span>30%</span>
+                </div>
+            </div>
+            <h3 class="step-label">Useless features deleted</h3>
+            <p class="step-reason">Because our platform shows which features are used and which are not.</p>
+        </article>
     </div>
 </section>
+
+<script is:inline>
+    (() => {
+        const track = document.querySelector('.carousel-track');
+        if (!track) return;
+
+        const cards = Array.from(track.querySelectorAll('.step-card'));
+        if (cards.length <= 1) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        let index = 0;
+        let timer;
+        const intervalMs = 4500;
+
+        const goTo = (nextIndex) => {
+            const card = cards[nextIndex];
+            if (!card) return;
+            track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+            index = nextIndex;
+        };
+
+        const tick = () => {
+            const next = (index + 1) % cards.length;
+            goTo(next);
+        };
+
+        const start = () => {
+            stop();
+            timer = window.setInterval(tick, intervalMs);
+        };
+
+        const stop = () => {
+            if (timer) window.clearInterval(timer);
+        };
+
+        track.addEventListener('mouseenter', stop);
+        track.addEventListener('mouseleave', start);
+        track.addEventListener('focusin', stop);
+        track.addEventListener('focusout', start);
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stop();
+            else start();
+        });
+
+        start();
+    })();
+</script>
 
 <style>
     .section {
@@ -41,7 +117,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 60px;
+        gap: 24px;
     }
 
     .section-head {
@@ -58,15 +134,54 @@
         color: #111827;
     }
 
-    .steps-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+    .carousel-nav {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.3);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .carousel-dot:hover {
+        transform: scale(1.2);
+        background: rgba(37, 99, 235, 0.8);
+    }
+
+    .carousel-track {
+        display: flex;
         gap: 24px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
         width: 100%;
         max-width: var(--site-max-width);
+        padding-bottom: 8px;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .carousel-track::-webkit-scrollbar-track {
+        background: rgba(148, 163, 184, 0.2);
+        border-radius: 999px;
+    }
+
+    .carousel-track::-webkit-scrollbar-thumb {
+        background: rgba(37, 99, 235, 0.45);
+        border-radius: 999px;
     }
 
     .step-card {
+        scroll-snap-align: center;
+        min-width: min(860px, 86vw);
         background: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
@@ -78,7 +193,8 @@
             0 10px 15px -3px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        padding: clamp(24px, 4vw, 42px);
+        gap: 16px;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -89,33 +205,74 @@
             0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
 
+    .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
     .step-num {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         font-weight: 800;
         color: #3b82f6;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
+    }
+
+    .metric-ring {
+        width: clamp(110px, 12vw, 140px);
+        aspect-ratio: 1 / 1;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background:
+            radial-gradient(closest-side, #ffffff 72%, transparent 73% 100%),
+            conic-gradient(#2563eb var(--fill), rgba(37, 99, 235, 0.18) 0);
+    }
+
+    .metric-ring span {
+        font-size: clamp(1.4rem, 2.8vw, 2rem);
+        font-weight: 900;
+        color: #111827;
     }
 
     .step-label {
         margin: 0;
-        font-size: 1.25rem;
-        font-weight: 800;
-        line-height: 1.2;
+        font-size: clamp(1.3rem, 2.2vw, 2rem);
+        font-weight: 850;
+        line-height: 1.15;
         color: #111827;
     }
 
-    .step-desc {
+    .step-reason {
         margin: 0;
-        font-size: 1rem;
-        line-height: 1.6;
-        color: #4b5563;
+        font-size: clamp(1rem, 1.5vw, 1.15rem);
+        line-height: 1.45;
+        color: #1f2937;
     }
 
     @media (max-width: 960px) {
-        .steps-grid {
-            grid-template-columns: 1fr;
-            max-width: 600px;
+        .section {
+            gap: 20px;
+        }
+
+        .step-card {
+            min-width: 90vw;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .section {
+            padding-inline: clamp(16px, 5vw, 24px);
+        }
+
+        .card-top {
+            align-items: flex-start;
+        }
+
+        .step-card {
+            min-width: 92vw;
         }
     }
 </style>

@@ -163,18 +163,18 @@
     .diagram-wrapper {
         width: 100%;
         height: auto;
-        min-height: 400px;
+        min-height: 470px;
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
         position: relative;
-        background: #f8fafc;
+        background: transparent;
     }
 
     .diagram-scale-container {
         /* Scaled to fit comfortably within the visual frame width */
-        transform: scale(0.60);
+        transform: scale(0.74);
         transform-origin: center center;
         width: 1020px;
         flex-shrink: 0;
@@ -482,7 +482,7 @@
     }
 
     @media (max-width: 900px) {
-        .diagram-scale-container { transform: scale(0.5); width: 1000px; }
+        .diagram-scale-container { transform: scale(0.58); width: min(1000px, 100%); }
         .roles-row { width: 100%; flex-wrap: wrap; justify-content: center; gap: 12px; }
         .core-container { width: 100%; height: auto; padding: 20px 16px; flex-direction: column; gap: 14px; }
         .core-modules { position: static; right: auto; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%; }
