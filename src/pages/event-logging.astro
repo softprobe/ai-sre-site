@@ -7,42 +7,51 @@ import sessionGraphImage from '../assets/session-graph.png';
 
 <BaseLayout title="AI-Native Event Logging - Softprobe">
     {/* Hero Section */}
-    <section class="bg-gradient-to-b from-emerald-50/40 to-[#F8FAFC] pt-32 pb-16 md:pt-40 md:pb-20 w-full">
+    <section class="bg-gradient-to-b from-emerald-50/40 to-[#F8FAFC] pt-28 pb-12 w-full">
       <div class="max-w-7xl mx-auto px-6 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-12 max-w-5xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-14 max-w-5xl mx-auto leading-[1.1]">
           Log events as structured session graphs—{" "}
           <span class="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
             the language of AI agents
           </span>
         </h1>
 
-        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {/* Card 1 */}
-          <div class="group p-8 bg-white/70 backdrop-blur-md border border-slate-200/50 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300 text-left flex flex-col items-start bg-gradient-to-br from-white/80 to-emerald-50/30">
-            <div class="w-12 h-12 bg-emerald-100/80 rounded-xl flex items-center justify-center text-emerald-600 mb-6 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-sm shadow-emerald-200">
-              <Fragment set:html={icons.CheckCircle2} />
+        <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto border-t border-slate-200/60 pt-10">
+          {/* Item 1 */}
+          <div class="flex flex-col items-start text-left">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="text-emerald-500">
+                <Fragment set:html={icons.CheckCircle2} />
+              </div>
+              <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Efficiency</span>
             </div>
-            <p class="text-slate-700 font-bold text-lg leading-tight tracking-tight">
+            <p class="text-slate-800 font-semibold text-lg leading-snug">
               Reduce observability costs by up to 90%
             </p>
           </div>
 
-          {/* Card 2 */}
-          <div class="group p-8 bg-white/70 backdrop-blur-md border border-slate-200/50 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300 text-left flex flex-col items-start bg-gradient-to-br from-white/80 to-emerald-50/30">
-            <div class="w-12 h-12 bg-emerald-100/80 rounded-xl flex items-center justify-center text-emerald-600 mb-6 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-sm shadow-emerald-200">
-              <Fragment set:html={icons.CheckCircle2} />
+          {/* Item 2 */}
+          <div class="flex flex-col items-start text-left">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="text-emerald-500">
+                <Fragment set:html={icons.CheckCircle2} />
+              </div>
+              <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Fidelity</span>
             </div>
-            <p class="text-slate-700 font-bold text-lg leading-tight tracking-tight">
-              Preserve 100% of user sessions (no sampling!) including all API message bodies
+            <p class="text-slate-800 font-semibold text-lg leading-snug">
+              Preserve 100% of user sessions including all API message bodies
             </p>
           </div>
 
-          {/* Card 3 */}
-          <div class="group p-8 bg-white/70 backdrop-blur-md border border-slate-200/50 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300 text-left flex flex-col items-start bg-gradient-to-br from-white/80 to-emerald-50/30">
-            <div class="w-12 h-12 bg-emerald-100/80 rounded-xl flex items-center justify-center text-emerald-600 mb-6 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-sm shadow-emerald-200">
-              <Fragment set:html={icons.CheckCircle2} />
+          {/* Item 3 */}
+          <div class="flex flex-col items-start text-left">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="text-emerald-500">
+                <Fragment set:html={icons.CheckCircle2} />
+              </div>
+              <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Speed</span>
             </div>
-            <p class="text-slate-700 font-bold text-lg leading-tight tracking-tight">
+            <p class="text-slate-800 font-semibold text-lg leading-snug">
               Catch production issues instantly
             </p>
           </div>
@@ -51,7 +60,7 @@ import sessionGraphImage from '../assets/session-graph.png';
     </section>
 
     {/* The Problem */}
-    <section id="the-problem" class="py-24 w-full">
+    <section id="the-problem" class="py-14 w-full">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center gap-3 mb-6">
           <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
@@ -114,7 +123,7 @@ import sessionGraphImage from '../assets/session-graph.png';
     </section>
 
     {/* The Solution */}
-    <section class="bg-emerald-50/30 py-24 w-full" id="the-solution">
+    <section class="bg-emerald-50/30 py-14 w-full" id="the-solution">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center gap-3 mb-6">
           <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
@@ -171,7 +180,7 @@ import sessionGraphImage from '../assets/session-graph.png';
     </section>
 
     {/* The Technology */}
-    <section id="the-technology" class="py-24 w-full">
+    <section id="the-technology" class="py-14 w-full">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center gap-3 mb-6">
           <div class="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center">
@@ -228,7 +237,7 @@ import sessionGraphImage from '../assets/session-graph.png';
     </section>
 
     {/* CTA Section */}
-    <section class="bg-slate-900 py-24 w-full">
+    <section class="bg-slate-900 py-16 w-full">
       <div class="max-w-4xl mx-auto px-6 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
           Ready to get started?
