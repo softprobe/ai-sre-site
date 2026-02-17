@@ -57,7 +57,7 @@ const featureGroups = [
         feature: "Automatic event instrumentation",
         softprobe: true,
         others: false,
-        highlight: false,
+        highlight: true,
       },
     ]
   },
@@ -80,7 +80,7 @@ const featureGroups = [
         feature: "Zero code changes required",
         softprobe: true,
         others: false,
-        highlight: false,
+        highlight: true,
       },
     ]
   }
@@ -135,11 +135,6 @@ const featureGroups = [
                     <span class={`text-sm ${row.highlight ? "font-semibold text-slate-800" : "text-slate-600"}`}>
                       {row.feature}
                     </span>
-                    {row.highlight && (
-                      <span class="hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-700 uppercase">
-                        Unique
-                      </span>
-                    )}
                   </div>
                   <div class="p-4 md:p-5 flex justify-center items-center">
                     {row.softprobe === true && <div class="text-emerald-500"><Fragment set:html={icons.Check} /></div>}
