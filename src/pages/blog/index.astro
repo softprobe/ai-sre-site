@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { icons } from '../../lib/icons';
+
+const posts = [
+  {
+    title: "What Is an AI SRE?",
+    slug: "what-is-an-ai-sre",
+    excerpt: "Site Reliability Engineering has always been about keeping complex systems reliable while allowing teams to move fast. Learn how AI is transforming the SRE role.",
+    date: "February 16, 2026",
+    readTime: "8 min read"
+  }
+];
+---
+
+<BaseLayout 
+  title="Blog - Softprobe"
+  description="Insights on AI-driven site reliability engineering, production debugging, and modern observability practices."
+>
+  <section class="py-24 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-xs font-semibold tracking-widest uppercase text-emerald-600 mb-3 block">
+          Blog
+        </span>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
+          Insights on AI SRE
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+          Deep dives into AI-driven reliability, production debugging, and the future of site reliability engineering.
+        </p>
+      </div>
+
+      <div class="grid gap-8 max-w-4xl mx-auto">
+        {posts.map((post) => (
+          <a 
+            href={`/blog/${post.slug}`}
+            class="group bg-white p-8 rounded-2xl border border-slate-100 hover:border-violet-200 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="flex items-center gap-3 text-sm text-slate-500 mb-3">
+              <time>{post.date}</time>
+              <span>•</span>
+              <span>{post.readTime}</span>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-violet-600 transition-colors">
+              {post.title}
+            </h2>
+            <p class="text-slate-600 mb-4 leading-relaxed">
+              {post.excerpt}
+            </p>
+            <div class="inline-flex items-center gap-2 text-violet-600 font-semibold">
+              Read article
+              <Fragment set:html={icons.ArrowRight} />
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

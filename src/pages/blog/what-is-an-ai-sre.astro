@@ -1,0 +1,386 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="What Is an AI SRE? | Softprobe Blog"
+  description="Site Reliability Engineering has always been about keeping complex systems reliable while allowing teams to move fast. Learn how AI is transforming the SRE role and what it means for modern engineering teams."
+>
+  <article class="py-16 w-full">
+    <div class="max-w-4xl mx-auto px-6">
+      {/* Header */}
+      <header class="mb-12">
+        <a href="/blog" class="inline-flex items-center gap-2 text-violet-600 font-semibold mb-6 hover:text-violet-700 transition-colors">
+          ← Back to Blog
+        </a>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
+          What Is an AI SRE?
+        </h1>
+        <div class="flex items-center gap-3 text-slate-600">
+          <time>February 16, 2026</time>
+          <span>•</span>
+          <span>8 min read</span>
+        </div>
+      </header>
+
+      {/* Content */}
+      <div class="prose prose-lg prose-slate max-w-none">
+        <p class="lead">
+          Site Reliability Engineering (SRE) has always been about one core goal: keeping complex systems reliable while allowing teams to move fast. As systems have grown more distributed, more event-driven, and more data-intensive, the traditional SRE toolchain has started to strain.
+        </p>
+
+        <p>This is where a new role is emerging: the <strong>AI SRE</strong>.</p>
+
+        <p>
+          An AI SRE augments classic SRE practices with artificial intelligence—using machine learning, large language models (LLMs), and structured system data to detect issues earlier, debug faster, and automate reliability work that previously required deep human expertise.
+        </p>
+
+        <p>In this article, we'll explain:</p>
+        <ul>
+          <li>What an AI SRE is (and is not)</li>
+          <li>Why the role is emerging now</li>
+          <li>How AI SREs actually work</li>
+          <li>The technologies that enable AI-driven reliability</li>
+          <li>What this means for modern engineering teams</li>
+        </ul>
+
+        <h2>The Traditional SRE Model (And Its Limits)</h2>
+
+        <p>Classic SRE responsibilities include:</p>
+        <ul>
+          <li>Monitoring SLIs, SLOs, and error budgets</li>
+          <li>On-call incident response</li>
+          <li>Root cause analysis (RCA)</li>
+          <li>Capacity planning</li>
+          <li>Reducing toil through automation</li>
+        </ul>
+
+        <p>
+          Traditionally, SREs rely on logs, metrics, and traces—often stored in separate systems—to understand what happened during an incident.
+        </p>
+
+        <p>As modern architectures evolve, several problems emerge:</p>
+        <ul>
+          <li><strong>Exploding data volume</strong> – High-cardinality logs and events are often sampled or dropped to control costs.</li>
+          <li><strong>Fragmented context</strong> – Logs, metrics, and traces lose their relationships across services.</li>
+          <li><strong>Manual debugging</strong> – RCA still depends heavily on human intuition and grep-style searching.</li>
+          <li><strong>Alert fatigue</strong> – Threshold-based alerts fire after users are already impacted.</li>
+        </ul>
+
+        <p>The result: SREs spend more time reacting than preventing.</p>
+
+        <h2>What Is an AI SRE?</h2>
+
+        <p>
+          An AI SRE uses AI-native systems to continuously understand, reason about, and act on production behavior.
+        </p>
+
+        <p>Rather than asking: <em>"What dashboards should I check?"</em></p>
+        <p>An AI SRE asks: <em>"What actually changed in the system behavior, and why?"</em></p>
+
+        <h3>A Working Definition</h3>
+
+        <p>
+          <strong>An AI SRE is an agentic platform that applies AI models to production telemetry—logs, events, traces, and state—to proactively ensure reliability, automate diagnosis, and reduce operational toil.</strong>
+        </p>
+
+        <p>
+          Importantly, AI SRE does not mean replacing SREs with AI. It means amplifying SRE judgment with systems that can reason across massive, complex datasets in real time.
+        </p>
+
+        <h2>Why AI SRE Is Emerging Now</h2>
+
+        <p>Three major shifts are making AI SRE both possible and necessary.</p>
+
+        <h3>1. Systems Are Now Event Graphs, Not Linear Logs</h3>
+
+        <p>
+          Microservices, serverless functions, async queues, and APIs form graphs of causality, not linear request paths.
+        </p>
+
+        <p>
+          Traditional text logs flatten this structure, making it hard for machines—or humans—to reconstruct what actually happened.
+        </p>
+
+        <h3>2. AI Models Finally Understand Context</h3>
+
+        <p>Modern LLMs can reason over:</p>
+        <ul>
+          <li>Temporal sequences</li>
+          <li>Causal relationships</li>
+          <li>Structured data</li>
+          <li>System invariants</li>
+        </ul>
+
+        <p>But only if the data preserves enough semantic structure.</p>
+
+        <h3>3. Reliability Is Now a Business-Critical Differentiator</h3>
+
+        <p>Downtime directly impacts:</p>
+        <ul>
+          <li>Revenue</li>
+          <li>Customer trust</li>
+          <li>Compliance and auditability</li>
+        </ul>
+
+        <p>Organizations can no longer afford slow, manual incident response.</p>
+
+        <h2>What Does an AI SRE Actually Do?</h2>
+
+        <p>In practice, AI SREs focus on four high-leverage activities.</p>
+
+        <h3>1. Proactive Incident Detection</h3>
+
+        <p>Instead of static thresholds, AI SRE systems:</p>
+        <ul>
+          <li>Learn normal system behavior</li>
+          <li>Detect anomalies across correlated services</li>
+          <li>Identify early signals before user impact</li>
+        </ul>
+
+        <p>This reduces mean time to detection (MTTD).</p>
+
+        <h3>2. Automated Root Cause Analysis</h3>
+
+        <p>An AI SRE doesn't sift through thousands of log lines.</p>
+
+        <p>They work with systems that can:</p>
+        <ul>
+          <li>Traverse full request and event graphs</li>
+          <li>Compare current behavior to historical baselines</li>
+          <li>Identify the smallest set of causal changes</li>
+        </ul>
+
+        <p>This dramatically reduces mean time to resolution (MTTR).</p>
+
+        <h3>3. Production-Faithful Testing</h3>
+
+        <p class="bg-violet-50 border-l-4 border-violet-500 p-4 my-6">
+          <strong>Related reading:</strong> Learn more about production‑faithful testing and safe traffic replay on the <a href="https://softprobe.dev" class="text-violet-600 hover:text-violet-700 font-semibold">Softprobe website</a>.
+        </p>
+
+        <p>One unique feature of Softprobe is its pre-release testing. Its unique Otel-compatible event logging architecture allows you to replicate production traffic in test:</p>
+
+        <ul>
+          <li>Real user traffic is captured in production</li>
+          <li>Replayed safely in isolated test environments</li>
+          <li>Dependencies from the recorded user sessions are used in the test environment</li>
+        </ul>
+
+        <p>
+          This enables canary-style testing without impacting real users, with 100% coverage of real user scenarios, and without needing to create any API mocks to test dependencies.
+        </p>
+
+        <h3>4. Reliability Automation</h3>
+
+        <p>Common workflows become automated:</p>
+        <ul>
+          <li>Incident summaries</li>
+          <li>Change impact analysis</li>
+          <li>Postmortem drafts</li>
+          <li>Alert deduplication</li>
+        </ul>
+
+        <p>SREs focus on system design, not firefighting.</p>
+
+        <h2>The Technology Stack Behind AI SRE</h2>
+
+        <p class="bg-emerald-50 border-l-4 border-emerald-500 p-4 my-6">
+          <strong>Related reading:</strong> If you're exploring modern approaches to observability and cost-efficient logging, see <a href="/event-logging" class="text-emerald-600 hover:text-emerald-700 font-semibold">Softprobe's Log Management overview</a>, which dives deeper into structured, lossless telemetry and high‑cardinality event capture.
+        </p>
+
+        <p>AI SRE is not a single tool—it's a stack.</p>
+
+        <h3>Structured Telemetry (Critical)</h3>
+
+        <p>AI systems require structured, lossless data:</p>
+        <ul>
+          <li>Full event capture</li>
+          <li>High-cardinality attributes preserved</li>
+          <li>Causal relationships maintained</li>
+        </ul>
+
+        <p>Without this, AI outputs degrade quickly.</p>
+
+        <h3>Graph-Based Observability</h3>
+
+        <p>Event graphs allow AI to reason about:</p>
+        <ul>
+          <li>Request lifecycles</li>
+          <li>Cross-service dependencies</li>
+          <li>State transitions</li>
+        </ul>
+
+        <p>This is far more powerful than index-based log search.</p>
+
+        <h3>AI & LLM Reasoning Layers</h3>
+
+        <p>On top of structured data, AI systems can:</p>
+        <ul>
+          <li>Answer natural language questions</li>
+          <li>Generate explanations and hypotheses</li>
+          <li>Continuously learn from new incidents</li>
+        </ul>
+
+        <h3>Human-in-the-Loop Controls</h3>
+
+        <p>AI SRE systems assist—but humans approve:</p>
+        <ul>
+          <li>Remediations</li>
+          <li>Rollbacks</li>
+          <li>Policy changes</li>
+        </ul>
+
+        <p>This maintains safety and trust.</p>
+
+        <h2>How AI SRE Changes SRE Metrics</h2>
+
+        <p>AI-driven reliability directly improves:</p>
+        <ul>
+          <li><strong>MTTD</strong> – earlier anomaly detection</li>
+          <li><strong>MTTR</strong> – faster root cause analysis</li>
+          <li><strong>Change failure rate</strong> – safer deployments</li>
+        </ul>
+
+        <p>It also enables new metrics, like:</p>
+        <ul>
+          <li>Debug cost per incident</li>
+          <li>AI confidence scores</li>
+          <li>Reliability automation coverage</li>
+        </ul>
+
+        <h2>Is AI SRE a Role or a Capability?</h2>
+
+        <p>Today, AI SRE is best thought of as a <strong>capability</strong>.</p>
+
+        <p>Some organizations will:</p>
+        <ul>
+          <li>Upskill existing SREs</li>
+          <li>Embed AI tools into platform teams</li>
+          <li>Gradually evolve toward AI-native reliability practices</li>
+        </ul>
+
+        <p>Over time, "AI SRE" may simply become… SRE.</p>
+
+        <h2>The Future of Site Reliability Engineering</h2>
+
+        <p>The original promise of SRE was to treat operations as a software problem.</p>
+
+        <p>AI SRE extends that promise:</p>
+        <ul>
+          <li>Reliability systems that understand behavior</li>
+          <li>Debugging tools that reason, not just search</li>
+          <li>Testing that reflects real production reality</li>
+        </ul>
+
+        <p>Teams that adopt AI SRE practices will:</p>
+        <ul>
+          <li>Ship faster</li>
+          <li>Fail less</li>
+          <li>Recover sooner</li>
+        </ul>
+
+        <p>And they'll do it with fewer sleepless nights.</p>
+
+        <h2>Final Thoughts</h2>
+
+        <p>
+          AI SRE is about finally giving reliability engineers tools that match the complexity of modern systems.
+        </p>
+
+        <p>
+          As production environments become more dynamic, event-driven, and AI-powered themselves, reliability must evolve too.
+        </p>
+      </div>
+
+      {/* Footer CTA */}
+      <div class="mt-16 p-8 bg-gradient-to-r from-violet-50 to-emerald-50 rounded-2xl border border-violet-100">
+        <h3 class="text-2xl font-bold text-slate-900 mb-3">
+          Ready to experience AI-driven reliability?
+        </h3>
+        <p class="text-slate-600 mb-6">
+          See how Softprobe's AI SRE platform can help your team ship faster with fewer incidents.
+        </p>
+        <a 
+          href="https://calendar.app.google/Tnjgub59sebWRR1VA"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-violet-600 text-white rounded-full font-semibold hover:bg-violet-700 transition-colors"
+        >
+          Book a Demo
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose {
+    color: #334155;
+  }
+
+  .prose .lead {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 2rem;
+  }
+
+  .prose h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .prose h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .prose ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+
+  .prose strong {
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .prose em {
+    font-style: italic;
+    color: #475569;
+  }
+
+  .prose a {
+    color: #8b5cf6;
+    text-decoration: underline;
+    text-decoration-color: #8b5cf620;
+    text-underline-offset: 3px;
+    transition: all 0.2s;
+  }
+
+  .prose a:hover {
+    color: #7c3aed;
+    text-decoration-color: #8b5cf6;
+  }
+</style>
