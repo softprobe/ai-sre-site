@@ -6,7 +6,7 @@ const seo = {
   title: "Safe Canary Test - Deterministic Replay with 0% Customer Risk | Softprobe",
   description:
     "Replace risky live canaries with deterministic replay. Softprobe captures real production flows, replays them in an isolated sandbox, validates behavior, and pauses releases on silent mismatches.",
-  canonical: "https://softprobe.ai/canary",
+  canonical: "https://softprobe.ai/api-regression-testing",
   image: "https://softprobe.ai/logos/4.svg",
   type: "website"
 };
@@ -58,7 +58,6 @@ const jsonld = {
   <div class="debug-page canary-page">
     <section class="debug-hero">
       <div class="debug-copy">
-        <p class="debug-kicker">Softprobe Canary</p>
         <h1>Roll out safely with Softprobe Canary</h1>
         <p>Run tests with replicated production traffic - 100% coverage of real user scenarios in an isolated environment that matches production 100%. Zero customer impact.</p>
         <div class="debug-hero-actions">
@@ -69,30 +68,23 @@ const jsonld = {
       <div class="debug-visual-wrap">
         <div class="canary-cards-sequence">
           <div class="canary-card">
-            <div class="canary-card-header">Capture Real User Sessions</div>
-            <div class="canary-card-body">100% of sessions (no sampling)</div>
+            <div class="canary-card-header">Traffic recording</div>
+            <div class="canary-card-body">Captures API calls and dependency responses.</div>
           </div>
           
-          <div class="canary-sequence-connector">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+          <div class="canary-card">
+            <div class="canary-card-header">Replay with service virtualization</div>
+            <div class="canary-card-body">Mocks dependencies during testing.</div>
           </div>
 
           <div class="canary-card">
-            <div class="canary-card-header">Store the Full Context</div>
-            <div class="canary-card-body">Every request, response, and execution path is stored as a structured session graph</div>
-          </div>
-
-          <div class="canary-sequence-connector">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            <div class="canary-card-header">Result verification</div>
+            <div class="canary-card-body">Compares test responses to production recordings.</div>
           </div>
 
           <div class="canary-card">
-            <div class="canary-card-header">Pre-release Testing</div>
-            <div class="canary-card-body">Replay past sessions in a test environment to ensure 100% coverage of real user scenarios</div>
+            <div class="canary-card-header">CI/CD integration</div>
+            <div class="canary-card-body">Run regression tests on every build.</div>
           </div>
         </div>
       </div>
@@ -100,8 +92,35 @@ const jsonld = {
 
     <header class="section-head">
       <p class="section-kicker">Deploy with Absolute Confidence</p>
-      <h2 class="section-title">100% production case coverage<br/>0% customer risk</h2>
-      <p class="section-subtitle">Test with past production traffic before releasing to any live customers.</p>
+      <h2 class="section-title">Comprehensive test coverage based on real traffic</h2>
+      <div class="canary-coverage" style="text-align: left; max-width: 800px; margin: 40px auto 0;">
+        <ul class="benefits-simple-list">
+          <li>
+            <svg class="benefit-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><strong>100% coverage</strong> of all real user scenarios, creating millions of test cases instantly.</span>
+          </li>
+          <li>
+            <svg class="benefit-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><strong>No code</strong>, no need to write test code or configure environments.</span>
+          </li>
+          <li>
+            <svg class="benefit-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><strong>Eliminates the need</strong> to create or maintain test data manually.</span>
+          </li>
+          <li>
+            <svg class="benefit-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Provides <strong>automated root-cause analysis</strong> and bug detection.</span>
+          </li>
+          <li>
+            <svg class="benefit-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><strong>Automatic dependency mock</strong> - mock external/internal dependencies without writing test doubles.</span>
+          </li>
+          <li>
+            <svg class="benefit-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><strong>100% match of production environment</strong> - runs in containerized environments that fully replicate full-stack production states.</span>
+          </li>
+        </ul>
+      </div>
     </header>
 
 
@@ -165,13 +184,15 @@ const jsonld = {
   .canary-cards-sequence {
     display: flex;
     align-items: stretch;
-    gap: 16px;
+    gap: 24px;
     width: 100%;
     margin: 40px 0;
   }
 
   .canary-card {
-    flex: 1;
+    flex: 1 1 0px;
+    min-width: 0;
+    position: relative;
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 20px;
@@ -183,10 +204,29 @@ const jsonld = {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
+  .canary-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 10;
+  }
+
   .canary-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
     border-color: #8b5cf650;
+  }
+
+  .canary-card:hover::after {
+    transform: translateY(-4px) translateY(-50%);
   }
 
   .canary-card-header {
@@ -203,20 +243,6 @@ const jsonld = {
     font-weight: 500;
   }
 
-  .canary-sequence-connector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-color);
-    width: 32px;
-    flex-shrink: 0;
-  }
-
-  .canary-sequence-connector svg {
-    width: 28px;
-    height: 28px;
-  }
-
   .canary-brand-img { width: 28px; height: 28px; display: block; }
   .canary-brand-img-sm { width: 16px; height: 16px; }
 
@@ -225,9 +251,11 @@ const jsonld = {
       flex-direction: column;
       align-items: center;
     }
-    .canary-sequence-connector {
-      transform: rotate(90deg);
-      height: 40px;
+    .canary-card:not(:last-child)::after {
+      right: 50%;
+      top: auto;
+      bottom: -20px;
+      transform: translateX(50%) rotate(90deg);
     }
     .canary-card {
       width: 100%;
@@ -261,9 +289,14 @@ const jsonld = {
   .canary-lane-gate { background: #fef2f2; border-color: #fecaca; }
   .canary-lane-gate span { background: #fee2e2; color: #991b1b; }
 
-  .canary-coverage { margin-top: 14px; border: 1px solid #dbe4f0; border-radius: 18px; background: linear-gradient(150deg,#f8fafc 0%,#f0fdf4 100%); padding: 24px; }
+  .canary-coverage { margin-top: 14px; border: 1px solid #dbe4f0; border-radius: 18px; background: linear-gradient(150deg,#f8fafc 0%,#f0fdf4 100%); padding: 32px; }
   .canary-coverage-line { margin: 0; font-size: clamp(1.24rem,2.6vw,1.9rem); font-weight: 900; color: #0f172a; }
-  .canary-coverage ul { margin: 14px 0 0; padding-left: 20px; color: #334155; line-height: 1.7; }
+
+  .benefits-simple-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; font-size: 1.15rem; color: #334155; line-height: 1.6; }
+  .benefits-simple-list li { display: flex; align-items: flex-start; gap: 16px; }
+  .benefit-check { width: 24px; height: 24px; color: #16a34a; flex-shrink: 0; margin-top: 4px; }
+  .benefits-simple-list span { display: block; }
+  .benefits-simple-list strong { color: #0f172a; font-weight: 800; }
 
   @media (max-width: 900px) {
     .canary-env-grid { grid-template-columns: 1fr; }
