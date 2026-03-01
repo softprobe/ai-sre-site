@@ -1,0 +1,465 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookDemoButton from '../components/BookDemoButton.astro';
+---
+
+<BaseLayout
+  title="How Softprobe Regression Testing Works | Softprobe"
+  description="A new testing architecture for the AI era that perfectly replicates production, guarantees full test coverage, manages dependencies, and diagnoses flaky test results deterministically."
+>
+  <div class="how-page">
+    <!-- Intro -->
+    <section class="how-hero">
+      <div class="how-hero-bg" aria-hidden="true"></div>
+      <div class="how-hero-inner">
+        <h1>How It Works</h1>
+        <p class="how-hero-lead">
+          A new testing architecture for the AI era that perfectly replicates production, guarantees full test coverage, manages dependencies, and diagnoses flaky test results deterministically. All without writing a single line of code.
+        </p>
+        <div class="how-placeholder-card">
+          <span class="how-placeholder-label">Diagram</span>
+          <p class="how-placeholder-text">End-to-end regression architecture</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="how-steps">
+      <div class="how-steps-inner">
+        <article class="how-step">
+          <div class="how-step-header">
+            <span class="how-step-num">1</span>
+            <h2>We Learn From Real Traffic</h2>
+          </div>
+          <div class="how-step-body">
+            <p>Manually written tests can't cover all features. Synthetic test data can't cover all scenarios</p>
+            <p><strong>Softprobe passively observes live production requests:</strong></p>
+            <ul>
+              <li>API inputs</li>
+              <li>Auth context</li>
+              <li>Downstream calls</li>
+              <li>Database queries</li>
+              <li>External API responses</li>
+            </ul>
+            <p>Create automated test cases from every product request. Ensure 100% coverage of real user behavior.</p>
+            <div class="how-placeholder-inline">
+              <span class="how-placeholder-label">Visual</span>
+              <p class="how-placeholder-text">Session graph screenshot</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="how-step">
+          <div class="how-step-header">
+            <span class="how-step-num">2</span>
+            <h2>We Capture Full Execution State</h2>
+          </div>
+          <div class="how-step-body">
+            <p>Tests fail because every business has millions of states.</p>
+            <p><strong>We snapshot:</strong></p>
+            <ul>
+              <li>Dependency responses</li>
+              <li>DB result sets</li>
+              <li>Feature flags</li>
+              <li>Environment config</li>
+              <li>Time-based inputs</li>
+            </ul>
+            <p>This makes every case deterministic and reproducible.</p>
+            <p class="how-step-punch">No flakes. No guessing. No "works on my machine."</p>
+            <div class="how-placeholder-inline">
+              <span class="how-placeholder-label">Visual</span>
+              <p class="how-placeholder-text">Captured state timeline</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="how-step">
+          <div class="how-step-header">
+            <span class="how-step-num">3</span>
+            <h2>We Generate Millions of Tests Automatically</h2>
+          </div>
+          <div class="how-step-body">
+            <p>We don't generate test code.</p>
+            <p>We generate executable replays from real traffic.</p>
+            <p><strong>Each production request becomes:</strong></p>
+            <ul>
+              <li>A parameterized regression case</li>
+              <li>With injected dependencies</li>
+              <li>In a mirrored environment</li>
+            </ul>
+            <p>No writing tests. No maintaining mocks. No brittle fixtures.</p>
+            <p class="how-step-punch">Every request becomes a permanent test. Instantly.</p>
+            <div class="how-placeholder-inline">
+              <span class="how-placeholder-label">Visual</span>
+              <p class="how-placeholder-text">Replay run log or code snippet</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="how-step">
+          <div class="how-step-header">
+            <span class="how-step-num">4</span>
+            <h2>We Replay Against Your New Version</h2>
+          </div>
+          <div class="how-step-body">
+            <p><strong>When you ship new code:</strong></p>
+            <p>Old version behavior <em>vs</em> New version behavior</p>
+            <p><strong>We compare:</strong></p>
+            <ul>
+              <li>Responses</li>
+              <li>JSON structure</li>
+              <li>Side effects (DB writes, events, downstream calls)</li>
+              <li>Schema changes</li>
+            </ul>
+            <p>If behavior changes unexpectedly, we catch it before users see it.</p>
+            <p class="how-step-punch">Zero production risk. Faster releases.</p>
+            <div class="how-placeholder-inline">
+              <span class="how-placeholder-label">Visual</span>
+              <p class="how-placeholder-text">Before/after behavior diagram</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Why This Is Different -->
+    <section class="how-difference">
+      <div class="how-difference-bg" aria-hidden="true"></div>
+      <div class="how-difference-inner">
+        <h2 class="how-difference-title">Why This Is Different</h2>
+        <div class="how-difference-cols">
+          <div class="how-diff-card how-diff-card--old">
+            <h3>Traditional testing</h3>
+            <ul>
+              <li>Human-written tests</li>
+              <li>Synthetic data</li>
+              <li>Partial coverage</li>
+              <li>Flaky mocks</li>
+            </ul>
+          </div>
+          <div class="how-diff-card how-diff-card--new">
+            <h3>Softprobe</h3>
+            <ul>
+              <li>Learns from real users</li>
+              <li>100% behavior coverage</li>
+              <li>Deterministic replay</li>
+              <li>Autonomous regression</li>
+            </ul>
+          </div>
+        </div>
+        <p class="how-difference-punch">AI increased code velocity.</p>
+        <p class="how-difference-punch">We increased validation velocity.</p>
+        <div class="how-placeholder-inline how-placeholder-block">
+          <span class="how-placeholder-label">Visual</span>
+          <p class="how-placeholder-text">Side-by-side workflow diagram</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="how-cta">
+      <div class="how-cta-inner">
+        <h2>Write code at AI speed. Deploy with absolute confidence.</h2>
+        <BookDemoButton />
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .how-page {
+    width: 100%;
+    max-width: var(--site-page-max-width);
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Hero */
+  .how-hero {
+    position: relative;
+    padding: clamp(56px, 7vw, 80px) clamp(24px, 4vw, 48px);
+  }
+
+  .how-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--box-bg);
+    border-bottom: 1px solid var(--box-border);
+  }
+
+  .how-hero-inner {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .how-hero h1 {
+    margin: 0 0 24px;
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--text-color);
+  }
+
+  .how-hero-lead {
+    margin: 0 0 32px;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: #334155;
+  }
+
+  .how-placeholder-card {
+    background: #fff;
+    border: 1px solid var(--box-border);
+    border-radius: 12px;
+    padding: 32px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .how-placeholder-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #94a3b8;
+  }
+
+  .how-placeholder-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #64748b;
+  }
+
+  /* Steps */
+  .how-steps {
+    padding: clamp(48px, 6vw, 72px) clamp(24px, 4vw, 48px);
+  }
+
+  .how-steps-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .how-step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .how-step-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .how-step-header h2 {
+    margin: 0 0 16px;
+    font-size: clamp(1.35rem, 2.2vw, 1.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+  }
+
+  .how-step-body {
+    grid-column: 2;
+  }
+
+  .how-step-body p,
+  .how-step-body ul {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #334155;
+  }
+
+  .how-step-body ul {
+    padding-left: 24px;
+    margin-bottom: 16px;
+  }
+
+  .how-step-punch {
+    font-weight: 700 !important;
+    color: var(--text-color) !important;
+  }
+
+  .how-placeholder-inline {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .how-placeholder-inline.how-placeholder-block {
+    display: flex;
+    min-height: 80px;
+  }
+
+  /* Why different */
+  .how-difference {
+    position: relative;
+    padding: clamp(48px, 6vw, 72px) clamp(24px, 4vw, 48px);
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .how-difference-bg {
+    position: absolute;
+    inset: 0;
+    background: #f8fafc;
+  }
+
+  .how-difference-inner {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .how-difference-title {
+    margin: 0 0 32px;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+  }
+
+  .how-difference-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .how-diff-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .how-diff-card--new {
+    border-color: var(--primary-color);
+    background: var(--box-bg);
+  }
+
+  .how-diff-card h3 {
+    margin: 0 0 16px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-color);
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .how-diff-card--new h3 {
+    color: var(--primary-color);
+    border-bottom-color: var(--box-border);
+  }
+
+  .how-diff-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .how-diff-card li {
+    padding: 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #475569;
+  }
+
+  .how-diff-card--new li {
+    color: var(--text-color);
+  }
+
+  .how-difference-punch {
+    margin: 0 0 8px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: var(--text-color) !important;
+  }
+
+  /* CTA */
+  .how-cta {
+    background: var(--box-bg);
+    border-top: 1px solid var(--box-border);
+    padding: clamp(48px, 6vw, 64px) clamp(24px, 4vw, 48px);
+  }
+
+  .how-cta-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .how-cta-inner h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+    flex: 1;
+    min-width: 280px;
+  }
+
+  @media (max-width: 900px) {
+    .how-step {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .how-step-body {
+      grid-column: 1;
+    }
+
+    .how-difference-cols {
+      grid-template-columns: 1fr;
+    }
+
+    .how-cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .how-hero,
+    .how-steps,
+    .how-difference,
+    .how-cta {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .how-hero h1 {
+      font-size: 1.9rem;
+    }
+  }
+</style>
