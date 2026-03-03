@@ -155,26 +155,27 @@ import { icons } from '../lib/icons.js';
             <p class="hw-punch">Every request becomes a permanent test. Instantly.</p>
           </div>
           <div class="hw-step-visual">
-            <div class="visual-card visual-card--volume">
-              <!-- Test Suite Generation: volume + counter -->
+            <div class="visual-card">
               <div class="test-volume-visual">
-                <div class="volume-frame">
-                  <div class="volume-container">
-                    <div class="test-item" style="--i:1"><span class="test-id">#412,021</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:2"><span class="test-id">#412,022</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:3"><span class="test-id">#412,023</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:4"><span class="test-id">#412,024</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:5"><span class="test-id">#412,025</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:6"><span class="test-id">#412,026</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:7"><span class="test-id">#412,027</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:8"><span class="test-id">#412,028</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:9"><span class="test-id">#412,029</span><span class="test-dot test-dot--ok"></span></div>
-                    <div class="test-item" style="--i:10"><span class="test-id">#412,030</span><span class="test-dot test-dot--ok"></span></div>
+                <div class="volume-widget">
+                  <div class="volume-stream">
+                    <div class="volume-container">
+                      <div class="test-item" style="--i:1"><span class="test-id">#412,021</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:2"><span class="test-id">#412,022</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:3"><span class="test-id">#412,023</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:4"><span class="test-id">#412,024</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:5"><span class="test-id">#412,025</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:6"><span class="test-id">#412,026</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:7"><span class="test-id">#412,027</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:8"><span class="test-id">#412,028</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:9"><span class="test-id">#412,029</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style="--i:10"><span class="test-id">#412,030</span><span class="test-badge">✓</span></div>
+                    </div>
                   </div>
-                </div>
-                <div class="volume-counter">
-                  <span class="counter-label">Tests generated</span>
-                  <span class="counter-number">1,248,392</span>
+                  <div class="volume-footer">
+                    <span class="volume-label">Tests generated</span>
+                    <span class="volume-count">1,248,392</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -195,29 +196,70 @@ import { icons } from '../lib/icons.js';
           </div>
           <div class="hw-step-visual">
             <div class="visual-card">
-              <!-- IMPROVED Side-by-Side Replay: Nested Discrepancy -->
-              <div class="replay-compare-v2">
-                <div class="compare-pane">
-                  <div class="pane-header">Current Version</div>
-                  <div class="pane-body">
-                    <div class="pane-node">
-                       <div class="node-label">Inventory Service</div>
-                       <div class="node-content">
-                          <span class="json-key">"stock"</span>: <span class="json-val">42</span>
-                       </div>
-                    </div>
+              <div class="replay-diff-ui">
+                <div class="replay-diff-header">
+                  <div class="replay-diff-title">Main Service API: /users</div>
+                  <div class="replay-diff-meta">
+                    <span class="replay-diff-record-id">Record ID: SP-192-168-0-108-15079874160</span>
+                    <span class="replay-diff-status replay-diff-status--failed">Failed</span>
+                  </div>
+                  <div class="replay-diff-actions">
+                    <button type="button" class="replay-diff-btn">Record Detail</button>
+                    <button type="button" class="replay-diff-btn replay-diff-btn--primary">Debug</button>
                   </div>
                 </div>
-                <div class="compare-divider">VS</div>
-                <div class="compare-pane compare-pane--error">
-                  <div class="pane-header">New Version</div>
-                  <div class="pane-body">
-                    <div class="pane-node pane-node--error">
-                       <div class="node-label">Inventory Service</div>
-                       <div class="node-content">
-                          <span class="json-key">"stock"</span>: <span class="json-val json-val--mismatch">null</span>
-                       </div>
-                       <div class="node-badge">Mismatch</div>
+                <div class="replay-diff-tabs">
+                  <span class="replay-diff-tab replay-diff-tab--active">value diff users [Servlet]</span>
+                </div>
+                <div class="replay-diff-body">
+                  <div class="replay-diff-sidebar">
+                    <div class="replay-diff-sidebar-title">Point of difference</div>
+                    <div class="replay-diff-point replay-diff-point--active">(0).name</div>
+                  </div>
+                  <div class="replay-diff-columns">
+                    <div class="replay-diff-col">
+                      <div class="replay-diff-col-label">Record</div>
+                      <pre class="replay-diff-json"><code>[<span class="replay-diff-line">
+  {</span><span class="replay-diff-line">
+    "id": 1,</span><span class="replay-diff-line replay-diff-line--diff">    "name": "Tom",</span><span class="replay-diff-line">
+    "email": "z***n@example.com",</span><span class="replay-diff-line">
+    "age": 25</span><span class="replay-diff-line">
+  },</span><span class="replay-diff-line">
+  {
+    "id": 2,
+    "name": "Jack",
+    "email": "l***i@example.com",
+    "age": 30
+  },</span><span class="replay-diff-line">
+  {
+    "id": 3,
+    "name": "Lucy",
+    "email": "w***u@example.com",
+    "age": 28
+  }</span><span class="replay-diff-line">
+]</span></code></pre>
+                    </div>
+                    <div class="replay-diff-col">
+                      <div class="replay-diff-col-label">Replay</div>
+                      <pre class="replay-diff-json"><code>[<span class="replay-diff-line">
+  {</span><span class="replay-diff-line">
+    "id": 1,</span><span class="replay-diff-line replay-diff-line--diff">    "name": "1768442288687",</span><span class="replay-diff-line">
+    "email": "z***n@example.com",</span><span class="replay-diff-line">
+    "age": 25</span><span class="replay-diff-line">
+  },</span><span class="replay-diff-line">
+  {
+    "id": 2,
+    "name": "Jack",
+    "email": "l***i@example.com",
+    "age": 30
+  },</span><span class="replay-diff-line">
+  {
+    "id": 3,
+    "name": "Lucy",
+    "email": "w***u@example.com",
+    "age": 28
+  }</span><span class="replay-diff-line">
+]</span></code></pre>
                     </div>
                   </div>
                 </div>
@@ -240,32 +282,101 @@ import { icons } from '../lib/icons.js';
           </div>
           <div class="hw-step-visual">
             <div class="visual-card">
-              <!-- Causal Map Visual -->
-              <div class="causal-map">
-                <div class="causal-step causal-step--success">
-                  <div class="causal-icon" set:html={icons.CheckCircle2}></div>
-                  <div class="causal-info">
-                    <strong>Auth Layer</strong>
-                    <span>Validated user #882</span>
-                  </div>
-                </div>
-                <div class="causal-connector"></div>
-                <div class="causal-step causal-step--success">
-                  <div class="causal-icon" set:html={icons.CheckCircle2}></div>
-                  <div class="causal-info">
-                    <strong>Business Logic</strong>
-                    <span>Applied discount "WINTER10"</span>
-                  </div>
-                </div>
-                <div class="causal-connector"></div>
-                <div class="causal-step causal-step--fail">
-                  <div class="causal-icon" set:html={icons.AlertCircle}></div>
-                  <div class="causal-info">
-                    <strong>Tax Service</strong>
-                    <span>Unexpected schema change in <code>tax_rate</code> field</span>
-                  </div>
-                  <div class="causal-badge">Root Cause</div>
-                </div>
+              <div class="session-graph-wrap">
+                <svg class="session-graph-svg" viewBox="0 0 720 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <pattern id="sg-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <circle cx="1" cy="1" r="0.5" fill="#e2e8f0" opacity="0.6" />
+                    </pattern>
+                    <marker id="sg-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                      <path d="M0 0 L8 4 L0 8 Z" fill="#8b5cf6" />
+                    </marker>
+                  </defs>
+                  <rect width="720" height="300" fill="url(#sg-grid)" />
+                  <rect width="720" height="300" fill="none" />
+
+                  <!-- Connectors: User Session → operation nodes (curved, with arrows) -->
+                  <g stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#sg-arrow)">
+                    <path d="M 198 95 Q 260 95 260 55 Q 260 30 285 30 L 318 30" />
+                    <path d="M 198 150 L 280 150 Q 310 150 335 150 L 368 150" />
+                    <path d="M 198 205 Q 260 205 260 228 Q 260 248 285 248 L 318 248" />
+                  </g>
+                  <circle cx="198" cy="95" r="4" fill="#22c55e" />
+                  <circle cx="198" cy="150" r="4" fill="#22c55e" />
+                  <circle cx="198" cy="205" r="4" fill="#22c55e" />
+                  <circle cx="318" cy="30" r="4" fill="#22c55e" />
+                  <circle cx="368" cy="150" r="4" fill="#22c55e" />
+                  <circle cx="318" cy="248" r="4" fill="#22c55e" />
+
+                  <!-- User Session node -->
+                  <g class="sg-node-user">
+                    <rect x="20" y="30" width="178" height="240" rx="12" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+                    <rect x="20" y="30" width="178" height="36" rx="12" fill="#5b21b6" />
+                    <rect x="20" y="58" width="178" height="4" fill="#5b21b6" />
+                    <text x="108" y="53" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">User Session</text>
+                    <text x="32" y="88" fill="#64748b" font-size="10">Traces:</text>
+                    <text x="32" y="108" fill="#64748b" font-size="10">Spans:</text>
+                    <rect x="78" y="76" width="24" height="16" rx="4" fill="#5b21b6" />
+                    <text x="90" y="88" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">3</text>
+                    <rect x="78" y="96" width="24" height="16" rx="4" fill="#5b21b6" />
+                    <text x="90" y="108" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">3</text>
+                    <text x="32" y="132" fill="#334155" font-size="10" font-weight="700">Session Info</text>
+                    <text x="32" y="152" fill="#64748b" font-size="9">Session ID: sp-session-11fb...</text>
+                    <text x="32" y="168" fill="#64748b" font-size="9">Time Range: 10:02:16 - 10:02:12</text>
+                    <text x="32" y="184" fill="#64748b" font-size="9">Duration: 175523ms</text>
+                  </g>
+
+                  <!-- Operation: /checkout (INBOUND SUCCESS) -->
+                  <g class="sg-node-op">
+                    <rect x="318" y="10" width="200" height="100" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+                    <rect x="318" y="10" width="200" height="28" rx="10" fill="#7c3aed" />
+                    <rect x="318" y="32" width="200" height="4" fill="#7c3aed" />
+                    <text x="418" y="28" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">/checkout</text>
+                    <rect x="328" y="42" width="38" height="18" rx="4" fill="#64748b" />
+                    <text x="347" y="54" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">POST</text>
+                    <rect x="372" y="42" width="58" height="18" rx="4" fill="#e2e8f0" />
+                    <text x="401" y="54" text-anchor="middle" fill="#475569" font-size="9">INBOUND</text>
+                    <rect x="436" y="42" width="58" height="18" rx="4" fill="#bbf7d0" />
+                    <text x="465" y="54" text-anchor="middle" fill="#166534" font-size="9" font-weight="700">SUCCESS</text>
+                    <text x="328" y="78" fill="#64748b" font-size="9">Service: checkout-svc</text>
+                    <text x="328" y="92" fill="#64748b" font-size="9">Path: /checkout</text>
+                    <text x="328" y="106" fill="#64748b" font-size="9">Duration: 45ms · Time: 10:05:12</text>
+                  </g>
+
+                  <!-- Operation: /inventory (INBOUND SUCCESS) -->
+                  <g class="sg-node-op">
+                    <rect x="368" y="130" width="200" height="100" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+                    <rect x="368" y="130" width="200" height="28" rx="10" fill="#7c3aed" />
+                    <rect x="368" y="152" width="200" height="4" fill="#7c3aed" />
+                    <text x="468" y="148" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">/inventory</text>
+                    <rect x="378" y="162" width="38" height="18" rx="4" fill="#64748b" />
+                    <text x="397" y="174" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">POST</text>
+                    <rect x="422" y="162" width="58" height="18" rx="4" fill="#e2e8f0" />
+                    <text x="451" y="174" text-anchor="middle" fill="#475569" font-size="9">INBOUND</text>
+                    <rect x="486" y="162" width="58" height="18" rx="4" fill="#bbf7d0" />
+                    <text x="515" y="174" text-anchor="middle" fill="#166534" font-size="9" font-weight="700">SUCCESS</text>
+                    <text x="378" y="198" fill="#64748b" font-size="9">Service: inventory-svc</text>
+                    <text x="378" y="212" fill="#64748b" font-size="9">Path: /inventory</text>
+                    <text x="378" y="226" fill="#64748b" font-size="9">Duration: 60ms · Time: 10:03:02</text>
+                  </g>
+
+                  <!-- Operation: /tax (OUTBOUND FAILURE) -->
+                  <g class="sg-node-op sg-node-op--fail">
+                    <rect x="318" y="200" width="200" height="95" rx="10" fill="#fff" stroke="#fecaca" stroke-width="1.5" />
+                    <rect x="318" y="200" width="200" height="28" rx="10" fill="#7c3aed" />
+                    <rect x="318" y="222" width="200" height="4" fill="#7c3aed" />
+                    <text x="418" y="218" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">/tax</text>
+                    <rect x="328" y="232" width="38" height="18" rx="4" fill="#64748b" />
+                    <text x="347" y="244" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">POST</text>
+                    <rect x="372" y="232" width="58" height="18" rx="4" fill="#e2e8f0" />
+                    <text x="401" y="244" text-anchor="middle" fill="#475569" font-size="9">OUTBOUND</text>
+                    <rect x="436" y="232" width="58" height="18" rx="4" fill="#fecaca" />
+                    <text x="465" y="244" text-anchor="middle" fill="#b91c1c" font-size="9" font-weight="700">FAILURE</text>
+                    <text x="328" y="268" fill="#64748b" font-size="9">Service: tax-svc</text>
+                    <text x="328" y="282" fill="#64748b" font-size="9">Path: /tax</text>
+                    <text x="328" y="296" fill="#dc2626" font-size="9">Duration: — · Schema mismatch</text>
+                  </g>
+                </svg>
               </div>
             </div>
           </div>
@@ -412,149 +523,265 @@ import { icons } from '../lib/icons.js';
   .code-bool { color: #818cf8; }
   .code-line--highlight { background: rgba(125, 211, 252, 0.1); border-left: 3px solid #7dd3fc; margin-left: -16px; padding-left: 13px; }
 
-  /* --- Visual 3: Test Volume (Generate Millions) --- */
-  .visual-card--volume {
-    max-width: 560px;
-    aspect-ratio: auto;
-    min-height: 320px;
-  }
+  /* --- Visual 3: Test Volume (Generate Millions) — modern widget, same card flow --- */
   .test-volume-visual {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 24px;
-    width: 100%;
   }
-  .volume-frame {
+  .volume-widget {
     width: 100%;
-    max-width: 340px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    padding: 20px 24px;
+    max-width: 320px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 20px 40px -20px rgba(15, 23, 42, 0.12);
+    overflow: hidden;
+  }
+  .volume-stream {
+    padding: 20px 20px 16px;
   }
   .volume-container {
     position: relative;
-    height: 220px;
+    height: 160px;
     width: 100%;
     overflow: hidden;
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
   }
   .test-item {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background: #fff;
+    background: #f8fafc;
     border: 1px solid #e2e8f0;
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #334155;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
+    gap: 12px;
     width: 100%;
-    max-width: 260px;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
-    animation: scrollTests 4s ease-in-out infinite;
-    animation-delay: calc(var(--i) * -0.35s);
+    max-width: 220px;
+    animation: scrollTests 3.5s ease-in-out infinite;
+    animation-delay: calc(var(--i) * -0.32s);
   }
   .test-id {
     font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, 'SF Mono', monospace;
     letter-spacing: 0.02em;
   }
-  .test-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .test-dot--ok {
-    background: #22c55e;
-    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+  .test-badge {
+    font-size: 0.7rem;
+    color: #22c55e;
+    font-weight: 700;
   }
   @keyframes scrollTests {
-    0% { top: 240px; opacity: 0; }
-    8% { opacity: 1; }
-    92% { opacity: 1; }
-    100% { top: -50px; opacity: 0; }
+    0% { top: 180px; opacity: 0; }
+    6% { opacity: 1; }
+    94% { opacity: 1; }
+    100% { top: -44px; opacity: 0; }
   }
-  .volume-counter {
+  .volume-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 16px 28px;
-    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-    border: 1px solid #e9e5ff;
-    border-radius: 14px;
-    min-width: 200px;
+    gap: 2px;
+    padding: 14px 20px 18px;
+    background: #fafafa;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
   }
-  .volume-counter .counter-label {
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: var(--primary-color);
+  .volume-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #94a3b8;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
   }
-  .volume-counter .counter-number {
-    font-size: 2rem;
-    font-weight: 900;
+  .volume-count {
+    font-size: 1.5rem;
+    font-weight: 800;
     color: var(--text-color);
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.02em;
   }
 
-  /* --- Visual 4: Replay Compare v2 --- */
-  .replay-compare-v2 {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  /* --- Visual 4: Replay diff (Record vs Replay) --- */
+  .replay-diff-ui {
     width: 100%;
-    padding: 0 10px;
-  }
-  .compare-pane {
-    flex: 1;
-    background: #f8fafc;
-    border: 1px solid var(--box-border);
+    max-width: 520px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
     text-align: left;
   }
-  .compare-pane--error { border-color: #fecaca; background: #fffafb; }
-  .pane-header { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 8px 12px; font-size: 0.7rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; }
-  .compare-pane--error .pane-header { color: #ef4444; border-bottom-color: #fecaca; }
-  .pane-body { padding: 16px; }
-  .pane-node { padding: 10px; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; position: relative; }
-  .pane-node--error { border-color: #ef4444; box-shadow: 0 0 12px rgba(239, 68, 68, 0.1); }
-  .node-label { font-size: 0.75rem; font-weight: 800; color: var(--text-color); margin-bottom: 4px; }
-  .node-content { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
-  .json-key { color: #64748b; }
-  .json-val { color: #22c55e; font-weight: 700; }
-  .json-val--mismatch { color: #ef4444; text-decoration: underline; }
-  .node-badge { position: absolute; top: -10px; right: 10px; background: #ef4444; color: #fff; font-size: 0.6rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
-  .compare-divider { font-size: 0.8rem; font-weight: 900; color: #cbd5e1; }
+  .replay-diff-header {
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .replay-diff-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 6px;
+  }
+  .replay-diff-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .replay-diff-record-id {
+    font-size: 0.7rem;
+    color: #64748b;
+    font-family: ui-monospace, monospace;
+  }
+  .replay-diff-status {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .replay-diff-status--failed {
+    background: #fce7f3;
+    color: #be185d;
+  }
+  .replay-diff-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .replay-diff-btn {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    color: #475569;
+    cursor: default;
+  }
+  .replay-diff-btn--primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+  }
+  .replay-diff-tabs {
+    padding: 6px 16px;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .replay-diff-tab {
+    font-size: 0.72rem;
+    color: #64748b;
+  }
+  .replay-diff-tab--active {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+  .replay-diff-body {
+    display: flex;
+    min-height: 0;
+  }
+  .replay-diff-sidebar {
+    width: 120px;
+    flex-shrink: 0;
+    padding: 12px 10px;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+  }
+  .replay-diff-sidebar-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .replay-diff-point {
+    font-size: 0.75rem;
+    font-family: ui-monospace, monospace;
+    padding: 6px 8px;
+    border-radius: 6px;
+    color: #64748b;
+  }
+  .replay-diff-point--active {
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+  }
+  .replay-diff-columns {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+  }
+  .replay-diff-col {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+  }
+  .replay-diff-col:last-child {
+    border-right: none;
+  }
+  .replay-diff-col-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .replay-diff-json {
+    margin: 0;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    font-family: ui-monospace, 'SF Mono', monospace;
+    color: #334155;
+    overflow: auto;
+    flex: 1;
+    min-height: 0;
+    white-space: pre;
+  }
+  .replay-diff-line {
+    display: block;
+  }
+  .replay-diff-line--diff {
+    background: #fef2f2;
+    padding: 1px 0 1px 4px;
+    margin-left: -4px;
+    border-left: 2px solid #ef4444;
+  }
 
-  /* --- Visual 5: Causal Map --- */
-  .causal-map { display: flex; flex-direction: column; width: 100%; max-width: 320px; transform: scale(0.85); margin: 0 auto; }
-  .causal-step { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; border: 1.5px solid #e2e8f0; position: relative; background: #fff; text-align: left; }
-  .causal-step--success { border-color: #bbf7d0; background: #f0fdf4; }
-  .causal-step--fail { border-color: #fecaca; background: #fef2f2; }
-  .causal-icon { width: 20px; height: 20px; flex-shrink: 0; }
-  .causal-step--success .causal-icon { color: #22c55e; }
-  .causal-step--fail .causal-icon { color: #ef4444; }
-  .causal-info { display: flex; flex-direction: column; gap: 1px; }
-  .causal-info strong { font-size: 0.8rem; color: var(--text-color); }
-  .causal-info span { font-size: 0.7rem; color: #64748b; }
-  .causal-connector { width: 2px; height: 24px; background: #e2e8f0; margin-left: 21px; }
-  .causal-badge { position: absolute; right: 12px; top: 12px; background: #ef4444; color: #fff; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; }
+  /* --- Visual 5: Session graph (exact cause of test failures) --- */
+  .session-graph-wrap {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .session-graph-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .session-graph-svg .sg-node-user text,
+  .session-graph-svg .sg-node-op text {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
 
-  .cta-section { padding: 40px 0; }
-  .cta-card { background: transparent; padding: 80px 40px; text-align: center; position: relative; }
+  .cta-section { padding: 20px 0 40px; }
+  .cta-card { background: transparent; padding: 40px 40px; text-align: center; position: relative; }
   .cta-title { color: var(--text-color); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; position: relative; z-index: 1; }
   .cta-actions { display: flex; gap: 20px; justify-content: center; position: relative; z-index: 1; }
   .glass { background: rgba(255,255,255,0.1) !important; color: #fff !important; border-color: rgba(255,255,255,0.2) !important; }
@@ -563,7 +790,8 @@ import { icons } from '../lib/icons.js';
     .hw-step { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .hw-check-list { justify-items: center; }
     .hw-punch { border-left: none; border-top: 4px solid var(--primary-color); padding-left: 0; padding-top: 16px; }
-    .replay-compare-v2 { flex-direction: column; height: auto; }
-    .compare-divider { padding: 10px 0; }
+    .replay-diff-body { flex-direction: column; }
+    .replay-diff-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; }
+    .replay-diff-columns { flex-direction: column; }
   }
 </style>
