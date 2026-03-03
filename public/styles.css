@@ -14,7 +14,7 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --anim-speed: 2s;
     --site-page-max-width: 1380px;
-    --site-page-padding-desktop: 40px 48px 72px;
+    --site-page-padding-desktop: 40px 48px 48px;
     --site-page-gap-desktop: clamp(92px, 8vw, 132px);
     --site-page-padding-tablet: 28px 32px 56px;
     --site-page-gap-tablet: clamp(72px, 7vw, 108px);

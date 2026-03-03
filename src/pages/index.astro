@@ -86,8 +86,8 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     <div class="section-container">
       <div class="section-header">
         <span class="badge">The Problem</span>
-        <h2 class="section-title">The Regression Explosion</h2>
-        <p class="section-lead">With AI coding tools, every commit changes more surface area. So every release carries more hidden risk.</p>
+        <h2 class="section-title">The AI Coding Explosion</h2>
+        <p class="section-lead">Every release now carries more hidden risk.</p>
       </div>
 
       <div class="bento-grid">
@@ -117,7 +117,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
           </div>
         </div>
         <div class="bento-item bento-content">
-          <p class="highlight-text">Manual testing does not scale to AI. AI can ship bugs faster than humans can detect them.</p>
+          <p class="highlight-text">With AI, every commit changes more surface area.</p>
           <ul class="feature-list">
             <li>
               <strong>Entire endpoints</strong>
@@ -132,6 +132,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
               <p>Released at a velocity QA teams can't match.</p>
             </li>
           </ul>
+          <p class="problem-punch">AI can ship bugs faster than humans can test for them.</p>
         </div>
       </div>
     </div>
@@ -239,7 +240,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 
 <style>
   .text-primary { color: var(--primary-color); }
-  .hero { padding-top: 120px; padding-bottom: 80px; }
+  .hero { padding-top: 120px; padding-bottom: 48px; }
   .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
   .hero-title { font-size: clamp(2.5rem, 5vw, 4.25rem); line-height: 1.15; margin-bottom: 32px; }
 .hero-title-line2 { display: block; margin-top: 0.15em; }
@@ -272,12 +273,12 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   .visual-card.dark { background: var(--text-color); color: #fff; border: none; }
   .visual-placeholder-content p { font-size: 1.1rem; line-height: 1.5; color: inherit; }
 
-  .logos-section { width: 100%; padding: 60px 0; text-align: center; }
+  .logos-section { width: 100%; padding: 40px 0; text-align: center; }
 
   .section-alt .section-container {
     background: transparent;
   }
-  .section-header { margin-bottom: 64px; max-width: 800px; }
+  .section-header { margin-bottom: 40px; max-width: 800px; }
   .badge { 
     display: inline-block; 
     font-size: 0.75rem; 
@@ -298,6 +299,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   .feature-list li { padding-left: 24px; border-left: 3px solid var(--primary-color); }
   .feature-list strong { display: block; font-size: 1.1rem; margin-bottom: 4px; }
   .feature-list p { margin: 0; font-size: 0.95rem; }
+  .problem-punch { margin-top: 24px; font-weight: 800; font-size: 1.1rem; color: var(--text-color); }
 
   .punch-tag { display: inline-block; margin-top: 32px; font-weight: 800; font-size: 1.25rem; color: var(--text-color); border-bottom: 4px solid var(--primary-color); padding-bottom: 4px; }
 
@@ -426,7 +428,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     background: #f1f5f9;
   }
   
-  .cta-section { padding: 100px 0; }
+  .cta-section { padding: 48px 0; }
   .cta-card { 
     background: transparent; 
     border: none; 
