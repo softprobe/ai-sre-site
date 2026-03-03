@@ -25,7 +25,7 @@ const {
   modifiedTime
 } = Astro.props;
 
-const siteURL = Astro.site || "https://softprobe.ai";
+const siteURL = Astro.site || "https://softprobe.dev";
 const canonicalURL = canonical ? new URL(canonical, siteURL) : new URL(Astro.url.pathname, siteURL);
 const imageURL = image.startsWith("http") ? image : new URL(image, siteURL).href;
 ---
