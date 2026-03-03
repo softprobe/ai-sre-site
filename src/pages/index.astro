@@ -97,56 +97,76 @@ import CustomerLogos from '../components/CustomerLogos.astro';
               <svg viewBox="0 0 450 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
                 <defs>
                   <!-- Gradient for Softprobe line -->
-                  <linearGradient id="chart-line-grad" x1="0%" y1="100%" x2="0%" y2="0%">
-                    <stop offset="0%" stop-color="#a78bfa" />
-                    <stop offset="100%" stop-color="#8b5cf6" />
+                  <linearGradient id="chart-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#8b5cf6" />
+                    <stop offset="50%" stop-color="#a78bfa" />
+                    <stop offset="100%" stop-color="#ec4899" />
                   </linearGradient>
-                  <!-- Gradient fill under curve -->
-                  <linearGradient id="chart-fill-grad" x1="0%" y1="100%" x2="0%" y2="0%">
-                    <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25" />
+                  <!-- Complex fill gradient -->
+                  <linearGradient id="chart-fill-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3" />
                     <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
                   </linearGradient>
                   <!-- Soft glow filter -->
-                  <filter id="chart-glow" x="-30%" y="-30%" width="160%" height="160%">
-                    <feGaussianBlur stdDeviation="1" result="blur" />
+                  <filter id="chart-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
                     <feMerge>
                       <feMergeNode in="blur" />
                       <feMergeNode in="SourceGraphic" />
                     </feMerge>
                   </filter>
+                  <!-- Glass badge gradient -->
+                  <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.6" />
+                  </linearGradient>
                 </defs>
 
-                <!-- Subtle grid -->
-                <g stroke="rgba(15,23,42,0.06)" stroke-width="0.5">
-                  <line x1="40" y1="260" x2="360" y2="260" />
-                  <line x1="40" y1="200" x2="360" y2="200" />
-                  <line x1="40" y1="140" x2="360" y2="140" />
-                  <line x1="40" y1="80" x2="360" y2="80" />
-                  <line x1="40" y1="260" x2="40" y2="40" />
-                  <line x1="120" y1="260" x2="120" y2="40" />
-                  <line x1="200" y1="260" x2="200" y2="40" />
-                  <line x1="280" y1="260" x2="280" y2="40" />
-                  <line x1="360" y1="260" x2="360" y2="40" />
-                </g>
+                <!-- Axis L-Shape (Minimalist) -->
+                <path d="M40 40 V260 H380" stroke="rgba(15,23,42,0.1)" stroke-width="1" stroke-linecap="round" />
 
-                <!-- Area fill under Softprobe curve (bottom layer) -->
+                <!-- Area fill under curve -->
                 <path class="chart-area-fill" d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30 L360 260 L40 260 Z" fill="url(#chart-fill-grad)" />
 
-                <!-- Manual Test Coverage (Flat) -->
-                <path d="M40 238 L360 228" stroke="rgba(100,116,139,0.4)" stroke-width="2" stroke-linecap="round" />
-                <text x="358" y="215" font-size="15" font-weight="600" fill="rgba(100,116,139,0.8)" font-family="inherit" text-anchor="end">Manual Tests</text>
+                <!-- Manual Test Coverage (Flat, subtle) -->
+                <path d="M40 238 L360 228" stroke="rgba(100,116,139,0.2)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 4" />
+                <text x="358" y="222" font-size="12" font-weight="600" fill="rgba(100,116,139,0.5)" font-family="inherit" text-anchor="end">Manual Tests</text>
 
-                <!-- AI Code Volume (Dashed) -->
-                <path d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="rgba(100,116,139,0.35)" stroke-width="2" stroke-dasharray="8 6" stroke-linecap="round" stroke-linejoin="round" />
-                <text x="320" y="25" font-size="15" font-weight="600" fill="rgba(100,116,139,0.8)" font-family="inherit" text-anchor="end">AI Code Volume</text>
+                <!-- AI Code Volume (Dashed background) -->
+                <path d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="rgba(15,23,42,0.1)" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" />
+                <text x="330" y="22" font-size="12" font-weight="600" fill="rgba(15,23,42,0.4)" font-family="inherit" text-anchor="middle">AI Code Volume</text>
 
-                <!-- Softprobe Coverage (Main line) -->
-                <path class="draw-line chart-main-line" d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="url(#chart-line-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#chart-glow)" />
-                
-                <!-- Animated shimmer/pulse on top of the main line -->
-                <path class="chart-shimmer-line" d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="rgba(255,255,255,0.4)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;" />
+                <!-- Softprobe Coverage (Main vivid line) -->
+                <path class="draw-line chart-main-line" d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="url(#chart-line-grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#chart-glow)" />
 
-                <text x="180" y="110" font-size="20" font-weight="800" fill="#8b5cf6" font-family="inherit" text-anchor="middle">Softprobe Coverage</text>
+                <!-- Animated shimmer -->
+                <path class="chart-shimmer-line" d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="rgba(255,255,255,0.6)" stroke-width="5" stroke-linecap="round" style="pointer-events: none;" />
+
+                <!-- Decorative data points / Nodes -->
+                <g class="chart-node" transform="translate(160, 160)">
+                  <circle r="8" fill="white" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))" />
+                  <circle r="4" fill="#8b5cf6" />
+                </g>
+                <g class="chart-node" transform="translate(280, 50)">
+                  <circle r="8" fill="white" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))" />
+                  <circle r="4" fill="#ec4899" />
+                </g>
+
+                <!-- Floating Architecture Badges (Glassmorphism) -->
+                <g transform="translate(60, 180)">
+                  <rect width="70" height="24" rx="12" fill="url(#badge-grad)" stroke="white" stroke-width="1" />
+                  <text x="35" y="16" text-anchor="middle" font-size="10" font-weight="800" fill="#6366f1">100k TESTS</text>
+                </g>
+                <g transform="translate(180, 100)">
+                  <rect width="80" height="26" rx="13" fill="url(#badge-grad)" stroke="white" stroke-width="1" />
+                  <text x="40" y="17" text-anchor="middle" font-size="11" font-weight="900" fill="#8b5cf6">500k TESTS</text>
+                </g>
+                <g transform="translate(290, 40)">
+                  <rect width="80" height="26" rx="13" fill="url(#badge-grad)" stroke="white" stroke-width="1" />
+                  <text x="40" y="17" text-anchor="middle" font-size="11" font-weight="900" fill="#ec4899">1.2M TESTS</text>
+                </g>
+
+                <text x="180" y="300" font-size="22" font-weight="900" fill="#8b5cf6" font-family="inherit" text-anchor="middle" filter="url(#chart-glow)">100% REGRESSION COVERAGE</text>
               </svg>
             </div>
           </div>
@@ -308,7 +328,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   .visual-card.dark { background: var(--text-color); color: #fff; border: none; }
   .visual-placeholder-content p { font-size: 1.1rem; line-height: 1.5; color: inherit; }
 
-  .logos-section { width: 100%; padding: 40px 0; text-align: center; }
+  .logos-section { width: 100%; padding: 10px 0 80px; text-align: center; }
 
   .section-alt .section-container {
     background: transparent;
