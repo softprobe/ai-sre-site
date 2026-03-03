@@ -1,465 +1,488 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookDemoButton from '../components/BookDemoButton.astro';
+import { icons } from '../lib/icons.js';
 ---
 
 <BaseLayout
   title="How Softprobe Regression Testing Works | Softprobe"
-  description="A new testing architecture for the AI era that perfectly replicates production, guarantees full test coverage, manages dependencies, and diagnoses flaky test results deterministically."
+  description="Testing architecture for the AI era that perfectly replicates production, guarantees full test coverage, manages dependencies, and diagnoses flaky test results."
 >
-  <div class="how-page">
-    <!-- Intro -->
-    <section class="how-hero">
-      <div class="how-hero-bg" aria-hidden="true"></div>
-      <div class="how-hero-inner">
-        <h1>How It Works</h1>
-        <p class="how-hero-lead">
-          A new testing architecture for the AI era that perfectly replicates production, guarantees full test coverage, manages dependencies, and diagnoses flaky test results deterministically. All without writing a single line of code.
-        </p>
-        <div class="how-placeholder-card">
-          <span class="how-placeholder-label">Diagram</span>
-          <p class="how-placeholder-text">End-to-end regression architecture</p>
+  <div class="hw-page">
+    <!-- HERO -->
+    <header class="hw-hero">
+      <div class="section-container">
+        <h1 class="hw-title">How It Works</h1>
+        <p class="hw-lead">Testing architecture for the AI era that perfectly replicates production, guarantees full test coverage, manages dependencies, and diagnoses flaky test results.</p>
+        <div class="hw-hero-actions">
+          <BookDemoButton />
         </div>
       </div>
-    </section>
+    </header>
 
-    <!-- Steps -->
-    <section class="how-steps">
-      <div class="how-steps-inner">
-        <article class="how-step">
-          <div class="how-step-header">
-            <span class="how-step-num">1</span>
+    <!-- STEPS -->
+    <section class="hw-steps">
+      <div class="section-container">
+        
+        <!-- STEP 1 -->
+        <div class="hw-step">
+          <div class="hw-step-content">
             <h2>We Learn From Real Traffic</h2>
-          </div>
-          <div class="how-step-body">
-            <p>Manually written tests can't cover all features. Synthetic test data can't cover all scenarios</p>
-            <p><strong>Softprobe passively observes live production requests:</strong></p>
-            <ul>
-              <li>API inputs</li>
-              <li>Auth context</li>
-              <li>Downstream calls</li>
-              <li>Database queries</li>
+            <p>Manually written tests can't cover all features. Synthetic test data can't cover all scenarios. Softprobe passively observes live production requests.</p>
+            <ul class="hw-check-list">
+              <li>API inputs & Auth context</li>
+              <li>Downstream calls & DB queries</li>
               <li>External API responses</li>
             </ul>
-            <p>Create automated test cases from every product request. Ensure 100% coverage of real user behavior.</p>
-            <div class="how-placeholder-inline">
-              <span class="how-placeholder-label">Visual</span>
-              <p class="how-placeholder-text">Session graph screenshot</p>
+            <p class="hw-punch">Ensure 100% coverage of real user behavior.</p>
+          </div>
+          <div class="hw-step-visual">
+            <div class="visual-card">
+              <!-- Session Graph Visual: Nested Calls with Arrows -->
+              <div class="session-graph-v3">
+                <div class="sg-row sg-row--root">
+                  <div class="sg-node sg-node--root">
+                    <div class="sg-icon" set:html={icons.ArrowRight}></div>
+                    <div class="sg-info"><strong>POST /checkout</strong><span>200 OK</span></div>
+                  </div>
+                </div>
+
+                <div class="sg-grid">
+                  <!-- Level 1 -->
+                  <div class="sg-col">
+                    <svg class="sg-arrow" viewBox="0 0 20 40"><path d="M10,0 L10,35 M5,28 L10,38 L15,28" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <div class="sg-node sg-node--sub">
+                      <div class="sg-icon" set:html={icons.Lock}></div>
+                      <div class="sg-info"><strong>Auth</strong><span>JWT valid</span></div>
+                    </div>
+                  </div>
+
+                  <div class="sg-col">
+                    <svg class="sg-arrow" viewBox="0 0 20 40"><path d="M10,0 L10,35 M5,28 L10,38 L15,28" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <div class="sg-node sg-node--sub">
+                      <div class="sg-icon" set:html={icons.Network}></div>
+                      <div class="sg-info"><strong>Inventory</strong><span>fetch_v2</span></div>
+                    </div>
+                    <!-- Level 2 Nested -->
+                    <div class="sg-nested">
+                      <div class="sg-nested-item">
+                        <svg class="sg-side-arrow" viewBox="0 0 40 20"><path d="M0,10 L30,10 M22,5 L32,10 L22,15" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                        <div class="sg-node sg-node--leaf">
+                          <div class="sg-icon" set:html={icons.Zap}></div>
+                          <div class="sg-info"><strong>Redis</strong><span>hit</span></div>
+                        </div>
+                      </div>
+                      <div class="sg-nested-item">
+                        <svg class="sg-side-arrow" viewBox="0 0 40 20"><path d="M0,10 L30,10 M22,5 L32,10 L22,15" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                        <div class="sg-node sg-node--leaf">
+                          <div class="sg-icon" set:html={icons.Database}></div>
+                          <div class="sg-info"><strong>Postgres</strong><span>query</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sg-col">
+                    <svg class="sg-arrow" viewBox="0 0 20 40"><path d="M10,0 L10,35 M5,28 L10,38 L15,28" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <div class="sg-node sg-node--sub">
+                      <div class="sg-icon" set:html={icons.Cloud}></div>
+                      <div class="sg-info"><strong>Stripe</strong><span>success</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </article>
+        </div>
 
-        <article class="how-step">
-          <div class="how-step-header">
-            <span class="how-step-num">2</span>
-            <h2>We Capture Full Execution State</h2>
-          </div>
-          <div class="how-step-body">
-            <p>Tests fail because every business has millions of states.</p>
-            <p><strong>We snapshot:</strong></p>
-            <ul>
-              <li>Dependency responses</li>
-              <li>DB result sets</li>
-              <li>Feature flags</li>
-              <li>Environment config</li>
+        <!-- STEP 2 -->
+        <div class="hw-step reverse">
+          <div class="hw-step-content">
+            <h2>We Capture the Full Execution State</h2>
+            <p>Flaky tests aren’t flaky. They’re missing context.</p>
+            <p>We snapshot the entire runtime environment so every test case becomes deterministic and reproducible.</p>
+            <ul class="hw-check-list">
+              <li>Dependency responses & database result sets</li>
+              <li>Feature flags & environment configuration</li>
               <li>Time-based inputs</li>
+              <li>External API interactions</li>
             </ul>
-            <p>This makes every case deterministic and reproducible.</p>
-            <p class="how-step-punch">No flakes. No guessing. No "works on my machine."</p>
-            <div class="how-placeholder-inline">
-              <span class="how-placeholder-label">Visual</span>
-              <p class="how-placeholder-text">Captured state timeline</p>
+            <p class="hw-punch">All failures are reproducible.</p>
+          </div>
+          <div class="hw-step-visual">
+            <div class="visual-card">
+              <!-- NEW Execution State Visual (Code Replay Style) -->
+              <div class="execution-state-visual">
+                <div class="code-window">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>runtime_context_preserved.json</span>
+                  </div>
+                  <div class="code-body">
+                    <div class="code-line"><span class="code-num">1</span> <span class="code-key">"status"</span>: <span class="code-str">"SNAPSHOT_CAPTURED"</span>,</div>
+                    <div class="code-line code-line--highlight"><span class="code-num">2</span> <span class="code-key">"snapshots"</span>: &#123; <span class="code-val">"db_seq"</span>: <span class="code-num-val">442</span>, <span class="code-val">"clock"</span>: <span class="code-str">"10:29:39.1"</span> &#125;,</div>
+                    <div class="code-line"><span class="code-num">3</span> <span class="code-key">"flags"</span>: &#123; <span class="code-val">"new_ui"</span>: <span class="code-str">"canary"</span>, <span class="code-val">"beta"</span>: <span class="code-bool">true</span> &#125;,</div>
+                    <div class="code-line"><span class="code-num">4</span> <span class="code-key">"context"</span>: &#123; <span class="code-val">"seed"</span>: <span class="code-str">"0x8fa2"</span>, <span class="code-val">"ver"</span>: <span class="code-str">"v1.4.2"</span> &#125;</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </article>
+        </div>
 
-        <article class="how-step">
-          <div class="how-step-header">
-            <span class="how-step-num">3</span>
+        <!-- STEP 3 -->
+        <div class="hw-step">
+          <div class="hw-step-content">
             <h2>We Generate Millions of Tests Automatically</h2>
-          </div>
-          <div class="how-step-body">
-            <p>We don't generate test code.</p>
-            <p>We generate executable replays from real traffic.</p>
-            <p><strong>Each production request becomes:</strong></p>
-            <ul>
-              <li>A parameterized regression case</li>
-              <li>With injected dependencies</li>
-              <li>In a mirrored environment</li>
+            <p>We don't generate test code. We generate executable replays from real traffic. No writing tests. No maintaining mocks. No brittle fixtures.</p>
+            <ul class="hw-check-list">
+              <li>Parameterized regression cases</li>
+              <li>Injected dependencies</li>
+              <li>Mirrored environment</li>
             </ul>
-            <p>No writing tests. No maintaining mocks. No brittle fixtures.</p>
-            <p class="how-step-punch">Every request becomes a permanent test. Instantly.</p>
-            <div class="how-placeholder-inline">
-              <span class="how-placeholder-label">Visual</span>
-              <p class="how-placeholder-text">Replay run log or code snippet</p>
+            <p class="hw-punch">Every request becomes a permanent test. Instantly.</p>
+          </div>
+          <div class="hw-step-visual">
+            <div class="visual-card">
+              <!-- NEW Test Suite Generation Visual: Showing Volume -->
+              <div class="test-volume-visual">
+                <div class="volume-container">
+                  <div class="test-item" style="--i:1"><span>Test #412,021</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:2"><span>Test #412,022</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:3"><span>Test #412,023</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:4"><span>Test #412,024</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:5"><span>Test #412,025</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:6"><span>Test #412,026</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:7"><span>Test #412,027</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:8"><span>Test #412,028</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:9"><span>Test #412,029</span><div class="test-status test-status--ok"></div></div>
+                  <div class="test-item" style="--i:10"><span>Test #412,030</span><div class="test-status test-status--ok"></div></div>
+                </div>
+                <div class="volume-counter">
+                  <div class="counter-label">Generating Millions of Tests...</div>
+                  <div class="counter-number">1,248,392</div>
+                </div>
+              </div>
             </div>
           </div>
-        </article>
+        </div>
 
-        <article class="how-step">
-          <div class="how-step-header">
-            <span class="how-step-num">4</span>
+        <!-- STEP 4 -->
+        <div class="hw-step reverse">
+          <div class="hw-step-content">
             <h2>We Replay Against Your New Version</h2>
-          </div>
-          <div class="how-step-body">
-            <p><strong>When you ship new code:</strong></p>
-            <p>Old version behavior <em>vs</em> New version behavior</p>
-            <p><strong>We compare:</strong></p>
-            <ul>
-              <li>Responses</li>
-              <li>JSON structure</li>
-              <li>Side effects (DB writes, events, downstream calls)</li>
+            <p>When you ship new code, we compare the output of the Old version vs. the New version. If behavior changes unexpectedly, we catch it before users see it.</p>
+            <ul class="hw-check-list">
+              <li>JSON Responses & Structure</li>
+              <li>Side effects (DB writes, events)</li>
               <li>Schema changes</li>
             </ul>
-            <p>If behavior changes unexpectedly, we catch it before users see it.</p>
-            <p class="how-step-punch">Zero production risk. Faster releases.</p>
-            <div class="how-placeholder-inline">
-              <span class="how-placeholder-label">Visual</span>
-              <p class="how-placeholder-text">Before/after behavior diagram</p>
+            <p class="hw-punch">Zero production risk. Faster releases.</p>
+          </div>
+          <div class="hw-step-visual">
+            <div class="visual-card">
+              <!-- IMPROVED Side-by-Side Replay: Nested Discrepancy -->
+              <div class="replay-compare-v2">
+                <div class="compare-pane">
+                  <div class="pane-header">Current Version</div>
+                  <div class="pane-body">
+                    <div class="pane-node">
+                       <div class="node-label">Inventory Service</div>
+                       <div class="node-content">
+                          <span class="json-key">"stock"</span>: <span class="json-val">42</span>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="compare-divider">VS</div>
+                <div class="compare-pane compare-pane--error">
+                  <div class="pane-header">New Version</div>
+                  <div class="pane-body">
+                    <div class="pane-node pane-node--error">
+                       <div class="node-label">Inventory Service</div>
+                       <div class="node-content">
+                          <span class="json-key">"stock"</span>: <span class="json-val json-val--mismatch">null</span>
+                       </div>
+                       <div class="node-badge">Mismatch</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </article>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="hw-step">
+          <div class="hw-step-content">
+            <h2>See the Exact Cause of Test Failures</h2>
+            <p>Our session graph architecture retraces errors & behavior changes to the exact point of failure.</p>
+            <ul class="hw-check-list">
+              <li>Visualize preserved states and execution paths</li>
+              <li>Replay full API requests and response bodies</li>
+              <li>Trace the regression to the exact breaking change</li>
+            </ul>
+            <p class="hw-punch">Every failure is traceable to its exact cause.</p>
+          </div>
+          <div class="hw-step-visual">
+            <div class="visual-card">
+              <!-- Causal Map Visual -->
+              <div class="causal-map">
+                <div class="causal-step causal-step--success">
+                  <div class="causal-icon" set:html={icons.CheckCircle2}></div>
+                  <div class="causal-info">
+                    <strong>Auth Layer</strong>
+                    <span>Validated user #882</span>
+                  </div>
+                </div>
+                <div class="causal-connector"></div>
+                <div class="causal-step causal-step--success">
+                  <div class="causal-icon" set:html={icons.CheckCircle2}></div>
+                  <div class="causal-info">
+                    <strong>Business Logic</strong>
+                    <span>Applied discount "WINTER10"</span>
+                  </div>
+                </div>
+                <div class="causal-connector"></div>
+                <div class="causal-step causal-step--fail">
+                  <div class="causal-icon" set:html={icons.AlertCircle}></div>
+                  <div class="causal-info">
+                    <strong>Tax Service</strong>
+                    <span>Unexpected schema change in <code>tax_rate</code> field</span>
+                  </div>
+                  <div class="causal-badge">Root Cause</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Why This Is Different -->
-    <section class="how-difference">
-      <div class="how-difference-bg" aria-hidden="true"></div>
-      <div class="how-difference-inner">
-        <h2 class="how-difference-title">Why This Is Different</h2>
-        <div class="how-difference-cols">
-          <div class="how-diff-card how-diff-card--old">
-            <h3>Traditional testing</h3>
-            <ul>
-              <li>Human-written tests</li>
-              <li>Synthetic data</li>
-              <li>Partial coverage</li>
-              <li>Flaky mocks</li>
-            </ul>
-          </div>
-          <div class="how-diff-card how-diff-card--new">
-            <h3>Softprobe</h3>
-            <ul>
-              <li>Learns from real users</li>
-              <li>100% behavior coverage</li>
-              <li>Deterministic replay</li>
-              <li>Autonomous regression</li>
-            </ul>
+    <!-- FINAL CTA -->
+    <section class="cta-section">
+      <div class="section-container">
+        <div class="cta-card">
+          <h2 class="cta-title">Deploy with absolute confidence</h2>
+          <div class="cta-actions">
+            <BookDemoButton />
+            <a href="/contact" class="btn btn-secondary glass">Talk to an expert</a>
           </div>
         </div>
-        <p class="how-difference-punch">AI increased code velocity.</p>
-        <p class="how-difference-punch">We increased validation velocity.</p>
-        <div class="how-placeholder-inline how-placeholder-block">
-          <span class="how-placeholder-label">Visual</span>
-          <p class="how-placeholder-text">Side-by-side workflow diagram</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="how-cta">
-      <div class="how-cta-inner">
-        <h2>Write code at AI speed. Deploy with absolute confidence.</h2>
-        <BookDemoButton />
       </div>
     </section>
   </div>
 </BaseLayout>
 
 <style>
-  .how-page {
+  .hw-hero { padding-top: 120px; padding-bottom: 60px; text-align: center; background: linear-gradient(to bottom, #fff, var(--box-bg)); }
+  .hw-title { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 24px; }
+  .hw-lead { font-size: 1.25rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px; }
+  .hw-hero-actions { display: flex; justify-content: center; }
+
+  .hw-steps { padding: 80px 0; }
+  .hw-step { 
+    display: grid; 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    gap: 80px; 
+    align-items: center; 
+    margin-bottom: 120px; 
     width: 100%;
-    max-width: var(--site-page-max-width);
-    margin: 0 auto;
-    padding: 0;
+  }
+  .hw-step > * { min-width: 0; }
+  .hw-step.reverse { direction: rtl; }
+  .hw-step.reverse > * { direction: ltr; }
+
+  .hw-step h2 { font-size: 2.25rem; margin-bottom: 24px; color: var(--text-color); }
+  .hw-step p { font-size: 1.1rem; margin-bottom: 24px; }
+  .hw-check-list { list-style: none; padding: 0; margin-bottom: 32px; display: grid; gap: 12px; }
+  .hw-check-list li { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text-color); }
+  .hw-check-list li::before { content: "→"; color: var(--primary-color); font-weight: 900; }
+  .hw-punch { font-weight: 800 !important; color: var(--text-color) !important; border-left: 4px solid var(--primary-color); padding-left: 20px; }
+
+  .visual-card { 
+    background: #fff; 
+    border: 1px solid var(--box-border); 
+    border-radius: 20px; 
+    padding: 40px; 
+    box-shadow: var(--shadow-lg); 
+    height: 400px !important; 
+    min-height: 400px !important;
+    max-height: 400px !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
-  /* Hero */
-  .how-hero {
-    position: relative;
-    padding: clamp(56px, 7vw, 80px) clamp(24px, 4vw, 48px);
+  /* --- Visual 1: Session Graph v3 --- */
+  .session-graph-v3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.85);
   }
-
-  .how-hero-bg {
-    position: absolute;
-    inset: 0;
-    background: var(--box-bg);
-    border-bottom: 1px solid var(--box-border);
-  }
-
-  .how-hero-inner {
-    position: relative;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  .how-hero h1 {
-    margin: 0 0 24px;
-    font-size: clamp(2.25rem, 4vw, 3rem);
-    line-height: 1.08;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    color: var(--text-color);
-  }
-
-  .how-hero-lead {
-    margin: 0 0 32px;
-    font-size: 1.1rem;
-    line-height: 1.65;
-    color: #334155;
-  }
-
-  .how-placeholder-card {
+  .sg-row--root { margin-bottom: 10px; }
+  .sg-grid { display: flex; justify-content: center; gap: 15px; width: 100%; align-items: flex-start; }
+  .sg-col { display: flex; flex-direction: column; align-items: center; }
+  .sg-arrow { width: 20px; height: 35px; color: #cbd5e1; margin-bottom: -5px; }
+  .sg-nested { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; padding-left: 20px; }
+  .sg-nested-item { display: flex; align-items: center; }
+  .sg-side-arrow { width: 30px; height: 20px; color: #cbd5e1; margin-right: -2px; }
+  .sg-node {
     background: #fff;
-    border: 1px solid var(--box-border);
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+    text-align: left;
+  }
+  .sg-node--root { border-color: var(--primary-color); border-width: 2px; }
+  .sg-node--sub { background: #f8fafc; }
+  .sg-node--leaf { transform: scale(0.9); }
+  .sg-icon { width: 16px; height: 16px; color: #64748b; flex-shrink: 0; }
+  .sg-node--root .sg-icon { color: var(--primary-color); }
+  .sg-info { display: flex; flex-direction: column; }
+  .sg-info strong { font-size: 0.75rem; color: var(--text-color); }
+  .sg-info span { font-size: 0.6rem; color: #64748b; font-family: 'JetBrains Mono', monospace; }
+
+  /* --- Visual 2 & 3: Code/Execution Windows --- */
+  .code-window {
+    background: #0f172a;
     border-radius: 12px;
-    padding: 32px;
-    min-height: 180px;
+    color: #f8fafc;
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+    width: 100%;
+    text-align: left;
+    transform: scale(0.9);
+  }
+  .code-header { background: #1e293b; padding: 10px 16px; display: flex; align-items: center; gap: 12px; font-size: 0.7rem; color: #94a3b8; }
+  .code-dots { display: flex; gap: 6px; }
+  .code-dots span { width: 8px; height: 8px; border-radius: 50%; background: #334155; }
+  .code-body { padding: 16px; font-size: 0.8rem; line-height: 1.6; }
+  .code-line { display: flex; gap: 16px; }
+  .code-num { color: #334155; width: 12px; text-align: right; }
+  .code-key { color: #7dd3fc; }
+  .code-val { color: #f472b6; }
+  .code-str { color: #34d399; }
+  .code-num-val { color: #fbbf24; }
+  .code-bool { color: #818cf8; }
+  .code-line--highlight { background: rgba(125, 211, 252, 0.1); border-left: 3px solid #7dd3fc; margin-left: -16px; padding-left: 13px; }
+
+  /* --- Visual 3: Test Volume --- */
+  .test-volume-visual {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 20px;
+    width: 100%;
   }
-
-  .how-placeholder-label {
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #94a3b8;
-  }
-
-  .how-placeholder-text {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #64748b;
-  }
-
-  /* Steps */
-  .how-steps {
-    padding: clamp(48px, 6vw, 72px) clamp(24px, 4vw, 48px);
-  }
-
-  .how-steps-inner {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  .how-step {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 24px;
-    align-items: start;
-  }
-
-  .how-step-num {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    font-weight: 900;
-    flex-shrink: 0;
-  }
-
-  .how-step-header h2 {
-    margin: 0 0 16px;
-    font-size: clamp(1.35rem, 2.2vw, 1.6rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text-color);
-  }
-
-  .how-step-body {
-    grid-column: 2;
-  }
-
-  .how-step-body p,
-  .how-step-body ul {
-    margin: 0 0 12px;
-    font-size: 1rem;
-    line-height: 1.65;
-    color: #334155;
-  }
-
-  .how-step-body ul {
-    padding-left: 24px;
-    margin-bottom: 16px;
-  }
-
-  .how-step-punch {
-    font-weight: 700 !important;
-    color: var(--text-color) !important;
-  }
-
-  .how-placeholder-inline {
-    margin-top: 24px;
-    padding: 16px 20px;
-    background: #f8fafc;
-    border: 1px dashed #cbd5e1;
-    border-radius: 8px;
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .how-placeholder-inline.how-placeholder-block {
-    display: flex;
-    min-height: 80px;
-  }
-
-  /* Why different */
-  .how-difference {
+  .volume-container {
     position: relative;
-    padding: clamp(48px, 6vw, 72px) clamp(24px, 4vw, 48px);
-    background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
+    height: 140px;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
   }
-
-  .how-difference-bg {
+  .test-item {
     position: absolute;
-    inset: 0;
-    background: #f8fafc;
-  }
-
-  .how-difference-inner {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .how-difference-title {
-    margin: 0 0 32px;
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text-color);
-  }
-
-  .how-difference-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 28px;
-  }
-
-  .how-diff-card {
+    left: 50%;
+    transform: translateX(-50%);
     background: #fff;
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 24px;
-  }
-
-  .how-diff-card--new {
-    border-color: var(--primary-color);
-    background: var(--box-bg);
-  }
-
-  .how-diff-card h3 {
-    margin: 0 0 16px;
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--text-color);
-    padding-bottom: 12px;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .how-diff-card--new h3 {
-    color: var(--primary-color);
-    border-bottom-color: var(--box-border);
-  }
-
-  .how-diff-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .how-diff-card li {
-    padding: 8px 0;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    color: #475569;
-  }
-
-  .how-diff-card--new li {
-    color: var(--text-color);
-  }
-
-  .how-difference-punch {
-    margin: 0 0 8px !important;
-    font-size: 1.1rem !important;
-    font-weight: 700 !important;
-    color: var(--text-color) !important;
-  }
-
-  /* CTA */
-  .how-cta {
-    background: var(--box-bg);
-    border-top: 1px solid var(--box-border);
-    padding: clamp(48px, 6vw, 64px) clamp(24px, 4vw, 48px);
-  }
-
-  .how-cta-inner {
-    max-width: 720px;
-    margin: 0 auto;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+    gap: 12px;
+    width: 200px;
+    animation: scrollTests 3s infinite linear;
+    animation-delay: calc(var(--i) * -0.4s);
   }
+  @keyframes scrollTests {
+    0% { top: 160px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: -40px; opacity: 0; }
+  }
+  .test-status { width: 8px; height: 8px; border-radius: 50%; }
+  .test-status--ok { background: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); }
+  .volume-counter { text-align: center; }
+  .counter-label { font-size: 0.7rem; font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .counter-number { font-size: 1.75rem; font-weight: 900; color: var(--text-color); font-variant-numeric: tabular-nums; }
 
-  .how-cta-inner h2 {
-    margin: 0;
-    font-size: clamp(1.5rem, 2.5vw, 1.85rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    color: var(--text-color);
-    flex: 1;
-    min-width: 280px;
+  /* --- Visual 4: Replay Compare v2 --- */
+  .replay-compare-v2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 0 10px;
   }
+  .compare-pane {
+    flex: 1;
+    background: var(--primary-light);
+    border: 1px solid var(--box-border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+  }
+  .compare-pane--error { border-color: #fecaca; background: #fffafb; }
+  .pane-header { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 8px 12px; font-size: 0.7rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; }
+  .compare-pane--error .pane-header { color: #ef4444; border-bottom-color: #fecaca; }
+  .pane-body { padding: 16px; }
+  .pane-node { padding: 10px; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; position: relative; }
+  .pane-node--error { border-color: #ef4444; box-shadow: 0 0 12px rgba(239, 68, 68, 0.1); }
+  .node-label { font-size: 0.75rem; font-weight: 800; color: var(--text-color); margin-bottom: 4px; }
+  .node-content { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+  .json-key { color: #64748b; }
+  .json-val { color: #22c55e; font-weight: 700; }
+  .json-val--mismatch { color: #ef4444; text-decoration: underline; }
+  .node-badge { position: absolute; top: -10px; right: 10px; background: #ef4444; color: #fff; font-size: 0.6rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
+  .compare-divider { font-size: 0.8rem; font-weight: 900; color: #cbd5e1; }
+
+  /* --- Visual 5: Causal Map --- */
+  .causal-map { display: flex; flex-direction: column; width: 100%; max-width: 320px; transform: scale(0.85); margin: 0 auto; }
+  .causal-step { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; border: 1.5px solid #e2e8f0; position: relative; background: #fff; text-align: left; }
+  .causal-step--success { border-color: #bbf7d0; background: #f0fdf4; }
+  .causal-step--fail { border-color: #fecaca; background: #fef2f2; }
+  .causal-icon { width: 20px; height: 20px; flex-shrink: 0; }
+  .causal-step--success .causal-icon { color: #22c55e; }
+  .causal-step--fail .causal-icon { color: #ef4444; }
+  .causal-info { display: flex; flex-direction: column; gap: 1px; }
+  .causal-info strong { font-size: 0.8rem; color: var(--text-color); }
+  .causal-info span { font-size: 0.7rem; color: #64748b; }
+  .causal-connector { width: 2px; height: 24px; background: #e2e8f0; margin-left: 21px; }
+  .causal-badge { position: absolute; right: 12px; top: 12px; background: #ef4444; color: #fff; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; }
+
+  .cta-section { padding: 100px 0; }
+  .cta-card { background: var(--text-color); border-radius: 32px; padding: 80px 40px; text-align: center; position: relative; overflow: hidden; }
+  .cta-title { color: #fff; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; position: relative; z-index: 1; }
+  .cta-actions { display: flex; gap: 20px; justify-content: center; position: relative; z-index: 1; }
+  .glass { background: rgba(255,255,255,0.1) !important; color: #fff !important; border-color: rgba(255,255,255,0.2) !important; }
 
   @media (max-width: 900px) {
-    .how-step {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .how-step-body {
-      grid-column: 1;
-    }
-
-    .how-difference-cols {
-      grid-template-columns: 1fr;
-    }
-
-    .how-cta-inner {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .how-hero,
-    .how-steps,
-    .how-difference,
-    .how-cta {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
-    .how-hero h1 {
-      font-size: 1.9rem;
-    }
+    .hw-step { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .hw-check-list { justify-items: center; }
+    .hw-punch { border-left: none; border-top: 4px solid var(--primary-color); padding-left: 0; padding-top: 16px; }
+    .sg-tree { flex-direction: column; align-items: flex-start; padding-left: 20px; }
+    .sg-tree::before { left: 0; top: -32px; }
+    .sg-branch { align-items: flex-start; }
+    .replay-compare-v2 { flex-direction: column; height: auto; }
+    .compare-divider { padding: 10px 0; }
+    .visual-card { height: 400px !important; min-height: 400px !important; max-height: 400px !important; }
   }
 </style>

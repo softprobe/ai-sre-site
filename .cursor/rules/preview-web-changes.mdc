@@ -6,20 +6,23 @@ alwaysApply: false
 
 # Preview Web Page Changes
 
-When you create or edit any web page, layout, or global styles in this project:
+When you create or edit any web page, layout, or global styles in this project, follow these steps **after each response** so the user always sees the latest code:
 
 1. **Start the dev server if it is not already running**
    - Run `npm run dev` in the project root.
    - If port 4321 is in use, the server may start on 4322 (or another port). Note the port shown in the terminal.
 
-2. **Tell the user exactly where to preview**
-   - After making changes, state the preview URL clearly, for example:
+2. **Force the dev server to pick up changes**
+   - After making edits, run: `touch src/layouts/BaseLayout.astro`
+   - This triggers the file watcher so the dev server rebuilds with your latest changes (avoids HMR/watch sometimes missing Cursor edits).
+
+3. **Tell the user exactly where to preview**
+   - State the preview URL clearly, for example:
      - Home: `http://localhost:4321/`
      - Regression testing: `http://localhost:4321/regression-testing`
      - Any other page: `http://localhost:4321/<path>`
    - If the server started on a different port (e.g. 4322), use that port in the URL.
 
-3. **Remind about hard refresh if needed**
-   - If the user might be seeing cached content, suggest a hard refresh: Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows/Linux).
-
-Do this every time you modify files under `src/pages/`, `src/components/`, `src/layouts/`, or `public/styles.css` so the user can always preview changes.
+4. **Always remind about hard refresh**
+   - End with: "If you don't see changes, do a hard refresh: **Cmd+Shift+R** (Mac) or **Ctrl+Shift+R** (Windows/Linux)."
+   - Say this every time, not only when cache might be an issue.

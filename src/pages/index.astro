@@ -1,62 +1,470 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HomeHero from '../components/HomeHero.astro';
-import Hero from '../components/Hero.astro';
-import CaseStudies from '../components/CaseStudies.astro';
+import BookDemoButton from '../components/BookDemoButton.astro';
 import CustomerLogos from '../components/CustomerLogos.astro';
-
-const seo = {
-  title: "AI SRE Agent for Infra + Business Logic | Preventive, Not Reactive | Softprobe",
-  description:
-    "Softprobe AI SRE agent understands both infrastructure signals and business logic, with a preventive approach that stops customer impact before release instead of only reacting after incidents.",
-  canonical: "https://softprobe.ai/",
-  image: "https://softprobe.ai/logos/4.svg",
-  type: "website"
-};
-
-const jsonld = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://softprobe.ai/#webpage",
-      url: "https://softprobe.ai/",
-      name: seo.title,
-      description: seo.description
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://softprobe.ai/#organization",
-      name: "Softprobe",
-      url: "https://softprobe.ai"
-    },
-    {
-      "@type": "SoftwareApplication",
-      name: "Softprobe AI SRE",
-      applicationCategory: "DeveloperApplication",
-      description:
-        "AI SRE agent that understands infrastructure and business logic, prevents customer impact with deterministic replay, and responds with runtime-grounded analysis.",
-      url: "https://softprobe.ai",
-      featureList: [
-        "Safe Canary deterministic replay before rollout",
-        "Runtime context graph for full-journey debugging",
-        "Release pause on silent behavior mismatch",
-        "Incident investigation grounded in production evidence"
-      ]
-    }
-  ]
-};
 ---
 
-<BaseLayout {...seo}>
-  <Fragment slot="jsonld">
-    <script type="application/ld+json" set:html={JSON.stringify(jsonld)}></script>
-  </Fragment>
+<BaseLayout
+  title="AI Regression Testing from Live Traffic | Softprobe"
+  description="Softprobe is the AI-powered shadow testing layer that turns every production request into a regression test before it is ever deployed."
+  canonical="https://softprobe.ai/"
+>
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="section-container hero-grid">
+      <div class="hero-content">
+        <h1 class="hero-title">AI Writes Code.<br /><span class="text-primary hero-title-line2">Softprobe Validates It.</span></h1>
+        <p class="hero-lead">AI made development 10× faster. It made breaking things 10× faster too. Softprobe is the AI-powered shadow testing layer that catches bugs before they're ever deployed.</p>
+        
+        <div class="hero-actions">
+          <BookDemoButton />
+          <a href="/regression-how-it-works" class="btn btn-secondary">How it works</a>
+        </div>
 
-  <div class="page">
-    <HomeHero />
+        <div class="hero-benefits">
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>Never write a regression test again.</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>Generate millions of tests instantly.</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>100% coverage of real user behavior.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-card architecture-visual">
+          <div class="visual-label">Shadow Testing Architecture</div>
+          <div class="architecture-diagram" aria-hidden="true">
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Nodes -->
+              <rect x="20" y="120" width="80" height="60" rx="12" fill="white" stroke="var(--box-border)" stroke-width="2"/>
+              <text x="60" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-color)">Production</text>
+              
+              <rect x="160" y="110" width="80" height="80" rx="16" fill="var(--primary-color)" />
+              <text x="200" y="155" text-anchor="middle" font-size="12" font-weight="800" fill="white">SOFTPROBE</text>
+              
+              <rect x="300" y="60" width="80" height="60" rx="12" fill="white" stroke="var(--box-border)" stroke-width="2"/>
+              <text x="340" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-color)">Staging</text>
+              
+              <rect x="300" y="180" width="80" height="60" rx="12" fill="white" stroke="var(--box-border)" stroke-width="2"/>
+              <text x="340" y="215" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-color)">Shadow Tests</text>
+
+              <!-- Connection Paths -->
+              <path d="M100 150 H160" stroke="var(--box-border)" stroke-width="2" stroke-dasharray="4 4" />
+              <path d="M240 150 Q270 150 270 120 V90 Q270 90 300 90" stroke="var(--box-border)" stroke-width="2" stroke-dasharray="4 4" />
+              <path d="M240 150 Q270 150 270 180 V210 Q270 210 300 210" stroke="var(--box-border)" stroke-width="2" stroke-dasharray="4 4" />
+
+              <!-- Animated Particles -->
+              <circle r="4" fill="var(--primary-color)">
+                <animateMotion dur="3s" repeatCount="indefinite" path="M100 150 H160" />
+              </circle>
+              <circle r="3" fill="var(--accent-color)">
+                <animateMotion dur="4s" begin="1s" repeatCount="indefinite" path="M240 150 Q270 150 270 120 V90 Q270 90 300 90" />
+              </circle>
+              <circle r="3" fill="var(--accent-color)">
+                <animateMotion dur="4s" begin="1.5s" repeatCount="indefinite" path="M240 150 Q270 150 270 180 V210 Q270 210 300 210" />
+              </circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUSTED BY -->
+  <section class="logos-section">
     <CustomerLogos />
-    <Hero />
-    <CaseStudies />
-  </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section class="section-alt">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="badge">The Problem</span>
+        <h2 class="section-title">The Regression Explosion</h2>
+        <p class="section-lead">With AI coding tools, every commit changes more surface area. So every release carries more hidden risk.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-item bento-visual">
+          <div class="visual-card chart-visual">
+            <div class="visual-label">The Regression Explosion</div>
+            <div class="chart-container" aria-hidden="true">
+              <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Grid Lines -->
+                <line x1="40" y1="260" x2="360" y2="260" stroke="rgba(15,23,42,0.08)" stroke-width="1" />
+                <line x1="40" y1="200" x2="360" y2="200" stroke="rgba(15,23,42,0.08)" stroke-width="1" />
+                <line x1="40" y1="140" x2="360" y2="140" stroke="rgba(15,23,42,0.08)" stroke-width="1" />
+                <line x1="40" y1="80" x2="360" y2="80" stroke="rgba(15,23,42,0.08)" stroke-width="1" />
+
+                <!-- Manual Test Coverage (Flat Line) -->
+                <path d="M40 240 L360 230" stroke="rgba(71,85,105,0.5)" stroke-width="2" />
+                <text x="365" y="235" font-size="10" fill="var(--text-muted)">Manual Tests</text>
+
+                <!-- AI-Generated Code Volume (Exponential Curve) -->
+                <path d="M40 250 Q100 240 200 180 T360 40" stroke="rgba(71,85,105,0.4)" stroke-width="2" stroke-dasharray="6 4" />
+                <text x="280" y="60" font-size="10" fill="var(--text-muted)">AI Code Volume</text>
+
+                <!-- Softprobe Coverage (Mirrors Code Volume) -->
+                <path class="draw-line" d="M40 250 Q100 240 200 180 T360 40" stroke="var(--primary-color)" stroke-width="4" stroke-linecap="round" />
+                <text x="210" y="140" font-size="12" font-weight="800" fill="var(--primary-color)">Softprobe Coverage</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="bento-item bento-content">
+          <p class="highlight-text">Manual testing does not scale to AI. AI can ship bugs faster than humans can detect them.</p>
+          <ul class="feature-list">
+            <li>
+              <strong>Entire endpoints</strong>
+              <p>Shipped in single commits with huge surface area.</p>
+            </li>
+            <li>
+              <strong>Massive refactors</strong>
+              <p>Global changes that manual tests miss.</p>
+            </li>
+            <li>
+              <strong>Production-ready features</strong>
+              <p>Released at a velocity QA teams can't match.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION SECTION -->
+  <section class="section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="badge">The Solution</span>
+        <h2 class="section-title">AI-Powered Large Scale Regression Testing</h2>
+        <p class="section-lead">Softprobe learns from live production traffic end to end—including all dependencies and exact environment states—and creates millions of test cases in your test environment.</p>
+        <div class="punch-tag">Every production request becomes a test. Instantly.</div>
+      </div>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Standard Testing</th>
+              <th class="featured-col">SOFTPROBE AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Test Code</td>
+              <td>Manual + AI generated</td>
+              <td class="featured-col">
+                <div class="featured-col-item">
+                  <span class="check-icon">✓</span>
+                  <span>No Code</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Data Source</td>
+              <td>Manually Created Test Samples</td>
+              <td class="featured-col">
+                <div class="featured-col-item">
+                  <span class="check-icon">✓</span>
+                  <span>Real World Use Cases (100% Coverage)</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Dependencies</td>
+              <td>Manual Mocks</td>
+              <td class="featured-col">
+                <div class="featured-col-item">
+                  <span class="check-icon">✓</span>
+                  <span>Captured From Real Traffic & Injected</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Environment</td>
+              <td>Test Environment</td>
+              <td class="featured-col">
+                <div class="featured-col-item">
+                  <span class="check-icon">✓</span>
+                  <span>Test Env that 100% Mirrors Production</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Flaky Tests</td>
+              <td>Difficult to Reproduce</td>
+              <td class="featured-col">
+                <div class="featured-col-item">
+                  <span class="check-icon">✓</span>
+                  <span>100% Reproducible</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Canary Testing</td>
+              <td>Impacts Real Users. Slows Releases.</td>
+              <td class="featured-col">
+                <div class="featured-col-item">
+                  <span class="check-icon">✓</span>
+                  <span>Zero User impact. Faster Releases.</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="section-container">
+      <div class="cta-card">
+        <h2 class="cta-title">Write code at AI speed.<br />Deploy with absolute confidence.</h2>
+        <div class="cta-actions">
+          <BookDemoButton />
+          <a href="/contact" class="btn btn-secondary">Talk to an expert</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .text-primary { color: var(--primary-color); }
+  .hero { padding-top: 120px; padding-bottom: 80px; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+  .hero-title { font-size: clamp(2.5rem, 5vw, 4.25rem); line-height: 1.15; margin-bottom: 32px; }
+.hero-title-line2 { display: block; margin-top: 0.15em; }
+  .hero-lead { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 540px; }
+  .hero-actions { display: flex; gap: 16px; margin-bottom: 48px; align-items: center; }
+.hero-actions .btn { min-width: 160px; min-height: 44px; }
+  .hero-benefits { display: grid; gap: 12px; }
+  .benefit-item { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text-color); font-size: 0.95rem; }
+  .benefit-icon { color: var(--primary-color); font-weight: 900; }
+
+  .visual-card { 
+    background: #fff; 
+    border: 1px solid var(--box-border); 
+    border-radius: 20px; 
+    padding: 40px; 
+    box-shadow: var(--shadow-lg); 
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .visual-card.dark { background: var(--text-color); color: #fff; border: none; }
+  .chart-visual .visual-label { color: var(--primary-color); background: var(--primary-light); }
+  .visual-label { 
+    font-size: 0.7rem; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    color: var(--primary-color); 
+    background: var(--primary-light); 
+    padding: 4px 12px; 
+    border-radius: 6px; 
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+  .visual-placeholder-content p { font-size: 1.1rem; line-height: 1.5; color: inherit; }
+
+  .logos-section { padding: 60px 0; text-align: center; }
+
+  .section-alt .section-container {
+    background: var(--box-bg);
+    border-radius: 24px;
+  }
+  .section-header { margin-bottom: 64px; max-width: 800px; }
+  .badge { 
+    display: inline-block; 
+    font-size: 0.75rem; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    color: var(--primary-color); 
+    margin-bottom: 16px; 
+    letter-spacing: 0.1em;
+  }
+  .section-title { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 24px; }
+  .section-lead { font-size: 1.2rem; color: var(--text-muted); }
+
+  .bento-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .bento-grid.reverse { direction: rtl; }
+  .bento-grid.reverse > * { direction: ltr; }
+  .highlight-text { font-size: 1.5rem; font-weight: 800; color: var(--text-color); margin-bottom: 32px; }
+  .feature-list { list-style: none; padding: 0; display: grid; gap: 24px; }
+  .feature-list li { padding-left: 24px; border-left: 3px solid var(--primary-color); }
+  .feature-list strong { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+  .feature-list p { margin: 0; font-size: 0.95rem; }
+
+  .punch-tag { display: inline-block; margin-top: 32px; font-weight: 800; font-size: 1.25rem; color: var(--text-color); border-bottom: 4px solid var(--primary-color); padding-bottom: 4px; }
+
+  /* Visual Animations & Styles */
+  .architecture-diagram, .chart-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .architecture-diagram svg, .chart-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .draw-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 5s ease-in-out infinite;
+  }
+
+  @keyframes draw {
+    0% { stroke-dashoffset: 1000; }
+    50% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+
+  /* Node styling within SVG */
+  .architecture-diagram rect {
+    transition: transform 0.3s ease;
+  }
+  
+  .architecture-diagram svg:hover rect {
+    transform: scale(1.02);
+  }
+
+  .comparison-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--box-border);
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 40px 100px rgba(15, 23, 42, 0.05);
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 800px;
+    table-layout: fixed; /* Force consistent column widths */
+  }
+  .comparison-table th, .comparison-table td {
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--line-color);
+    vertical-align: middle;
+  }
+  .comparison-table th {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    background: var(--box-bg);
+    padding: 20px 32px;
+  }
+  .comparison-table th:first-child { width: 20%; }
+  .comparison-table th:nth-child(2),
+  .comparison-table th:nth-child(3) { width: 40%; }
+
+  .comparison-table td:first-child {
+    font-weight: 700;
+    color: var(--text-color);
+  }
+  .comparison-table td {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .comparison-table .featured-col {
+    background: var(--primary-light);
+    color: var(--text-color);
+    font-weight: 400;
+    border-left: 1px solid rgba(139, 92, 246, 0.2);
+    border-right: 1px solid rgba(139, 92, 246, 0.2);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    position: relative;
+    box-shadow: 10px 0 30px rgba(15, 23, 42, 0.03);
+  }
+  .comparison-table th.featured-col {
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 900;
+    border: none;
+    box-shadow: 10px -10px 30px rgba(15, 23, 42, 0.05);
+  }
+  .featured-col-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+    margin-top: 2px; /* Adjusted for smaller font size */
+  }
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+  .comparison-table tr:last-child .featured-col {
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  }
+  .comparison-table tbody tr:hover td:not(.featured-col) {
+    background: #fbfbfb;
+  }
+  .comparison-table tbody tr:hover .featured-col {
+    background: #f0ecff;
+  }
+  
+  .cta-section { padding: 100px 0; }
+  .cta-card { 
+    background: #fff; 
+    border: 1px solid var(--box-border);
+    border-radius: 24px; 
+    padding: 80px 40px; 
+    text-align: center; 
+    position: relative; 
+    overflow: hidden; 
+    box-shadow: var(--shadow-lg);
+    max-width: var(--site-page-max-width);
+    margin: 0 auto;
+  }
+  .cta-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .cta-title { color: var(--text-color); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; position: relative; z-index: 1; }
+  .cta-actions { display: flex; gap: 20px; justify-content: center; align-items: center; position: relative; z-index: 1; }
+  .cta-actions .btn { min-width: 160px; min-height: 44px; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .bento-grid, .compare-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero { text-align: center; padding-top: 80px; }
+    .hero-lead { margin-left: auto; margin-right: auto; }
+    .hero-actions, .hero-benefits { justify-content: center; }
+    .compare-card.featured { transform: none; }
+    .cta-card { padding: 60px 24px; }
+  }
+</style>

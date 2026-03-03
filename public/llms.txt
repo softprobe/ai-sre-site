@@ -6,7 +6,6 @@ Site: https://softprobe.ai
 - Safe Canary Test: https://softprobe.ai/canary
 - Debug: https://softprobe.ai/product
 - FAQ: https://softprobe.ai/faq
-- Compare: https://softprobe.ai/compare
 - Technology: https://softprobe.ai/technology
 - Integrations: https://softprobe.ai/integrations
 

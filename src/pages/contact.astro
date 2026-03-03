@@ -4,56 +4,57 @@ import { icons } from '../lib/icons';
 ---
 
 <BaseLayout title="Contact Us - Softprobe">
-  <section class="bg-gradient-to-b from-emerald-50/40 to-[#F8FAFC] min-h-[80vh] flex flex-col items-center justify-center pt-32 pb-16 md:pt-40 md:pb-20 w-full">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <div class="max-w-3xl mx-auto mb-16">
-        <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">
-          Ready to Accelerate Your 
-          <span class="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
-             AI prod ops?
-          </span>
-        </h1>
-        <p class="text-xl text-slate-600">
-          Schedule a demo and tell us about your specific environment.
-        </p>
-      </div>
+  <section class="section-container contact-page-section">
+    <div class="contact-header">
+      <h1 class="contact-title">Deploy with <span class="text-primary">Absolute Confidence</span></h1>
+      <p class="contact-lead">Schedule a demo and tell us about your specific environment.</p>
+    </div>
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {/* Email Option */}
-        <a 
-          href="mailto:contact@softprobe.dev"
-          class="group bg-white p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-emerald-100 transition-all duration-300 text-center flex flex-col items-center"
-        >
-          <div class="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-emerald-100 transition-colors">
-             <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h2 class="text-2xl font-bold text-slate-900 mb-2">Email Us</h2>
-          <p class="text-slate-500 mb-6">Drop us a line anytime</p>
-          <span class="text-emerald-600 font-semibold group-hover:text-emerald-700">contact@softprobe.dev</span>
-        </a>
+    <div class="contact-grid">
+      {/* Email Option */}
+      <a href="mailto:contact@softprobe.dev" class="card contact-card">
+        <div class="contact-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="contact-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h2 class="card-title">Email Us</h2>
+        <p class="card-desc">Drop us a line anytime</p>
+        <span class="card-link">contact@softprobe.dev</span>
+      </a>
 
-        {/* Book Demo Option */}
-        <a 
-          href="https://calendar.app.google/Tnjgub59sebWRR1VA"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group bg-slate-900 p-10 rounded-2xl shadow-sm border border-slate-800 hover:shadow-xl hover:bg-slate-800 transition-all duration-300 text-center flex flex-col items-center"
-        >
-          <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h2 class="text-2xl font-bold text-white mb-2">Book a Demo</h2>
-          <p class="text-slate-400 mb-6">Schedule a time that works for you</p>
-          <span class="inline-flex items-center gap-2 text-white font-semibold">
-            Select a Date
-            <Fragment set:html={icons.ArrowRight} />
-          </span>
-        </a>
-      </div>
+      {/* Book Demo Option */}
+      <a href="https://calendar.app.google/Tnjgub59sebWRR1VA" target="_blank" rel="noopener noreferrer" class="card contact-card">
+        <div class="contact-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="contact-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h2 class="card-title">Book a Demo</h2>
+        <p class="card-desc">Schedule a time that works for you</p>
+        <span class="card-link">Select a Date →</span>
+      </a>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .contact-header { text-align: center; margin-bottom: 80px; max-width: 900px; margin-left: auto; margin-right: auto; }
+  .contact-title { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 24px; }
+  .text-primary { color: var(--primary-color); }
+  .contact-lead { font-size: 1.25rem; color: var(--text-muted); }
+
+  .contact-page-section { width: 100%; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1000px; margin: 0 auto; }
+  .contact-card { text-decoration: none; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .contact-icon-wrap { width: 64px; height: 64px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+  .contact-icon { width: 32px; height: 32px; color: var(--primary-color); }
+  
+  .card-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+  .card-desc { font-size: 1rem; color: var(--text-muted); margin-bottom: 24px; }
+  .card-link { font-weight: 700; color: var(--primary-color); }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>

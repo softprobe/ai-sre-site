@@ -1,0 +1,107 @@
+---
+// ReplayLogVisual.astro
+---
+
+<div class="replay-log">
+  <div class="log-header">
+    <div class="log-title">Replay Execution Log</div>
+    <div class="log-status">RUNNING</div>
+  </div>
+  <div class="log-body">
+    <div class="log-line">
+      <span class="log-timestamp">14:22:01.034</span>
+      <span class="log-level info">[INFO]</span>
+      <span class="log-msg">Loading session <code>sess_abc123</code></span>
+    </div>
+    <div class="log-line">
+      <span class="log-timestamp">14:22:01.038</span>
+      <span class="log-level info">[INFO]</span>
+      <span class="log-msg">Injected <code>user_id: "usr_991"</code></span>
+    </div>
+    <div class="log-line">
+      <span class="log-timestamp">14:22:01.042</span>
+      <span class="log-level warn">[WARN]</span>
+      <span class="log-msg">Mocking <code>Postgres:SELECT</code> (2 rows)</span>
+    </div>
+    <div class="log-line">
+      <span class="log-timestamp">14:22:01.056</span>
+      <span class="log-level info">[INFO]</span>
+      <span class="log-msg">Mocking <code>Stripe:POST</code> (Status: 200)</span>
+    </div>
+    <div class="log-line">
+      <span class="log-timestamp">14:22:01.120</span>
+      <span class="log-level success">[PASS]</span>
+      <span class="log-msg">Response matched exactly. 0.0s deviation.</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .replay-log {
+    background: #0f172a;
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: monospace;
+    font-size: 11px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .log-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #334155;
+  }
+
+  .log-title {
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+
+  .log-status {
+    color: #22c55e;
+    font-weight: 700;
+    font-size: 10px;
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .log-line {
+    margin-bottom: 6px;
+    white-space: pre-wrap;
+    display: flex;
+    gap: 12px;
+  }
+
+  .log-timestamp {
+    color: #64748b;
+  }
+
+  .log-level {
+    font-weight: 700;
+  }
+
+  .log-level.info { color: #38bdf8; }
+  .log-level.warn { color: #fbbf24; }
+  .log-level.success { color: #22c55e; }
+
+  .log-msg {
+    flex: 1;
+    color: #e2e8f0;
+  }
+
+  .log-msg code {
+    background: #1e293b;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #38bdf8;
+  }
+</style>

@@ -1,176 +1,248 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { icons } from '../lib/icons';
+import BookDemoButton from '../components/BookDemoButton.astro';
 
-const integrationCategories = [
-  { id: "all", label: "All" },
-  { id: "observability", label: "Observability" },
-  { id: "cloud", label: "Cloud & Infrastructure" },
-  { id: "communication", label: "Communication" },
-  { id: "version-control", label: "Version Control" },
-  { id: "project-management", label: "Project Management" },
-  { id: "security", label: "Security" },
-  { id: "databases", label: "Databases" },
-];
-
-const integrations = [
-  // Observability
-  { name: "Datadog", category: "observability", logo: "https://imgix.datadoghq.com/img/about/presskit/logo-v/dd_vertical_purple.png" },
-  { name: "Grafana", category: "observability", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Grafana_icon.svg" },
-  { name: "Prometheus", category: "observability", logo: "https://upload.wikimedia.org/wikipedia/commons/3/38/Prometheus_software_logo.svg" },
-  { name: "Splunk", category: "observability", logo: "https://cdn.worldvectorlogo.com/logos/splunk.svg" },
-  { name: "New Relic", category: "observability", logo: "https://cdn.simpleicons.org/newrelic/1CE783" },
-  { name: "Chronosphere", category: "observability", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Chronosphere_Inc_Logo.png/960px-Chronosphere_Inc_Logo.png" },
-  { name: "Honeycomb", category: "observability", logo: "public/logos/honeycomb.svg" },
-  { name: "Sentry", category: "observability", logo: "https://cdn.worldvectorlogo.com/logos/sentry-3.svg" },
-
-  // Cloud & Infrastructure
-  { name: "AWS", category: "cloud", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
-  { name: "Google Cloud", category: "cloud", logo: "/gcp.svg" },
-  { name: "Azure", category: "cloud", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" },
-  { name: "Kubernetes", category: "cloud", logo: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg" },
-  { name: "Docker", category: "cloud", logo: "https://cdn.worldvectorlogo.com/logos/docker.svg" },
-  { name: "Terraform", category: "cloud", logo: "https://www.datocms-assets.com/2885/1620155116-brandhcterraformverticalcolor.svg" },
-  { name: "Vercel", category: "cloud", logo: "https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png" },
-
-  // Communication
-  { name: "Slack", category: "communication", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" },
-  { name: "Microsoft Teams", category: "communication", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Microsoft_Teams.png" },
-  { name: "Discord", category: "communication", logo: "https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" },
-  { name: "Zoom", category: "communication", logo: "https://cdn.worldvectorlogo.com/logos/zoom-communications-logo.svg" },
-  { name: "PagerDuty", category: "communication", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0f/PagerDuty-GreenRGB.svg" },
-
-  // Version Control
-  { name: "GitHub", category: "version-control", logo: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" },
-  { name: "GitLab", category: "version-control", logo: "https://cdn.worldvectorlogo.com/logos/gitlab.svg" },
-  { name: "Bitbucket", category: "version-control", logo: "https://cdn.worldvectorlogo.com/logos/bitbucket-icon.svg" },
-
-  // Project Management
-  { name: "Jira", category: "project-management", logo: "https://cdn.worldvectorlogo.com/logos/jira-1.svg" },
-  { name: "Linear", category: "project-management", logo: "https://cdn.simpleicons.org/linear/5E6AD2" },
-  { name: "Asana", category: "project-management", logo: "https://cdn.worldvectorlogo.com/logos/asana-logo.svg" },
-  { name: "Monday.com", category: "project-management", logo: "https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/monday-logo-x2.png" },
-  { name: "Notion", category: "project-management", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" },
-  { name: "Confluence", category: "project-management", logo: "https://cdn.worldvectorlogo.com/logos/confluence-1.svg" },
-
-  // Security
-  { name: "Snyk", category: "security", logo: "https://cdn.worldvectorlogo.com/logos/snyk.svg" },
-  { name: "Vault", category: "security", logo: "https://cdn.simpleicons.org/vault/FFEC6E" },
-  { name: "Okta", category: "security", logo: "https://www.okta.com/sites/default/files/Okta_Logo_BrightBlue_Medium.png" },
-
-  // Databases
-  { name: "PostgreSQL", category: "databases", logo: "https://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg" },
-  { name: "MongoDB", category: "databases", logo: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" },
-  { name: "Redis", category: "databases", logo: "https://cdn.worldvectorlogo.com/logos/redis.svg" },
-  { name: "MySQL", category: "databases", logo: "https://labs.mysql.com/common/logos/mysql-logo.svg" },
-  { name: "Snowflake", category: "databases", logo: "https://companieslogo.com/img/orig/SNOW-35164165.png" },
+const categories = [
+  {
+    title: "AI Coding & Vibe Coding Tools",
+    integrations: [
+      { name: "Cursor", logo: "https://upload.wikimedia.org/wikipedia/commons/4/42/Cursor_logo.svg" },
+      { name: "Replit", logo: "https://upload.wikimedia.org/wikipedia/commons/7/78/New_Replit_Logo.svg" },
+      { name: "Lovable", logo: "https://lovable.dev/img/logo/lovable-logo-icon.svg" },
+      { name: "GitHub Copilot", logo: "https://www.vectorlogo.zone/logos/github_copilot/github_copilot-icon.svg" },
+      { name: "Codeium", logo: "https://static.cdnlogo.com/logos/c/54/codeium.svg" },
+    ]
+  },
+  {
+    title: "Source Control",
+    integrations: [
+      { name: "GitHub", logo: "https://www.vectorlogo.zone/logos/github/github-icon.svg" },
+      { name: "GitLab", logo: "https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg" },
+      { name: "Bitbucket", logo: "https://www.vectorlogo.zone/logos/bitbucket/bitbucket-icon.svg" },
+    ]
+  },
+  {
+    title: "CI/CD",
+    integrations: [
+      { name: "GitHub Actions", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubactions.svg" },
+      { name: "GitLab CI/CD", logo: "https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg" },
+      { name: "CircleCI", logo: "https://www.vectorlogo.zone/logos/circleci/circleci-icon.svg" },
+      { name: "Buildkite", logo: "https://www.vectorlogo.zone/logos/buildkite/buildkite-icon.svg" },
+      { name: "Jenkins", logo: "https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" },
+    ]
+  },
+  {
+    title: "Cloud & Runtime Platforms",
+    integrations: [
+      { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
+      { name: "Google Cloud Platform", logo: "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" },
+      { name: "Microsoft Azure", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" },
+      { name: "Kubernetes", logo: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" },
+      { name: "Vercel", logo: "https://www.vectorlogo.zone/logos/vercel/vercel-icon.svg" },
+    ]
+  },
+  {
+    title: "Observability & Logs",
+    integrations: [
+      { name: "Datadog", logo: "https://www.vectorlogo.zone/logos/datadoghq/datadoghq-icon.svg" },
+      { name: "New Relic", logo: "https://www.vectorlogo.zone/logos/newrelic/newrelic-icon.svg" },
+      { name: "Grafana", logo: "https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg" },
+      { name: "Splunk", logo: "https://www.vectorlogo.zone/logos/splunk/splunk-icon.svg" },
+      { name: "Elastic", logo: "https://www.vectorlogo.zone/logos/elastic/elastic-icon.svg" },
+    ]
+  },
+  {
+    title: "Error Monitoring",
+    integrations: [
+      { name: "Sentry", logo: "https://www.vectorlogo.zone/logos/sentryio/sentryio-icon.svg" },
+      { name: "Bugsnag", logo: "https://www.vectorlogo.zone/logos/bugsnag/bugsnag-icon.svg" },
+      { name: "Rollbar", logo: "https://www.vectorlogo.zone/logos/rollbar/rollbar-icon.svg" },
+    ]
+  }
 ];
 ---
 
-<BaseLayout title="Integrations - Softprobe">
-    {/* Hero Section */}
-    <section class="bg-gradient-to-b from-emerald-50/40 to-[#F8FAFC] pt-32 pb-16 md:pt-40 md:pb-20 w-full">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto">
-          <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight">
-            Softprobe works with{" "}
-            <span class="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
-              the tools you already use.
-            </span>
-          </h1>
+<BaseLayout
+  title="Integrations | Softprobe"
+  description="Softprobe integrates with the tools you already use, from AI coding assistants to production observability platforms."
+>
+  <div class="integrations-page">
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="section-container">
+        <h1 class="hero-title">Integrations</h1>
+        <p class="hero-lead">Softprobe works with the tools you already use. And we're always adding more.</p>
+        <div class="hero-actions">
+          <BookDemoButton />
         </div>
       </div>
-    </section>
+    </header>
 
-    {/* Integrations Grid */}
-    <section id="integrations-list" class="py-24 w-full">
-      <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-          And we're constantly adding new integrations.
-        </h2>
-      </div>
-
-      {/* Category Filter - Static implementation */}
-      <div class="flex flex-wrap justify-center gap-2 mb-12">
-        {integrationCategories.map((cat) => (
-          <button
-            data-category={cat.id}
-            class="category-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-slate-100 text-slate-600 hover:bg-slate-200"
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Integration Cards */}
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="integrations-grid">
-        {integrations.map((integration) => (
-          <div
-            data-category={integration.category}
-            class="integration-card group bg-white border border-slate-100 rounded-xl p-6 hover:shadow-lg hover:border-slate-200 transition-all duration-300 flex flex-col items-center justify-center text-center"
-          >
-            <div class="w-20 h-20 mb-3 flex items-center justify-center">
-              <img 
-                src={integration.logo} 
-                alt={integration.name}
-                class={`max-w-full max-h-full object-contain ${integration.name === 'Google Cloud' ? 'scale-125' : ''}`}
-              />
+    <!-- Integrations Grid -->
+    <section class="integrations-content">
+      <div class="section-container">
+        {categories.map((category) => (
+          <div class="category-section">
+            <h2 class="category-title">{category.title}</h2>
+            <div class="integrations-grid">
+              {category.integrations.map((item) => (
+                <div class="integration-card card">
+                  <div class="logo-wrapper">
+                    <img src={item.logo} alt={`${item.name} logo`} loading="lazy" />
+                  </div>
+                  <span class="integration-name">{item.name}</span>
+                </div>
+              ))}
             </div>
-            <span class="text-sm font-medium text-slate-700 group-hover:text-slate-900">
-              {integration.name}
-            </span>
           </div>
         ))}
       </div>
-
-      {/* Custom Integration CTA */}
-      <div class="mt-16 bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-2xl p-8 md:p-12 text-center border border-emerald-100">
-        <h3 class="text-2xl font-bold text-slate-900 mb-3">
-          Need another integration?
-        </h3>
-        <p class="text-slate-600 mb-6 max-w-xl mx-auto">
-          Let us know what you need and we'll prioritize it.
-        </p>
-        <a
-          href="mailto:contact@softprobe.ai"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition-colors"
-        >
-          Request Integration
-          <Fragment set:html={icons.ArrowRight} />
-        </a>
-      </div>
-    </div>
     </section>
 
-  <style>
-    .category-btn.active {
-      @apply bg-slate-900 text-white;
-    }
-  </style>
-
-  <script>
-    const btns = document.querySelectorAll('.category-btn');
-    const cards = document.querySelectorAll('.integration-card');
-
-    btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const cat = btn.getAttribute('data-category');
-        
-        btns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        cards.forEach(card => {
-          if (cat === 'all' || card.getAttribute('data-category') === cat) {
-            (card as HTMLElement).style.display = 'flex';
-          } else {
-            (card as HTMLElement).style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // Set 'all' as active by default
-    document.querySelector('.category-btn[data-category="all"]')?.classList.add('active');
-  </script>
+    <!-- FINAL CTA -->
+    <section class="cta-section">
+      <div class="section-container">
+        <div class="cta-card">
+          <h2 class="cta-title">Need another integration?</h2>
+          <div class="cta-actions">
+            <a href="mailto:hello@softprobe.dev" class="btn btn-secondary glass">Request Integration</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .integrations-page {
+    width: 100%;
+  }
+
+  /* Hero */
+  .hero { 
+    padding-top: 120px; 
+    padding-bottom: 60px; 
+    text-align: center; 
+    background: linear-gradient(to bottom, #fff, var(--box-bg)); 
+  }
+  .hero-title { 
+    font-size: clamp(2.5rem, 5vw, 4rem); 
+    margin-bottom: 24px; 
+  }
+  .hero-lead { 
+    font-size: 1.25rem; 
+    color: var(--text-muted); 
+    max-width: 800px; 
+    margin: 0 auto 40px; 
+  }
+  .hero-actions { 
+    display: flex; 
+    justify-content: center; 
+  }
+
+  /* Content */
+  .integrations-content {
+    padding: 40px 0 80px;
+  }
+
+  .category-section {
+    margin-bottom: 80px;
+  }
+  .category-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--box-border);
+  }
+
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .integration-card {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .logo-wrapper {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .integration-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+  }
+
+  /* CTA Override */
+  .cta-section { padding: 80px 0 120px; }
+  .cta-card { 
+    background: var(--text-color); 
+    border-radius: 32px; 
+    padding: 80px 40px; 
+    text-align: center; 
+    position: relative; 
+    overflow: hidden; 
+    box-shadow: 0 40px 100px rgba(15, 23, 42, 0.2);
+  }
+  .cta-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .cta-title { color: #fff; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; position: relative; z-index: 1; }
+  .cta-lead { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin-bottom: 40px; position: relative; z-index: 1; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .cta-actions { display: flex; gap: 20px; justify-content: center; position: relative; z-index: 1; }
+  .glass { background: rgba(255,255,255,0.1) !important; color: #fff !important; border-color: rgba(255,255,255,0.2) !important; }
+  .glass:hover { background: rgba(255,255,255,0.2) !important; }
+
+  @media (max-width: 900px) {
+    .integrations-grid {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+    .cta-card { padding: 60px 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .integrations-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .integration-card {
+      padding: 24px 16px;
+    }
+    .logo-wrapper {
+      width: 48px;
+      height: 48px;
+    }
+  }
+</style>

@@ -1,0 +1,12 @@
+---
+description: Always show latest code in dev server after edits
+alwaysApply: true
+---
+
+# Keep Dev Server Fresh
+
+After editing any file in this project that affects the web UI (`src/pages/`, `src/components/`, `src/layouts/`, `public/`):
+
+1. Run `touch src/layouts/BaseLayout.astro` to force the dev server to rebuild.
+2. Tell the user the preview URL (e.g. http://localhost:4321/regression-how-it-works).
+3. End with: "If you don't see changes, hard refresh: **Cmd+Shift+R** (Mac) or **Ctrl+Shift+R** (Windows/Linux)."

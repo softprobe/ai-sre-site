@@ -32,6 +32,8 @@ const {
 <!doctype html>
 <html lang={lang}>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/logos/4.svg" />
     <SEO
       title={title}
@@ -60,40 +62,15 @@ const {
         </a>
 
         <nav class="site-nav-menu">
-          <div class="site-nav-item site-nav-item-has-menu">
-            <a href="#" aria-haspopup="true" class="flex items-center gap-1">
-              Product
-              <div class="w-4 h-4 text-slate-400">
-                <Fragment set:html={icons.ChevronDown} />
-              </div>
-            </a>
-            <div class="site-submenu" role="menu" aria-label="Product submenu">
-              <a href="/ai-sre" role="menuitem">AI SRE</a>
-              <a href="/api-regression-testing" role="menuitem">Pre-Release Canary Testing</a>
-              <a href="/regression-testing" role="menuitem">AI Regression Testing</a>
-              <a href="/event-logging" role="menuitem">AI-Native Event Logging</a>
-            </div>
-          </div>
-          <a href="/compare" role="menuitem">Compare</a>
-          <div class="site-nav-item site-nav-item-has-menu">
-            <a href="#" aria-haspopup="true" class="flex items-center gap-1">
-              Resources
-              <div class="w-4 h-4 text-slate-400">
-                <Fragment set:html={icons.ChevronDown} />
-              </div>
-            </a>
-            <div class="site-submenu" role="menu" aria-label="Resources submenu">
-              <a href="/integrations" role="menuitem">Integrations</a>
-              <a href="/blog" role="menuitem">Blog</a>
-              <a href="/faq" role="menuitem">FAQ</a>
-            </div>
-          </div>
+          <a href="/regression-how-it-works" role="menuitem">How it Works</a>
           <a href="/contact">Contact</a>
           <BookDemoButton />
         </nav>
       </div>
     </header>
-    <slot />
+    <main class="main-content">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
