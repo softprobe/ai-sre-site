@@ -94,55 +94,71 @@ import CustomerLogos from '../components/CustomerLogos.astro';
         <div class="bento-item bento-visual">
           <div class="visual-card chart-visual">
             <div class="chart-container" aria-hidden="true">
-              <svg viewBox="0 0 450 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+              <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
                 <defs>
-                  <!-- Background Grid Pattern -->
-                  <pattern id="premium-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-opacity="0.5" />
-                  </pattern>
-
-                  <!-- Untested Area Hatching Pattern -->
-                  <pattern id="hatch-pattern" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-                    <rect width="2" height="8" fill="#8b5cf6" fill-opacity="0.25" />
-                  </pattern>
-
-                  <!-- Fade Mask for the Hatching -->
-                  <linearGradient id="mask-gradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#fff" stop-opacity="1" />
-                    <stop offset="80%" stop-color="#fff" stop-opacity="0" />
+                  <linearGradient id="risk-zone" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--primary-color)" stop-opacity="0.35" />
+                    <stop offset="100%" stop-color="var(--primary-color)" stop-opacity="0.0" />
                   </linearGradient>
-                  <mask id="hatch-mask">
-                    <rect width="450" height="320" fill="url(#mask-gradient)" />
-                  </mask>
+                  
+                  <linearGradient id="human-gradient" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#94a3b8" />
+                    <stop offset="100%" stop-color="#64748b" />
+                  </linearGradient>
 
-                  <!-- Line Glow -->
-                  <filter id="line-glow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="4" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  <linearGradient id="ai-gradient" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#c4b5fd" />
+                    <stop offset="100%" stop-color="var(--primary-color)" />
+                  </linearGradient>
+
+                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="var(--primary-color)" flood-opacity="0.25" />
+                  </filter>
+                  
+                  <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#475569" flood-opacity="0.1" />
                   </filter>
                 </defs>
 
-                <!-- Background Grid -->
-                <rect width="450" height="320" fill="url(#premium-grid)" rx="16" />
+                <!-- Grid lines (horizontal only for minimal, modern feel) -->
+                <path class="chart-grid" d="M 40 280 L 460 280" stroke="#f1f5f9" stroke-width="2" />
+                <path class="chart-grid" d="M 40 200 L 460 200" stroke="#f1f5f9" stroke-width="2" />
+                <path class="chart-grid" d="M 40 120 L 460 120" stroke="#f1f5f9" stroke-width="2" />
+                <path class="chart-grid" d="M 40 40 L 460 40" stroke="#f1f5f9" stroke-width="2" />
 
-                <!-- Gap Area (Untested Surface Area) -->
-                <path d="M 40 260 C 220 260, 320 180, 420 40 L 420 230 L 40 260 Z" fill="url(#hatch-pattern)" mask="url(#hatch-mask)" />
+                <!-- Risk Zone Area (fades in) -->
+                <path class="chart-area-fill" d="M 40 280 C 220 280, 340 150, 460 30 L 460 240 L 40 280 Z" fill="url(#risk-zone)" />
 
-                <!-- Human Written Tests Line (Subtle, dashed) -->
-                <path d="M 40 260 L 420 230" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 8" stroke-opacity="0.7" />
+                <!-- Human Written Tests Line -->
+                <path class="draw-line-human" d="M 40 280 L 460 240" stroke="url(#human-gradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft-glow)" />
                 
-                <!-- AI Code Volume Line (Bold, glowing, elegant) -->
-                <path class="draw-line" d="M 40 260 C 220 260, 320 180, 420 40" stroke="#0f172a" stroke-width="4.5" stroke-linecap="round" filter="url(#line-glow)" />
+                <!-- AI Code Volume Line -->
+                <path class="draw-line-ai" d="M 40 280 C 220 280, 340 150, 460 30" stroke="url(#ai-gradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
 
-                <!-- Data Points -->
-                <circle cx="420" cy="230" r="5" fill="#fff" stroke="#8b5cf6" stroke-width="2.5" />
-                <circle cx="420" cy="40" r="6" fill="#0f172a" />
-                <circle cx="420" cy="40" r="14" fill="none" stroke="#0f172a" stroke-width="2" stroke-opacity="0.2" />
+                <!-- Data Points AI -->
+                <g class="chart-points-ai">
+                  <circle cx="460" cy="30" r="16" fill="var(--primary-color)" opacity="0.15" class="pulse-ring" />
+                  <circle cx="460" cy="30" r="6" fill="#fff" stroke="var(--primary-color)" stroke-width="3" />
+                </g>
 
-                <!-- Labels -->
-                <text x="405" y="32" font-size="13" font-weight="700" fill="#0f172a" font-family="'Inter', system-ui, sans-serif" text-anchor="end">AI Code Volume</text>
-                <text x="405" y="248" font-size="13" font-weight="600" fill="#8b5cf6" font-family="'Inter', system-ui, sans-serif" text-anchor="end">Human-Written Tests</text>
+                <!-- Data Points Human -->
+                <circle class="chart-points-human" cx="460" cy="240" r="5" fill="#fff" stroke="#64748b" stroke-width="2.5" />
 
+                <!-- Risk Label Box -->
+                <g class="risk-label-group">
+                  <rect x="220" y="105" width="140" height="34" rx="8" fill="#fff" stroke="var(--primary-color)" stroke-width="1.5" filter="url(#soft-glow)" />
+                  <text x="290" y="127" font-size="12" font-weight="800" fill="var(--primary-color)" font-family="system-ui, -apple-system, sans-serif" text-anchor="middle">Hidden Risk Gap</text>
+                  <path d="M 290 139 L 290 205" stroke="var(--primary-color)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+                </g>
+
+                <!-- Timeline Labels -->
+                <text x="40" y="310" font-size="12" font-weight="600" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif">2023</text>
+                <text x="250" y="310" font-size="12" font-weight="600" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" text-anchor="middle">Today</text>
+                <text x="460" y="310" font-size="12" font-weight="600" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" text-anchor="end">2026</text>
+
+                <!-- Series Labels -->
+                <text x="440" y="25" font-size="13" font-weight="800" fill="#0f172a" font-family="system-ui, -apple-system, sans-serif" text-anchor="end">AI Code Volume</text>
+                <text x="440" y="255" font-size="12" font-weight="700" fill="#475569" font-family="system-ui, -apple-system, sans-serif" text-anchor="end">Manual Tests</text>
               </svg>
             </div>
           </div>
@@ -350,13 +366,40 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 
   .chart-area-fill {
     opacity: 0;
-    animation: chartFadeIn 1.2s ease-out 0.3s forwards;
+    animation: chartFadeIn 1.5s ease-out 1.2s forwards;
   }
 
-  .draw-line.chart-main-line {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
+  .draw-line-ai {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
     animation: chartDraw 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .draw-line-human {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: chartDraw 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  }
+
+  .chart-grid {
+    opacity: 0;
+    animation: chartFadeIn 1s ease-out forwards;
+  }
+
+  .chart-points-ai, .chart-points-human, .risk-label-group {
+    opacity: 0;
+    animation: chartFadeIn 1s ease-out 2s forwards;
+  }
+
+  .pulse-ring {
+    transform-origin: 460px 30px;
+    animation: pulseObj 2.5s infinite ease-out 2s;
+  }
+
+  @keyframes pulseObj {
+    0% { transform: scale(0.8); opacity: 0.3; }
+    50% { transform: scale(1.4); opacity: 0; }
+    100% { transform: scale(0.8); opacity: 0; }
   }
 
   @keyframes chartFadeIn {
@@ -365,13 +408,6 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 
   @keyframes chartDraw {
     to { stroke-dashoffset: 0; }
-  }
-
-  .chart-shimmer-line {
-    stroke-dasharray: 100 1000;
-    stroke-dashoffset: 1000;
-    animation: chartShimmer 4s linear infinite;
-    filter: blur(1px);
   }
 
   @keyframes chartShimmer {
