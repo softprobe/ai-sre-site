@@ -37,60 +37,72 @@ import { icons } from '../lib/icons.js';
             <p class="hw-punch">Ensure 100% coverage of real user behavior.</p>
           </div>
           <div class="hw-step-visual">
-            <div class="visual-card">
-              <!-- Session Graph Visual: Nested Calls with Arrows -->
-              <div class="session-graph-v3">
-                <div class="sg-row sg-row--root">
-                  <div class="sg-node sg-node--root">
-                    <div class="sg-icon" set:html={icons.ArrowRight}></div>
-                    <div class="sg-info"><strong>POST /checkout</strong><span>200 OK</span></div>
-                  </div>
-                </div>
+            <div class="visual-card execution-path-visual">
+              <!-- Execution path: all calls connected back to POST /checkout -->
+              <svg class="execution-path-svg" viewBox="0 0 380 272" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="ep-line-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="var(--primary-color)" stop-opacity="0.5" />
+                    <stop offset="100%" stop-color="var(--primary-color)" stop-opacity="0.15" />
+                  </linearGradient>
+                  <filter id="ep-node-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08" />
+                  </filter>
+                </defs>
 
-                <div class="sg-grid">
-                  <!-- Level 1 -->
-                  <div class="sg-col">
-                    <svg class="sg-arrow" viewBox="0 0 20 40"><path d="M10,0 L10,35 M5,28 L10,38 L15,28" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                    <div class="sg-node sg-node--sub">
-                      <div class="sg-icon" set:html={icons.Lock}></div>
-                      <div class="sg-info"><strong>Auth</strong><span>JWT valid</span></div>
-                    </div>
-                  </div>
+                <!-- Connection paths: root → tier1 → tier2 (smooth rounded corners) -->
+                <g class="ep-connectors" stroke="url(#ep-line-grad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Trunk: POST /checkout down to branch -->
+                  <path d="M 190 52 L 190 72" />
+                  <!-- Branch to Auth (left) – rounded bend -->
+                  <path d="M 190 72 C 190 88 190 88 160 88 C 100 88 70 88 70 98 L 70 108" />
+                  <!-- Branch to Inventory (center) -->
+                  <path d="M 190 72 L 190 108" />
+                  <!-- Branch to Stripe (right) – rounded bend -->
+                  <path d="M 190 72 C 190 88 190 88 220 88 C 280 88 310 88 310 98 L 310 108" />
+                  <!-- Inventory → Redis – rounded -->
+                  <path d="M 190 152 C 190 168 190 172 170 172 C 140 172 130 172 130 188 L 130 208" />
+                  <!-- Inventory → Postgres – rounded -->
+                  <path d="M 190 152 C 190 168 190 172 210 172 C 240 172 250 172 250 188 L 250 208" />
+                </g>
 
-                  <div class="sg-col">
-                    <svg class="sg-arrow" viewBox="0 0 20 40"><path d="M10,0 L10,35 M5,28 L10,38 L15,28" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                    <div class="sg-node sg-node--sub">
-                      <div class="sg-icon" set:html={icons.Network}></div>
-                      <div class="sg-info"><strong>Inventory</strong><span>fetch_v2</span></div>
-                    </div>
-                    <!-- Level 2 Nested -->
-                    <div class="sg-nested">
-                      <div class="sg-nested-item">
-                        <svg class="sg-side-arrow" viewBox="0 0 40 20"><path d="M0,10 L30,10 M22,5 L32,10 L22,15" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-                        <div class="sg-node sg-node--leaf">
-                          <div class="sg-icon" set:html={icons.Zap}></div>
-                          <div class="sg-info"><strong>Redis</strong><span>hit</span></div>
-                        </div>
-                      </div>
-                      <div class="sg-nested-item">
-                        <svg class="sg-side-arrow" viewBox="0 0 40 20"><path d="M0,10 L30,10 M22,5 L32,10 L22,15" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-                        <div class="sg-node sg-node--leaf">
-                          <div class="sg-icon" set:html={icons.Database}></div>
-                          <div class="sg-info"><strong>Postgres</strong><span>query</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <!-- Nodes (drawn after lines so they sit on top) -->
+                <!-- Root: POST /checkout -->
+                <g filter="url(#ep-node-shadow)">
+                  <rect class="ep-node ep-node--root" x="130" y="12" width="120" height="40" rx="10" />
+                  <text x="190" y="32" class="ep-label ep-label--root" text-anchor="middle">POST /checkout</text>
+                  <text x="190" y="46" class="ep-sublabel" text-anchor="middle">200 OK</text>
+                </g>
 
-                  <div class="sg-col">
-                    <svg class="sg-arrow" viewBox="0 0 20 40"><path d="M10,0 L10,35 M5,28 L10,38 L15,28" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                    <div class="sg-node sg-node--sub">
-                      <div class="sg-icon" set:html={icons.Cloud}></div>
-                      <div class="sg-info"><strong>Stripe</strong><span>success</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <!-- Tier 1: Auth, Inventory, Stripe -->
+                <g filter="url(#ep-node-shadow)">
+                  <rect class="ep-node ep-node--t1" x="20" y="108" width="100" height="44" rx="10" />
+                  <text x="70" y="130" class="ep-label" text-anchor="middle">Auth</text>
+                  <text x="70" y="143" class="ep-sublabel" text-anchor="middle">JWT valid</text>
+                </g>
+                <g filter="url(#ep-node-shadow)">
+                  <rect class="ep-node ep-node--t1 ep-node--center" x="140" y="108" width="100" height="44" rx="10" />
+                  <text x="190" y="130" class="ep-label" text-anchor="middle">Inventory</text>
+                  <text x="190" y="143" class="ep-sublabel" text-anchor="middle">fetch_v2</text>
+                </g>
+                <g filter="url(#ep-node-shadow)">
+                  <rect class="ep-node ep-node--t1" x="260" y="108" width="100" height="44" rx="10" />
+                  <text x="310" y="130" class="ep-label" text-anchor="middle">Stripe</text>
+                  <text x="310" y="143" class="ep-sublabel" text-anchor="middle">success</text>
+                </g>
+
+                <!-- Tier 2: Redis, Postgres (under Inventory) -->
+                <g filter="url(#ep-node-shadow)">
+                  <rect class="ep-node ep-node--t2" x="60" y="208" width="140" height="44" rx="10" />
+                  <text x="130" y="230" class="ep-label" text-anchor="middle">Redis</text>
+                  <text x="130" y="243" class="ep-sublabel" text-anchor="middle">hit</text>
+                </g>
+                <g filter="url(#ep-node-shadow)">
+                  <rect class="ep-node ep-node--t2" x="180" y="208" width="140" height="44" rx="10" />
+                  <text x="250" y="230" class="ep-label" text-anchor="middle">Postgres</text>
+                  <text x="250" y="243" class="ep-sublabel" text-anchor="middle">query</text>
+                </g>
+              </svg>
             </div>
           </div>
         </div>
@@ -143,24 +155,26 @@ import { icons } from '../lib/icons.js';
             <p class="hw-punch">Every request becomes a permanent test. Instantly.</p>
           </div>
           <div class="hw-step-visual">
-            <div class="visual-card">
-              <!-- NEW Test Suite Generation Visual: Showing Volume -->
+            <div class="visual-card visual-card--volume">
+              <!-- Test Suite Generation: volume + counter -->
               <div class="test-volume-visual">
-                <div class="volume-container">
-                  <div class="test-item" style="--i:1"><span>Test #412,021</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:2"><span>Test #412,022</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:3"><span>Test #412,023</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:4"><span>Test #412,024</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:5"><span>Test #412,025</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:6"><span>Test #412,026</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:7"><span>Test #412,027</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:8"><span>Test #412,028</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:9"><span>Test #412,029</span><div class="test-status test-status--ok"></div></div>
-                  <div class="test-item" style="--i:10"><span>Test #412,030</span><div class="test-status test-status--ok"></div></div>
+                <div class="volume-frame">
+                  <div class="volume-container">
+                    <div class="test-item" style="--i:1"><span class="test-id">#412,021</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:2"><span class="test-id">#412,022</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:3"><span class="test-id">#412,023</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:4"><span class="test-id">#412,024</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:5"><span class="test-id">#412,025</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:6"><span class="test-id">#412,026</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:7"><span class="test-id">#412,027</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:8"><span class="test-id">#412,028</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:9"><span class="test-id">#412,029</span><span class="test-dot test-dot--ok"></span></div>
+                    <div class="test-item" style="--i:10"><span class="test-id">#412,030</span><span class="test-dot test-dot--ok"></span></div>
+                  </div>
                 </div>
                 <div class="volume-counter">
-                  <div class="counter-label">Generating Millions of Tests...</div>
-                  <div class="counter-number">1,248,392</div>
+                  <span class="counter-label">Tests generated</span>
+                  <span class="counter-number">1,248,392</span>
                 </div>
               </div>
             </div>
@@ -323,40 +337,56 @@ import { icons } from '../lib/icons.js';
     box-sizing: border-box;
   }
 
-  /* --- Visual 1: Session Graph v3 --- */
-  .session-graph-v3 {
+  /* --- Visual 1: Execution path (all calls → POST /checkout) --- */
+  .execution-path-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform: scale(0.85);
   }
-  .sg-row--root { margin-bottom: 10px; }
-  .sg-grid { display: flex; justify-content: center; gap: 15px; width: 100%; align-items: flex-start; }
-  .sg-col { display: flex; flex-direction: column; align-items: center; }
-  .sg-arrow { width: 20px; height: 35px; color: #cbd5e1; margin-bottom: -5px; }
-  .sg-nested { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; padding-left: 20px; }
-  .sg-nested-item { display: flex; align-items: center; }
-  .sg-side-arrow { width: 30px; height: 20px; color: #cbd5e1; margin-right: -2px; }
-  .sg-node {
-    background: #fff;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 2;
-    text-align: left;
+  .execution-path-svg {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: block;
   }
-  .sg-node--root { border-color: var(--primary-color); border-width: 2px; }
-  .sg-node--sub { background: #f8fafc; }
-  .sg-node--leaf { transform: scale(0.9); }
-  .sg-icon { width: 16px; height: 16px; color: #64748b; flex-shrink: 0; }
-  .sg-node--root .sg-icon { color: var(--primary-color); }
-  .sg-info { display: flex; flex-direction: column; }
-  .sg-info strong { font-size: 0.75rem; color: var(--text-color); }
-  .sg-info span { font-size: 0.6rem; color: #64748b; font-family: 'JetBrains Mono', monospace; }
+  .execution-path-svg .ep-node {
+    fill: #fff;
+    stroke: #e2e8f0;
+    stroke-width: 1.5;
+  }
+  .execution-path-svg .ep-node--root {
+    fill: #f5f3ff;
+    stroke: var(--primary-color);
+    stroke-width: 2;
+  }
+  .execution-path-svg .ep-node--t1 {
+    fill: #f8fafc;
+  }
+  .execution-path-svg .ep-node--t1.ep-node--center {
+    fill: #f1f5f9;
+  }
+  .execution-path-svg .ep-node--t2 {
+    fill: #fff;
+  }
+  .execution-path-svg .ep-connectors {
+    stroke-linejoin: round;
+  }
+  .execution-path-svg .ep-label {
+    font-size: 11px;
+    font-weight: 700;
+    fill: var(--text-color);
+    font-family: var(--font-sans), sans-serif;
+  }
+  .execution-path-svg .ep-label--root {
+    font-size: 12px;
+    fill: var(--primary-color);
+  }
+  .execution-path-svg .ep-sublabel {
+    font-size: 9px;
+    fill: #64748b;
+    font-family: ui-monospace, 'JetBrains Mono', monospace;
+  }
 
   /* --- Visual 2 & 3: Code/Execution Windows --- */
   .code-window {
@@ -382,20 +412,35 @@ import { icons } from '../lib/icons.js';
   .code-bool { color: #818cf8; }
   .code-line--highlight { background: rgba(125, 211, 252, 0.1); border-left: 3px solid #7dd3fc; margin-left: -16px; padding-left: 13px; }
 
-  /* --- Visual 3: Test Volume --- */
+  /* --- Visual 3: Test Volume (Generate Millions) --- */
+  .visual-card--volume {
+    max-width: 560px;
+    aspect-ratio: auto;
+    min-height: 320px;
+  }
   .test-volume-visual {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
     width: 100%;
+  }
+  .volume-frame {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    padding: 20px 24px;
   }
   .volume-container {
     position: relative;
-    height: 140px;
+    height: 220px;
     width: 100%;
     overflow: hidden;
-    mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 85%, transparent 100%);
   }
   .test-item {
     position: absolute;
@@ -403,29 +448,66 @@ import { icons } from '../lib/icons.js';
     transform: translateX(-50%);
     background: #fff;
     border: 1px solid #e2e8f0;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.8rem;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
     font-weight: 700;
-    color: #64748b;
+    color: #334155;
     display: flex;
     align-items: center;
-    gap: 12px;
-    width: 200px;
-    animation: scrollTests 3s infinite linear;
-    animation-delay: calc(var(--i) * -0.4s);
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    max-width: 260px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    animation: scrollTests 4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * -0.35s);
+  }
+  .test-id {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+  .test-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .test-dot--ok {
+    background: #22c55e;
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
   }
   @keyframes scrollTests {
-    0% { top: 160px; opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { top: -40px; opacity: 0; }
+    0% { top: 240px; opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { top: -50px; opacity: 0; }
   }
-  .test-status { width: 8px; height: 8px; border-radius: 50%; }
-  .test-status--ok { background: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); }
-  .volume-counter { text-align: center; }
-  .counter-label { font-size: 0.7rem; font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-  .counter-number { font-size: 1.75rem; font-weight: 900; color: var(--text-color); font-variant-numeric: tabular-nums; }
+  .volume-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 28px;
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+    border: 1px solid #e9e5ff;
+    border-radius: 14px;
+    min-width: 200px;
+  }
+  .volume-counter .counter-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .volume-counter .counter-number {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-color);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
 
   /* --- Visual 4: Replay Compare v2 --- */
   .replay-compare-v2 {
@@ -481,9 +563,6 @@ import { icons } from '../lib/icons.js';
     .hw-step { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .hw-check-list { justify-items: center; }
     .hw-punch { border-left: none; border-top: 4px solid var(--primary-color); padding-left: 0; padding-top: 16px; }
-    .sg-tree { flex-direction: column; align-items: flex-start; padding-left: 20px; }
-    .sg-tree::before { left: 0; top: -32px; }
-    .sg-branch { align-items: flex-start; }
     .replay-compare-v2 { flex-direction: column; height: auto; }
     .compare-divider { padding: 10px 0; }
   }
