@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookDemoButton from '../components/BookDemoButton.astro';
-import { icons } from '../lib/icons.js';
 ---
 
 <BaseLayout
@@ -30,15 +29,14 @@ import { icons } from '../lib/icons.js';
             <h2>We Learn From Real Traffic</h2>
             <p>Manually written tests can't cover all features. Synthetic test data can't cover all scenarios. Softprobe passively observes live production requests.</p>
             <ul class="hw-check-list">
-              <li>API inputs & Auth context</li>
-              <li>Downstream calls & DB queries</li>
+              <li>API inputs and Auth context</li>
+              <li>Downstream calls and DB queries</li>
               <li>External API responses</li>
             </ul>
             <p class="hw-punch">Ensure 100% coverage of real user behavior.</p>
           </div>
           <div class="hw-step-visual">
             <div class="visual-card execution-path-visual">
-              <!-- Execution path: all calls connected back to POST /checkout -->
               <svg class="execution-path-svg" viewBox="0 0 380 272" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
                   <linearGradient id="ep-line-grad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -50,31 +48,21 @@ import { icons } from '../lib/icons.js';
                   </filter>
                 </defs>
 
-                <!-- Connection paths: root → tier1 → tier2 (smooth rounded corners) -->
                 <g class="ep-connectors" stroke="url(#ep-line-grad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <!-- Trunk: POST /checkout down to branch -->
                   <path d="M 190 52 L 190 72" />
-                  <!-- Branch to Auth (left) – rounded bend -->
                   <path d="M 190 72 C 190 88 190 88 160 88 C 100 88 70 88 70 98 L 70 108" />
-                  <!-- Branch to Inventory (center) -->
                   <path d="M 190 72 L 190 108" />
-                  <!-- Branch to Stripe (right) – rounded bend -->
                   <path d="M 190 72 C 190 88 190 88 220 88 C 280 88 310 88 310 98 L 310 108" />
-                  <!-- Inventory → Redis – rounded -->
                   <path d="M 190 152 C 190 168 190 172 170 172 C 140 172 130 172 130 188 L 130 208" />
-                  <!-- Inventory → Postgres – rounded -->
                   <path d="M 190 152 C 190 168 190 172 210 172 C 240 172 250 172 250 188 L 250 208" />
                 </g>
 
-                <!-- Nodes (drawn after lines so they sit on top) -->
-                <!-- Root: POST /checkout -->
                 <g filter="url(#ep-node-shadow)">
                   <rect class="ep-node ep-node--root" x="130" y="12" width="120" height="40" rx="10" />
                   <text x="190" y="32" class="ep-label ep-label--root" text-anchor="middle">POST /checkout</text>
                   <text x="190" y="46" class="ep-sublabel" text-anchor="middle">200 OK</text>
                 </g>
 
-                <!-- Tier 1: Auth, Inventory, Stripe -->
                 <g filter="url(#ep-node-shadow)">
                   <rect class="ep-node ep-node--t1" x="20" y="108" width="100" height="44" rx="10" />
                   <text x="70" y="130" class="ep-label" text-anchor="middle">Auth</text>
@@ -91,7 +79,6 @@ import { icons } from '../lib/icons.js';
                   <text x="310" y="143" class="ep-sublabel" text-anchor="middle">success</text>
                 </g>
 
-                <!-- Tier 2: Redis, Postgres (under Inventory) -->
                 <g filter="url(#ep-node-shadow)">
                   <rect class="ep-node ep-node--t2" x="60" y="208" width="140" height="44" rx="10" />
                   <text x="130" y="230" class="ep-label" text-anchor="middle">Redis</text>
@@ -107,6 +94,7 @@ import { icons } from '../lib/icons.js';
           </div>
         </div>
 
+
         <!-- STEP 2 -->
         <div class="hw-step reverse">
           <div class="hw-step-content">
@@ -114,8 +102,8 @@ import { icons } from '../lib/icons.js';
             <p>Flaky tests aren’t flaky. They’re missing context.</p>
             <p>We snapshot the entire runtime environment so every test case becomes deterministic and reproducible.</p>
             <ul class="hw-check-list">
-              <li>Dependency responses & database result sets</li>
-              <li>Feature flags & environment configuration</li>
+              <li>Dependency responses and database result sets</li>
+              <li>Feature flags and environment configuration</li>
               <li>Time-based inputs</li>
               <li>External API interactions</li>
             </ul>
@@ -160,16 +148,16 @@ import { icons } from '../lib/icons.js';
                 <div class="volume-widget">
                   <div class="volume-stream">
                     <div class="volume-container">
-                      <div class="test-item" style="--i:1"><span class="test-id">#412,021</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:2"><span class="test-id">#412,022</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:3"><span class="test-id">#412,023</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:4"><span class="test-id">#412,024</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:5"><span class="test-id">#412,025</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:6"><span class="test-id">#412,026</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:7"><span class="test-id">#412,027</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:8"><span class="test-id">#412,028</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:9"><span class="test-id">#412,029</span><span class="test-badge">✓</span></div>
-                      <div class="test-item" style="--i:10"><span class="test-id">#412,030</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 1 }}><span class="test-id">#412,021</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 2 }}><span class="test-id">#412,022</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 3 }}><span class="test-id">#412,023</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 4 }}><span class="test-id">#412,024</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 5 }}><span class="test-id">#412,025</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 6 }}><span class="test-id">#412,026</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 7 }}><span class="test-id">#412,027</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 8 }}><span class="test-id">#412,028</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 9 }}><span class="test-id">#412,029</span><span class="test-badge">✓</span></div>
+                      <div class="test-item" style={{ "--i": 10 }}><span class="test-id">#412,030</span><span class="test-badge">✓</span></div>
                     </div>
                   </div>
                   <div class="volume-footer">
@@ -188,7 +176,7 @@ import { icons } from '../lib/icons.js';
             <h2>We Replay Against Your New Version</h2>
             <p>When you ship new code, we compare the output of the Old version vs. the New version. If behavior changes unexpectedly, we catch it before users see it.</p>
             <ul class="hw-check-list">
-              <li>JSON Responses & Structure</li>
+              <li>JSON Responses and Structure</li>
               <li>Side effects (DB writes, events)</li>
               <li>Schema changes</li>
             </ul>
@@ -220,45 +208,45 @@ import { icons } from '../lib/icons.js';
                     <div class="replay-diff-col">
                       <div class="replay-diff-col-label">Record</div>
                       <pre class="replay-diff-json"><code>[<span class="replay-diff-line">
-  {</span><span class="replay-diff-line">
+  &#123;</span><span class="replay-diff-line">
     "id": 1,</span><span class="replay-diff-line replay-diff-line--diff">    "name": "Tom",</span><span class="replay-diff-line">
     "email": "z***n@example.com",</span><span class="replay-diff-line">
     "age": 25</span><span class="replay-diff-line">
-  },</span><span class="replay-diff-line">
-  {
+  &#125;,</span><span class="replay-diff-line">
+  &#123;
     "id": 2,
     "name": "Jack",
     "email": "l***i@example.com",
     "age": 30
-  },</span><span class="replay-diff-line">
-  {
+  &#125;,</span><span class="replay-diff-line">
+  &#123;
     "id": 3,
     "name": "Lucy",
     "email": "w***u@example.com",
     "age": 28
-  }</span><span class="replay-diff-line">
+  &#125;</span><span class="replay-diff-line">
 ]</span></code></pre>
                     </div>
                     <div class="replay-diff-col">
                       <div class="replay-diff-col-label">Replay</div>
                       <pre class="replay-diff-json"><code>[<span class="replay-diff-line">
-  {</span><span class="replay-diff-line">
+  &#123;</span><span class="replay-diff-line">
     "id": 1,</span><span class="replay-diff-line replay-diff-line--diff">    "name": "1768442288687",</span><span class="replay-diff-line">
     "email": "z***n@example.com",</span><span class="replay-diff-line">
     "age": 25</span><span class="replay-diff-line">
-  },</span><span class="replay-diff-line">
-  {
+  &#125;,</span><span class="replay-diff-line">
+  &#123;
     "id": 2,
     "name": "Jack",
     "email": "l***i@example.com",
     "age": 30
-  },</span><span class="replay-diff-line">
-  {
+  &#125;,</span><span class="replay-diff-line">
+  &#123;
     "id": 3,
     "name": "Lucy",
     "email": "w***u@example.com",
     "age": 28
-  }</span><span class="replay-diff-line">
+  &#125;</span><span class="replay-diff-line">
 ]</span></code></pre>
                     </div>
                   </div>

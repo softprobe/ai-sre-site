@@ -46,13 +46,13 @@ import CustomerLogos from '../components/CustomerLogos.astro';
               <text x="60" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-color)">Production</text>
               
               <rect x="160" y="110" width="80" height="80" rx="16" fill="var(--primary-color)" />
-              <text x="200" y="155" text-anchor="middle" font-size="12" font-weight="800" fill="white">SOFTPROBE</text>
+              <text x="200" y="155" text-anchor="middle" font-size="11" font-weight="800" fill="white">SOFTPROBE</text>
               
               <rect x="300" y="60" width="80" height="60" rx="12" fill="white" stroke="var(--box-border)" stroke-width="2"/>
-              <text x="340" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-color)">Staging</text>
+              <text x="340" y="95" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-color)">Staging</text>
               
               <rect x="300" y="180" width="80" height="60" rx="12" fill="white" stroke="var(--box-border)" stroke-width="2"/>
-              <text x="340" y="215" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-color)">Shadow Tests</text>
+              <text x="340" y="210" text-anchor="middle" font-size="10" font-weight="700" fill="var(--text-color)">Shadow Tests</text>
 
               <!-- Connection Paths -->
               <path d="M100 150 H160" stroke="var(--box-border)" stroke-width="2" stroke-dasharray="4 4" />
@@ -133,16 +133,21 @@ import CustomerLogos from '../components/CustomerLogos.astro';
                 <path class="chart-area-fill" d="M40 250 C80 248 120 220 160 190 C200 155 240 110 280 65 C310 35 335 45 360 40 L360 260 L40 260 Z" fill="url(#chart-fill-grad)" />
 
                 <!-- Manual Test Coverage (Flat) -->
-                <path d="M40 238 L360 228" stroke="rgba(100,116,139,0.4)" stroke-width="1.5" stroke-linecap="round" />
-                <text x="358" y="223" font-size="9" fill="rgba(100,116,139,0.75)" font-family="inherit" text-anchor="end">Manual Tests</text>
+                <path d="M40 238 L360 228" stroke="rgba(100,116,139,0.4)" stroke-width="2" stroke-linecap="round" />
+                <text x="358" y="215" font-size="15" font-weight="600" fill="rgba(100,116,139,0.8)" font-family="inherit" text-anchor="end">Manual Tests</text>
 
                 <!-- AI Code Volume (Dashed) -->
-                <path d="M40 250 C80 248 120 220 160 190 C200 155 240 110 280 65 C310 35 335 45 360 40" stroke="rgba(100,116,139,0.35)" stroke-width="2" stroke-dasharray="8 6" stroke-linecap="round" stroke-linejoin="round" />
-                <text x="268" y="42" font-size="9" fill="rgba(100,116,139,0.75)" font-family="inherit" text-anchor="end">AI Code Volume</text>
+                <!-- Slightly higher/steeper path than Softprobe in the middle to show difference -->
+                <path d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="rgba(100,116,139,0.35)" stroke-width="2" stroke-dasharray="8 6" stroke-linecap="round" stroke-linejoin="round" />
+                <text x="320" y="25" font-size="15" font-weight="600" fill="rgba(100,116,139,0.8)" font-family="inherit" text-anchor="end">AI Code Volume</text>
 
                 <!-- Softprobe Coverage (Main line) -->
-                <path class="draw-line chart-main-line" d="M40 250 C80 248 120 220 160 190 C200 155 240 110 280 65 C310 35 335 45 360 40" stroke="url(#chart-line-grad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#chart-glow)" />
-                <text x="200" y="135" font-size="10" font-weight="700" fill="#8b5cf6" font-family="inherit" text-anchor="middle">Softprobe Coverage</text>
+                <path class="draw-line chart-main-line" d="M40 250 C80 248 120 220 160 190 C200 155 240 110 280 65 C310 35 335 45 360 40" stroke="url(#chart-line-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#chart-glow)" />
+                
+                <!-- Animated shimmer/pulse on top of the main line -->
+                <path class="chart-shimmer-line" d="M40 250 C80 248 120 220 160 190 C200 155 240 110 280 65 C310 35 335 45 360 40" stroke="rgba(255,255,255,0.4)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;" />
+
+                <text x="180" y="110" font-size="20" font-weight="800" fill="#8b5cf6" font-family="inherit" text-anchor="middle">Softprobe Coverage</text>
               </svg>
             </div>
           </div>
@@ -365,6 +370,18 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 
   @keyframes chartDraw {
     to { stroke-dashoffset: 0; }
+  }
+
+  .chart-shimmer-line {
+    stroke-dasharray: 100 1000;
+    stroke-dashoffset: 1000;
+    animation: chartShimmer 4s linear infinite;
+    filter: blur(1px);
+  }
+
+  @keyframes chartShimmer {
+    0% { stroke-dashoffset: 1000; }
+    100% { stroke-dashoffset: -1000; }
   }
 
   /* Node styling within SVG */
