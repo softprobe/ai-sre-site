@@ -271,101 +271,134 @@ import BookDemoButton from '../components/BookDemoButton.astro';
           <div class="hw-step-visual">
             <div class="visual-card">
               <div class="session-graph-wrap">
-                <svg class="session-graph-svg" viewBox="0 0 720 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <svg class="session-graph-svg" viewBox="0 0 850 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <defs>
                     <pattern id="sg-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <circle cx="1" cy="1" r="0.5" fill="#e2e8f0" opacity="0.6" />
+                      <circle cx="1" cy="1" r="0.6" fill="#cbd5e1" opacity="0.4" />
                     </pattern>
                     <marker id="sg-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
                       <path d="M0 0 L8 4 L0 8 Z" fill="#8b5cf6" />
                     </marker>
+                    <filter id="node-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.08" />
+                    </filter>
                   </defs>
-                  <rect width="720" height="300" fill="url(#sg-grid)" />
-                  <rect width="720" height="300" fill="none" />
+                  <!-- Background Grid -->
+                  <rect width="850" height="560" fill="url(#sg-grid)" />
 
-                  <!-- Connectors: User Session → operation nodes (curved, with arrows) -->
-                  <g stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#sg-arrow)">
-                    <path d="M 198 95 Q 260 95 260 55 Q 260 30 285 30 L 318 30" />
-                    <path d="M 198 150 L 280 150 Q 310 150 335 150 L 368 150" />
-                    <path d="M 198 205 Q 260 205 260 228 Q 260 248 285 248 L 318 248" />
-                  </g>
-                  <circle cx="198" cy="95" r="4" fill="#22c55e" />
-                  <circle cx="198" cy="150" r="4" fill="#22c55e" />
-                  <circle cx="198" cy="205" r="4" fill="#22c55e" />
-                  <circle cx="318" cy="30" r="4" fill="#22c55e" />
-                  <circle cx="368" cy="150" r="4" fill="#22c55e" />
-                  <circle cx="318" cy="248" r="4" fill="#22c55e" />
-
-                  <!-- User Session node -->
-                  <g class="sg-node-user">
-                    <rect x="20" y="30" width="178" height="240" rx="12" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
-                    <rect x="20" y="30" width="178" height="36" rx="12" fill="#5b21b6" />
-                    <rect x="20" y="58" width="178" height="4" fill="#5b21b6" />
-                    <text x="108" y="53" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">User Session</text>
-                    <text x="32" y="88" fill="#64748b" font-size="10">Traces:</text>
-                    <text x="32" y="108" fill="#64748b" font-size="10">Spans:</text>
-                    <rect x="78" y="76" width="24" height="16" rx="4" fill="#5b21b6" />
-                    <text x="90" y="88" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">3</text>
-                    <rect x="78" y="96" width="24" height="16" rx="4" fill="#5b21b6" />
-                    <text x="90" y="108" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">3</text>
-                    <text x="32" y="132" fill="#334155" font-size="10" font-weight="700">Session Info</text>
-                    <text x="32" y="152" fill="#64748b" font-size="9">Session ID: sp-session-11fb...</text>
-                    <text x="32" y="168" fill="#64748b" font-size="9">Time Range: 10:02:16 - 10:02:12</text>
-                    <text x="32" y="184" fill="#64748b" font-size="9">Duration: 175523ms</text>
+                  <!-- Connectors -->
+                  <g stroke="#7c3aed" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Layer 0 to Layer 1 -->
+                    <path d="M 215 285 C 265 285 240 100 290 100" />
+                    <path d="M 215 285 C 265 285 240 280 290 280" />
+                    <path d="M 215 285 C 265 285 240 460 290 460" />
+                    <!-- Layer 1 to Layer 2 (Downstream) -->
+                    <path d="M 505 280 C 555 280 530 280 580 280" />
                   </g>
 
-                  <!-- Operation: /checkout (INBOUND SUCCESS) -->
-                  <g class="sg-node-op">
-                    <rect x="318" y="10" width="200" height="100" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
-                    <rect x="318" y="10" width="200" height="28" rx="10" fill="#7c3aed" />
-                    <rect x="318" y="32" width="200" height="4" fill="#7c3aed" />
-                    <text x="418" y="28" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">/checkout</text>
-                    <rect x="328" y="42" width="38" height="18" rx="4" fill="#64748b" />
-                    <text x="347" y="54" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">POST</text>
-                    <rect x="372" y="42" width="58" height="18" rx="4" fill="#e2e8f0" />
-                    <text x="401" y="54" text-anchor="middle" fill="#475569" font-size="9">INBOUND</text>
-                    <rect x="436" y="42" width="58" height="18" rx="4" fill="#bbf7d0" />
-                    <text x="465" y="54" text-anchor="middle" fill="#166534" font-size="9" font-weight="700">SUCCESS</text>
-                    <text x="328" y="78" fill="#64748b" font-size="9">Service: checkout-svc</text>
-                    <text x="328" y="92" fill="#64748b" font-size="9">Path: /checkout</text>
-                    <text x="328" y="106" fill="#64748b" font-size="9">Duration: 45ms · Time: 10:05:12</text>
+                  <!-- Connector Dots -->
+                  <circle cx="215" cy="285" r="5" fill="#22c55e" />
+                  <circle cx="290" cy="100" r="4" fill="#7c3aed" stroke="#fff" stroke-width="2" />
+                  <circle cx="290" cy="280" r="4" fill="#7c3aed" stroke="#fff" stroke-width="2" />
+                  <circle cx="290" cy="460" r="4" fill="#7c3aed" stroke="#fff" stroke-width="2" />
+                  <circle cx="505" cy="280" r="5" fill="#22c55e" />
+                  <circle cx="580" cy="280" r="4" fill="#7c3aed" stroke="#fff" stroke-width="2" />
+
+                  <!-- Layer 0: User Session -->
+                  <g filter="url(#node-shadow)">
+                    <rect x="25" y="215" width="200" height="150" rx="16" fill="#fff" />
+                    <rect x="25" y="215" width="200" height="48" rx="16" fill="#5b21b6" />
+                    <rect x="25" y="250" width="200" height="12" fill="#5b21b6" />
+                    <text x="125" y="247" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">User Session</text>
+                    
+                    <text x="45" y="295" fill="#64748b" font-size="15" font-weight="700">Traces: 3</text>
+                    <text x="45" y="325" fill="#64748b" font-size="15" font-weight="700">Spans: 5</text>
+                    <text x="45" y="352" fill="#334155" font-size="12" font-weight="800">SESSION: sp-11fb...</text>
                   </g>
 
-                  <!-- Operation: /inventory (INBOUND SUCCESS) -->
-                  <g class="sg-node-op">
-                    <rect x="368" y="130" width="200" height="100" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
-                    <rect x="368" y="130" width="200" height="28" rx="10" fill="#7c3aed" />
-                    <rect x="368" y="152" width="200" height="4" fill="#7c3aed" />
-                    <text x="468" y="148" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">/inventory</text>
-                    <rect x="378" y="162" width="38" height="18" rx="4" fill="#64748b" />
-                    <text x="397" y="174" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">POST</text>
-                    <rect x="422" y="162" width="58" height="18" rx="4" fill="#e2e8f0" />
-                    <text x="451" y="174" text-anchor="middle" fill="#475569" font-size="9">INBOUND</text>
-                    <rect x="486" y="162" width="58" height="18" rx="4" fill="#bbf7d0" />
-                    <text x="515" y="174" text-anchor="middle" fill="#166534" font-size="9" font-weight="700">SUCCESS</text>
-                    <text x="378" y="198" fill="#64748b" font-size="9">Service: inventory-svc</text>
-                    <text x="378" y="212" fill="#64748b" font-size="9">Path: /inventory</text>
-                    <text x="378" y="226" fill="#64748b" font-size="9">Duration: 60ms · Time: 10:03:02</text>
+                  <!-- Layer 1: Node 1 -->
+                  <g filter="url(#node-shadow)">
+                    <rect x="290" y="30" width="230" height="150" rx="16" fill="#fff" />
+                    <rect x="290" y="30" width="230" height="48" rx="16" fill="#7c3aed" />
+                    <rect x="290" y="65" width="230" height="12" fill="#7c3aed" />
+                    <text x="405" y="62" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">/flights/search</text>
+                    
+                    <rect x="305" y="85" width="50" height="24" rx="7" fill="#f1f5f9" />
+                    <text x="330" y="102" text-anchor="middle" fill="#475569" font-size="13" font-weight="800">POST</text>
+                    
+                    <rect x="360" y="85" width="75" height="24" rx="7" fill="#f1f5f9" />
+                    <text x="397.5" y="102" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">INBOUND</text>
+                    
+                    <rect x="440" y="85" width="75" height="24" rx="7" fill="#bbf7d0" />
+                    <text x="477.5" y="102" text-anchor="middle" fill="#166534" font-size="12" font-weight="800">SUCCESS</text>
+                    
+                    <text x="305" y="135" fill="#64748b" font-size="14" font-weight="600">Service: flights-api</text>
+                    <text x="305" y="160" fill="#64748b" font-size="14" font-weight="600">Duration: 45ms</text>
                   </g>
 
-                  <!-- Operation: /tax (OUTBOUND FAILURE) -->
-                  <g class="sg-node-op sg-node-op--fail">
-                    <rect x="318" y="200" width="200" height="95" rx="10" fill="#fff" stroke="#fecaca" stroke-width="1.5" />
-                    <rect x="318" y="200" width="200" height="28" rx="10" fill="#7c3aed" />
-                    <rect x="318" y="222" width="200" height="4" fill="#7c3aed" />
-                    <text x="418" y="218" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">/tax</text>
-                    <rect x="328" y="232" width="38" height="18" rx="4" fill="#64748b" />
-                    <text x="347" y="244" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">POST</text>
-                    <rect x="372" y="232" width="58" height="18" rx="4" fill="#e2e8f0" />
-                    <text x="401" y="244" text-anchor="middle" fill="#475569" font-size="9">OUTBOUND</text>
-                    <rect x="436" y="232" width="58" height="18" rx="4" fill="#fecaca" />
-                    <text x="465" y="244" text-anchor="middle" fill="#b91c1c" font-size="9" font-weight="700">FAILURE</text>
-                    <text x="328" y="268" fill="#64748b" font-size="9">Service: tax-svc</text>
-                    <text x="328" y="282" fill="#64748b" font-size="9">Path: /tax</text>
-                    <text x="328" y="296" fill="#dc2626" font-size="9">Duration: — · Schema mismatch</text>
+                  <!-- Layer 1: Node 2 -->
+                  <g filter="url(#node-shadow)">
+                    <rect x="290" y="215" width="230" height="150" rx="16" fill="#fff" />
+                    <rect x="290" y="215" width="230" height="48" rx="16" fill="#7c3aed" />
+                    <rect x="290" y="250" width="230" height="12" fill="#7c3aed" />
+                    <text x="405" y="247" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">/flights/book</text>
+                    
+                    <rect x="305" y="270" width="50" height="24" rx="7" fill="#f1f5f9" />
+                    <text x="330" y="287" text-anchor="middle" fill="#475569" font-size="13" font-weight="800">POST</text>
+                    
+                    <rect x="360" y="270" width="75" height="24" rx="7" fill="#f1f5f9" />
+                    <text x="397.5" y="287" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">INBOUND</text>
+                    
+                    <rect x="440" y="270" width="75" height="24" rx="7" fill="#bbf7d0" />
+                    <text x="477.5" y="287" text-anchor="middle" fill="#166534" font-size="12" font-weight="800">SUCCESS</text>
+                    
+                    <text x="305" y="320" fill="#64748b" font-size="14" font-weight="600">Service: flights-api</text>
+                    <text x="305" y="345" fill="#64748b" font-size="14" font-weight="600">Duration: 120ms</text>
                   </g>
+
+                  <!-- Layer 1: Node 3 -->
+                  <g filter="url(#node-shadow)">
+                    <rect x="290" y="400" width="230" height="150" rx="16" fill="#fff" />
+                    <rect x="290" y="400" width="230" height="48" rx="16" fill="#7c3aed" />
+                    <rect x="290" y="435" width="230" height="12" fill="#7c3aed" />
+                    <text x="405" y="432" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">/flights/status</text>
+                    
+                    <rect x="305" y="455" width="50" height="24" rx="7" fill="#f1f5f9" />
+                    <text x="330" y="472" text-anchor="middle" fill="#475569" font-size="13" font-weight="800">GET</text>
+                    
+                    <rect x="360" y="455" width="75" height="24" rx="7" fill="#f1f5f9" />
+                    <text x="397.5" y="472" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">INBOUND</text>
+                    
+                    <rect x="440" y="455" width="75" height="24" rx="7" fill="#bbf7d0" />
+                    <text x="477.5" y="472" text-anchor="middle" fill="#166534" font-size="12" font-weight="800">SUCCESS</text>
+                    
+                    <text x="305" y="505" fill="#64748b" font-size="14" font-weight="600">Service: flights-api</text>
+                    <text x="305" y="530" fill="#64748b" font-size="14" font-weight="600">Duration: 15ms</text>
+                  </g>
+
+                  <!-- Layer 2: Node 1 -->
+                  <g filter="url(#node-shadow)">
+                    <rect x="580" y="215" width="230" height="150" rx="16" fill="#fff" stroke="#fecaca" stroke-width="2" />
+                    <rect x="580" y="215" width="230" height="48" rx="16" fill="#7c3aed" />
+                    <rect x="580" y="250" width="230" height="12" fill="#7c3aed" />
+                    <text x="695" y="247" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">payment-auth</text>
+                    
+                    <rect x="595" y="270" width="50" height="24" rx="7" fill="#f1f5f9" />
+                    <text x="620" y="287" text-anchor="middle" fill="#475569" font-size="13" font-weight="800">POST</text>
+                    
+                    <rect x="650" y="270" width="85" height="24" rx="7" fill="#f1f5f9" />
+                    <text x="692.5" y="287" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">OUTBOUND</text>
+                    
+                    <rect x="740" y="270" width="65" height="24" rx="7" fill="#fecaca" />
+                    <text x="772.5" y="287" text-anchor="middle" fill="#b91c1c" font-size="12" font-weight="800">FAILURE</text>
+                    
+                    <text x="595" y="320" fill="#64748b" font-size="14" font-weight="600">Service: stripe-gw</text>
+                    <text x="595" y="345" fill="#b91c1c" font-size="14" font-weight="800">401 Unauthorized</text>
+                  </g>
+
                 </svg>
               </div>
+
             </div>
           </div>
         </div>
@@ -755,7 +788,7 @@ import BookDemoButton from '../components/BookDemoButton.astro';
   /* --- Visual 5: Session graph (exact cause of test failures) --- */
   .session-graph-wrap {
     width: 100%;
-    max-width: 520px;
+    max-width: 1000px;
     margin: 0 auto;
   }
   .session-graph-svg {
@@ -763,8 +796,7 @@ import BookDemoButton from '../components/BookDemoButton.astro';
     height: auto;
     display: block;
   }
-  .session-graph-svg .sg-node-user text,
-  .session-graph-svg .sg-node-op text {
+  .session-graph-svg text {
     font-family: var(--font-sans), system-ui, sans-serif;
   }
 
