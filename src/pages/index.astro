@@ -39,7 +39,6 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 
       <div class="hero-visual">
         <div class="visual-card architecture-visual">
-          <div class="visual-label">Shadow Testing Architecture</div>
           <div class="architecture-diagram" aria-hidden="true">
             <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
               <!-- Nodes -->
@@ -94,7 +93,6 @@ import CustomerLogos from '../components/CustomerLogos.astro';
       <div class="bento-grid">
         <div class="bento-item bento-visual">
           <div class="visual-card chart-visual">
-            <div class="visual-label">The Regression Explosion</div>
             <div class="chart-container" aria-hidden="true">
               <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Grid Lines -->
@@ -145,7 +143,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
       <div class="section-header">
         <span class="badge">The Solution</span>
         <h2 class="section-title">AI-Powered Large Scale Regression Testing</h2>
-        <p class="section-lead">Softprobe learns from live production traffic end to end—including all dependencies and exact environment states—and creates millions of test cases in your test environment.</p>
+        <p class="section-lead">Softprobe learns from live production traffic end to end—including all dependencies and exact environment states—and creates millions of test cases.</p>
         <div class="punch-tag">Every production request becomes a test. Instantly.</div>
       </div>
 
@@ -258,14 +256,12 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     align-items: center;
   }
   .visual-card { 
-    background: #fff; 
-    border: 1px solid var(--box-border); 
-    border-radius: 20px; 
-    padding: 40px; 
-    box-shadow: var(--shadow-lg); 
+    background: transparent; 
+    border: none; 
+    padding: 24px; 
     aspect-ratio: 1;
     width: 100%;
-    max-width: 400px;
+    max-width: 520px;
     min-height: 0;
     display: flex;
     flex-direction: column;
@@ -274,18 +270,6 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     text-align: center;
   }
   .visual-card.dark { background: var(--text-color); color: #fff; border: none; }
-  .chart-visual .visual-label { color: var(--primary-color); background: var(--primary-light); }
-  .visual-label { 
-    font-size: 0.7rem; 
-    font-weight: 800; 
-    text-transform: uppercase; 
-    color: var(--primary-color); 
-    background: var(--primary-light); 
-    padding: 4px 12px; 
-    border-radius: 6px; 
-    margin-bottom: 24px;
-    letter-spacing: 0.05em;
-  }
   .visual-placeholder-content p { font-size: 1.1rem; line-height: 1.5; color: inherit; }
 
   .logos-section { width: 100%; padding: 60px 0; text-align: center; }
@@ -444,26 +428,13 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   
   .cta-section { padding: 100px 0; }
   .cta-card { 
-    background: #fff; 
-    border: 1px solid var(--box-border);
-    border-radius: 24px; 
+    background: transparent; 
+    border: none; 
     padding: 80px 40px; 
     text-align: center; 
     position: relative; 
-    overflow: hidden; 
-    box-shadow: var(--shadow-lg);
     max-width: var(--site-page-max-width);
     margin: 0 auto;
-  }
-  .cta-card::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
-    pointer-events: none;
   }
   .cta-title { color: var(--text-color); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; position: relative; z-index: 1; }
   .cta-actions { display: flex; gap: 20px; justify-content: center; align-items: center; position: relative; z-index: 1; }

@@ -267,7 +267,7 @@ import { icons } from '../lib/icons.js';
           <h2 class="cta-title">Deploy with absolute confidence</h2>
           <div class="cta-actions">
             <BookDemoButton />
-            <a href="/contact" class="btn btn-secondary glass">Talk to an expert</a>
+            <a href="/contact" class="btn btn-secondary">Talk to an expert</a>
           </div>
         </div>
       </div>
@@ -281,13 +281,13 @@ import { icons } from '../lib/icons.js';
   .hw-lead { font-size: 1.25rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px; }
   .hw-hero-actions { display: flex; justify-content: center; }
 
-  .hw-steps { padding: 80px 0; }
+  .hw-steps { padding: 48px 0; }
   .hw-step { 
     display: grid; 
     grid-template-columns: repeat(2, minmax(0, 1fr)); 
-    gap: 80px; 
+    gap: 48px; 
     align-items: center; 
-    margin-bottom: 120px; 
+    margin-bottom: 64px; 
     width: 100%;
   }
   .hw-step > * { min-width: 0; }
@@ -307,14 +307,12 @@ import { icons } from '../lib/icons.js';
     align-items: center;
   }
   .visual-card { 
-    background: #fff; 
-    border: 1px solid var(--box-border); 
-    border-radius: 20px; 
-    padding: 40px; 
-    box-shadow: var(--shadow-lg); 
+    background: transparent; 
+    border: none; 
+    padding: 24px; 
     aspect-ratio: 1;
     width: 100%;
-    max-width: 400px;
+    max-width: 520px;
     min-height: 0;
     display: flex;
     flex-direction: column;
@@ -473,9 +471,9 @@ import { icons } from '../lib/icons.js';
   .causal-connector { width: 2px; height: 24px; background: #e2e8f0; margin-left: 21px; }
   .causal-badge { position: absolute; right: 12px; top: 12px; background: #ef4444; color: #fff; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; }
 
-  .cta-section { padding: 100px 0; }
-  .cta-card { background: var(--text-color); border-radius: 32px; padding: 80px 40px; text-align: center; position: relative; overflow: hidden; }
-  .cta-title { color: #fff; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; position: relative; z-index: 1; }
+  .cta-section { padding: 64px 0; }
+  .cta-card { background: transparent; padding: 80px 40px; text-align: center; position: relative; }
+  .cta-title { color: var(--text-color); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; position: relative; z-index: 1; }
   .cta-actions { display: flex; gap: 20px; justify-content: center; position: relative; z-index: 1; }
   .glass { background: rgba(255,255,255,0.1) !important; color: #fff !important; border-color: rgba(255,255,255,0.2) !important; }
 
