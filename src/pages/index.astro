@@ -130,22 +130,21 @@ import CustomerLogos from '../components/CustomerLogos.astro';
                 </g>
 
                 <!-- Area fill under Softprobe curve (bottom layer) -->
-                <path class="chart-area-fill" d="M40 250 C80 248 120 220 160 190 C200 155 240 110 280 65 C310 35 335 45 360 40 L360 260 L40 260 Z" fill="url(#chart-fill-grad)" />
+                <path class="chart-area-fill" d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30 L360 260 L40 260 Z" fill="url(#chart-fill-grad)" />
 
                 <!-- Manual Test Coverage (Flat) -->
                 <path d="M40 238 L360 228" stroke="rgba(100,116,139,0.4)" stroke-width="2" stroke-linecap="round" />
                 <text x="358" y="215" font-size="15" font-weight="600" fill="rgba(100,116,139,0.8)" font-family="inherit" text-anchor="end">Manual Tests</text>
 
                 <!-- AI Code Volume (Dashed) -->
-                <!-- Slightly higher/steeper path than Softprobe in the middle to show difference -->
                 <path d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="rgba(100,116,139,0.35)" stroke-width="2" stroke-dasharray="8 6" stroke-linecap="round" stroke-linejoin="round" />
                 <text x="320" y="25" font-size="15" font-weight="600" fill="rgba(100,116,139,0.8)" font-family="inherit" text-anchor="end">AI Code Volume</text>
 
                 <!-- Softprobe Coverage (Main line) -->
-                <path class="draw-line chart-main-line" d="M40 250 C80 248 120 220 160 190 C200 155 240 110 280 65 C310 35 335 45 360 40" stroke="url(#chart-line-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#chart-glow)" />
+                <path class="draw-line chart-main-line" d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="url(#chart-line-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#chart-glow)" />
                 
                 <!-- Animated shimmer/pulse on top of the main line -->
-                <path class="chart-shimmer-line" d="M40 250 C80 248 120 220 160 190 C200 155 240 110 280 65 C310 35 335 45 360 40" stroke="rgba(255,255,255,0.4)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;" />
+                <path class="chart-shimmer-line" d="M40 250 C80 240 120 200 160 160 C200 120 240 80 280 50 C310 25 335 35 360 30" stroke="rgba(255,255,255,0.4)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;" />
 
                 <text x="180" y="110" font-size="20" font-weight="800" fill="#8b5cf6" font-family="inherit" text-anchor="middle">Softprobe Coverage</text>
               </svg>
