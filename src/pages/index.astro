@@ -252,13 +252,21 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   .benefit-item { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text-color); font-size: 0.95rem; }
   .benefit-icon { color: var(--primary-color); font-weight: 900; }
 
+  .hero-visual, .bento-item.bento-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .visual-card { 
     background: #fff; 
     border: 1px solid var(--box-border); 
     border-radius: 20px; 
     padding: 40px; 
     box-shadow: var(--shadow-lg); 
-    min-height: 400px;
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 400px;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -280,11 +288,10 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   }
   .visual-placeholder-content p { font-size: 1.1rem; line-height: 1.5; color: inherit; }
 
-  .logos-section { padding: 60px 0; text-align: center; }
+  .logos-section { width: 100%; padding: 60px 0; text-align: center; }
 
   .section-alt .section-container {
-    background: var(--box-bg);
-    border-radius: 24px;
+    background: transparent;
   }
   .section-header { margin-bottom: 64px; max-width: 800px; }
   .badge { 
@@ -369,7 +376,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-muted);
-    background: var(--box-bg);
+    background: #f8fafc;
     padding: 20px 32px;
   }
   .comparison-table th:first-child { width: 20%; }
@@ -385,7 +392,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     color: var(--text-muted);
   }
   .comparison-table .featured-col {
-    background: var(--primary-light);
+    background: #f8fafc;
     color: var(--text-color);
     font-weight: 400;
     border-left: 1px solid rgba(139, 92, 246, 0.2);
@@ -429,7 +436,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     background: #fbfbfb;
   }
   .comparison-table tbody tr:hover .featured-col {
-    background: #f0ecff;
+    background: #f1f5f9;
   }
   
   .cta-section { padding: 100px 0; }

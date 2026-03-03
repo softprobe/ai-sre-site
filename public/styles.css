@@ -13,12 +13,12 @@
     --line-color: #cbd5e1;
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --anim-speed: 2s;
-    --site-page-max-width: 1380px;
-    --site-page-padding-desktop: 40px 24px 72px;
+    --site-page-max-width: 100%;
+    --site-page-padding-desktop: 40px 48px 72px;
     --site-page-gap-desktop: clamp(92px, 8vw, 132px);
-    --site-page-padding-tablet: 28px 16px 56px;
+    --site-page-padding-tablet: 28px 32px 56px;
     --site-page-gap-tablet: clamp(72px, 7vw, 108px);
-    --site-page-padding-mobile: 22px 14px 44px;
+    --site-page-padding-mobile: 22px 20px 44px;
     --site-page-gap-mobile: 64px;
     --content-card-copy-size: 0.86rem;
     --content-card-copy-line-height: 1.65;
@@ -30,11 +30,12 @@ html, body {
     font-family: var(--font-sans);
     background-color: var(--primary-bg);
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
     min-height: 100vh;
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .main-content {
@@ -42,7 +43,6 @@ html, body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
 }
 
 .section-container {
@@ -109,7 +109,7 @@ html, body {
 
 .site-nav-inner {
     width: min(var(--site-page-max-width), 100%);
-    padding: 12px 24px;
+    padding: 12px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2877,13 +2877,15 @@ html, body {
 /* ── Customer Logos Marquee ─────────────────────── */
 
 .customer-logos {
+    width: 100%;
+    max-width: var(--site-page-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 48px;
+    box-sizing: border-box;
     text-align: center;
-    padding: 0;
-    /* Removed large paddings */
     margin-top: -20px;
-    /* Pull closer to hero */
     margin-bottom: -40px;
-    /* Pull next section closer */
 }
 
 .customer-logos-heading {
@@ -2958,7 +2960,7 @@ html, body {
 
 .site-footer-inner {
     width: min(var(--site-page-max-width), 100%);
-    padding: 56px 24px 32px;
+    padding: 56px 48px 32px;
 }
 
 .site-footer-grid {
