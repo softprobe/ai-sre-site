@@ -13,7 +13,7 @@
     --line-color: #cbd5e1;
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --anim-speed: 2s;
-    --site-page-max-width: 100%;
+    --site-page-max-width: 1380px;
     --site-page-padding-desktop: 40px 48px 72px;
     --site-page-gap-desktop: clamp(92px, 8vw, 132px);
     --site-page-padding-tablet: 28px 32px 56px;
@@ -108,7 +108,9 @@ html, body {
 }
 
 .site-nav-inner {
-    width: min(var(--site-page-max-width), 100%);
+    width: 100%;
+    max-width: var(--site-page-max-width);
+    margin: 0 auto;
     padding: 12px 48px;
     display: flex;
     align-items: center;
@@ -1032,7 +1034,7 @@ html, body {
 
 .slack-post {
     width: min(720px, 100%);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: var(--font-sans);
     color: #111827;
     background: rgba(255, 255, 255, 0.78);
     border: 1px solid rgba(229, 231, 235, 0.9);
@@ -2959,7 +2961,9 @@ html, body {
 }
 
 .site-footer-inner {
-    width: min(var(--site-page-max-width), 100%);
+    width: 100%;
+    max-width: var(--site-page-max-width);
+    margin: 0 auto;
     padding: 56px 48px 32px;
 }
 
