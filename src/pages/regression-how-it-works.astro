@@ -271,131 +271,130 @@ import BookDemoButton from '../components/BookDemoButton.astro';
           <div class="hw-step-visual">
             <div class="visual-card">
               <div class="session-graph-wrap">
-                <svg class="session-graph-svg" viewBox="0 0 850 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <svg class="session-graph-svg" viewBox="0 0 1020 680" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <defs>
-                    <pattern id="sg-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <circle cx="1" cy="1" r="0.6" fill="#cbd5e1" opacity="0.4" />
+                    <pattern id="sg-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                      <circle cx="1" cy="1" r="0.72" fill="#cbd5e1" opacity="0.4" />
                     </pattern>
-                    <marker id="sg-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-                      <path d="M0 0 L8 4 L0 8 Z" fill="#8b5cf6" />
+                    <marker id="sg-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                      <path d="M0 0 L10 5 L0 10 Z" fill="#8b5cf6" />
                     </marker>
                     <filter id="node-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.08" />
+                      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-opacity="0.1" />
                     </filter>
                   </defs>
                   <!-- Background Grid -->
-                  <rect width="850" height="560" fill="url(#sg-grid)" />
+                  <rect width="1020" height="680" fill="url(#sg-grid)" />
 
                   <!-- Connectors -->
-                  <g stroke="#7c3aed" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <g stroke="#7c3aed" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <!-- Layer 0 to Layer 1 -->
-                    <path d="M 215 285 C 265 285 240 100 290 100" />
-                    <path d="M 215 285 C 265 285 240 280 290 280" />
-                    <path d="M 215 285 C 265 285 240 460 290 460" />
+                    <path d="M 270 340 C 310 340 310 125 350 125" />
+                    <path d="M 270 340 L 350 340" />
+                    <path d="M 270 340 C 310 340 310 555 350 555" />
                     <!-- Layer 1 to Layer 2 (Downstream) -->
-                    <path d="M 505 280 C 555 280 530 280 580 280" />
+                    <path d="M 620 340 L 700 340" />
                   </g>
 
                   <!-- Connector Dots -->
-                  <circle cx="215" cy="285" r="5" fill="#22c55e" />
-                  <circle cx="290" cy="100" r="4" fill="#7c3aed" stroke="#fff" stroke-width="2" />
-                  <circle cx="290" cy="280" r="4" fill="#7c3aed" stroke="#fff" stroke-width="2" />
-                  <circle cx="290" cy="460" r="4" fill="#7c3aed" stroke="#fff" stroke-width="2" />
-                  <circle cx="505" cy="280" r="5" fill="#22c55e" />
-                  <circle cx="580" cy="280" r="4" fill="#7c3aed" stroke="#fff" stroke-width="2" />
+                  <circle cx="270" cy="340" r="6" fill="#22c55e" />
+                  <circle cx="350" cy="125" r="5" fill="#7c3aed" stroke="#fff" stroke-width="2.5" />
+                  <circle cx="350" cy="340" r="5" fill="#7c3aed" stroke="#fff" stroke-width="2.5" />
+                  <circle cx="350" cy="555" r="5" fill="#7c3aed" stroke="#fff" stroke-width="2.5" />
+                  <circle cx="620" cy="340" r="6" fill="#22c55e" />
+                  <circle cx="700" cy="340" r="5" fill="#7c3aed" stroke="#fff" stroke-width="2.5" />
 
                   <!-- Layer 0: User Session -->
                   <g filter="url(#node-shadow)">
-                    <rect x="25" y="215" width="200" height="150" rx="16" fill="#fff" />
-                    <rect x="25" y="215" width="200" height="48" rx="16" fill="#5b21b6" />
-                    <rect x="25" y="250" width="200" height="12" fill="#5b21b6" />
-                    <text x="125" y="247" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">User Session</text>
+                    <rect x="30" y="255" width="240" height="170" rx="18" fill="#fff" />
+                    <rect x="30" y="255" width="240" height="54" rx="18" fill="#5b21b6" />
+                    <rect x="30" y="295" width="240" height="14" fill="#5b21b6" />
+                    <text x="150" y="290" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">User Session</text>
                     
-                    <text x="45" y="295" fill="#64748b" font-size="15" font-weight="700">Traces: 3</text>
-                    <text x="45" y="325" fill="#64748b" font-size="15" font-weight="700">Spans: 5</text>
-                    <text x="45" y="352" fill="#334155" font-size="12" font-weight="800">SESSION: sp-11fb...</text>
+                    <text x="55" y="340" fill="#64748b" font-size="17" font-weight="700">Traces: 3</text>
+                    <text x="55" y="375" fill="#64748b" font-size="17" font-weight="700">Spans: 5</text>
+                    <text x="55" y="405" fill="#334155" font-size="14" font-weight="800">SESSION: sp-11fb...</text>
                   </g>
 
                   <!-- Layer 1: Node 1 -->
                   <g filter="url(#node-shadow)">
-                    <rect x="290" y="30" width="230" height="150" rx="16" fill="#fff" />
-                    <rect x="290" y="30" width="230" height="48" rx="16" fill="#7c3aed" />
-                    <rect x="290" y="65" width="230" height="12" fill="#7c3aed" />
-                    <text x="405" y="62" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">/flights/search</text>
+                    <rect x="350" y="40" width="270" height="170" rx="18" fill="#fff" />
+                    <rect x="350" y="40" width="270" height="54" rx="18" fill="#7c3aed" />
+                    <rect x="350" y="80" width="270" height="14" fill="#7c3aed" />
+                    <text x="485" y="75" text-anchor="middle" fill="#fff" font-size="19" font-weight="800">/flights/search</text>
                     
-                    <rect x="305" y="85" width="50" height="24" rx="7" fill="#f1f5f9" />
-                    <text x="330" y="102" text-anchor="middle" fill="#475569" font-size="13" font-weight="800">POST</text>
+                    <rect x="370" y="105" width="60" height="28" rx="8" fill="#f1f5f9" />
+                    <text x="400" y="125" text-anchor="middle" fill="#475569" font-size="15" font-weight="800">POST</text>
                     
-                    <rect x="360" y="85" width="75" height="24" rx="7" fill="#f1f5f9" />
-                    <text x="397.5" y="102" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">INBOUND</text>
+                    <rect x="435" y="105" width="85" height="28" rx="8" fill="#f1f5f9" />
+                    <text x="477.5" y="125" text-anchor="middle" fill="#475569" font-size="14" font-weight="700">INBOUND</text>
                     
-                    <rect x="440" y="85" width="75" height="24" rx="7" fill="#bbf7d0" />
-                    <text x="477.5" y="102" text-anchor="middle" fill="#166534" font-size="12" font-weight="800">SUCCESS</text>
+                    <rect x="525" y="105" width="80" height="28" rx="8" fill="#bbf7d0" />
+                    <text x="565" y="125" text-anchor="middle" fill="#166534" font-size="14" font-weight="800">SUCCESS</text>
                     
-                    <text x="305" y="135" fill="#64748b" font-size="14" font-weight="600">Service: flights-api</text>
-                    <text x="305" y="160" fill="#64748b" font-size="14" font-weight="600">Duration: 45ms</text>
+                    <text x="370" y="155" fill="#64748b" font-size="16" font-weight="600">Service: flights-api</text>
+                    <text x="370" y="185" fill="#64748b" font-size="16" font-weight="600">Duration: 45ms</text>
                   </g>
 
                   <!-- Layer 1: Node 2 -->
                   <g filter="url(#node-shadow)">
-                    <rect x="290" y="215" width="230" height="150" rx="16" fill="#fff" />
-                    <rect x="290" y="215" width="230" height="48" rx="16" fill="#7c3aed" />
-                    <rect x="290" y="250" width="230" height="12" fill="#7c3aed" />
-                    <text x="405" y="247" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">/flights/book</text>
+                    <rect x="350" y="255" width="270" height="170" rx="18" fill="#fff" />
+                    <rect x="350" y="255" width="270" height="54" rx="18" fill="#7c3aed" />
+                    <rect x="350" y="295" width="270" height="14" fill="#7c3aed" />
+                    <text x="485" y="290" text-anchor="middle" fill="#fff" font-size="19" font-weight="800">/flights/book</text>
                     
-                    <rect x="305" y="270" width="50" height="24" rx="7" fill="#f1f5f9" />
-                    <text x="330" y="287" text-anchor="middle" fill="#475569" font-size="13" font-weight="800">POST</text>
+                    <rect x="370" y="320" width="60" height="28" rx="8" fill="#f1f5f9" />
+                    <text x="400" y="340" text-anchor="middle" fill="#475569" font-size="15" font-weight="800">POST</text>
                     
-                    <rect x="360" y="270" width="75" height="24" rx="7" fill="#f1f5f9" />
-                    <text x="397.5" y="287" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">INBOUND</text>
+                    <rect x="435" y="320" width="85" height="28" rx="8" fill="#f1f5f9" />
+                    <text x="477.5" y="340" text-anchor="middle" fill="#475569" font-size="14" font-weight="700">INBOUND</text>
                     
-                    <rect x="440" y="270" width="75" height="24" rx="7" fill="#bbf7d0" />
-                    <text x="477.5" y="287" text-anchor="middle" fill="#166534" font-size="12" font-weight="800">SUCCESS</text>
+                    <rect x="525" y="320" width="80" height="28" rx="8" fill="#bbf7d0" />
+                    <text x="565" y="340" text-anchor="middle" fill="#166534" font-size="14" font-weight="800">SUCCESS</text>
                     
-                    <text x="305" y="320" fill="#64748b" font-size="14" font-weight="600">Service: flights-api</text>
-                    <text x="305" y="345" fill="#64748b" font-size="14" font-weight="600">Duration: 120ms</text>
+                    <text x="370" y="370" fill="#64748b" font-size="16" font-weight="600">Service: flights-api</text>
+                    <text x="370" y="400" fill="#64748b" font-size="16" font-weight="600">Duration: 120ms</text>
                   </g>
 
                   <!-- Layer 1: Node 3 -->
                   <g filter="url(#node-shadow)">
-                    <rect x="290" y="400" width="230" height="150" rx="16" fill="#fff" />
-                    <rect x="290" y="400" width="230" height="48" rx="16" fill="#7c3aed" />
-                    <rect x="290" y="435" width="230" height="12" fill="#7c3aed" />
-                    <text x="405" y="432" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">/flights/status</text>
+                    <rect x="350" y="470" width="270" height="170" rx="18" fill="#fff" />
+                    <rect x="350" y="470" width="270" height="54" rx="18" fill="#7c3aed" />
+                    <rect x="350" y="510" width="270" height="14" fill="#7c3aed" />
+                    <text x="485" y="505" text-anchor="middle" fill="#fff" font-size="19" font-weight="800">/flights/status</text>
                     
-                    <rect x="305" y="455" width="50" height="24" rx="7" fill="#f1f5f9" />
-                    <text x="330" y="472" text-anchor="middle" fill="#475569" font-size="13" font-weight="800">GET</text>
+                    <rect x="370" y="535" width="60" height="28" rx="8" fill="#f1f5f9" />
+                    <text x="400" y="555" text-anchor="middle" fill="#475569" font-size="15" font-weight="800">GET</text>
                     
-                    <rect x="360" y="455" width="75" height="24" rx="7" fill="#f1f5f9" />
-                    <text x="397.5" y="472" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">INBOUND</text>
+                    <rect x="435" y="535" width="85" height="28" rx="8" fill="#f1f5f9" />
+                    <text x="477.5" y="555" text-anchor="middle" fill="#475569" font-size="14" font-weight="700">INBOUND</text>
                     
-                    <rect x="440" y="455" width="75" height="24" rx="7" fill="#bbf7d0" />
-                    <text x="477.5" y="472" text-anchor="middle" fill="#166534" font-size="12" font-weight="800">SUCCESS</text>
+                    <rect x="525" y="535" width="80" height="28" rx="8" fill="#bbf7d0" />
+                    <text x="565" y="555" text-anchor="middle" fill="#166534" font-size="14" font-weight="800">SUCCESS</text>
                     
-                    <text x="305" y="505" fill="#64748b" font-size="14" font-weight="600">Service: flights-api</text>
-                    <text x="305" y="530" fill="#64748b" font-size="14" font-weight="600">Duration: 15ms</text>
+                    <text x="370" y="585" fill="#64748b" font-size="16" font-weight="600">Service: flights-api</text>
+                    <text x="370" y="615" fill="#64748b" font-size="16" font-weight="600">Duration: 15ms</text>
                   </g>
 
                   <!-- Layer 2: Node 1 -->
                   <g filter="url(#node-shadow)">
-                    <rect x="580" y="215" width="230" height="150" rx="16" fill="#fff" stroke="#fecaca" stroke-width="2" />
-                    <rect x="580" y="215" width="230" height="48" rx="16" fill="#7c3aed" />
-                    <rect x="580" y="250" width="230" height="12" fill="#7c3aed" />
-                    <text x="695" y="247" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">payment-auth</text>
+                    <rect x="700" y="255" width="270" height="170" rx="18" fill="#fff" stroke="#fecaca" stroke-width="2.5" />
+                    <rect x="700" y="255" width="270" height="54" rx="18" fill="#7c3aed" />
+                    <rect x="700" y="295" width="270" height="14" fill="#7c3aed" />
+                    <text x="835" y="290" text-anchor="middle" fill="#fff" font-size="19" font-weight="800">payment-auth</text>
                     
-                    <rect x="595" y="270" width="50" height="24" rx="7" fill="#f1f5f9" />
-                    <text x="620" y="287" text-anchor="middle" fill="#475569" font-size="13" font-weight="800">POST</text>
+                    <rect x="720" y="320" width="60" height="28" rx="8" fill="#f1f5f9" />
+                    <text x="750" y="340" text-anchor="middle" fill="#475569" font-size="15" font-weight="800">POST</text>
                     
-                    <rect x="650" y="270" width="85" height="24" rx="7" fill="#f1f5f9" />
-                    <text x="692.5" y="287" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">OUTBOUND</text>
+                    <rect x="785" y="320" width="95" height="28" rx="8" fill="#f1f5f9" />
+                    <text x="832.5" y="340" text-anchor="middle" fill="#475569" font-size="14" font-weight="700">OUTBOUND</text>
                     
-                    <rect x="740" y="270" width="65" height="24" rx="7" fill="#fecaca" />
-                    <text x="772.5" y="287" text-anchor="middle" fill="#b91c1c" font-size="12" font-weight="800">FAILURE</text>
+                    <rect x="885" y="320" width="70" height="28" rx="8" fill="#fecaca" />
+                    <text x="920" y="340" text-anchor="middle" fill="#b91c1c" font-size="14" font-weight="800">FAILURE</text>
                     
-                    <text x="595" y="320" fill="#64748b" font-size="14" font-weight="600">Service: stripe-gw</text>
-                    <text x="595" y="345" fill="#b91c1c" font-size="14" font-weight="800">401 Unauthorized</text>
+                    <text x="720" y="370" fill="#64748b" font-size="16" font-weight="600">Service: stripe-gw</text>
+                    <text x="720" y="400" fill="#b91c1c" font-size="16" font-weight="800">401 Unauthorized</text>
                   </g>
-
                 </svg>
               </div>
 
@@ -788,7 +787,7 @@ import BookDemoButton from '../components/BookDemoButton.astro';
   /* --- Visual 5: Session graph (exact cause of test failures) --- */
   .session-graph-wrap {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .session-graph-svg {
