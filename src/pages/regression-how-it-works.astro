@@ -783,11 +783,22 @@ import BookDemoButton from '../components/BookDemoButton.astro';
   .glass { background: rgba(255,255,255,0.1) !important; color: #fff !important; border-color: rgba(255,255,255,0.2) !important; }
 
   @media (max-width: 900px) {
-    .hw-step { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-    .hw-check-list { justify-items: center; }
-    .hw-punch { border-left: none; border-top: 4px solid var(--primary-color); padding-left: 0; padding-top: 16px; }
+    .hw-step { grid-template-columns: 1fr; gap: 24px; text-align: left; }
+    .hw-step + .hw-step {
+      margin-top: 8px;
+      padding-top: 48px;
+      border-top: 2px solid var(--box-border);
+    }
+    .hw-step h2 { font-size: 1.6rem; margin-bottom: 16px; }
+    .hw-check-list { justify-items: start; }
+    .hw-check-list li { text-align: left; }
+    .hw-punch { border-left: 4px solid var(--primary-color); padding-left: 16px; border-top: none; padding-top: 0; }
+    .hw-step-visual { order: -1; } /* put visual above text on mobile */
+    .visual-card { max-width: 100%; aspect-ratio: auto; padding: 16px; }
     .replay-diff-body { flex-direction: column; }
     .replay-diff-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; }
     .replay-diff-columns { flex-direction: column; }
+    .cta-actions { flex-direction: column; align-items: center; }
+    .cta-actions .btn { width: 100%; max-width: 320px; }
   }
 </style>

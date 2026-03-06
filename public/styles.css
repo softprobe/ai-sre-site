@@ -26,7 +26,8 @@
     --content-card-title-size: clamp(1.2rem, 1.8vw, 1.48rem);
 }
 
-html, body {
+html,
+body {
     font-family: var(--font-sans);
     background-color: var(--primary-bg);
     margin: 0;
@@ -107,6 +108,12 @@ html, body {
     height: 80px;
 }
 
+@media (max-width: 700px) {
+    .site-nav {
+        height: auto;
+    }
+}
+
 .site-nav-inner {
     width: 100%;
     max-width: var(--site-page-max-width);
@@ -116,6 +123,14 @@ html, body {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+}
+
+@media (max-width: 700px) {
+    .site-nav-inner {
+        flex-wrap: wrap;
+        padding: 10px 16px;
+        gap: 8px;
+    }
 }
 
 .site-nav-logo {
@@ -138,6 +153,18 @@ html, body {
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+    .site-nav-menu {
+        gap: 10px;
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    .site-nav-menu a {
+        font-size: 0.82rem;
+    }
 }
 
 .site-nav-item {

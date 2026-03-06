@@ -293,7 +293,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 .hero-title-line2 { display: block; margin-top: 0.15em; }
   .hero-lead { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 540px; }
   .hero-actions { display: flex; gap: 16px; margin-bottom: 48px; align-items: center; }
-.hero-actions .btn { min-width: 160px; min-height: 44px; }
+  .hero-actions .btn { min-width: 160px; min-height: 44px; }
   .hero-benefits { display: grid; gap: 12px; }
   .benefit-item { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text-color); font-size: 0.95rem; }
   .benefit-icon { color: var(--primary-color); font-weight: 900; }
@@ -533,8 +533,85 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     .hero-grid, .bento-grid, .compare-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero { text-align: center; padding-top: 80px; }
     .hero-lead { margin-left: auto; margin-right: auto; }
-    .hero-actions, .hero-benefits { justify-content: center; }
+    .hero-actions { justify-content: center; flex-wrap: nowrap; }
+    .hero-actions .btn { flex: 1; min-width: 0; text-align: center; }
+    .hero-benefits { justify-content: center; }
     .compare-card.featured { transform: none; }
     .cta-card { padding: 60px 24px; }
+    .cta-actions { flex-direction: column; align-items: center; }
+    .cta-actions .btn { width: 100%; max-width: 320px; }
+
+    /* Comparison table → stacked cards on mobile */
+    .comparison-table-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .comparison-table {
+      min-width: 0;
+      display: block;
+    }
+    .comparison-table thead {
+      display: none; /* hide header row — labels go inline */
+    }
+    .comparison-table tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .comparison-table tr {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line-color);
+    }
+    .comparison-table tr:last-child {
+      border-bottom: none;
+    }
+    .comparison-table td {
+      padding: 14px 16px;
+      border-right: none !important;
+      border-bottom: none !important;
+    }
+    .comparison-table td:first-child {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: #f8fafc;
+      grid-column: 1 / -1; /* full width label row */
+      padding: 10px 16px 6px;
+      border-bottom: 1px solid var(--line-color) !important;
+    }
+    .comparison-table td:nth-child(2) {
+      border-right: 1px solid var(--line-color) !important;
+      font-size: 0.88rem;
+    }
+    .comparison-table td:nth-child(2)::before {
+      content: "Standard";
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .comparison-table td.featured-col {
+      font-size: 0.88rem;
+      background: #f5f3ff !important;
+    }
+    .comparison-table td.featured-col::before {
+      content: "Softprobe";
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary-color);
+      margin-bottom: 4px;
+    }
+    .comparison-table tr:last-child .featured-col {
+      border-bottom: none !important;
+    }
   }
 </style>
