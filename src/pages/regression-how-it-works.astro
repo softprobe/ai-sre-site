@@ -11,8 +11,8 @@ import BookDemoButton from '../components/BookDemoButton.astro';
     <!-- HERO -->
     <header class="hw-hero">
       <div class="section-container">
-        <h1 class="hw-title">How It Works</h1>
-        <p class="hw-lead">Testing architecture for the AI era that perfectly replicates production, guarantees full test coverage, manages dependencies, and diagnoses flaky test results.</p>
+        <h1 class="hw-title" data-i18n="hiw.title">How It Works</h1>
+        <p class="hw-lead" data-i18n="hiw.lead">Testing architecture for the AI era that perfectly replicates production, guarantees full test coverage, manages dependencies, and diagnoses flaky test results.</p>
         <div class="hw-hero-actions">
           <BookDemoButton />
         </div>
@@ -26,14 +26,14 @@ import BookDemoButton from '../components/BookDemoButton.astro';
         <!-- STEP 1 -->
         <div class="hw-step">
           <div class="hw-step-content">
-            <h2>We Learn From Real Traffic</h2>
-            <p>Manually written tests can't cover all features. Synthetic test data can't cover all scenarios. Softprobe passively observes live production requests.</p>
+            <h2 data-i18n="hiw.step1.title">We Learn From Real Traffic</h2>
+            <p data-i18n="hiw.step1.p1">Manually written tests can't cover all features. Synthetic test data can't cover all scenarios. Softprobe passively observes live production requests.</p>
             <ul class="hw-check-list">
-              <li>API inputs and Auth context</li>
-              <li>Downstream calls and DB queries</li>
-              <li>External API responses</li>
+              <li data-i18n="hiw.step1.li1">API inputs and Auth context</li>
+              <li data-i18n="hiw.step1.li2">Downstream calls and DB queries</li>
+              <li data-i18n="hiw.step1.li3">External API responses</li>
             </ul>
-            <p class="hw-punch">Ensure 100% coverage of real user behavior.</p>
+            <p class="hw-punch" data-i18n="hiw.step1.punch">Ensure 100% coverage of real user behavior.</p>
           </div>
           <div class="hw-step-visual">
             <div class="visual-card execution-path-visual">
@@ -98,16 +98,16 @@ import BookDemoButton from '../components/BookDemoButton.astro';
         <!-- STEP 2 -->
         <div class="hw-step reverse">
           <div class="hw-step-content">
-            <h2>We Capture the Full Execution State</h2>
-            <p>Flaky tests aren’t flaky. They’re missing context.</p>
-            <p>We snapshot the entire runtime environment so every test case becomes deterministic and reproducible.</p>
+            <h2 data-i18n="hiw.step2.title">We Capture the Full Execution State</h2>
+            <p data-i18n="hiw.step2.p1">Flaky tests aren’t flaky. They’re missing context.</p>
+            <p data-i18n="hiw.step2.p2">We snapshot the entire runtime environment so every test case becomes deterministic and reproducible.</p>
             <ul class="hw-check-list">
-              <li>Dependency responses and database result sets</li>
-              <li>Feature flags and environment configuration</li>
-              <li>Time-based inputs</li>
-              <li>External API interactions</li>
+              <li data-i18n="hiw.step2.li1">Dependency responses and database result sets</li>
+              <li data-i18n="hiw.step2.li2">Feature flags and environment configuration</li>
+              <li data-i18n="hiw.step2.li3">Time-based inputs</li>
+              <li data-i18n="hiw.step2.li4">External API interactions</li>
             </ul>
-            <p class="hw-punch">All failures are reproducible.</p>
+            <p class="hw-punch" data-i18n="hiw.step2.punch">All failures are reproducible.</p>
           </div>
           <div class="hw-step-visual">
             <div class="visual-card">
@@ -133,14 +133,14 @@ import BookDemoButton from '../components/BookDemoButton.astro';
         <!-- STEP 3 -->
         <div class="hw-step">
           <div class="hw-step-content">
-            <h2>We Generate Millions of Tests Automatically</h2>
-            <p>We don't generate test code. We generate executable replays from real traffic. No writing tests. No maintaining mocks. No brittle fixtures.</p>
+            <h2 data-i18n="hiw.step3.title">We Generate Millions of Tests Automatically</h2>
+            <p data-i18n="hiw.step3.p1">We don't generate test code. We generate executable replays from real traffic. No writing tests. No maintaining mocks. No brittle fixtures.</p>
             <ul class="hw-check-list">
-              <li>Parameterized regression cases</li>
-              <li>Injected dependencies</li>
-              <li>Mirrored environment</li>
+              <li data-i18n="hiw.step3.li1">Parameterized regression cases</li>
+              <li data-i18n="hiw.step3.li2">Injected dependencies</li>
+              <li data-i18n="hiw.step3.li3">Mirrored environment</li>
             </ul>
-            <p class="hw-punch">Every request becomes a permanent test. Instantly.</p>
+            <p class="hw-punch" data-i18n="hiw.step3.punch">Every request becomes a permanent test. Instantly.</p>
           </div>
           <div class="hw-step-visual">
             <div class="visual-card">
@@ -173,14 +173,14 @@ import BookDemoButton from '../components/BookDemoButton.astro';
         <!-- STEP 4 -->
         <div class="hw-step reverse">
           <div class="hw-step-content">
-            <h2>We Replay Against Your New Version</h2>
-            <p>When you ship new code, we compare the output of the Old version vs. the New version. If behavior changes unexpectedly, we catch it before users see it.</p>
+            <h2 data-i18n="hiw.step4.title">We Replay Against Your New Version</h2>
+            <p data-i18n="hiw.step4.p1">When you ship new code, we compare the output of the Old version vs. the New version. If behavior changes unexpectedly, we catch it before users see it.</p>
             <ul class="hw-check-list">
-              <li>JSON Responses and Structure</li>
-              <li>Side effects (DB writes, events)</li>
-              <li>Schema changes</li>
+              <li data-i18n="hiw.step4.li1">JSON Responses and Structure</li>
+              <li data-i18n="hiw.step4.li2">Side effects (DB writes, events)</li>
+              <li data-i18n="hiw.step4.li3">Schema changes</li>
             </ul>
-            <p class="hw-punch">Zero production risk. Faster releases.</p>
+            <p class="hw-punch" data-i18n="hiw.step4.punch">Zero production risk. Faster releases.</p>
           </div>
           <div class="hw-step-visual">
             <div class="visual-card">
@@ -237,14 +237,14 @@ import BookDemoButton from '../components/BookDemoButton.astro';
         <!-- STEP 5 -->
         <div class="hw-step">
           <div class="hw-step-content">
-            <h2>See the Exact Cause of Test Failures</h2>
-            <p>Our session graph architecture retraces errors & behavior changes to the exact point of failure.</p>
+            <h2 data-i18n="hiw.step5.title">See the Exact Cause of Test Failures</h2>
+            <p data-i18n="hiw.step5.p1">Our session graph architecture retraces errors &amp; behavior changes to the exact point of failure.</p>
             <ul class="hw-check-list">
-              <li>Visualize preserved states and execution paths</li>
-              <li>Replay full API requests and response bodies</li>
-              <li>Trace the regression to the exact breaking change</li>
+              <li data-i18n="hiw.step5.li1">Visualize preserved states and execution paths</li>
+              <li data-i18n="hiw.step5.li2">Replay full API requests and response bodies</li>
+              <li data-i18n="hiw.step5.li3">Trace the regression to the exact breaking change</li>
             </ul>
-            <p class="hw-punch">Every failure is traceable to its exact cause.</p>
+            <p class="hw-punch" data-i18n="hiw.step5.punch">Every failure is traceable to its exact cause.</p>
           </div>
           <div class="hw-step-visual">
             <div class="visual-card">
@@ -386,10 +386,10 @@ import BookDemoButton from '../components/BookDemoButton.astro';
     <section class="cta-section">
       <div class="section-container">
         <div class="cta-card">
-          <h2 class="cta-title">Deploy with absolute confidence</h2>
+          <h2 class="cta-title" data-i18n="hiw.cta.title">Deploy with absolute confidence</h2>
           <div class="cta-actions">
             <BookDemoButton />
-            <a href="/contact" class="btn btn-secondary">Talk to an expert</a>
+            <a href="/contact" class="btn btn-secondary" data-i18n="hiw.cta.talkExpert">Talk to an expert</a>
           </div>
         </div>
       </div>

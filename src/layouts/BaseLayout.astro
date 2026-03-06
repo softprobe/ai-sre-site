@@ -1,6 +1,7 @@
 ---
 import Footer from '../components/Footer.astro';
 import BookDemoButton from '../components/BookDemoButton.astro';
+import LanguageToggle from '../components/LanguageToggle.astro';
 import SEO from '../components/seo/SEO.astro';
 import { icons } from '../lib/icons';
 
@@ -63,8 +64,9 @@ const {
         </a>
 
         <nav class="site-nav-menu">
-          <a href="/regression-how-it-works" role="menuitem">How it Works</a>
-          <a href="/contact">Contact</a>
+          <a href="/regression-how-it-works" role="menuitem" data-i18n="nav.howItWorks">How it Works</a>
+          <a href="/contact" data-i18n="nav.contact">Contact</a>
+          <LanguageToggle />
           <BookDemoButton />
         </nav>
       </div>

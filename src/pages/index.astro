@@ -13,26 +13,26 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   <header class="hero">
     <div class="section-container hero-grid">
       <div class="hero-content">
-        <h1 class="hero-title">AI Writes Code.<br /><span class="text-primary hero-title-line2">Softprobe Validates It.</span></h1>
-        <p class="hero-lead">AI made development 10× faster. It made breaking things 10× faster too. Softprobe is the AI-powered shadow testing layer that catches bugs before they're ever deployed.</p>
+        <h1 class="hero-title"><span data-i18n="home.hero.title1">AI Writes Code.</span><br /><span class="text-primary hero-title-line2" data-i18n="home.hero.title2">Softprobe Validates It.</span></h1>
+        <p class="hero-lead" data-i18n="home.hero.lead">AI made development 10× faster. It made breaking things 10× faster too. Softprobe is the AI-powered shadow testing layer that catches bugs before they're ever deployed.</p>
         
         <div class="hero-actions">
           <BookDemoButton />
-          <a href="/regression-how-it-works" class="btn btn-secondary">How it works</a>
+          <a href="/regression-how-it-works" class="btn btn-secondary" data-i18n="home.hero.howItWorks">How it works</a>
         </div>
 
         <div class="hero-benefits">
           <div class="benefit-item">
             <span class="benefit-icon">✓</span>
-            <span>Never write a regression test again.</span>
+            <span data-i18n="home.hero.benefit1">Never write a regression test again.</span>
           </div>
           <div class="benefit-item">
             <span class="benefit-icon">✓</span>
-            <span>Generate millions of tests instantly.</span>
+            <span data-i18n="home.hero.benefit2">Generate millions of tests instantly.</span>
           </div>
           <div class="benefit-item">
             <span class="benefit-icon">✓</span>
-            <span>100% coverage of real user behavior.</span>
+            <span data-i18n="home.hero.benefit3">100% coverage of real user behavior.</span>
           </div>
         </div>
       </div>
@@ -85,9 +85,9 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   <section class="section-alt">
     <div class="section-container">
       <div class="section-header">
-        <span class="badge">The Problem</span>
-        <h2 class="section-title">The AI Coding Explosion</h2>
-        <p class="section-lead">Every release now carries more hidden risk.</p>
+        <span class="badge" data-i18n="home.problem.badge">The Problem</span>
+        <h2 class="section-title" data-i18n="home.problem.title">The AI Coding Explosion</h2>
+        <p class="section-lead" data-i18n="home.problem.lead">Every release now carries more hidden risk.</p>
       </div>
 
       <div class="bento-grid">
@@ -164,22 +164,22 @@ import CustomerLogos from '../components/CustomerLogos.astro';
           </div>
         </div>
         <div class="bento-item bento-content">
-          <p class="highlight-text">With AI, every commit changes more surface area.</p>
+          <p class="highlight-text" data-i18n="home.problem.highlight">With AI, every commit changes more surface area.</p>
           <ul class="feature-list">
             <li>
-              <strong>Entire endpoints</strong>
-              <p>Shipped in single commits with huge surface area.</p>
+              <strong data-i18n="home.problem.item1.title">Entire endpoints</strong>
+              <p data-i18n="home.problem.item1.desc">Shipped in single commits with huge surface area.</p>
             </li>
             <li>
-              <strong>Massive refactors</strong>
-              <p>Global changes that manual tests miss.</p>
+              <strong data-i18n="home.problem.item2.title">Massive refactors</strong>
+              <p data-i18n="home.problem.item2.desc">Global changes that manual tests miss.</p>
             </li>
             <li>
-              <strong>Production-ready features</strong>
-              <p>Released at a velocity QA teams can't match.</p>
+              <strong data-i18n="home.problem.item3.title">Production-ready features</strong>
+              <p data-i18n="home.problem.item3.desc">Released at a velocity QA teams can't match.</p>
             </li>
           </ul>
-          <p class="problem-punch">AI can ship bugs faster than humans can test for them.</p>
+          <p class="problem-punch" data-i18n="home.problem.punch">AI can ship bugs faster than humans can test for them.</p>
         </div>
       </div>
     </div>
@@ -189,79 +189,79 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   <section class="section">
     <div class="section-container">
       <div class="section-header">
-        <span class="badge">The Solution</span>
-        <h2 class="section-title">AI-Powered Large Scale Regression Testing</h2>
-        <p class="section-lead">Softprobe learns from live production traffic end to end—including all dependencies and exact environment states—and creates millions of test cases.</p>
-        <div class="punch-tag">Every production request becomes a test. Instantly.</div>
+        <span class="badge" data-i18n="home.solution.badge">The Solution</span>
+        <h2 class="section-title" data-i18n="home.solution.title">AI-Powered Large Scale Regression Testing</h2>
+        <p class="section-lead" data-i18n="home.solution.lead">Softprobe learns from live production traffic end to end—including all dependencies and exact environment states—and creates millions of test cases.</p>
+        <div class="punch-tag" data-i18n="home.solution.punch">Every production request becomes a test. Instantly.</div>
       </div>
 
       <div class="comparison-table-wrap">
         <table class="comparison-table">
           <thead>
             <tr>
-              <th>Capability</th>
-              <th>Standard Testing</th>
-              <th class="featured-col">SOFTPROBE AI</th>
+              <th data-i18n="home.solution.table.capability">Capability</th>
+              <th data-i18n="home.solution.table.standard">Standard Testing</th>
+              <th class="featured-col" data-i18n="home.solution.table.softprobe">SOFTPROBE AI</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Test Code</td>
-              <td>Manual + AI generated</td>
+              <td data-i18n="home.solution.table.row1.label">Test Code</td>
+              <td data-i18n="home.solution.table.row1.standard">Manual + AI generated</td>
               <td class="featured-col">
                 <div class="featured-col-item">
                   <span class="check-icon">✓</span>
-                  <span>No Code</span>
+                  <span data-i18n="home.solution.table.row1.sp">No Code</span>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>Data Source</td>
-              <td>Manually Created Test Samples</td>
+              <td data-i18n="home.solution.table.row2.label">Data Source</td>
+              <td data-i18n="home.solution.table.row2.standard">Manually Created Test Samples</td>
               <td class="featured-col">
                 <div class="featured-col-item">
                   <span class="check-icon">✓</span>
-                  <span>Real World Use Cases (100% Coverage)</span>
+                  <span data-i18n="home.solution.table.row2.sp">Real World Use Cases (100% Coverage)</span>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>Dependencies</td>
-              <td>Manual Mocks</td>
+              <td data-i18n="home.solution.table.row3.label">Dependencies</td>
+              <td data-i18n="home.solution.table.row3.standard">Manual Mocks</td>
               <td class="featured-col">
                 <div class="featured-col-item">
                   <span class="check-icon">✓</span>
-                  <span>Captured From Real Traffic & Injected</span>
+                  <span data-i18n="home.solution.table.row3.sp">Captured From Real Traffic &amp; Injected</span>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>Environment</td>
-              <td>Test Environment</td>
+              <td data-i18n="home.solution.table.row4.label">Environment</td>
+              <td data-i18n="home.solution.table.row4.standard">Test Environment</td>
               <td class="featured-col">
                 <div class="featured-col-item">
                   <span class="check-icon">✓</span>
-                  <span>Test Env that 100% Mirrors Production</span>
+                  <span data-i18n="home.solution.table.row4.sp">Test Env that 100% Mirrors Production</span>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>Flaky Tests</td>
-              <td>Difficult to Reproduce</td>
+              <td data-i18n="home.solution.table.row5.label">Flaky Tests</td>
+              <td data-i18n="home.solution.table.row5.standard">Difficult to Reproduce</td>
               <td class="featured-col">
                 <div class="featured-col-item">
                   <span class="check-icon">✓</span>
-                  <span>100% Reproducible</span>
+                  <span data-i18n="home.solution.table.row5.sp">100% Reproducible</span>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>Canary Testing</td>
-              <td>Impacts Real Users. Slows Releases.</td>
+              <td data-i18n="home.solution.table.row6.label">Canary Testing</td>
+              <td data-i18n="home.solution.table.row6.standard">Impacts Real Users. Slows Releases.</td>
               <td class="featured-col">
                 <div class="featured-col-item">
                   <span class="check-icon">✓</span>
-                  <span>Zero User impact. Faster Releases.</span>
+                  <span data-i18n="home.solution.table.row6.sp">Zero User impact. Faster Releases.</span>
                 </div>
               </td>
             </tr>
@@ -275,10 +275,10 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   <section class="cta-section">
     <div class="section-container">
       <div class="cta-card">
-        <h2 class="cta-title">Write code at AI speed.<br />Deploy with absolute confidence.</h2>
+        <h2 class="cta-title"><span data-i18n="home.cta.title1">Write code at AI speed.</span><br /><span data-i18n="home.cta.title2">Deploy with absolute confidence.</span></h2>
         <div class="cta-actions">
           <BookDemoButton />
-          <a href="/contact" class="btn btn-secondary">Talk to an expert</a>
+          <a href="/contact" class="btn btn-secondary" data-i18n="home.cta.talkExpert">Talk to an expert</a>
         </div>
       </div>
     </div>
