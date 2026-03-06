@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 *,
 *::before,
@@ -7,8 +7,7 @@
 }
 
 :root {
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-display: 'DM Sans', sans-serif;
+    --font-sans: 'DM Sans', sans-serif;
     --primary-bg: #F8FAFC;
     --box-bg: #f5f3ff;
     --box-border: #ede9fe;
@@ -44,19 +43,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.02em;
 }
 
 .main-content {
