@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 :root {
     --font-sans: 'DM Sans', sans-serif;
     --primary-bg: #F8FAFC;
@@ -88,6 +94,28 @@ body {
 .btn-secondary:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
+}
+
+.cta-actions .btn {
+    width: 240px;
+    height: 52px;
+    font-size: 1rem;
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .cta-actions .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+.hero-actions .btn {
+    min-width: 200px;
+    min-height: 50px;
 }
 
 .site-nav,
