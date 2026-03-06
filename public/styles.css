@@ -114,8 +114,12 @@ body {
 }
 
 .hero-actions .btn {
-    min-width: 200px;
-    min-height: 50px;
+    width: 240px;
+    height: 52px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 
 .site-nav,
