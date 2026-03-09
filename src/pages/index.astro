@@ -133,7 +133,11 @@ import CustomerLogos from '../components/CustomerLogos.astro';
                 <path class="draw-line-human" d="M 40 280 L 460 240" stroke="url(#human-gradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft-glow)" />
                 
                 <!-- AI Code Volume Line -->
-                <path class="draw-line-ai" d="M 40 280 C 220 280, 340 150, 460 30" stroke="url(#ai-gradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+                <path class="draw-line-ai chart-line-ai" d="M 40 280 C 220 280, 340 150, 460 30" stroke="rgba(100,116,139,0.45)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" />
+
+                <!-- Softprobe Coverage Line (mirrors AI curve, with animated highlight) -->
+                <path class="draw-line-ai chart-line-softprobe" d="M 40 280 C 220 280, 340 150, 460 30" stroke="url(#ai-gradient)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+                <path class="chart-line-softprobe chart-line-softprobe-highlight" d="M 40 280 C 220 280, 340 150, 460 30" stroke="rgba(255,255,255,0.9)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="22 140" />
 
                 <!-- Data Points AI -->
                 <g class="chart-points-ai">
@@ -147,18 +151,19 @@ import CustomerLogos from '../components/CustomerLogos.astro';
                 <!-- Risk Label Box -->
                 <g class="risk-label-group">
                   <rect x="220" y="105" width="140" height="34" rx="8" fill="#fff" stroke="var(--primary-color)" stroke-width="1.5" filter="url(#soft-glow)" />
-                  <text x="290" y="127" font-size="12" font-weight="800" fill="var(--primary-color)" font-family="var(--font-sans)" text-anchor="middle">Test Coverage Gap</text>
+                  <text x="290" y="127" font-size="13.5" font-weight="900" fill="var(--primary-color)" font-family="var(--font-sans)" text-anchor="middle">Test Coverage Gap</text>
                   <path d="M 290 139 L 290 205" stroke="var(--primary-color)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
                 </g>
 
                 <!-- Timeline Labels -->
-                <text x="40" y="310" font-size="12" font-weight="600" fill="#94a3b8" font-family="var(--font-sans)">2023</text>
-                <text x="250" y="310" font-size="12" font-weight="600" fill="#94a3b8" font-family="var(--font-sans)" text-anchor="middle">Today</text>
-                <text x="460" y="310" font-size="12" font-weight="600" fill="#94a3b8" font-family="var(--font-sans)" text-anchor="end">2026</text>
+                <text x="40" y="312" font-size="13.5" font-weight="700" fill="#94a3b8" font-family="var(--font-sans)">2023</text>
+                <text x="250" y="312" font-size="13.5" font-weight="700" fill="#94a3b8" font-family="var(--font-sans)" text-anchor="middle">Today</text>
+                <text x="460" y="312" font-size="13.5" font-weight="700" fill="#94a3b8" font-family="var(--font-sans)" text-anchor="end">2026</text>
 
                 <!-- Series Labels -->
-                <text x="440" y="25" font-size="13" font-weight="800" fill="#0f172a" font-family="var(--font-display)" text-anchor="end">AI Code Volume</text>
-                <text x="440" y="255" font-size="12" font-weight="700" fill="#a78bfa" font-family="var(--font-display)" text-anchor="end">Manual Tests</text>
+                <text x="440" y="24" font-size="15" font-weight="900" fill="#0f172a" font-family="var(--font-display)" text-anchor="end">Softprobe Coverage</text>
+                <text x="440" y="44" font-size="12.5" font-weight="700" fill="rgba(100,116,139,0.75)" font-family="var(--font-display)" text-anchor="end">AI Code Volume</text>
+                <text x="440" y="258" font-size="13.5" font-weight="800" fill="#a78bfa" font-family="var(--font-display)" text-anchor="end">Manual Tests</text>
               </svg>
             </div>
           </div>
@@ -390,6 +395,11 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     animation: chartFadeIn 1s ease-out 2s forwards;
   }
 
+  .chart-line-softprobe-highlight {
+    opacity: 0;
+    animation: chartFadeIn 0.8s ease-out 2s forwards, chartShimmer 2.6s linear 2.8s infinite;
+  }
+
   .pulse-ring {
     transform-origin: 460px 30px;
     animation: pulseObj 2.5s infinite ease-out 2s;
@@ -429,6 +439,8 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     border-radius: 24px;
     background: #fff;
     box-shadow: 0 40px 100px rgba(15, 23, 42, 0.05);
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
   .comparison-table {
     width: 100%;
@@ -531,85 +543,30 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     .hero-grid, .bento-grid, .compare-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero { text-align: center; padding-top: 80px; }
     .hero-lead { margin-left: auto; margin-right: auto; }
-    .hero-actions { justify-content: center; flex-wrap: nowrap; }
-    .hero-actions .btn { flex: 1; min-width: 0; text-align: center; }
+    .hero-actions { flex-direction: column; align-items: center; gap: 16px; }
+    .hero-actions .btn { width: 100%; max-width: 320px; }
     .hero-benefits { justify-content: center; }
     .compare-card.featured { transform: none; }
     .cta-card { padding: 60px 24px; }
     .cta-actions { flex-direction: column; align-items: center; }
     .cta-actions .btn { width: 100%; max-width: 320px; }
 
-    /* Comparison table → stacked cards on mobile */
+    /* Comparison table on mobile: keep the desktop table and allow horizontal scroll */
     .comparison-table-wrap {
       border-radius: 16px;
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
     }
     .comparison-table {
-      min-width: 0;
-      display: block;
+      min-width: 820px;
+      display: table;
     }
-    .comparison-table thead {
-      display: none; /* hide header row — labels go inline */
-    }
-    .comparison-table tbody {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .comparison-table tr {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-bottom: 1px solid var(--line-color);
-    }
-    .comparison-table tr:last-child {
-      border-bottom: none;
-    }
-    .comparison-table td {
-      padding: 14px 16px;
-      border-right: none !important;
-      border-bottom: none !important;
-    }
-    .comparison-table td:first-child {
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: #f8fafc;
-      grid-column: 1 / -1; /* full width label row */
-      padding: 10px 16px 6px;
-      border-bottom: 1px solid var(--line-color) !important;
-    }
-    .comparison-table td:nth-child(2) {
-      border-right: 1px solid var(--line-color) !important;
-      font-size: 0.88rem;
-    }
-    .comparison-table td:nth-child(2)::before {
-      content: "Standard";
-      display: block;
-      font-size: 0.62rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-    .comparison-table td.featured-col {
-      font-size: 0.88rem;
-      background: #f5f3ff !important;
-    }
-    .comparison-table td.featured-col::before {
-      content: "Softprobe";
-      display: block;
-      font-size: 0.62rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--primary-color);
-      margin-bottom: 4px;
-    }
-    .comparison-table tr:last-child .featured-col {
-      border-bottom: none !important;
-    }
+    
+    .hero-lead { max-width: 100%; font-size: 1.1rem; }
+    .section-title { font-size: 1.7rem; }
+    .hero-title { font-size: 2.1rem; line-height: 1.1; }
+    .hero { padding-top: 60px; }
+    .visual-card { padding: 12px; }
+    .comparison-table td.featured-col::before { content: none; }
   }
 </style>
