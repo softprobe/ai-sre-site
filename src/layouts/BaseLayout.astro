@@ -27,6 +27,18 @@ const {
   publishedTime,
   modifiedTime
 } = Astro.props;
+
+const { url } = Astro;
+const pathname = url.pathname;
+const isZh = lang === "zh";
+
+const toggleHref = isZh
+  ? (pathname === "/zh" ? "/" : pathname.replace(/^\/zh/, "") || "/")
+  : pathname === "/"
+    ? "/zh"
+    : `/zh${pathname}`;
+
+const toggleLabel = isZh ? "English" : "中文";
 ---
 
 <!doctype html>
@@ -62,33 +74,49 @@ const {
         <nav class="site-nav-menu">
           <div class="site-nav-item site-nav-item-has-menu">
             <a href="#" aria-haspopup="true" class="flex items-center gap-1">
-              Product
+              {isZh ? "产品" : "Product"}
               <div class="w-4 h-4 text-slate-400">
                 <Fragment set:html={icons.ChevronDown} />
               </div>
             </a>
             <div class="site-submenu" role="menu" aria-label="Product submenu">
-              <a href="/ai-sre" role="menuitem">AI SRE</a>
-              <a href="/canary" role="menuitem">Pre-Release Canary Testing</a>
-              <a href="/event-logging" role="menuitem">AI-Native Event Logging</a>
+              <a href={isZh ? "/zh/ai-sre" : "/ai-sre"} role="menuitem">
+                {isZh ? "AI SRE 智能运维" : "AI SRE"}
+              </a>
+              <a href={isZh ? "/zh/canary" : "/canary"} role="menuitem">
+                {isZh ? "预发布金丝雀测试" : "Pre-Release Canary Testing"}
+              </a>
+              <a href={isZh ? "/zh/event-logging" : "/event-logging"} role="menuitem">
+                {isZh ? "AI 原生事件日志" : "AI-Native Event Logging"}
+              </a>
             </div>
           </div>
-          <a href="/compare" role="menuitem">Compare</a>
+          <a href={isZh ? "/zh/compare" : "/compare"} role="menuitem">
+            {isZh ? "产品对比" : "Compare"}
+          </a>
           <div class="site-nav-item site-nav-item-has-menu">
             <a href="#" aria-haspopup="true" class="flex items-center gap-1">
-              Resources
+              {isZh ? "资源" : "Resources"}
               <div class="w-4 h-4 text-slate-400">
                 <Fragment set:html={icons.ChevronDown} />
               </div>
             </a>
             <div class="site-submenu" role="menu" aria-label="Resources submenu">
-              <a href="/integrations" role="menuitem">Integrations</a>
-              <a href="/blog" role="menuitem">Blog</a>
-              <a href="/faq" role="menuitem">FAQ</a>
+              <a href={isZh ? "/zh/integrations" : "/integrations"} role="menuitem">
+                {isZh ? "集成" : "Integrations"}
+              </a>
+              <a href={isZh ? "/zh/faq" : "/faq"} role="menuitem">
+                {isZh ? "常见问题" : "FAQ"}
+              </a>
             </div>
           </div>
-          <a href="/contact">Contact</a>
-          <BookDemoButton />
+          <a href={isZh ? "/zh/contact" : "/contact"}>
+            {isZh ? "联系我们" : "Contact"}
+          </a>
+          <BookDemoButton lang={lang} />
+          <a href={toggleHref} class="lang-toggle" aria-label="Toggle language">
+            {toggleLabel}
+          </a>
         </nav>
       </div>
     </header>

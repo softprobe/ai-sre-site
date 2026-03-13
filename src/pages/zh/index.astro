@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HomeHero from '../../components/HomeHero.astro';
+import Hero from '../../components/Hero.astro';
+import CaseStudies from '../../components/CaseStudies.astro';
+import CustomerLogos from '../../components/CustomerLogos.astro';
+
+const seo = {
+  title: "AI SRE 智能运维代理 | 预防为主，而非被动响应 | Softprobe",
+  description:
+    "Softprobe AI SRE 智能代理同时理解基础设施信号和业务逻辑，在发布前预防问题，而不是事后被动处理故障。",
+  canonical: "https://softprobe.ai/zh/",
+  image: "https://softprobe.ai/logos/4.svg",
+  type: "website",
+  lang: "zh"
+};
+---
+
+<BaseLayout {...seo}>
+  <div class="page">
+    <HomeHero lang="zh" />
+    <CustomerLogos lang="zh" />
+    <Hero lang="zh" />
+    <CaseStudies lang="zh" />
+  </div>
+</BaseLayout>
+
+

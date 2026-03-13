@@ -1,27 +1,40 @@
 ---
 import BookDemoButton from './BookDemoButton.astro';
 import InteractiveDiagram from './InteractiveDiagram.astro';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const title = lang === "zh" ? "面向生产环境的智能运维 AI" : "AI for production ops";
+const subtitle =
+  lang === "zh"
+    ? "借助 Softprobe AI SRE，以更高信心发布。它在发布前捕获回归问题，在生产环境中确定性复现并调试故障，并通过你现有的工具自动编排修复，无需额外埋点。"
+    : "Deploy with absolute confidence with our AI SRE. Catches regressions pre-release, debugs production issues deterministically, and uses your existing tools to orchestrate fixes. Zero instrumentation required.";
+const exploreLabel =
+  lang === "zh" ? "了解更多" : "See More";
+const aiSreHref = lang === "zh" ? "/zh/ai-sre" : "/ai-sre";
 ---
 <section class="home-hero" aria-labelledby="home-hero-title">
   <div class="home-hero-copy">
     <p class="debug-kicker">Softprobe AI SRE</p>
-    <h1 id="home-hero-title">AI for production ops</h1>
+    <h1 id="home-hero-title">{title}</h1>
 
-    <p class="home-hero-lead">
-      
-    </p>
+    <p class="home-hero-lead"></p>
 
     <p class="home-hero-subtitle">
-      Deploy with absolute confidence with our AI SRE. Catches regressions pre-release, debugs production issues deterministically, and uses your existing tools to orchestrate fixes. Zero instrumentation required.
+      {subtitle}
     </p>
 
     <div class="debug-hero-actions">
-      <BookDemoButton />
-      <a href="/ai-sre" class="debug-btn debug-btn-secondary">Explore Softprobe Context Engine</a>
+      <BookDemoButton lang={lang} />
+      <a href={aiSreHref} class="debug-btn debug-btn-secondary">{exploreLabel}</a>
     </div>
   </div>
 
-  <div class="home-hero-visual-wrap" aria-label="Softprobe interactive system diagram">
+  <div class="home-hero-visual-wrap" aria-label={lang === "zh" ? "Softprobe 交互式系统示意图" : "Softprobe interactive system diagram"}>
     <div class="home-hero-visual-frame">
       <InteractiveDiagram />
     </div>

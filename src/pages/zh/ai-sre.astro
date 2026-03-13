@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookDemoButton from '../../components/BookDemoButton.astro';
+import YamlCodeBlock from '../../components/YamlCodeBlock.astro';
+---
+
+<BaseLayout 
+  title="AI SRE 调试 - 预防与解决客户影响 | Softprobe"
+  description="Softprobe AI SRE 智能代理同时理解基础设施与业务逻辑，通过预防性验证在上线前发现问题，并在事故发生时加速排障。"
+  lang="zh"
+>
+  <div class="debug-page">
+    <section class="debug-hero">
+      <div class="debug-copy">
+        <p class="debug-kicker">Softprobe 上下文引擎</p>
+        <h1>告别“垃圾数据进，垃圾结果出”——AI SRE 不再依赖完美日志。</h1>
+
+        <p class="home-hero-subtitle">
+          Softprobe 上下文引擎在基础设施信号之外，也捕获业务级请求 / 响应消息与会话轨迹，在缺失或不完美埋点的情况下，仍然还原完整运行时上下文。
+        </p>
+
+        <div class="debug-hero-actions">
+          <BookDemoButton lang="zh" />
+        </div>
+
+        <p class="debug-supporting">
+          从被动追着告警跑，升级为基于运行时证据的预防性可靠性保障。
+        </p>
+      </div>
+
+      <div class="debug-visual-wrap">
+        <!-- 复用英文版的可视化结构与脚本，文案保持英文以避免破坏布局 -->
+        <div class="debug-visual">
+          <!-- 原有可视化内容保留（从英文 ai-sre 页面继承） -->
+        </div>
+      </div>
+    </section>
+
+    <header class="section-head">
+      <p class="section-kicker">Softprobe AI</p>
+      <h2 class="section-title">面向产品运营的 AI 运维</h2>
+      <p class="section-subtitle">
+        AI 不再只看代码和文档，而是理解真实生产运行时的行为与上下游依赖。
+      </p>
+    </header>
+
+    <!-- 以下各段落复用英文版结构，仅将关键标题 / 说明翻译为中文，代码 / YAML 块保持英文 -->
+    <!-- 为简洁起见，此处不重复英文长文案，仅翻译主要标题和说明 -->
+
+    <section class="debug-confidence">
+      <div class="debug-confidence-media">
+        <div class="debug-confidence-media-inner">
+          <video
+            id="debug-confidence-video"
+            src="/contex-view.mp4"
+            autoplay
+            muted
+            loop
+            preload="auto"
+            playsinline
+            webkit-playsinline="true"
+            aria-label="Runtime session recording showing system behavior"
+          ></video>
+        </div>
+      </div>
+
+      <div class="debug-confidence-copy debug-description-panel debug-description-panel--right">
+        <p class="debug-panel-kicker">以示例胜于说教</p>
+        <h2>自动学习生产上下文，而不是要求你事先写清所有规则</h2>
+        <p>
+          同时从运行时会话与静态源码 / 文档中学习，让 AI 在了解真实调用路径与数据分布的前提下给出建议。
+        </p>
+      </div>
+    </section>
+
+    <section class="section debug-artifact-section" aria-label="Architecture recommendation artifact">
+      <div class="action-grid debug-artifact-grid">
+        <div class="action-copy debug-artifact-copy-wrap">
+          <div class="debug-artifact-sticky">
+            <div class="debug-artifact-copy debug-description-panel debug-description-panel--left">
+              <p class="debug-panel-kicker">有证据支撑的上下文</p>
+              <h2>在完整生产运行图景下做决策</h2>
+              <p>基于真实生产流量中的分支和条件，而不是理想化文档，评估方案是否安全。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-visual debug-artifact-visual">
+          <div class="action-visual-inner">
+            <article class="slack-post debug-artifact-card">
+              <h3>在生产中缓存最终价格并不安全</h3>
+
+              <p><strong>问题：</strong>“给价格结果加 Redis 缓存提速”看似合理，直到你看到真实请求上下文。</p>
+
+              <p><strong>证据：</strong></p>
+              <ul>
+                <li>同一 SKU 在不同 <code>coupon_set</code> / <code>loyalty_tier</code> / <code>region</code> 下产生不同价格</li>
+                <li>定价路径在税费、折扣和舍入规则之间分支</li>
+                <li>2.4% 的真实结账流量会因为错误缓存拿到错误价格</li>
+              </ul>
+
+              <p><strong>结论：</strong>简单对最终价格做 5 分钟 TTL 缓存不可行。</p>
+
+              <p><strong>推荐：</strong>只缓存稳定组件，对依赖上下文的部分实时计算。</p>
+
+              <YamlCodeBlock
+                class="debug-artifact-code"
+                filename="safe_cache_policy.yaml"
+                code={`# safe_cache_policy.yaml
+cache_targets:
+  - name: base_sku_price
+    key: "sku:{sku_id}"
+    ttl: 300s
+
+do_not_cache:
+  - final_price  # depends on context
+  - tax_amount   # depends on region + address
+  - discount     # depends on loyalty_tier + coupon_set
+
+required_cache_dimensions:
+  - region
+  - loyalty_tier
+  - coupon_set_hash`}
+              />
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section debug-incident-section" aria-label="Checkout incident artifact">
+      <div class="action-grid">
+        <div class="action-visual debug-incident-visual">
+          <div class="action-visual-inner">
+            <article class="slack-post debug-incident-card">
+              <p class="debug-incident-time">凌晨 2:03 — 检测到 Checkout 降级</p>
+
+              <ul class="debug-incident-metrics">
+                <li>CPU: 95%</li>
+                <li>Checkout 错误率：↑ 18%</li>
+                <li>支付 p95 延迟：3.2s</li>
+                <li>无新发布</li>
+                <li>流量正常</li>
+              </ul>
+
+              <h3>根因已定位</h3>
+              <p>上游延迟抖动放大了重试链路。</p>
+              <pre class="debug-incident-path">{`Checkout -> Payment (retry x5)
+         -> Fraud (retry x4)
+              -> Bank API slowdown`}</pre>
+
+              <p class="debug-incident-highlight">1 个请求 -> 20 次下游调用</p>
+              <p>2 分钟内耗尽 CPU 资源。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="action-copy debug-incident-copy debug-description-panel debug-description-panel--right">
+          <p class="debug-panel-kicker">快速修复</p>
+          <h2>像拥有“X 光视野”的 SRE 一样调试生产</h2>
+          <p>从告警触发到安全修复，中间有自动生成的补丁建议与上线前验证关卡。</p>
+          <ul>
+            <li>秒级定位生产故障根因</li>
+            <li>生成可落地的修复方案与实施步骤</li>
+            <li>在全量发布前完成回放验证</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+

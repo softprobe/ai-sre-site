@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { icons } from '../../lib/icons';
+
+const featureGroups = [
+  {
+    title: "事件日志",
+    features: [
+      {
+        feature: "捕获 100% 用户会话（无采样）",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "捕获端到端请求 / 响应消息体",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "自动重建会话级运行时轨迹",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "自动事件埋点",
+        softprobe: true,
+        others: "partial",
+        highlight: false,
+      },
+    ]
+  },
+  {
+    title: "发布前测试",
+    features: [
+      {
+        feature: "在测试环境重放真实生产流量",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "无需构造测试数据或 API Mock",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "无需修改代码即可接入",
+        softprobe: true,
+        others: "partial",
+        highlight: false,
+      },
+    ]
+  },
+  {
+    title: "AI SRE 能力",
+    features: [
+      {
+        feature: "确定性根因分析",
+        softprobe: true,
+        others: false,
+        highlight: true,
+      },
+      {
+        feature: "AI 驱动的事故排查",
+        softprobe: true,
+        others: true,
+        highlight: false,
+      },
+      {
+        feature: "自动生成修复建议",
+        softprobe: true,
+        others: true,
+        highlight: false,
+      },
+      {
+        feature: "可观测性成本降低（最高 90%）",
+        softprobe: true,
+        others: false,
+        highlight: false,
+      },
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="AI SRE 平台对比 - Softprobe"
+  description="对比 AI SRE 平台，了解为什么 Softprobe 通过捕获消息体并重建会话轨迹，避免“垃圾数据进，垃圾结果出”，并以预防为主而非被动响应。"
+  lang="zh"
+>
+  <section id="compare" class="py-24 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="text-xs font-semibold tracking-widest uppercase text-emerald-600 mb-3 block">
+          差异一目了然
+        </span>
+        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">
+          Softprobe vs. 其他 AI SRE
+        </h2>
+        <p class="mt-4 text-slate-500 text-lg max-w-xl mx-auto">
+          AI 的效果取决于数据质量。Softprobe 不只是 AI SRE，更是 AI 原生事件日志平台，将用户会话保存为 AI 可直接读取的结构化图数据。
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-slate-100 overflow-hidden bg-white">
+        <div class="grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_160px_160px] bg-slate-50 border-b border-slate-100">
+          <div class="p-4 md:p-5 text-sm font-semibold text-slate-500">
+          </div>
+          <div class="p-4 md:p-5 text-center">
+            <span class="text-sm font-bold text-slate-900">Softprobe</span>
+          </div>
+          <div class="p-4 md:p-5 text-center">
+            <span class="text-sm font-semibold text-slate-400">其他平台</span>
+          </div>
+        </div>
+
+        {featureGroups.map((group) => (
+          <>
+            <div class="bg-slate-50/80 px-4 py-3 border-b border-slate-100">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">{group.title}</h3>
+            </div>
+            {group.features.map((row) => (
+              <div
+                class={`grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_160px_160px] border-b border-slate-50 last:border-0 ${
+                  row.highlight ? "bg-emerald-50/30" : ""
+                } hover:bg-slate-50/50 transition-colors`}
+              >
+                <div class="p-4 md:p-5 flex items-center gap-2">
+                  <span class={`text-sm ${row.highlight ? "font-semibold text-slate-800" : "text-slate-600"}`}>
+                    {row.feature}
+                  </span>
+                  {row.highlight && (
+                    <span class="hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-700 uppercase">
+                      核心优势
+                    </span>
+                  )}
+                </div>
+                <div class="p-4 md:p-5 flex justify-center items-center">
+                  {row.softprobe === true && <div class="text-emerald-500"><Fragment set:html={icons.Check} /></div>}
+                  {row.softprobe === "partial" && <div class="text-amber-400"><Fragment set:html={icons.Minus} /></div>}
+                  {row.softprobe === false && <div class="text-slate-300"><Fragment set:html={icons.X} /></div>}
+                </div>
+                <div class="p-4 md:p-5 flex justify-center items-center">
+                  {row.others === true && <div class="text-emerald-500"><Fragment set:html={icons.Check} /></div>}
+                  {row.others === "partial" && <div class="text-amber-400"><Fragment set:html={icons.Minus} /></div>}
+                  {row.others === false && <div class="text-slate-300"><Fragment set:html={icons.X} /></div>}
+                </div>
+              </div>
+            ))}
+          </>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

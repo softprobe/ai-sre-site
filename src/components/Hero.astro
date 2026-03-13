@@ -1,28 +1,49 @@
 ---
 // Hero component - Simplified after relocating diagram
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const heading =
+  lang === "zh" ? "为什么团队选择 Softprobe？" : "Why Customers Choose Softprobe?";
+
+const labels = lang === "zh"
+  ? [
+      "将泄漏到生产环境的缺陷减少 80%",
+      "通过 AI SRE 加速调试速度 90%",
+      "支持升级案例减少 60%"
+    ]
+  : [
+      "Fewer bugs leaking to production",
+      "Faster debugging via AI SRE agent",
+      "Fewer support escalations"
+    ];
 ---
 
 <section class="section">
-    <header class="section-head">
-        <h2 class="section-title">Why Customers Choose Softprobe?</h2>
-    </header>
+  <header class="section-head">
+    <h2 class="section-title">{heading}</h2>
+  </header>
 
-    <div class="outcomes-grid">
-        <article class="outcome-card">
-            <div class="outcome-value">80%</div>
-            <p class="outcome-label">Fewer bugs leaking to production</p>
-        </article>
+  <div class="outcomes-grid">
+    <article class="outcome-card">
+      <div class="outcome-value">80%</div>
+      <p class="outcome-label">{labels[0]}</p>
+    </article>
 
-        <article class="outcome-card">
-            <div class="outcome-value">90%</div>
-            <p class="outcome-label">Faster debugging via AI SRE agent</p>
-        </article>
+    <article class="outcome-card">
+      <div class="outcome-value">90%</div>
+      <p class="outcome-label">{labels[1]}</p>
+    </article>
 
-        <article class="outcome-card">
-            <div class="outcome-value">60%</div>
-            <p class="outcome-label">Fewer support escalations</p>
-        </article>
-    </div>
+    <article class="outcome-card">
+      <div class="outcome-value">60%</div>
+      <p class="outcome-label">{labels[2]}</p>
+    </article>
+  </div>
 </section>
 
 

@@ -1,53 +1,56 @@
 ---
 const currentYear = new Date().getFullYear();
+const { lang = "en" } = Astro.props;
+const isZh = lang === "zh";
 ---
 
 <footer class="site-footer">
   <div class="site-footer-inner">
     <div class="site-footer-grid">
-      <!-- Brand column -->
       <div class="site-footer-brand">
-        <a href="/" class="site-footer-logo" aria-label="Softprobe Home">
+        <a href={isZh ? "/zh" : "/"} class="site-footer-logo" aria-label={isZh ? "Softprobe 首页" : "Softprobe Home"}>
           <img src="/logos/4.svg" alt="Softprobe" width="28" height="28" />
           <span>Softprobe</span>
         </a>
-        <p class="site-footer-tagline">AI for production Ops.<br />No more garbage in, garbage out. Proactive AI SRE built on AI-native, context-rich event logging--- without relying on manual logging.</p>
+        <p class="site-footer-tagline">
+          {isZh
+            ? "面向生产环境的 AI 运维。告别垃圾数据带来的垃圾结果。基于 AI 原生、上下文丰富的事件日志，实现主动式 AI SRE，而非依赖手工埋点。"
+            : <>AI for production Ops.<br />No more garbage in, garbage out. Proactive AI SRE built on AI-native, context-rich event logging--- without relying on manual logging.</>}
+        </p>
       </div>
 
-      <!-- Product -->
       <div class="site-footer-col">
-        <h4>Product</h4>
+        <h4>{isZh ? "产品" : "Product"}</h4>
         <ul>
-          <li><a href="/ai-sre">AI SRE</a></li>
-          <li><a href="/canary">Pre-Release Canary Testing</a></li>
-          <li><a href="/event-logging">AI-Native Event Logging</a></li>
-          <li><a href="/compare">Compare</a></li>
+          <li><a href={isZh ? "/zh/ai-sre" : "/ai-sre"}>{isZh ? "AI SRE 智能运维" : "AI SRE"}</a></li>
+          <li><a href={isZh ? "/zh/canary" : "/canary"}>{isZh ? "预发布金丝雀测试" : "Pre-Release Canary Testing"}</a></li>
+          <li><a href={isZh ? "/zh/event-logging" : "/event-logging"}>{isZh ? "AI 原生事件日志" : "AI-Native Event Logging"}</a></li>
+          <li><a href={isZh ? "/zh/compare" : "/compare"}>{isZh ? "产品对比" : "Compare"}</a></li>
         </ul>
       </div>
 
-      <!-- Resources -->
       <div class="site-footer-col">
-        <h4>Resources</h4>
+        <h4>{isZh ? "资源" : "Resources"}</h4>
         <ul>
-          <li><a href="/integrations">Integrations</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/blog">Blog</a></li>
+          <li><a href={isZh ? "/zh/integrations" : "/integrations"}>{isZh ? "集成" : "Integrations"}</a></li>
+          <li><a href={isZh ? "/zh/faq" : "/faq"}>{isZh ? "常见问题" : "FAQ"}</a></li>
         </ul>
       </div>
 
-      <!-- Company -->
       <div class="site-footer-col">
-        <h4>Company</h4>
+        <h4>{isZh ? "公司" : "Company"}</h4>
         <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="#">Customers</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href={isZh ? "/zh/about" : "/about"}>{isZh ? "关于我们" : "About"}</a></li>
+          <li><a href="#">{isZh ? "客户案例" : "Customers"}</a></li>
+          <li><a href={isZh ? "/zh/contact" : "/contact"}>{isZh ? "联系我们" : "Contact"}</a></li>
         </ul>
       </div>
     </div>
 
     <div class="site-footer-bottom">
-      <p>&copy; {currentYear} Softprobe. All rights reserved.</p>
+      <p>
+        &copy; {currentYear} Softprobe. {isZh ? "保留所有权利。" : "All rights reserved."}
+      </p>
     </div>
   </div>
 </footer>

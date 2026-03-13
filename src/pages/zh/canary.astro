@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookDemoButton from '../../components/BookDemoButton.astro';
+
+const seo = {
+  title: "安全金丝雀测试 - 使用确定性回放实现 0% 客户风险 | Softprobe",
+  description:
+    "用确定性回放替代高风险在线金丝雀。Softprobe 捕获真实生产流量，在隔离沙箱中回放，校验行为差异，在出现“静默偏差”时自动暂停发布。",
+  canonical: "https://softprobe.ai/zh/canary",
+  image: "https://softprobe.ai/logos/4.svg",
+  type: "website",
+  lang: "zh"
+};
+---
+
+<BaseLayout {...seo}>
+  <Fragment slot="jsonld">
+    <!-- 复用英文版结构，略去 JSON-LD 细节以保持简洁 -->
+  </Fragment>
+
+  <div class="debug-page canary-page">
+    <section class="debug-hero">
+      <div class="debug-copy">
+        <p class="debug-kicker">Softprobe 金丝雀</p>
+        <h1>用 Softprobe 金丝雀安全发布新版本</h1>
+        <p>
+          使用复制自生产的真实流量在测试环境中运行——对真实用户场景做到 100% 覆盖，在完全隔离的环境里发现问题，实现 0% 客户风险。
+        </p>
+        <div class="debug-hero-actions">
+          <BookDemoButton lang="zh" />
+        </div>  
+      </div>
+
+      <div class="debug-visual-wrap">
+        <div class="canary-cards-sequence">
+          <div class="canary-card">
+            <div class="canary-card-header">捕获真实用户会话</div>
+            <div class="canary-card-body">覆盖 100% 会话（无采样）</div>
+          </div>
+          
+          <div class="canary-sequence-connector">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+
+          <div class="canary-card">
+            <div class="canary-card-header">保存完整上下文</div>
+            <div class="canary-card-body">将每一次请求、响应和执行路径保存为结构化会话图</div>
+          </div>
+
+          <div class="canary-sequence-connector">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+
+          <div class="canary-card">
+            <div class="canary-card-header">发布前测试</div>
+            <div class="canary-card-body">在测试环境中回放历史会话，对真实用户场景做全量验证</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <header class="section-head">
+      <p class="section-kicker">Softprobe AI</p>
+      <h2 class="section-title">100% 生产用例覆盖<br/>0% 客户风险</h2>
+      <p class="section-subtitle">在任何真实客户流量接入之前，用历史生产流量完成行为验证。</p>
+    </header>
+
+    <section class="section debug-artifact-section" aria-label="Response validation">
+      <div class="action-grid debug-artifact-grid">
+        <div class="action-copy debug-artifact-copy-wrap">
+          <div class="debug-artifact-sticky">
+            <div class="debug-artifact-copy debug-description-panel debug-description-panel--left">
+              <p class="debug-panel-kicker">对比引擎</p>
+              <h2>AI 校验每一次响应</h2>
+              <p>Softprobe 将生产与回放的 JSON 响应字段级对比，一旦发现差异立即阻断上线。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-visual debug-artifact-visual">
+          <div class="action-visual-inner">
+            <article class="slack-post canary-json-card">
+              <p class="canary-json-title">检测到响应差异：税费计算</p>
+              <div class="canary-json-col canary-json-col-diff">
+                <p>response.diff</p>
+                <pre class="canary-json-diff"><code><span class="diff-line diff-line-ctx">&#123;</span>
+<span class="diff-line diff-line-ctx">  "subtotal": 120.00,</span>
+<span class="diff-line diff-line-del">- "tax": 20.80,</span>
+<span class="diff-line diff-line-del">- "total": 140.80,</span>
+<span class="diff-line diff-line-add">+ "tax": 12.00,</span>
+<span class="diff-line diff-line-add">+ "total": 132.00,</span>
+<span class="diff-line diff-line-ctx">  "currency": "USD"</span>
+<span class="diff-line diff-line-ctx">&#125;</span></code></pre>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section debug-incident-section" aria-label="No customer impact controls">
+      <div class="action-grid">
+        <div class="action-visual debug-incident-visual">
+          <div class="action-visual-inner">
+            <article class="slack-post canary-safety-visual">
+              <div class="canary-lane canary-lane-prod"><p>✓ 生产流量路径</p><span>正常为客户服务</span></div>
+              <div class="canary-lane canary-lane-replay"><p>◎ 回放隔离路径</p><span>仅在沙箱运行</span></div>
+              <div class="canary-lane canary-lane-gate"><p>⛔ 发布闸门</p><span>出现差异时暂停上线</span></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="action-copy debug-incident-copy debug-description-panel debug-description-panel--right">
+          <p class="debug-panel-kicker">安全优先</p>
+          <h2>真正做到对用户“零打扰”</h2>
+          <p>生产环境照常提供服务，回放只在隔离环境中运行，所有高风险变更都在对客户透明的前提下被拦截。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+

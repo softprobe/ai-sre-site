@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { icons } from '../../lib/icons';
+import { Image } from 'astro:assets';
+import sessionGraphImage from '../../assets/session-graph.png';
+---
+
+<BaseLayout title="AI 原生事件日志 - Softprobe" lang="zh">
+  <section class="bg-gradient-to-b from-emerald-50/40 to-[#F8FAFC] pt-28 pb-12 w-full">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-14 max-w-5xl mx-auto leading-[1.1]">
+        以结构化会话图记录事件——{" "}
+        <span class="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
+          AI 代理真正读得懂的数据语言
+        </span>
+      </h1>
+
+      <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto border-t border-slate-200/60 pt-10">
+        <div class="flex flex-col items-start text-left">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="text-emerald-500">
+              <Fragment set:html={icons.CheckCircle2} />
+            </div>
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">成本</span>
+          </div>
+          <p class="text-slate-800 font-semibold text-lg leading-snug">
+            将可观测性成本降低最高可达 90%
+          </p>
+        </div>
+
+        <div class="flex flex-col items-start text-left">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="text-emerald-500">
+              <Fragment set:html={icons.CheckCircle2} />
+            </div>
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">完整性</span>
+          </div>
+          <p class="text-slate-800 font-semibold text-lg leading-snug">
+            保留 100% 用户会话（无采样），包含所有 API 消息体
+          </p>
+        </div>
+
+        <div class="flex flex-col items-start text-left">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="text-emerald-500">
+              <Fragment set:html={icons.CheckCircle2} />
+            </div>
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">速度</span>
+          </div>
+          <p class="text-slate-800 font-semibold text-lg leading-snug">
+            以秒级速度定位生产问题根因
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="the-problem" class="py-14 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
+          <span class="text-xl font-bold text-red-600">1</span>
+        </div>
+        <span class="text-sm font-semibold text-red-600 uppercase tracking-wide">
+          问题
+        </span>
+      </div>
+
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        基于文本的传统日志
+      </h2>
+      <p class="text-lg text-slate-600 mb-8 max-w-3xl">
+        传统工具将系统数据视作无结构文本，只给你一段段孤立的错误片段（例如 500 错误），要花上数小时才能还原完整路径。
+      </p>
+
+      <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <div class="space-y-6">
+          <div class="bg-white border border-red-200 rounded-2xl p-6">
+            <div class="text-red-500 mb-3">
+              <Fragment set:html={icons.AlertCircle} />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">
+              数据碎片化
+            </h3>
+            <p class="text-slate-600">
+              日志行之间没有与原始请求或用户会话的自然关联关系。
+            </p>
+          </div>
+
+          <div class="bg-white border border-red-200 rounded-2xl p-6">
+            <div class="text-red-500 mb-3">
+              <Fragment set:html={icons.AlertCircle} />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">
+              排障耗时
+            </h3>
+            <p class="text-slate-600">
+              需要人工在多个服务日志之间来回比对，才能确定真正的根因。
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-900 p-8">
+          <div class="space-y-2 font-mono text-xs">
+            <div class="text-slate-400">[svc-a] 10:00:01.234 INFO req_id=? user=?</div>
+            <div class="text-slate-400">[svc-b] 10:00:01.456 DEBUG db_query took 234ms</div>
+            <div class="text-yellow-400">[svc-c] 10:00:01.789 WARN connection pool low</div>
+            <div class="text-slate-400">[svc-a] 10:00:02.001 DEBUG processing...</div>
+            <div class="text-red-400">[svc-b] 10:00:02.345 ERROR NullPointerException</div>
+            <div class="text-slate-400">[svc-d] 10:00:02.567 INFO cache miss key=xyz</div>
+            <div class="text-slate-400">[svc-a] 10:00:02.890 DEBUG response sent</div>
+            <div class="text-slate-400">[svc-c] 10:00:03.012 INFO cleanup started</div>
+            <div class="text-center mt-4 text-slate-500 text-2xl">?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-emerald-50/30 py-14 w-full" id="the-solution">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+          <span class="text-xl font-bold text-emerald-600">2</span>
+        </div>
+        <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wide">
+          解决方案
+        </span>
+      </div>
+
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        基于上下文的日志
+      </h2>
+      <p class="text-lg text-slate-600 mb-8 max-w-3xl">
+        Softprobe 引入“上下文日志”：我们将整个执行上下文捕获为 AI 友好的结构化对象。
+      </p>
+
+      <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <div class="space-y-6">
+          <div class="bg-white border border-emerald-200 rounded-2xl p-6">
+            <div class="text-emerald-500 mb-3">
+              <Fragment set:html={icons.CheckCircle2} />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">
+              完整因果链
+            </h3>
+            <p class="text-slate-600">
+              直接将输入（请求）与输出（响应）以及中间所有数据库 / API 调用串联在一起。
+            </p>
+          </div>
+
+          <div class="bg-white border border-emerald-200 rounded-2xl p-6">
+            <div class="text-emerald-500 mb-3">
+              <Fragment set:html={icons.CheckCircle2} />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">
+              一眼看清问题
+            </h3>
+            <p class="text-slate-600">
+              立即看到具体输入、数据库状态，以及究竟是哪一行逻辑导致了错误。
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-emerald-200 shadow-lg" style="aspect-ratio: 16/9;">
+          <img
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/696c0cf221c12e687f8d5785/d4de1e598_Screenshot2026-01-17at60355PM.png"
+            alt="Context-Based Logging - Full request/response with causality links"
+            class="w-full h-full object-cover object-left-top"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="the-technology" class="py-14 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center">
+          <span class="text-xl font-bold text-cyan-600">3</span>
+        </div>
+        <span class="text-sm font-semibold text-cyan-600 uppercase tracking-wide">
+          技术
+        </span>
+      </div>
+
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        Session Graph 驱动的可观测性
+      </h2>
+      <p class="text-lg text-slate-600 mb-8 max-w-3xl">
+        使用我们自研的 Session Graph 技术，将复杂调用关系以图的形式可视化。
+      </p>
+
+      <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <div class="space-y-6">
+          <div class="bg-white border border-cyan-200 rounded-2xl p-6">
+            <div class="text-cyan-500 mb-3">
+              <Fragment set:html={icons.Network} />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">
+              成本友好
+            </h3>
+            <p class="text-slate-600">
+              将数据组织成图结构而非全文索引文本，大幅降低存储与查询成本。
+            </p>
+          </div>
+
+          <div class="bg-white border border-cyan-200 rounded-2xl p-6">
+            <div class="text-cyan-500 mb-3">
+              <Fragment set:html={icons.Network} />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">
+              天然适配 AI
+            </h3>
+            <p class="text-slate-600">
+              结构化格式让 AI 代理可以直接在图上进行因果推理并自动找出根因。
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-cyan-200 shadow-lg" style="aspect-ratio: 16/9;">
+          <Image
+            src={sessionGraphImage}
+            alt="Session Graph Technology"
+            class="w-full h-full object-cover object-left-top"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-900 py-16 w-full">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        准备好开始了吗？
+      </h2>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="https://calendar.app.google/Tnjgub59sebWRR1VA"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 rounded-full font-semibold hover:bg-slate-100 transition-all"
+        >
+          预约演示
+          <Fragment set:html={icons.ArrowRight} />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

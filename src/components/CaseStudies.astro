@@ -1,15 +1,61 @@
 ---
 // Case Studies component
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const heading =
+  lang === "zh" ? "Softprobe AI SRE 实战场景" : "Softprobe AI SRE in action";
+
+const subtitle =
+  lang === "zh"
+    ? "帮助你在现有体系之上解决事故、优化成本，并无缝融入现有值班与运维流程。"
+    : "Helps you resolve incidents, optimize costs, and build on existing systems — directly inside your on-call workflow.";
+
+const safeCanaryTitle =
+  lang === "zh"
+    ? "通过 Softprobe Safe Canary Testing™ 在客户看到问题前就将其拦截"
+    : "Prevent issues before customers see them with Softprobe Safe Canary Testing™";
+
+const safeCanaryNote =
+  lang === "zh" ? "适用于读 / 写接口" : "works for both read and write operations";
+
+const alertTitle =
+  lang === "zh" ? "Softprobe 智能体响应你的告警" : "Softprobe agent responds to your alert";
+
+const alertBody =
+  lang === "zh"
+    ? "Softprobe 智能体调用合适的证据（指标、日志、链路）、代码与知识库，筛除噪声，定位真正的业务级根因并给出可执行建议。"
+    : "Softprobe agent pulls the right evidence (metrics, logs, traces), code, knowledge and history, identifies the root cause and proposes actionable recommendations.";
+
+const rcaTitle =
+  lang === "zh" ? "帮你找到真正的根因" : "Gets you to the real root cause";
+
+const rcaBody =
+  lang === "zh"
+    ? "Softprobe 智能体会与你一起在你的工具中并行验证多种假设，并基于证据收敛到真实根因。"
+    : "Softprobe agent learns, knows how to user your tools, explore competing hypotheses with you and converges on the real root cause with evidence.";
+
+const fixTitle =
+  lang === "zh" ? "和你一起修复问题（并创建 PR）" : "Fixes it with you (and opens the PR)";
+
+const fixBody =
+  lang === "zh"
+    ? "Softprobe 不止分析问题，还会在你确认的前提下给出可审查的改动与 PR，配合回放验证确保上线安全。"
+    : "Softprobe moves from analysis to action — with explicit confirmation, reviewable changes and a PR.";
 ---
 
 <div class="primay-case-container">
   <header class="section-head">
     <p class="section-kicker">Softprobe AI SRE</p>
-    <h2 class="section-title">Softprobe AI SRE in action</h2>
+    <h2 class="section-title">{heading}</h2>
     <p class="section-subtitle">
-      Helps you resolve incidents, optimize costs, and build on existing systems — directly inside your on-call workflow.
-	    </p>
-	  </header>
+      {subtitle}
+    </p>
+  </header>
 
   <section class="section" id="safe-canary">
 	  <div class="action-grid">
@@ -81,8 +127,8 @@
 	    </div>
 
 		    <div class="action-copy">
-		      <h3>Prevent issues before customers see them with Softprobe Safe Canary Testing™</h3>
-              <p>works for both read and write operations</p>
+		      <h3>{safeCanaryTitle}</h3>
+        <p>{safeCanaryNote}</p>
 		    </div>
 	  </div>
 
@@ -217,9 +263,9 @@
     </div>
 
     <div class="action-copy">
-      <h3>Softprobe agent responds to your alert</h3>
+      <h3>{alertTitle}</h3>
       <p>
-        Softprobe agent pulls the right evidence (metrics, logs, traces), code, knowledge and history, identifies the root cause and proposes actionable recommendations.
+        {alertBody}
       </p>
     </div>
   </div>
@@ -302,8 +348,8 @@
     </div>
 
     <div class="action-copy">
-      <h3>Gets you to the real root cause</h3>
-      <p>Softprobe agent learns, knows how to user your tools, explore competing hypotheses with you and converges on the real root cause with evidence.</p>
+      <h3>{rcaTitle}</h3>
+      <p>{rcaBody}</p>
     </div>
   </div>
 </section>
@@ -440,8 +486,8 @@
     </div>
 
     <div class="action-copy">
-      <h3>Fixes it with you (and opens the PR)</h3>
-      <p>Softprobe moves from analysis to action — with explicit confirmation, reviewable changes and a PR.</p>
+      <h3>{fixTitle}</h3>
+      <p>{fixBody}</p>
     </div>
   </div>
 

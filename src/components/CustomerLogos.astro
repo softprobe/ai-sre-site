@@ -1,5 +1,12 @@
 ---
 // Customer logos marquee – infinite horizontal scroll
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "en" } = Astro.props as Props;
+
 const logos = [
   { src: '/logos/g7.png', alt: 'G7' },
   { src: '/logos/lexin.png', alt: 'Lexin' },
@@ -11,10 +18,13 @@ const logos = [
   { src: '/logos/xyd.png', alt: 'XYD' },
   { src: '/logos/yeahka.png', alt: 'Yeahka' },
 ];
+
+const heading =
+  lang === "zh" ? "值得领先企业信赖" : "Trusted by leading enterprises";
 ---
 
-<section class="customer-logos" aria-label="Trusted by leading enterprises">
-  <p class="customer-logos-heading">Trusted by leading enterprises</p>
+<section class="customer-logos" aria-label={heading}>
+  <p class="customer-logos-heading">{heading}</p>
   <div class="customer-logos-track-wrap">
     <!-- Two identical tracks for seamless loop -->
     <div class="customer-logos-track">
