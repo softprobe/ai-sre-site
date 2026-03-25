@@ -40,10 +40,8 @@ import CustomerLogos from '../components/CustomerLogos.astro';
       <div class="hero-visual">
         <div class="visual-card architecture-visual">
           <div class="architecture-diagram" aria-hidden="true">
-            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Nodes -->
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; max-width: 100%;">
               <rect x="20" y="120" width="80" height="60" rx="12" fill="white" stroke="var(--box-border)" stroke-width="2"/>
-              <text x="60" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-color)">Production</text>
               
               <rect x="160" y="110" width="80" height="80" rx="16" fill="var(--primary-color)" />
               <text x="200" y="155" text-anchor="middle" font-size="11" font-weight="800" fill="white">SOFTPROBE</text>
@@ -92,9 +90,9 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 
       <div class="bento-grid">
         <div class="bento-item bento-visual">
-          <div class="visual-card chart-visual">
+          <div class="visual-card chart-visual" style="overflow: hidden; max-width: 100%;">
             <div class="chart-container" aria-hidden="true">
-              <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+              <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; max-width: 100%;">
                 <defs>
                   <linearGradient id="risk-zone" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stop-color="var(--primary-color)" stop-opacity="0.35" />
@@ -359,7 +357,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    overflow: visible;
+    overflow: hidden;
   }
   
   .architecture-diagram svg, .chart-container svg {
@@ -434,7 +432,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
   }
 
   .comparison-table-wrap {
-    width: 100%;
+    width: 100vw;
     max-width: 100%;
     overflow-x: auto;
     border: 1px solid var(--box-border);
