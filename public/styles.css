@@ -229,8 +229,10 @@ h6 {
 
 @media (max-width: 700px) {
     .site-nav-inner {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
+        justify-content: space-between;
         padding: 10px 16px;
         gap: 12px;
     }
@@ -251,16 +253,41 @@ h6 {
     border-radius: 8px;
 }
 
+.site-nav-actions {
+    display: flex;
+    align-items: center;
+}
+
 .site-nav-menu {
     display: flex;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+    margin-left: auto;
 }
 
 @media (max-width: 700px) {
+    .site-nav-logo {
+        flex: 0 1 auto;
+        order: 1;
+    }
+    
+    .site-nav-actions {
+        flex: 0 1 auto;
+        order: 2;
+    }
+
+    .site-nav-actions .btn {
+        padding: 8px 14px !important;
+        font-size: 0.85rem !important;
+        height: auto !important;
+    }
+
     .site-nav-menu {
-        gap: 12px;
+        flex: 1 1 100%;
+        order: 3;
+        margin-left: 0;
+        gap: 14px;
         justify-content: center;
         width: 100%;
         max-width: 100%;
