@@ -210,7 +210,7 @@ h6 {
     height: 80px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .site-nav {
         height: auto;
     }
@@ -227,7 +227,7 @@ h6 {
     gap: 20px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .site-nav-inner {
         flex-direction: row;
         flex-wrap: wrap;
@@ -267,7 +267,7 @@ h6 {
     margin-left: 28px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .site-nav-logo {
         flex: 0 1 auto;
         order: 1;
@@ -2921,17 +2921,6 @@ h6 {
 }
 
 @media (max-width: 900px) {
-    .site-nav-inner {
-        padding: 12px 16px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .site-nav-menu {
-        gap: 14px;
-    }
-
     .site-submenu {
         position: static;
         margin-top: 6px;
