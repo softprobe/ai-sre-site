@@ -42,6 +42,7 @@ import CustomerLogos from '../components/CustomerLogos.astro';
           <div class="architecture-diagram" aria-hidden="true">
             <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; max-width: 100%;">
               <rect x="20" y="120" width="80" height="60" rx="12" fill="white" stroke="var(--box-border)" stroke-width="2"/>
+              <text x="60" y="155" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-color)">Production</text>
               
               <rect x="160" y="110" width="80" height="80" rx="16" fill="var(--primary-color)" />
               <text x="200" y="155" text-anchor="middle" font-size="11" font-weight="800" fill="white">SOFTPROBE</text>
@@ -551,15 +552,96 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     .cta-actions { flex-direction: column; align-items: center; }
     .cta-actions .btn { width: 100%; max-width: 320px; }
 
-    /* Comparison table on mobile: keep the desktop table and allow horizontal scroll */
+    /* Comparison table on mobile: stack capability and make columns side-by-side */
     .comparison-table-wrap {
-      border-radius: 16px;
-      overflow-x: auto;
-      overflow-y: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--box-border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
     .comparison-table {
-      min-width: 820px;
-      display: table;
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .comparison-table thead {
+      display: flex;
+      border-bottom: 1px solid var(--line-color);
+      background: #f8fafc;
+    }
+    .comparison-table thead tr {
+      display: flex;
+      width: 100%;
+    }
+    .comparison-table th:first-child {
+      display: none;
+    }
+    .comparison-table th {
+      padding: 12px 8px;
+      font-size: 0.75rem;
+    }
+    .comparison-table th:nth-child(2),
+    .comparison-table th:nth-child(3) {
+      width: 50%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
+    }
+    .comparison-table tbody {
+      display: flex;
+      flex-direction: column;
+    }
+    .comparison-table tr {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .comparison-table tr:last-child {
+      border-bottom: none;
+    }
+    .comparison-table td {
+      padding: 16px 12px;
+    }
+    .comparison-table td:first-child {
+      width: 100%;
+      background: #f8fafc;
+      font-weight: 800;
+      color: var(--text-color);
+      border-bottom: 1px solid #e2e8f0 !important;
+      border-right: none !important;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .comparison-table td:nth-child(2),
+    .comparison-table td:nth-child(3) {
+      width: 50%;
+      border-bottom: none !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+    .comparison-table td:nth-child(2) {
+      border-right: 1px solid var(--line-color) !important;
+      background: #fff;
+    }
+    .comparison-table td.featured-col {
+      background: rgba(139, 92, 246, 0.04);
+      border: none !important;
+      box-shadow: none;
+    }
+    .comparison-table th.featured-col {
+      box-shadow: none;
+    }
+    .featured-col-item {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
     
     .hero-lead { max-width: 100%; font-size: 1.1rem; }
@@ -567,6 +649,5 @@ import CustomerLogos from '../components/CustomerLogos.astro';
     .hero-title { font-size: clamp(1.8rem, 8vw, 2.3rem); line-height: 1.1; }
     .hero { padding-top: 60px; }
     .visual-card { padding: 12px; }
-    .comparison-table td.featured-col::before { content: none; }
   }
 </style>
