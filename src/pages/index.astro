@@ -369,39 +369,39 @@ import CustomerLogos from '../components/CustomerLogos.astro';
 
   .chart-area-fill {
     opacity: 0;
-    animation: chartFadeIn 1.5s ease-out 1.2s forwards;
+    animation: chartFadeIn 3s ease-out 2.4s forwards;
   }
 
   .draw-line-ai {
     stroke-dasharray: 1200;
     stroke-dashoffset: 1200;
-    animation: chartDraw 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: chartDraw 4.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   .draw-line-human {
     stroke-dasharray: 1200;
     stroke-dashoffset: 1200;
-    animation: chartDraw 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    animation: chartDraw 4.4s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
   }
 
   .chart-grid {
     opacity: 0;
-    animation: chartFadeIn 1s ease-out forwards;
+    animation: chartFadeIn 2s ease-out forwards;
   }
 
   .chart-points-ai, .chart-points-human, .risk-label-group {
     opacity: 0;
-    animation: chartFadeIn 1s ease-out 2s forwards;
+    animation: chartFadeIn 2s ease-out 4s forwards;
   }
 
   .chart-line-softprobe-highlight {
     opacity: 0;
-    animation: chartFadeIn 0.8s ease-out 2s forwards, chartShimmer 2.6s linear 2.8s infinite;
+    animation: chartFadeIn 1.6s ease-out 4s forwards, chartShimmer 5.2s linear 5.6s infinite;
   }
 
   .pulse-ring {
     transform-origin: 460px 30px;
-    animation: pulseObj 2.5s infinite ease-out 2s;
+    animation: pulseObj 5s infinite ease-out 4s;
   }
 
   @keyframes pulseObj {
