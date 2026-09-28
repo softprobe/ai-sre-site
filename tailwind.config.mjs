@@ -4,7 +4,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Archivo', system-ui, sans-serif],
+                sans: ['Archivo', 'system-ui', 'sans-serif'],
             },
             colors: {
                 background: 'hsl(var(--background))',
