@@ -7,7 +7,7 @@ const seo = {
   description:
     "Replace risky live canaries with deterministic replay. Softprobe captures real production flows, replays them in an isolated sandbox, validates behavior, and pauses releases on silent mismatches.",
   canonical: "https://softprobe.ai/api-regression-testing",
-  image: "https://softprobe.ai/logos/4.svg",
+  image: "https://softprobe.ai/softprobe-mark.svg",
   type: "website"
 };
 
@@ -197,7 +197,7 @@ const jsonld = {
     border: 1px solid #e2e8f0;
     border-radius: 20px;
     padding: 24px;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    box-shadow: 0 10px 30px rgba(20, 19, 15, 0.05);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -212,7 +212,7 @@ const jsonld = {
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23B8724E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -221,8 +221,8 @@ const jsonld = {
 
   .canary-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
-    border-color: #8b5cf650;
+    box-shadow: 0 20px 40px rgba(184, 114, 78, 0.1);
+    border-color: #B8724E50;
   }
 
   .canary-card:hover::after {
@@ -239,7 +239,7 @@ const jsonld = {
   .canary-card-body {
     font-size: 1rem;
     line-height: 1.5;
-    color: #475569;
+    color: var(--muted);
     font-weight: 500;
   }
 
@@ -266,37 +266,37 @@ const jsonld = {
   .canary-replay-card { padding: 22px; }
   .canary-replay-icon-item { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
   .canary-replay-icon-item:first-child { margin-top: 0; }
-  .canary-icon-tile { width: 34px; height: 34px; border: 1px solid #ede9fe; border-radius: 8px; background: #fff; display: inline-flex; align-items: center; justify-content: center; color: var(--primary-color); font-size: .72rem; font-weight: 900; }
-  .canary-replay-icon-item p { margin: 0; font-weight: 900; color: #0f172a; }
+  .canary-icon-tile { width: 34px; height: 34px; border: 1px solid #DBD5C7; border-radius: 8px; background: #fff; display: inline-flex; align-items: center; justify-content: center; color: var(--primary-color); font-size: .72rem; font-weight: 900; }
+  .canary-replay-icon-item p { margin: 0; font-weight: 900; color: var(--ink); }
 
-  .canary-json-title { margin: 0; font-size: .92rem; color: #0f172a; font-weight: 900; }
-  .canary-json-col { margin-top: 12px; border: 1px solid #e5e7eb; border-radius: 12px; background: #f8fafc; padding: 10px; }
-  .canary-json-col p { margin: 0; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: #475569; font-weight: 900; }
-  .canary-json-col pre { margin: 8px 0 0; font-size: 12px; line-height: 1.55; color: #0f172a; white-space: pre; overflow-x: auto; font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
+  .canary-json-title { margin: 0; font-size: .92rem; color: var(--ink); font-weight: 900; }
+  .canary-json-col { margin-top: 12px; border: 1px solid #e5e7eb; border-radius: 12px; background: var(--canvas); padding: 10px; }
+  .canary-json-col p { margin: 0; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 900; }
+  .canary-json-col pre { margin: 8px 0 0; font-size: 12px; line-height: 1.55; color: var(--ink); white-space: pre; overflow-x: auto; font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
   .diff-line { display: block; padding: 1px 8px; border-radius: 6px; }
-  .diff-line-ctx { color: #0f172a; }
+  .diff-line-ctx { color: var(--ink); }
   .diff-line-del { color: #991b1b; background: #fef2f2; border: 1px solid #fecaca; }
   .diff-line-add { color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; }
 
   .canary-safety-visual { width: min(760px,100%); display: grid; gap: 10px; }
   .canary-lane { border-radius: 12px; border: 1px solid #e5e7eb; padding: 12px; display: flex; justify-content: space-between; gap: 10px; }
-  .canary-lane p { margin: 0; font-size: .86rem; font-weight: 800; color: #0f172a; }
+  .canary-lane p { margin: 0; font-size: .86rem; font-weight: 800; color: var(--ink); }
   .canary-lane span { font-size: .72rem; font-weight: 900; border-radius: 999px; padding: 5px 10px; }
   .canary-lane-prod { background: #f0fdf4; border-color: #bbf7d0; }
   .canary-lane-prod span { background: #dcfce7; color: #166534; }
-  .canary-lane-replay { background: #f5f3ff; border-color: #ddd6fe; }
-  .canary-lane-replay span { background: #ede9fe; color: var(--primary-color); }
+  .canary-lane-replay { background: #EDE9DF; border-color: #D2CABB; }
+  .canary-lane-replay span { background: #DBD5C7; color: var(--primary-color); }
   .canary-lane-gate { background: #fef2f2; border-color: #fecaca; }
   .canary-lane-gate span { background: #fee2e2; color: #991b1b; }
 
-  .canary-coverage { margin-top: 14px; border: 1px solid #dbe4f0; border-radius: 18px; background: linear-gradient(150deg,#f8fafc 0%,#f0fdf4 100%); padding: 32px; }
-  .canary-coverage-line { margin: 0; font-size: clamp(1.24rem,2.6vw,1.9rem); font-weight: 900; color: #0f172a; }
+  .canary-coverage { margin-top: 14px; border: 1px solid #dbe4f0; border-radius: 18px; background: linear-gradient(150deg,var(--canvas) 0%,#f0fdf4 100%); padding: 32px; }
+  .canary-coverage-line { margin: 0; font-size: clamp(1.24rem,2.6vw,1.9rem); font-weight: 900; color: var(--ink); }
 
   .benefits-simple-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; font-size: 1.15rem; color: #334155; line-height: 1.6; }
   .benefits-simple-list li { display: flex; align-items: flex-start; gap: 16px; }
   .benefit-check { width: 24px; height: 24px; color: #16a34a; flex-shrink: 0; margin-top: 4px; }
   .benefits-simple-list span { display: block; }
-  .benefits-simple-list strong { color: #0f172a; font-weight: 800; }
+  .benefits-simple-list strong { color: var(--ink); font-weight: 800; }
 
   @media (max-width: 900px) {
     .canary-env-grid { grid-template-columns: 1fr; }

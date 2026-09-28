@@ -28,8 +28,8 @@
     display: inline-flex;
     align-items: center;
     gap: 2px;
-    background: rgba(139, 92, 246, 0.08);
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    background: rgba(184, 114, 78, 0.08);
+    border: 1px solid rgba(184, 114, 78, 0.2);
     border-radius: 999px;
     padding: 3px 10px;
     user-select: none;
@@ -44,22 +44,22 @@
     font-weight: 700;
     letter-spacing: 0.03em;
     cursor: pointer;
-    color: var(--text-muted, #475569);
+    color: var(--text-muted, var(--muted));
     transition: color 0.18s ease, background 0.18s ease;
     line-height: 1;
   }
 
   .lang-btn:hover {
-    color: var(--primary-color, #8b5cf6);
+    color: var(--primary-color, #B8724E);
   }
 
   .lang-btn--active {
-    color: var(--primary-color, #8b5cf6);
-    background: rgba(139, 92, 246, 0.12);
+    color: var(--primary-color, #B8724E);
+    background: rgba(184, 114, 78, 0.12);
   }
 
   .lang-divider {
-    color: rgba(139, 92, 246, 0.3);
+    color: rgba(184, 114, 78, 0.35);
     font-size: 0.7rem;
     line-height: 1;
     pointer-events: none;
@@ -74,16 +74,34 @@
 
   const STORAGE_KEY = 'sp-locale';
 
-  /** Detect the best locale from browser prefs, falling back to 'en'. */
+  /** True for zh, zh-CN, zh_CN, zh-Hans, zh-TW, etc. */
+  function isChineseLocale(tag: string): boolean {
+    const normalized = tag.trim().toLowerCase().replaceAll('_', '-');
+    return normalized === 'zh' || normalized.startsWith('zh-');
+  }
+
+  /**
+   * Detect locale from browser/OS language.
+   * Chinese systems (zh / zh-CN / zh-Hans / …) always resolve to 'zh'.
+   * Explicit user toggle in localStorage still wins.
+   */
   function detectLocale(): Locale {
-    // 1. User previously picked a language
     const stored = localStorage.getItem(STORAGE_KEY) as Locale | null;
     if (stored && supportedLocales.includes(stored)) return stored;
 
-    // 2. Browser language preference
-    const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
+    const primary = navigator.language || '';
+    const langs = navigator.languages?.length
+      ? [...navigator.languages]
+      : primary
+        ? [primary]
+        : [];
+
+    // Primary system/browser locale is Chinese → always CN
+    if (primary && isChineseLocale(primary)) return 'zh';
+
     for (const lang of langs) {
-      const code = lang.split('-')[0].toLowerCase() as Locale;
+      if (isChineseLocale(lang)) return 'zh';
+      const code = lang.trim().toLowerCase().replaceAll('_', '-').split('-')[0] as Locale;
       if (supportedLocales.includes(code)) return code;
     }
 
@@ -112,11 +130,9 @@
 
   let currentLocale: Locale = detectLocale();
 
-  // Initial render — wait for DOM to be ready
-  document.addEventListener('DOMContentLoaded', () => {
+  function boot(): void {
     applyLocale(currentLocale);
 
-    // Wire up toggle buttons
     document.querySelectorAll<HTMLButtonElement>('.lang-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         const lang = btn.dataset.lang as Locale;
@@ -126,5 +142,11 @@
         applyLocale(lang);
       });
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 </script>

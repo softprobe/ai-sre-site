@@ -10,7 +10,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="max-w-4xl mx-auto px-6">
       {/* Header */}
       <header class="mb-12">
-        <a href="/blog" class="inline-flex items-center gap-2 text-violet-600 font-semibold mb-6 hover:text-violet-700 transition-colors">
+        <a href="/blog" class="inline-flex items-center gap-2 text-orange-700 font-semibold mb-6 hover:text-orange-800 transition-colors">
           ← Back to Blog
         </a>
         <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
@@ -155,8 +155,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
         <h3>3. Production-Faithful Testing</h3>
 
-        <p class="bg-violet-50 border-l-4 border-violet-500 p-4 my-6">
-          <strong>Related reading:</strong> Learn more about production‑faithful testing and safe traffic replay on the <a href="https://softprobe.dev" class="text-violet-600 hover:text-violet-700 font-semibold">Softprobe website</a>.
+        <p class="bg-orange-50 border-l-4 border-orange-700 p-4 my-6">
+          <strong>Related reading:</strong> Learn more about production‑faithful testing and safe traffic replay on the <a href="https://softprobe.dev" class="text-orange-700 hover:text-orange-800 font-semibold">Softprobe website</a>.
         </p>
 
         <p>One unique feature of Softprobe is its pre-release testing. Its unique Otel-compatible event logging architecture allows you to replicate production traffic in test:</p>
@@ -294,7 +294,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
 
       {/* Footer CTA */}
-      <div class="mt-16 p-8 bg-gradient-to-r from-violet-50 to-emerald-50 rounded-2xl border border-violet-100">
+      <div class="mt-16 p-8 bg-gradient-to-r from-stone-100 to-orange-50 rounded border border-stone-200">
         <h3 class="text-2xl font-bold text-slate-900 mb-3">
           Ready to experience AI-driven reliability?
         </h3>
@@ -305,7 +305,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           href="https://calendar.app.google/Tnjgub59sebWRR1VA"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-violet-600 text-white rounded-full font-semibold hover:bg-violet-700 transition-colors"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-sm font-semibold hover:bg-stone-800 transition-colors"
         >
           Book a Demo
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -325,14 +325,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .prose .lead {
     font-size: 1.25rem;
     line-height: 1.7;
-    color: #475569;
+    color: var(--muted);
     margin-bottom: 2rem;
   }
 
   .prose h2 {
     font-size: 2rem;
     font-weight: 800;
-    color: #0f172a;
+    color: var(--ink);
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
@@ -363,24 +363,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .prose strong {
     font-weight: 700;
-    color: #0f172a;
+    color: var(--ink);
   }
 
   .prose em {
     font-style: italic;
-    color: #475569;
+    color: var(--muted);
   }
 
   .prose a {
-    color: #8b5cf6;
+    color: #B8724E;
     text-decoration: underline;
-    text-decoration-color: #8b5cf620;
+    text-decoration-color: #B8724E20;
     text-underline-offset: 3px;
     transition: all 0.2s;
   }
 
   .prose a:hover {
-    color: #7c3aed;
-    text-decoration-color: #8b5cf6;
+    color: #B8724E;
+    text-decoration-color: #B8724E;
   }
 </style>

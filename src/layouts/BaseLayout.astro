@@ -21,7 +21,7 @@ const {
   title, 
   description = "Softprobe AI SRE",
   canonical,
-  image = "/logo_full_trans.png",
+  image = "/softprobe-mark.svg",
   noindex = false,
   type = "website",
   lang = "en",
@@ -35,8 +35,9 @@ const {
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/x-icon" href="/sp-logo-trans.ico" />
-    <link rel="icon" type="image/png" href="/sp-logo-trans.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <SEO
       title={title}
       description={description}
@@ -53,14 +54,19 @@ const {
       </Fragment>
     </SEO>
     <slot name="head" />
-    <link rel="stylesheet" href="/styles.css?v=2.2" />
+    <link rel="stylesheet" href="/styles.css?v=3.0" />
   </head>
-  <body>
+  <body class="sp-site">
     <header class="site-nav" aria-label="Primary">
       <div class="site-nav-inner">
         <a class="site-nav-logo" href="/" aria-label="Softprobe Home">
-          <img src="/sp-logo-trans.png" alt="Softprobe" width="28" height="28" />
-          <span>Softprobe</span>
+          <img
+            class="site-nav-wordmark"
+            src="/softprobe-wordmark.svg"
+            alt="Softprobe"
+            width="148"
+            height="48"
+          />
         </a>
 
         <nav class="site-nav-menu">
